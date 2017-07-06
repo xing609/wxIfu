@@ -1,0 +1,47 @@
+{
+  "pages":[
+    "pages/home/index",
+    "pages/team/index",
+    "pages/chat/index",
+    "pages/my/index",
+    "pages/details/index",
+    "pages/brand/index"
+    
+  ],
+  "window":{
+    "backgroundTextStyle":"white",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "医数医生端",
+    "navigationBarBackgroundColor": "#292929",
+    "backgroundColor": "#F2f2f2",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#6e6d6b",
+    "selectedColor": "#f9f027",
+    "borderStyle": "white",
+    "backgroundColor": "#292929",
+    "list": [{
+      "pagePath": "pages/home/index",
+      "iconPath": "images/ic_tab_home_nor.png",
+      "selectedIconPath": "images/ic_tab_home_res.png",
+      "text": "首页"
+    }, {
+      "pagePath": "pages/team/index",
+      "iconPath": "images/ic_tab_team_nor.png",
+      "selectedIconPath": "images/ic_tab_team_res.png",
+      "text": "团队"
+    }, {
+      "pagePath": "pages/chat/index",
+      "iconPath": "images/ic_tab_chat_nor.png",
+      "selectedIconPath": "images/ic_tab_chat_res.png",
+      "text": "医聊"
+    }, {
+      "pagePath": "pages/my/index",
+      "iconPath": "images/ic_tab_my_nor.png",
+      "selectedIconPath": "images/ic_tab_my_res.png",
+      "text": "我"
+    }]
+  },
+  "debug": true
+}
