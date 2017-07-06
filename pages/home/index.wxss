@@ -44,13 +44,20 @@ view.text:before {
 }
 
 .line_flag {
-    width: 3px;
     height: 100%;
     height: 15px;
+    padding: 0,0,0,0;
     display: inline-block;
-    background-color: #f9f027;
 }
-
+.line_flag_right {
+    height: 100%;
+    height: 15px;
+    width:20%;
+    margin-left: 20px;
+    padding: 0,0,0,0;
+    display: inline-block;
+    text-align: center;
+}
 view.text text {
     margin-left: 10px;
     line-height: 18px;
@@ -88,4 +95,36 @@ view.text text {
     font-weight: bold;
     text-align: center;
     color: #333;
+}
+
+
+/*九宫格*/
+.row {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.item_size {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 160rpx;
+    width: 248rpx;
+    margin: 1rpx;
+    background: white;
+}
+
+.text {
+    font-size: 12px;
+    align-content: flex-end;
+    margin-top: 15rpx;
+    margin-bottom: 15rpx
+}
+.text_num{
+  font: 14px;
+  color: #FF9933;
 }

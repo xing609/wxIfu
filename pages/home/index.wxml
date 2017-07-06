@@ -1,23 +1,52 @@
 <!--index.wxml-->
 <view class="container">
-    <view>
-        <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
-                autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
-            <block wx:for="{{images}}">
-                <swiper-item>
-                    <image src="{{item.picurl}}" class="slide-image"/>
-                </swiper-item>
-            </block>
-        </swiper>
- <view class="with_arrow"></view>
-      
-        
-    </view>
 
 
 
-    
-    <view class="venues_box">
+
+  <view class="text">
+    <view class="line_flag"></view>
+    <text>随访方案库</text>
+    <view class="line_flag_right"></view>
+    <text>邀请赢好礼</text>
+
+
+  </view>
+
+  <view>
+    <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
+      <block wx:for="{{images}}">
+        <swiper-item>
+          <image src="{{item.picurl}}" class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="with_arrow"></view>
+
+  </view>
+
+
+
+
+  <view class="row">
+    <navigator wx:for="{{items}}" url="{{url}}?listId={{item.id}}&listName={{item.text}}">
+      <view class="item_size">
+        <text class="text">{{item.text}}</text>
+        <text class="text_num" wx:if="{{item.id ==1}}"> {{model.myCustomer}}</text>
+        <text class="text_num" wx:if="{{item.id ==2}}"> {{model.myTemplate}}</text>
+
+        <text class="text_num" wx:if="{{item.id ==3}}"> 即将启用</text>
+        <text class="text_num" wx:if="{{item.id ==4}}"> {{model.doctorSurvey}}</text>
+        <text class="text_num" wx:if="{{item.id ==5}}"> {{model.doctorReceiveSurvey}}</text>
+        <text class="text_num" wx:if="{{item.id ==6}}"> {{model.noCustomerSurvey}}</text>
+       
+
+       
+      </view>
+    </navigator>
+  </view>
+
+  <!--<view class="venues_box">
         <view class="venues_list">
             <block wx:for="{{venuesItems}}">
                 <view class="venues_item">
@@ -29,10 +58,7 @@
         </view>
     </view>
 
-    <view class="text">
-        <view class="line_flag"></view>
-        <text>环球精选</text>
-    </view>
+
 
     <view class="choice_box">
         <view class="choice_list">
@@ -45,9 +71,9 @@
                 </navigator>
             </block>
         </view>
-    </view>
+    </view>-->
 
-    <!--<loading hidden="{{loadingHidden}}">
+  <!--<loading hidden="{{loadingHidden}}">
         加载中...
     </loading>-->
 

@@ -18,9 +18,9 @@
   },
   "tabBar": {
     "color": "#6e6d6b",
-    "selectedColor": "#f9f027",
+    "selectedColor": "#FF9933",
     "borderStyle": "white",
-    "backgroundColor": "#292929",
+    
     "list": [{
       "pagePath": "pages/home/index",
       "iconPath": "images/ic_tab_home_nor.png",
