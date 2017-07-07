@@ -1,0 +1,25 @@
+<import src="../common/prompt.wxml"/>
+
+<template name="list">
+    <!--<template is="prompt" data="{{ prompt }}"/>-->
+    <!--wx:if="{{ !!goods.paginate.total }}"-->
+	<view class="scroll-list">
+		<view class="weui-panel weui-panel_access" >
+            <view class="weui-panel__bd">
+                <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{resultList}}" wx:key="" bindtap="navigateTo" data-id="{{ item._id }}">
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image class="weui-media-box__thumb" src="{{item.face }}" />
+                    </view>
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">{{item.realName }}</view>
+                        <view class="weui-media-box__desc">
+                            <text class="text-orangered" wx:if="{{item.lastChat.contentType==1}}">{{item.lastChat.content}}</text>
+                            <text class="text-orangered" wx:if="{{item.lastChat.contentType==2}}">[图片]</text>
+                            <text class="text-orangered" wx:if="{{item.lastChat.contentType==3}}">[语音]</text>
+                        </view>
+                    </view>
+                </navigator>
+            </view>
+        </view>
+	</view>
+</template>

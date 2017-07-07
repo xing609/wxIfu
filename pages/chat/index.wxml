@@ -1,4 +1,5 @@
-<view class="container">
-  <image src="{{cartImg}}" class="cart-image"/>
-  <view>{{tipWords}}</view>
-</view>
+<import src="../common/prompt.wxml"/>
+<import src="../common/list.wxml"/>
+<template is="list" data="{{resultList}}"/>
+
+
