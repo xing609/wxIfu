@@ -2,7 +2,9 @@
 ### 项目说明：
 微信小程序：实现一个移动医数医生端小程序
 
-
+微信小程序开发文档 https://mp.weixin.qq.com/debug/wxadoc/dev/index.html
+微信小程序设计指南 https://mp.weixin.qq.com/debug/wxadoc/design/index.html
+微信小程序开发者工具 https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html
 
 ### 目录结构：
 - images — 存放项目图片
