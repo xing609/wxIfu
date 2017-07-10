@@ -1,0 +1,7 @@
+.top_all_template{
+  text-align: center;
+  color: black;
+}
+.p_my_template{
+  background: gainsboro;
+}

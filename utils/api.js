@@ -1,7 +1,7 @@
 'use strict';
 var HOST_URI = 'http://apitest.ifuifu.com/';
 
-
+var TOKEN = 'a002eb47616f4a348996b84bca9bbccc';
 //微信登录
 var OPENID_LOGIN ='api/common/thirdLogin';
 
@@ -11,7 +11,10 @@ var HOME_GEM_NUM ='api/doctor/myIndex/statistics';
 //取聊天列表
 var CHAT_GET_LIST ='api/common/chat/myFriendlist';
 
+var MY_CUSTOMER_LIST ='api/doctor/customer/list';
 
+//我的方案列表
+var MY_TEMPLATE_LIST ='api/doctor/template/list';
 
 function _openIdLogin(o){
   return reqUrl(OPENID_LOGIN,o);
@@ -23,7 +26,22 @@ function _getHomeNum(o){
 }
 //聊天API
 function _getChatList(o){
-  return HOST_URI + CHAT_GET_LIST + '?' + _obj2uri(o);
+  return reqUrl(CHAT_GET_LIST,o);
+}
+
+//我的病人列表
+function _getMyCustomerList(o) {
+  return reqUrl(MY_CUSTOMER_LIST,o);
+}
+
+//我的方案列表
+function _getMyTemplateList(o){
+  return reqUrl(MY_TEMPLATE_LIST,o);
+}
+
+//取token
+function _getToken(){
+  return TOKEN;
 }
 
 //我的API
@@ -50,5 +68,8 @@ function _obj2uri(obj) {
 module.exports = {
   getHomeNum:_getHomeNum,
   getChatList:_getChatList,
-  openIdLogin:_openIdLogin
+  openIdLogin:_openIdLogin,
+  getToken:_getToken,
+  getMyCustomerList:_getMyCustomerList,
+  getMyTemplateList:_getMyTemplateList
 };

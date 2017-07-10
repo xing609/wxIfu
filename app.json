@@ -1,24 +1,32 @@
 {
   "pages": [
-    "pages/start/index",
     "pages/index/index",
+    "pages/start/index",
+   
     "pages/team/index",
+    "pages/user/index",
+    "pages/mycustomer/index",
+    "pages/index/myqr/index",
+    "pages/template/index",
+    "pages/template/mytemplate/index",
+    "pages/index/templateqr/index",
+    "pages/index/ifuvalue/index",
     "pages/chat/index",
+    "pages/index/doctorwrite/index",
+    "pages/index/receive/index",
+    "pages/index/nosubimt/index",
     "pages/address/list/index",
     "pages/address/add/index",
     "pages/address/edit/index",
     "pages/address/confirm/index",
-    "pages/ifuvalue/list/index",
-    "pages/ifuvalue/confirm/index",
-    "pages/ifuvalue/detail/index",
     "pages/goods/list/index",
     "pages/goods/detail/index",
     "pages/help/list/index",
     "pages/help/detail/index",
     "pages/search/index",
     "pages/about/index",
-    "pages/login/index",
-    "pages/user/index"
+    "pages/login/index"
+    
   ],
   "window": {
     "navigationBarBackgroundColor": "#FF9933",

@@ -1,0 +1,13 @@
+<view class="container">
+<!--
+<view class="top_all_template">
+<image src="src"></image>
+<text >全部方案</text>
+</view>-->
+<text >全部方案</text>
+<text>个人方案</text>
+<import src="../../common/templateItem.wxml"/>
+<template is="list" data="{{resultList}}"/>
+
+
+</view>

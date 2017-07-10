@@ -1,5 +1,5 @@
 const App = getApp()
-var Api = require('../../utils/api.js');
+var Api = require('../../../utils/api.js');
 Page({
   data: {
     indicatorDots: true,
@@ -13,19 +13,20 @@ Page({
     loadingHidden: false,  // loading
     resultList: []
   },
-  getChatList: function () {
+  getMyTemplateList: function () {
     var that = this;
     wx.request({
       method: 'POST',
-      url: Api.getChatList({
+      url: Api.getMyTemplateList({
         token: Api.getToken(),
-        page: 1
+        page: 1,
+        tempname:"",
+        type:0,
+        page:0	
       }),
       success: function (res) {
         console.log(res);
         that.setData({
-          currentPage: res.data.currentPage,
-          pageCount: res.data.pageCount,
           resultList: res.data.resultList
         })
         setTimeout(function () {
@@ -38,6 +39,6 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    this.getChatList();
+    this.getMyTemplateList();
   }
 })

@@ -1,0 +1,13 @@
+<view class="mycustomer_p">
+
+<p class="p_newcustomer">
+<image class="img_newcustomer" src="../../assets/images/ic_set_icon.png"></image>
+<text class="text_new_customer">新病人</text>
+<text class="text_no_manager">未进行管理</text>
+</p>
+<import src="../common/customerItem.wxml"/>
+<template is="list" data="{{resultList}}"/>
+
+</view>
+
+
