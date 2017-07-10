@@ -3,8 +3,6 @@ const App = getApp()
 //获取应用实例
 var arr_name = ["我的病人", "我的方案", "我的多中心项目", "待完成医用量表", "已收到量表", "未按时提交量表",]
 var file = "../../pages/list/list"
-var token = "689e700378944a8e941eeb9c9e31ac60"
-
 Page({
   data: {
     indicatorDots: true,
@@ -18,27 +16,46 @@ Page({
       id: "1",
       num: 0,
       text: arr_name[0],
+      path: '/pages/mycustomer/index'
     }, {
       id: "2",
       num: 0,
-      text: arr_name[1]
+      text: arr_name[1],
+      path: '/pages/template/mytemplate/index'
     }, {
       id: "3",
       num: 0,
-      text: arr_name[2]
+      text: arr_name[2],
+      path: ''
     }, {
       id: "4",
       num: 0,
-      text: arr_name[3]
+      text: arr_name[3],
+      path: '/pages/index/doctorwrite/index'
     }, {
       id: "5",
       num: 0,
-      text: arr_name[4]
+      text: arr_name[4],
+      path: '/pages/index/receive/index'
     }, {
       id: "6",
       num: 0,
-      text: arr_name[5]
+      text: arr_name[5],
+      path: '/pages/index/nosubimt/index'
     }]
+  },
+  //主菜单跳转
+  navigateTo(e) {
+    const index = e.currentTarget.dataset.index
+    const path = e.currentTarget.dataset.path
+
+    switch (0) {
+      case 3:
+         console.log("即将启用");
+         break
+      default:
+        App.WxService.navigateTo(path)
+    }
   },
 
 
@@ -47,7 +64,7 @@ Page({
     wx.request({
       method: 'POST',
       url: Api.getHomeNum({
-        token: '689e700378944a8e941eeb9c9e31ac60'
+        token: Api.getToken()
       }),
       success: function (res) {
         console.log(res);
@@ -93,5 +110,15 @@ Page({
       })
     })
 
+  },
+
+  jumpMyQrIndex(){
+    App.WxService.navigateTo('/pages/index/myqr/index')
+  },
+  jumpIfuValueIndex() {
+    App.WxService.navigateTo('/pages/index/ifuvalue/index')
+  },
+  jumpTemplateQrIndex(){
+    App.WxService.navigateTo('/pages/index/templateqr/index')
   }
 })

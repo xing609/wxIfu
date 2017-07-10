@@ -1,3 +1,4 @@
+// pages/mycustomer/index.js
 const App = getApp()
 var Api = require('../../utils/api.js');
 Page({
@@ -13,13 +14,14 @@ Page({
     loadingHidden: false,  // loading
     resultList: []
   },
-  getChatList: function () {
+  getMyCustomerList: function () {
     var that = this;
     wx.request({
       method: 'POST',
-      url: Api.getChatList({
+      url: Api.getMyCustomerList({
         token: Api.getToken(),
-        page: 1
+        page: 0,
+        status:	1
       }),
       success: function (res) {
         console.log(res);
@@ -38,7 +40,11 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    this.getChatList();
-  }
+    this.getMyCustomerList();
+  },
+  search() {
+    App.WxService.navigateTo('/pages/search/index')
+  },
 
+  
 })

@@ -2,20 +2,17 @@
 <view class="container">
 
   <view class="home_top">
-
-    <view class="home_my_p">
+    <view class="home_my_p" bindtap="jumpMyQrIndex">
       <text class="home_top_text_my">我</text>
       <image class="home_top_img_my" src="../../assets/images/ic_home_qr_bg.png"></image>
     </view>
+    <image class="home_circle_p" src="../../assets/images/ic_ifuvalue_bg.png" bindtap="jumpIfuValueIndex">
 
-    <image class="home_circle_p"src="../../assets/images/ic_ifuvalue_bg.png">
-    
-    <text class="home_ifu_value">0{{model.allCredit}}</text>
-    <text class="home_my_value">我的医数值</text>
-   </image> 
+      <text class="home_ifu_value">{{model.allCredit}}</text>
+      <text class="home_my_value">我的医数值</text>
+    </image>
+    <view class="home_template_p" bindtap="jumpTemplateQrIndex">
 
-
-    <view class="home_template_p">
       <text class="home_top_text_template">方案</text>
       <image class="home_top_img_template" src="../../assets/images/ic_home_qr_bg.png"></image>
     </view>
@@ -45,11 +42,8 @@
 
   </view>
 
-
-
-
   <view class="row">
-    <navigator wx:for="{{items}}" url="{{url}}?listId={{item.id}}&listName={{item.text}}">
+    <navigator wx:for="{{items}}" url="{{url}}?listId={{item.id}}&listName={{item.text}}" wx:key="" data-path="{{ item.path }}" data-index="{{ index }}" bindtap="navigateTo">
       <view class="item_size">
         <text class="text">{{item.text}}</text>
         <text class="text_num" wx:if="{{item.id ==1}}"> {{model.myCustomer}}</text>
@@ -64,8 +58,8 @@
   </view>
 
 
-<loading hidden="{{loadingHidden}}">
-        加载中...
-    </loading>
+  <loading hidden="{{loadingHidden}}">
+    加载中...
+  </loading>
 
 </view>
