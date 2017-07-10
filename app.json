@@ -1,11 +1,12 @@
 {
   "pages": [
+    "pages/mycustomer/index",
     "pages/index/index",
     "pages/start/index",
 
     "pages/team/index",
     "pages/user/index",
-    "pages/mycustomer/index",
+   
     "pages/index/myqr/index",
     "pages/template/index",
     "pages/template/mytemplate/index",

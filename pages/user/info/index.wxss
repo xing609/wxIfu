@@ -48,13 +48,7 @@
   color: black;
 }
 
-.img_next {
-  width: 5px;
-  height: 10px;
-  margin-right: 10px;
-  margin-left: 10px;
-  vertical-align: middle;
-}
+
 
 .img_auth {
   width: 15px;
@@ -82,4 +76,11 @@
   font-size: 14px;
   color: silver;
   background: greenyellow;
+}
+.img_next {
+  width: 5px;
+  height: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  vertical-align: middle;
 }
