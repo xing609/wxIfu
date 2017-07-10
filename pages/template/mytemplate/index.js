@@ -40,5 +40,8 @@ Page({
   onLoad: function () {
     var that = this;
     this.getMyTemplateList();
-  }
+  },
+  search() {
+    App.WxService.navigateTo('/pages/search/index')
+  },
 })

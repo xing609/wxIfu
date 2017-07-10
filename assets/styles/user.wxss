@@ -3,3 +3,8 @@
 	height: 100rpx;
 	border-radius: 50%;
 }
+
+.weui-icon-search, 
+.weui-search-bar__text {
+    vertical-align: inherit;
+}

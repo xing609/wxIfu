@@ -42,6 +42,9 @@ Page({
     var that = this;
     this.getMyCustomerList();
   },
+  search() {
+    App.WxService.navigateTo('/pages/search/index')
+  },
 
   
 })

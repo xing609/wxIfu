@@ -1,7 +1,7 @@
 'use strict';
 var HOST_URI = 'http://apitest.ifuifu.com/';
 
-var TOKEN = 'a002eb47616f4a348996b84bca9bbccc';
+var TOKEN = '2155570004084435bb8a3cae11013c24';
 //微信登录
 var OPENID_LOGIN ='api/common/thirdLogin';
 

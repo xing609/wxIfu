@@ -12,7 +12,9 @@
             </view>
 
             <view class="weui-media-box__desc ">
-              <text class="text-orangered">{{item.customerNum}}人</text>
+              <text class="text-orangered" wx:if="{{item.customerNum==null}}">0</text>
+              <text class="text-orangered" wx:if="{{item.customerNum!=0}}">{{item.customerNum}}人</text>
+
             </view>
 
           </view>
