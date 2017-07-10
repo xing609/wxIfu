@@ -1,47 +1,68 @@
 {
-  "pages":[
-    "pages/home/index",
+  "pages": [
+    
+    "pages/index/index",
+    "pages/start/index",
+    
     "pages/team/index",
     "pages/chat/index",
-    "pages/my/index",
-    "pages/details/index",
-    "pages/brand/index"
+    "pages/address/list/index",
+    "pages/address/add/index",
+    "pages/address/edit/index",
+    "pages/address/confirm/index",
+    "pages/ifuvalue/list/index",
+    "pages/ifuvalue/confirm/index",
+    "pages/ifuvalue/detail/index",
+    "pages/goods/list/index",
+    "pages/goods/detail/index",
+    "pages/help/list/index",
+    "pages/help/detail/index",
+    "pages/search/index",
+    "pages/about/index",
+    "pages/login/index",
+    "pages/user/index",
+    "pages/user/info/index"
+   
     
   ],
-  "window":{
-    "backgroundTextStyle":"white",
+  "window": {
+    "navigationBarBackgroundColor": "#FF9933",
     "navigationBarTextStyle": "white",
     "navigationBarTitleText": "医数医生端",
-    "navigationBarBackgroundColor": "#292929",
-    "backgroundColor": "#F2f2f2",
-    "enablePullDownRefresh": true
+    "backgroundColor": "#f8f8f8",
+    "backgroundTextStyle": "dark"
   },
   "tabBar": {
     "color": "#6e6d6b",
     "selectedColor": "#FF9933",
     "borderStyle": "white",
-    
-    "list": [{
-      "pagePath": "pages/home/index",
-      "iconPath": "images/ic_tab_home_nor.png",
-      "selectedIconPath": "images/ic_tab_home_res.png",
-      "text": "首页"
-    }, {
-      "pagePath": "pages/team/index",
-      "iconPath": "images/ic_tab_team_nor.png",
-      "selectedIconPath": "images/ic_tab_team_res.png",
-      "text": "团队"
-    }, {
-      "pagePath": "pages/chat/index",
-      "iconPath": "images/ic_tab_chat_nor.png",
-      "selectedIconPath": "images/ic_tab_chat_res.png",
-      "text": "医聊"
-    }, {
-      "pagePath": "pages/my/index",
-      "iconPath": "images/ic_tab_my_nor.png",
-      "selectedIconPath": "images/ic_tab_my_res.png",
-      "text": "我"
-    }]
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "assets/images/ic_tab_home_nor.png",
+        "selectedIconPath": "assets/images/ic_tab_home_res.png",
+        "text": "主页"
+      },
+      {
+        "pagePath": "pages/team/index",
+        "iconPath": "assets/images/ic_tab_team_nor.png",
+        "selectedIconPath": "assets/images/ic_tab_team_res.png",
+        "text": "团队"
+      },
+      {
+        "pagePath": "pages/chat/index",
+        "iconPath": "assets/images/ic_tab_chat_nor.png",
+        "selectedIconPath": "assets/images/ic_tab_chat_res.png",
+        "text": "聊天"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "iconPath": "assets/images/ic_tab_my_nor.png",
+        "selectedIconPath": "assets/images/ic_tab_my_res.png",
+        "text": "我"
+      }
+    ]
   },
   "debug": true
 }

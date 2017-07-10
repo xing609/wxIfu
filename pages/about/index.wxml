@@ -1,0 +1,9 @@
+<view class="about">
+	
+   <view class="version_p">
+   <image class="about_app_icon" src="../../assets/images/ic_set_icon.png"></image>
+   	<text class="about_version">医数医生端v1.0Beta</text>
+   </view>
+   
+
+</view>

@@ -1,0 +1,28 @@
+.about-item {
+  padding: 5px 15px;
+}
+.version_p {
+
+  width: 200px;
+  height: 100px;
+  position: relative;
+  text-align: center; 
+  margin-top:5px;
+  margin-left:136px;
+}
+
+.about_app_icon {
+  width: 65px;
+  height: 65px;
+  position: absolute;
+  margin-top:8px;
+  margin-left:-85px;
+
+}
+.about_version{
+  position:absolute;
+  text-align: center;
+  margin-left:-147px;
+  margin-top:75px;
+
+}

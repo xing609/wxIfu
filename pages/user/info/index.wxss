@@ -1,0 +1,85 @@
+.container {
+  font: 12px/24px "";
+  color: #666;
+  padding-left: 10px;
+}
+
+.top {
+  height: 50px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.imgleft {
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.item {
+  height: 50px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1px;
+}
+
+.item_margin_15 {
+  height: 50px;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.user_text_value {
+  font-size: 14px;
+  color: silver;
+}
+
+.left_text {
+  font-size: 16px;
+  color: black;
+}
+
+.img_next {
+  width: 5px;
+  height: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.img_auth {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.img_need {
+  vertical-align: middle;
+  width: 10px;
+  height: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.user_desc_p{
+  background: white;
+  vertical-align: middle;
+  padding-bottom: 10px;
+}
+.user_desc_text{
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 14px;
+  color: silver;
+  background: greenyellow;
+}

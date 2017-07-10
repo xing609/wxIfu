@@ -1,0 +1,216 @@
+.container {
+  background-color: #f2f2f2;
+}
+
+.swiper_box {
+  width: 100%;
+}
+
+swiper-item image {
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+}
+
+view.text {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 10px 10px 10px 12px;
+  font-size: 15px;
+  color: #656565;
+}
+
+view.text:before {
+  position: absolute;
+  display: block;
+  content: ' ';
+  left: -5px;
+  width: 2px;
+  height: 100%;
+  background-color: #09bb07;
+}
+
+.line_flag {
+  height: 100%;
+  height: 15px;
+  padding: 0, 0, 0, 0;
+  display: inline-block;
+}
+
+.line_flag_right {
+  height: 100%;
+  height: 15px;
+  width: 20%;
+  margin-left: 20px;
+  padding: 0, 0, 0, 0;
+  display: inline-block;
+  text-align: center;
+}
+
+view.text text {
+  margin-left: 10px;
+  line-height: 18px;
+  font-weight: bold;
+}
+
+.venues_box {
+  padding: 0 10rpx;
+}
+
+.venues_item {
+  display: inline-block;
+  width: 49%;
+  margin: 0 0.5%;
+}
+
+.venues_item image {
+  width: 100%;
+  height: 90px;
+}
+
+.choice_box {
+  padding: 0 10rpx;
+}
+
+.choice_box .choice_list .choice_item {
+  margin-bottom: 15px;
+}
+
+.choice_box .choice_list image {
+  width: 100%;
+  height: 200px;
+}
+
+.choice_box .choice_list .title {
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+}
+
+/*首页顶部UI*/
+
+.home_top {
+  padding: 10px 10px 10px 10px;
+  background-color: #f93;
+  height: 160px;
+  margin: 10px;
+  position: relative;
+  border-radius: 6px 6px 6px 6px;
+}
+
+.home_top_text_template {
+  position: absolute;
+  bottom: -6px;
+  left: 32px;
+  color: white;
+}
+
+.home_top_text_my {
+  position: absolute;
+  bottom: -6px;
+  left: 23px;
+  color: white;
+}
+
+.home_my_p {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 40px;
+  left: 10px;
+}
+
+.home_template_p {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 40px;
+  right: 10px;
+}
+
+.home_top_img_my {
+  position: absolute;
+  width: 56px;
+  height: 48px;
+  top: 10px;
+  left: 5px;
+}
+
+.home_top_img_template {
+  position: absolute;
+  width: 56px;
+  height: 48px;
+  top: 10px;
+  left: 20px;
+}
+
+.home_circle_p {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  left: 0;
+  right: 0;
+  top: 20px;
+  margin: auto;
+}
+
+.home_ifu_value {
+  position: absolute;
+  left:0;
+  right:0;
+  margin: auto;
+  bottom: 65px;
+  font-size: 30px;
+  text-align: center;
+  color: white;
+}
+
+.home_my_value {
+  position: absolute;
+  font-size: 12px;
+  text-align: center;
+  bottom: 51px;
+  right: 46px;
+  color: white;
+}
+
+/*九宫格*/
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.item_size {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 160rpx;
+  width: 248rpx;
+  margin: 1rpx;
+  background: white;
+}
+
+.text {
+  font-size: 12px;
+  align-content: flex-end;
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+}
+
+.text_num {
+  font-size: 14px;
+  color: #f93;
+}
+
+.text_will_open {
+  font-size: 12px;
+  color: #999;
+}

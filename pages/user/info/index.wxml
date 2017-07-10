@@ -1,0 +1,139 @@
+<view class="container">
+
+<text>注册号码： 13641809635</text>
+ 
+
+
+</view>
+<div class="top">
+
+<!--head-->
+<p>
+<image class="imgleft" src='../../../assets/images/iconfont-order.png'></image> 
+<span class="left_text">头像</span>
+</p>
+<p>
+<image class="imgleft" src='../../../assets/images/ic_tab_my_res.png'></image> 
+<image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image> 
+</p>
+</div>
+
+<!--认证信息-->
+<div class="item">
+<p>
+<image class="imgleft" src='../../../assets/images/iconfont-order.png'></image> 
+<span class="left_text">认证信息</span>
+</p>
+<p>
+<text class="user_text_value">已认证</text>
+<image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image> 
+</p>
+</div>
+
+
+<!--姓名-->
+<div class="item_margin_15">
+<p>
+<image class="imgleft" src='../../../assets/images/iconfont-order.png'></image> 
+<span class="left_text">姓名</span>
+<image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
+</p>
+<p>
+<text class="user_text_value">superstar</text>
+<image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image> 
+</p>
+</div>
+
+<!--性别-->
+<div class="item">
+<p>
+<image class="imgleft" src='../../../assets/images/iconfont-order.png'></image> 
+<span class="left_text">性别</span>
+</p>
+<p>
+<text class="user_text_value">男</text>
+<image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image> 
+</p>
+</div>
+
+<!--医院-->
+<div class="item_margin_15">
+<p>
+<image class="imgleft" src='../../../assets/images/iconfont-order.png'></image> 
+<span class="left_text">医院</span>
+<image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
+</p>
+<p>
+<text class="user_text_value">上海中山</text>
+<image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image> 
+</p>
+</div>
+
+
+<!--科室-->
+<div class="item">
+<p>
+<image class="imgleft" src='../../../assets/images/iconfont-order.png'></image> 
+<span class="left_text">科室</span>
+<image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
+</p>
+<p>
+<text class="user_text_value">内科</text>
+<image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image> 
+</p>
+</div>
+
+<!--职称-->
+<div class="item">
+<p>
+<image class="imgleft" src='../../../assets/images/iconfont-order.png'></image> 
+<span class="left_text">职称</span>
+<image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
+</p>
+<p>
+<text class="user_text_value">医师</text>
+<image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image> 
+</p>
+</div>
+
+<!--专业-->
+<div class="item">
+<p>
+<image class="imgleft" src='../../../assets/images/iconfont-order.png'></image> 
+<span class="left_text">专业</span>
+<image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
+</p>
+<p>
+<text class="user_text_value">内科</text>
+<image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image> 
+</p>
+</div>
+
+
+
+<!--门诊-->
+<div class="item">
+<p>
+<image class="imgleft" src='../../../assets/images/iconfont-order.png'></image> 
+<span class="left_text">门诊/手术日</span>
+</p>
+<p>
+<text class="user_text_value">周一 上午 普通</text>
+<image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image> 
+</p>
+</div>
+
+<!--简介-->
+<view class="user_desc_p">
+<div class="item">
+<p>
+<image class="imgleft" src='../../../assets/images/iconfont-order.png'></image> 
+<span class="left_text">简介</span>
+<image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
+</p>
+<p>
+<image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image> 
+</p>
+</div>
+<span class="user_desc_text">习近平指出，中日互为重要近邻。中日关系健康发展，关系着两国人民福祉，对亚洲和世界也具有重要影响。今年是中日邦交正常化45周年，明年是中日和平友好条约缔结40周年。双方应该增强责任感和使命感，本着以史为鉴、面向未来精神，排除干扰，推动两国关系朝着正确方向改善发展。</span>
+</view>
