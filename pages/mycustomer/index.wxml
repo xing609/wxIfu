@@ -1,7 +1,4 @@
 <view class="mycustomer_p">
-
-
-
   <view class="weui-search-bar">
     <view class="weui-search-bar__form">
       <view class="weui-search-bar__box">
@@ -16,20 +13,76 @@
   </view>
 
   <div class="top">
-   <div class="div_left">
+    <div class="div_left">
       <image class="imgleft" src='../../../assets/images/iconfont-order.png'></image>
       <view class="txt_new__p">
         <span class="left_text_new">新病人</span>
         <span class="left_text_manager">未进行管理</span>
       </view>
-</div>
-   
+    </div>
+
     <div>
       <image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image>
     </div>
   </div>
 
-  <import src="../common/customerItem.wxml" />
-  <template is="list" data="{{resultList}}" />
 
+  <view class="section">
+    <view url="" class="item_p" wx:for="{{resultList}}" wx:key="" data-id="{{ item._id }}">
+      <view class="item_group_title">{{item.templateType}}--{{item.templateName}}--{{item.customerExtHospitalList.length}}人</view>
+
+      <!--患者-->
+      <navigator url="" class="discover-image-two" wx:for="{{item.customerExtHospitalList}}" wx:key="" data-id="{{ item._id }}">
+        <view class="div_left">
+          <image class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
+        </view>
+
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__desc">
+            <text class="text-orangered" wx:if="{{item.sex==0}}">{{item.customerName }} 男   {{item.age}}岁</text>
+            <text class="text-orangered" wx:if="{{item.sex==1}}">{{item.customerName }} 女   {{item.age}}岁</text>
+          </view>
+          <view class="weui-media-box__desc">
+            <text class="text-orangered">床位号：{{item.bedNo}}</text>
+
+          </view>
+          <view class="weui-media-box__desc">
+            <text class="text-orangered">医生备注：{{item.remark}}</text>
+          </view>
+         <view class="item_line"></view>
+
+        </view>
+        
+      </navigator>
+      <view class="item_line"></view>
+    </view>
+  </view>
 </view>
+
+
+
+
+<!--患者-->
+<navigator url="" class="discover-image-two" wx:for="{{item.customerExtHospitalList}}" wx:key="" data-id="{{ item._id }}">
+  <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+
+    <image class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
+  </view>
+  <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+
+    <view class="weui-media-box__title">{{item.customerName }}</view>
+
+    <image class="weui-media-box__thumb" wx:if="{{item.mark==true}}" src="" />
+    <view class="weui-media-box__desc">
+      <text class="text-orangered" wx:if="{{item.sex==0}}">男   {{item.age}}岁</text>
+      <text class="text-orangered" wx:if="{{item.sex==1}}">女   {{item.age}}岁</text>
+    </view>
+    <view class="weui-media-box__desc">
+      <text class="text-orangered">床位号：{{item.bedNo}}</text>
+
+    </view>
+    <view class="weui-media-box__desc">
+      <text class="text-orangered">医生备注：{{item.remark}}</text>
+    </view>
+  </view>
+</navigator>

@@ -1,24 +1,21 @@
-<import src="../common/prompt.wxml" />
-
 <template name="list">
-  <view class="scroll-list">
-    <view class="weui-panel weui-panel_access">
       <view class="weui-panel__bd">
         <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{resultList}}" wx:key=""data-id="{{ item._id }}">
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">{{item.templateType}}--{{item.templateName}}</view>
-            <view class="weui-media-box__desc">
-              <text class="text-orangered">{{item.customerExtHospitalList.length}}人</text>
-            </view>
-
+            <view class="weui-media-box__title">{{item.templateType}}--{{item.templateName}}    {{item.customerExtHospitalList.length}}人</view>
+            
             <customer is="list" data="{{item.customerExtHospitalList}}" />
           </view>
 
-          <!--患者-->
-          <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{item.customerExtHospitalList}}" wx:key="" data-id="{{ item._id }}">
-            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-              <!--<image class="weui-media-box__thumb" src="{{item.face }}" />-->
 
+
+
+
+
+          <!--患者-->
+        <!--<navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{item.customerExtHospitalList}}" wx:key="" data-id="{{ item._id }}">
+            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+        
               	<image class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
             </view>
             <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
@@ -38,9 +35,10 @@
                  <text class="text-orangered">医生备注：{{item.remark}}</text>
               </view>
             </view>
-          </navigator>
+          </navigator>-->
+
+      
         </navigator>
       </view>
-    </view>
-  </view>
+  
 </template>

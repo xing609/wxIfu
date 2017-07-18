@@ -1,5 +1,36 @@
-<import src="../common/prompt.wxml"/>
-<import src="../common/list.wxml"/>
-<template is="list" data="{{resultList}}"/>
+<import src="../common/prompt.wxml" />
+
+<loading hidden="{{hidden}}" bindchange="loadingChange">
+    加载中...
+</loading> 
+
+ <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refesh">
+      <view wx:if="{{hasRefesh}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
+      <icon type="waiting" size="45"/><text>刷新中...</text></view>
+      <view wx:else  style="display:none" ><text></text></view>
+      
+  <view class="bg">
+    <navigator url="" class="nav-p" wx:for="{{resultList}}" wx:key="" bindtap="navigateTo" data-id="{{ item._id }}">
+      <view class="img-head">
+        <image class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
+      </view>
+
+      <view class="item-p">
+        <view class="item-name">{{item.realName }}</view>
+        <text class="content-text" wx:if="{{item.lastChat.contentType==1}}">{{item.lastChat.content}}</text>
+        <text class="content-text" wx:if="{{item.lastChat.contentType==2}}">[图片]</text>
+        <text class="content-text" wx:if="{{item.lastChat.contentType==3}}">[语音]</text>
+      </view>
+
+      <view class="line"></view>
+    </navigator>
+
+  </view>
 
 
+<view class="tips1">
+      <view wx:if="{{hasMore}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
+      <icon type="waiting" size="45"/><text>玩命的加载中...</text></view>
+      <view wx:else><text>没有更多内容了</text></view>
+    </view>
+ </scroll-view>
