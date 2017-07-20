@@ -1,59 +1,61 @@
 'use strict';
 var HOST_URI = 'http://apitest.ifuifu.com/';
 
-var TOKEN = '036cc3b35802404fb6cdcced31630c6d';
-
 //微信登录
 var OPENID_LOGIN ='api/common/thirdLogin';
-
 //获取首页数量
 var HOME_GEM_NUM ='api/doctor/myIndex/statistics';
-
 //取聊天列表
 var CHAT_GET_LIST ='api/common/chat/myFriendlist';
-
+//我的病人列表
 var MY_CUSTOMER_LIST ='api/doctor/customer/list';
-
 //我的方案列表
 var MY_TEMPLATE_LIST ='api/doctor/template/list';
+//登录
+var LOGIN ='api/doctor/op/login';
+//个人信息
+var USER_INFO ='api/doctor/op/info';
+//首页方案
+var HOME_NEW_TEMPLATE ='api/doctor/template/home';
 
 
-function _openIdLogin(o){
-  return reqUrl(OPENID_LOGIN,o);
+//===========================================请求接口==================================================
+function _openIdLogin(o) {
+  return reqUrl(OPENID_LOGIN, o);
 }
-
-//首页API
+function _login(o){
+  return reqUrl(LOGIN,o);
+}
 function _getHomeNum(o){
   return reqUrl(HOME_GEM_NUM, o);
 }
-//聊天API
 function _getChatList(o){
   return reqUrl(CHAT_GET_LIST,o);
 }
-
-//我的病人列表
 function _getMyCustomerList(o) {
   return reqUrl(MY_CUSTOMER_LIST,o);
 }
-
-//我的方案列表
 function _getMyTemplateList(o){
   return reqUrl(MY_TEMPLATE_LIST,o);
 }
+function _getUserInfo(o){
+  return reqUrl(USER_INFO,o);
+}
+function _getHomeNewTemplate(o){
+  return reqUrl(HOME_NEW_TEMPLATE,o);
+}
+//========================================cache缓存=========================================
 
 //取token
 function _getToken(){
-  return TOKEN;
-
+  return wx.getStorageSync('token');
 }
 
-//我的API
-// function _getNodeInfo(o){
-// 	return reqUrl(SS);
-// }
-
-
-
+//取用户信息
+function _getUser(){
+  return wx.getStorageSync('user');
+}
+//==========================================================================================
 
 //带参数的请求
 function reqUrl(url,o){
@@ -69,11 +71,14 @@ function _obj2uri(obj) {
   }).join('&');
 }
 module.exports = {
+  login:_login,
   getHomeNum:_getHomeNum,
   getChatList:_getChatList,
   openIdLogin:_openIdLogin,
   getToken:_getToken,
+  getUser:_getUser,
   getMyCustomerList:_getMyCustomerList,
-  getMyTemplateList:_getMyTemplateList
-
+  getMyTemplateList:_getMyTemplateList,
+  getUserInfo:_getUserInfo,
+  getHomeNewTemplate:_getHomeNewTemplate
 };

@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/start/index",
-    "pages/team/index",
+    
+   
     "pages/mycustomer/index",
     "pages/index/myqr/index",
     "pages/template/index",
@@ -49,12 +50,7 @@
         "selectedIconPath": "assets/images/ic_tab_home_res.png",
         "text": "主页"
       },
-      {
-        "pagePath": "pages/team/index",
-        "iconPath": "assets/images/ic_tab_team_nor.png",
-        "selectedIconPath": "assets/images/ic_tab_team_res.png",
-        "text": "团队"
-      },
+
       {
         "pagePath": "pages/chat/index",
         "iconPath": "assets/images/ic_tab_chat_nor.png",

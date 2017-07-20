@@ -1,59 +1,13 @@
 /**index.wxss**/
-page {
-    background-color: #439057;
-}
-
 .page {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
 .container {
 	padding-bottom: 10rpx;
-}
-
-.panel {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
-    box-sizing: border-box;
-    width: 710rpx;
-    margin-top: 40rpx;
-    border-radius: 10rpx;
-    background-color: #fff;
-}
-
-.header {
-    height: 140rpx;
-    background-color: #f0f0f0;
-    border-radius: 10rpx 10rpx 0 0;
-}
-
-.barcode {
-    display: flex;
-    height: 320rpx;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.barnum {
-    width: 670rpx;
-    height: 100rpx;
-    line-height: 100rpx;
-    font-size: 38rpx;
-    font-weight: bold;
-    text-align: center;
-    letter-spacing: 10rpx;
-    white-space: nowrap;
-}
-
-.barcode > canvas {
-    width: 680rpx;
-    height: 200rpx;  
+  background: white;
 }
 
 .qrcode {
@@ -69,8 +23,68 @@ page {
     height: 420rpx;
 }
 .bottom_text{
-  align-content: middle;
-  width: 300px;
-  height: auto;
- 
+  display: flex;
+  align-content: center;
+}
+.txt-hint{
+  display: block;
+  vertical-align: middle;
+  font-size: 14px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: black;
+}
+
+.top {
+  display: flex;
+  height: 50px;
+  background: #fff;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.div_left {
+  display: -moz-box;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -webkit-box-algin: center;
+  -moz-box-algin: center;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.head {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.txt_info {
+  height: 50px;
+  font-size: 0px;
+}
+
+.left_text_name {
+  display: block;
+  font-size: 16px;
+  color: black;
+  font-style: bold;
+}
+.left_text_type {
+  display: block;
+  font-size: 14px;
+  color:greenyellow;
+}
+.left_text_hospital {
+  display: block;
+  font-size: 12px;
+  height: 15px;
+  color: black;
 }

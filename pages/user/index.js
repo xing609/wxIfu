@@ -1,5 +1,5 @@
 const App = getApp()
-
+const Api = require('../../utils/api.js');
 Page({
   data: {
     userInfo: {},
@@ -7,12 +7,12 @@ Page({
       {
         icon: '../../assets/images/iconfont-order.png',
         text: '医数值',
-        path: '/pages/ifuvalue/list/index'
+        path: ''///pages/ifuvalue/list/index
       },
       {
         icon: '../../assets/images/iconfont-addr.png',
         text: '设置',
-        path: '/pages/address/list/index'
+        path: ''///pages/address/list/index
       },
       {
         icon: '../../assets/images/iconfont-kefu.png',
@@ -57,9 +57,8 @@ Page({
     }
   },
   getUserInfo() {
-
-    const userInfo = App.globalData.userInfo
-
+    var userInfo = Api.getUser();
+    // const userInfo = App.globalData.userInfo
     if (userInfo) {
       this.setData({
         userInfo: userInfo
@@ -67,13 +66,13 @@ Page({
       return
     }
 
-    App.getUserInfo()
-      .then(data => {
-        console.log(data)
-        this.setData({
-          userInfo: data
-        })
-      })
+    // App.getUserInfo()
+    //   .then(data => {
+    //     console.log(data)
+    //     this.setData({
+    //       userInfo: data
+    //     })
+    //   })
   },
   getStorageInfo() {
     App.WxService.getStorageInfo()

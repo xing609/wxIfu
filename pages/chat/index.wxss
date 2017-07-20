@@ -14,7 +14,7 @@
 }
 .item-p{
   display: inline-block;
-  margin: 5px;
+  margin: 10px;
 }
 .nav-p{
   display: -moz-box;
@@ -30,6 +30,8 @@
   align-items: center;
   background: white;
   margin-top: 1px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .item-name{
   color: black;
@@ -46,4 +48,20 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.no-more-data{
+  display: block;
+  vertical-align: middle;
+  text-align: center;
+
+}
+.no-more-text{
+  color: gray;
+  font-size: 12px;
+
+}
+.refeshing-text{
+  color: gray;
+  font-size: 12px;
+  margin-left: 10px;
 }

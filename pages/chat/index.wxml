@@ -6,7 +6,7 @@
 
  <scroll-view scroll-y="true" style="height: 100%;" bindscrolltolower="loadMore" bindscrolltoupper="refesh">
       <view wx:if="{{hasRefesh}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
-      <icon type="waiting" size="45"/><text>刷新中...</text></view>
+      <icon type="waiting" size="20"/><text class="refeshing-text">刷新中...</text></view>
       <view wx:else  style="display:none" ><text></text></view>
       
   <view class="bg">
@@ -31,6 +31,6 @@
 <view class="tips1">
       <view wx:if="{{hasMore}}" style="display: flex;flex-direction: row;align-items: center;align-self: center;justify-content: center;">
       <icon type="waiting" size="45"/><text>玩命的加载中...</text></view>
-      <view wx:else><text>没有更多内容了</text></view>
+      <view wx:else class="no-more-data"><text class="no-more-text">--------到底啦！--------</text></view>
     </view>
  </scroll-view>

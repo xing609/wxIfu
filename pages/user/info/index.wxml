@@ -1,9 +1,6 @@
 <view class="container">
 
-<text>注册号码： 13641809635</text>
- 
-
-
+<text>注册号码：{{userInfo.mobile}}</text>
 </view>
 <div class="top">
 
@@ -13,7 +10,7 @@
 <span class="left_text">头像</span>
 </p>
 <p>
-<image class="imgleft" src='../../../assets/images/ic_tab_my_res.png'></image> 
+<image class="imgleft" src='{{userInfo.face }}'></image> 
 <image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image> 
 </p>
 </div>
@@ -39,7 +36,7 @@
 <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
 </p>
 <p>
-<text class="user_text_value">superstar</text>
+<text class="user_text_value">{{userInfo.doctorName}}</text>
 <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image> 
 </p>
 </div>
@@ -51,7 +48,8 @@
 <span class="left_text">性别</span>
 </p>
 <p>
-<text class="user_text_value">男</text>
+<text class="user_text_value" wx:if="{{userInfo.sex==0}}">男</text>
+<text class="user_text_value" wx:if="{{userInfo.sex==1}}">女</text>
 <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image> 
 </p>
 </div>
@@ -64,7 +62,7 @@
 <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
 </p>
 <p>
-<text class="user_text_value">上海中山</text>
+<text class="user_text_value">{{userInfo.hospital}}</text>
 <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image> 
 </p>
 </div>
@@ -78,7 +76,7 @@
 <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
 </p>
 <p>
-<text class="user_text_value">内科</text>
+<text class="user_text_value">{{userInfo.department}}</text>
 <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image> 
 </p>
 </div>
@@ -91,7 +89,7 @@
 <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
 </p>
 <p>
-<text class="user_text_value">医师</text>
+<text class="user_text_value">{{userInfo.position}}</text>
 <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image> 
 </p>
 </div>
@@ -104,7 +102,7 @@
 <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
 </p>
 <p>
-<text class="user_text_value">内科</text>
+<text class="user_text_value">{{userInfo.specialtyName}}</text>
 <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image> 
 </p>
 </div>
@@ -135,5 +133,5 @@
 <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image> 
 </p>
 </div>
-<span class="user_desc_text">习近平指出，中日互为重要近邻。中日关系健康发展，关系着两国人民福祉，对亚洲和世界也具有重要影响。今年是中日邦交正常化45周年，明年是中日和平友好条约缔结40周年。双方应该增强责任感和使命感，本着以史为鉴、面向未来精神，排除干扰，推动两国关系朝着正确方向改善发展。</span>
+<text class="user_desc_text">{{userInfo.doctorDesc}}</text>
 </view>

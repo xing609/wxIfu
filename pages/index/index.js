@@ -1,4 +1,5 @@
 var Api = require('../../utils/api.js');
+var Tools = require('../../helpers/Md5.js');
 const App = getApp()
 //获取应用实例
 var arr_name = ["我的病人", "我的方案", "我的多中心项目", "待完成医用量表", "已收到量表", "未按时提交量表",]
@@ -51,20 +52,58 @@ Page({
 
     switch (0) {
       case 3:
-         console.log("即将启用");
-         break
+        console.log("即将启用");
+        break
       default:
         App.WxService.navigateTo(path)
     }
   },
-
-
+  // 用户登录
+  login: function () {
+    var that = this;
+    var password = Tools.hexMD5("111111");
+    wx.request({
+      method: 'POST',
+      url: Api.login({
+        loginName: 13641809500,
+        password: password
+      }),
+      success: function (res) {
+        console.log("---------token-----------" + res.data.token);
+        try {
+          wx.setStorageSync('user', res.data.model);
+          //存用户TOKEN
+          wx.setStorageSync('token', res.data.token);
+          
+          //同步操作先取token
+          wx.request({
+            method: 'POST',
+            url: Api.getHomeNum({
+              token: Api.getToken()
+            }),
+            success: function (res) {
+              console.log("homenum--------------"+res);
+              that.setData({
+                model: res.data.model
+              })
+              setTimeout(function () {
+                that.setData({
+                  loadingHidden: true
+                })
+              }, 1500)
+            }
+          })
+        } catch (e) {
+        }
+      }
+    })
+  },
   getHomeNum: function () {
     var that = this;
     wx.request({
       method: 'POST',
       url: Api.getHomeNum({
-        token: Api.getToken()
+      token: Api.getToken()
       }),
       success: function (res) {
         console.log(res);
@@ -100,7 +139,8 @@ Page({
 
   onLoad: function () {
     console.log('onLoad')
-    this.getHomeNum();
+    this.login();
+   // this.getHomeNum();
     this.getSliderList();
     //调用应用实例的方法获取全局数据
     App.getUserInfo(function (userInfo) {
@@ -112,13 +152,13 @@ Page({
 
   },
 
-  jumpMyQrIndex(){
+  jumpMyQrIndex() {
     App.WxService.navigateTo('/pages/index/myqr/index')
   },
   jumpIfuValueIndex() {
     App.WxService.navigateTo('/pages/index/ifuvalue/index')
   },
-  jumpTemplateQrIndex(){
+  jumpTemplateQrIndex() {
     App.WxService.navigateTo('/pages/index/templateqr/index')
   }
 })

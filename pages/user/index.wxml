@@ -1,7 +1,7 @@
 <view class="container">
   <view bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover" bindtap="goUserInfo"></image>
-    <text bindtap="goUserInfo" class="userinfo-nickname">{{ userInfo.nickName }}</text>
+    <image class="userinfo-avatar" src="{{ userInfo.face }}" background-size="cover" bindtap="goUserInfo"></image>
+    <text bindtap="goUserInfo" class="userinfo-nickname">{{ userInfo.doctorName}}</text>
   </view>
   <view class="info_list">
     <view class="weui-cells">

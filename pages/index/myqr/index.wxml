@@ -1,19 +1,21 @@
-<!--index.wxml-->
 <view class="container page">
-  <view class="panel">
-    <!--<view class="header">
-    </view>-->
-    <!--<view class="barcode">
-      <view class="barnum">{{code}}</view>
-      <canvas canvas-id="barcode" />
-    </view>-->
+ 
+  <div class="div_left">
+      <image class="head" src='{{userInfo.face}}'></image>
+      <view class="txt_new_p">
+        <span class="left_text_name">{{userInfo.doctorName}}</span>
+        <span class="left_text_hospital">{{userInfo.hospital}}</span>
+      </view>
+    </div>
+
     <view class="qrcode">
       <canvas canvas-id="qrcode" />
     </view>
+
+
     <p class="bottom_text">
-    <text>出示给患者扫码/</text>
-    
-    <text>扫码工具：微信/医数App</text>
+    <text class="txt-hint">出示给患者扫码/</text>
+    <text class="txt-hint">扫码工具：微信/医数App</text>
     </p>
-  </view>
+  
 </view>

@@ -1,5 +1,6 @@
 const App = getApp()
-
+var Api = require('../../utils/api.js');
+var Tools = require('../../helpers/Md5.js');
 Page({
     data: {
         indicatorDots: !1,
@@ -9,10 +10,13 @@ Page({
         duration: 1000,
         circular: !1,
     },
-    onLoad() {},
+    onLoad: function () {
+      this.login();
+    },
+    
     onShow() {},
     bindload(e) {
-    	setTimeout(App.WxService.getStorageSync('token') ? this.goIndex : this.goIndex, 3000)
+      setTimeout(App.WxService.getStorageSync('token') ? this.login : this.login, 3000)
     },
     goIndex() {
         App.WxService.switchTab({
@@ -22,4 +26,30 @@ Page({
     goLogin() {
         App.WxService.redirectTo('/pages/login/index')
     },
+    
+    // 用户登录
+    login: function () {
+      var that = this;
+      var password = Tools.hexMD5("111111");
+      wx.request({
+        method: 'POST',
+        url: Api.login({
+          loginName: 13641809500,
+          password: password
+        }),
+        success: function (res) {
+          console.log("---------token-----------" + res.data.token);
+          try {
+            wx.setStorageSync('user', res.data.model);
+            //存用户TOKEN
+            wx.setStorageSync('token',res.data.token);
+            App.WxService.switchTab({
+              url: '/pages/index/index'
+            })
+          } catch (e) {
+          }
+        }
+      })
+    },
+
 })
