@@ -1,0 +1,32 @@
+<!--detail.wxml-->
+<div class="div_left">
+  <image class="userinfo-avatar" src='{{customer.face}}'></image>
+  <view class="txt_new_p">
+    <span class="left_text_name">{{customer.customerName}}    {{customer.age}}岁</span>
+    <span class="left_text_sex">{{customer.mobile}}</span>
+  </view>
+</div>
+
+<navigator wx:for="{{resultList}}" wx:key="" bindtap="navigateTo" data-id="{{ item._id }}">
+  <view class="item-p">
+    <view class="item-name">{{item.realName }}</view>
+    <text class="content-title">{{item.templateName}}</text>
+    <text class="content-text">当前节点：{{item.currentPointName}} {{item.currentPointIndex}}/{{item.allPointNum}}</text>
+    <text class="content-text">提交量表：{{item.finishSurvyNum}}/{{item.allSurvyNum}}</text>
+    <text class="content-text">阅读须知：{{item.finishNoteNum}}/{{item.allNoteNum}}</text>
+    <view class="line"></view>
+    <text> 病程录:{{item.recordCount}}</text>
+    <view class="line"></view>
+  </view>
+
+
+</navigator>
+
+<view class="view-bottom">
+
+  <button bindtap="setDisabled">屏蔽</button>
+  <button bindtap="setDisabled">加标</button>
+  <button bindtap="sendTemplate"> 分配方案 </button>
+
+  <button open-type="contact">进入客服会话</button>
+</view>

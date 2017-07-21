@@ -45,6 +45,9 @@ Page({
   search() {
     App.WxService.navigateTo('/pages/search/index')
   },
-
-  
+  navigateTo(e) {
+    wx.navigateTo({
+      url: "/pages/mycustomer/detail/index?customerId=" + e.currentTarget.dataset.customerId + "&customerExtHosp=" + e.currentTarget.dataset.id
+    })
+  }
 })

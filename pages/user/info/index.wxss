@@ -12,6 +12,13 @@
   align-items: center;
 }
 
+.userinfo-avatar {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
 .imgleft {
   vertical-align: middle;
   width: 30px;
@@ -48,8 +55,6 @@
   color: black;
 }
 
-
-
 .img_auth {
   width: 15px;
   height: 15px;
@@ -65,18 +70,21 @@
   margin-left: 10px;
   margin-right: 10px;
 }
-.user_desc_p{
+
+.user_desc_p {
   background: white;
   vertical-align: middle;
   padding-bottom: 10px;
 }
-.user_desc_text{
+
+.user_desc_text {
   margin-left: 20px;
   margin-right: 20px;
   font-size: 14px;
   color: silver;
   background: greenyellow;
 }
+
 .img_next {
   width: 5px;
   height: 10px;

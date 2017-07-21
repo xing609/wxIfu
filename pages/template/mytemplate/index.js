@@ -44,4 +44,10 @@ Page({
   search() {
     App.WxService.navigateTo('/pages/search/index')
   },
+  navigateTo(e) {
+    console.log("--------------------templateid="+e.currentTarget.dataset.id);
+    wx.navigateTo({
+      url: "/pages/template/confirmTemplate/index?templateId=" + e.currentTarget.dataset.id 
+    })
+  }
 })

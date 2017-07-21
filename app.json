@@ -1,9 +1,8 @@
 {
   "pages": [
+    
     "pages/index/index",
     "pages/start/index",
-    
-   
     "pages/mycustomer/index",
     "pages/index/myqr/index",
     "pages/template/index",
@@ -29,7 +28,10 @@
     "pages/about/index",
     "pages/login/index",
     "pages/user/index",
-    "pages/user/info/index"
+    "pages/user/info/index",
+    "pages/mycustomer/detail/index",
+    "pages/template/confirmTemplate/index"
+    
   ],
   "window": {
     "navigationBarBackgroundColor": "#FF9933",
@@ -50,7 +52,6 @@
         "selectedIconPath": "assets/images/ic_tab_home_res.png",
         "text": "主页"
       },
-
       {
         "pagePath": "pages/chat/index",
         "iconPath": "assets/images/ic_tab_chat_nor.png",

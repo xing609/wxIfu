@@ -42,6 +42,10 @@ Page({
     this.getUserInfo()
     this.getStorageInfo()
   },
+   //修改头像时即时更新
+  onShow: function () {
+    this.getUserInfo();
+  },
   navigateTo(e) {
     const index = e.currentTarget.dataset.index
     const path = e.currentTarget.dataset.path

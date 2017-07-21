@@ -58,8 +58,8 @@
   </view>
 
 
-  <loading hidden="{{loadingHidden}}">
+  <!-- <loading hidden="{{loadingHidden}}">
     加载中...
-  </loading>
+  </loading> -->
 
 </view>

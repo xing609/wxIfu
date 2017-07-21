@@ -1,0 +1,35 @@
+.container{
+  height: 100%;
+  width: 100%;
+  
+}
+.customer-info{
+  background: white;
+  display: block;
+}
+.template-title{
+  display: block;
+  font-size: 16px;
+  color: black;
+}
+.template-type{
+  display: block;
+  font-size: 14px;
+  color: #FF9933;
+
+}
+.point-setting{
+  display: block;
+  background: white;
+}
+.bottom{
+  display: block;
+  background: white;
+}
+
+.chooseDate{
+  color: black
+}
+.choosePoint{
+  color: black
+}

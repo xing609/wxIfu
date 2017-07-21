@@ -2,7 +2,7 @@
 
 <text>注册号码：{{userInfo.mobile}}</text>
 </view>
-<div class="top">
+<div bindtap="didPressChooesImage" class="top">
 
 <!--head-->
 <p>
@@ -10,7 +10,7 @@
 <span class="left_text">头像</span>
 </p>
 <p>
-<image class="imgleft" src='{{userInfo.face }}'></image> 
+<image class="userinfo-avatar" src='{{userInfo.face }}'></image> 
 <image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image> 
 </p>
 </div>
@@ -22,7 +22,10 @@
 <span class="left_text">认证信息</span>
 </p>
 <p>
-<text class="user_text_value">已认证</text>
+<text class="user_text_value" wx:if="{{userInfo.status==0}}">已认证</text>
+<text class="user_text_value" wx:if="{{userInfo.status==1}}">待审核</text>
+<text class="user_text_value" wx:if="{{userInfo.status==4}}">审核中</text>
+<text class="user_text_value" wx:if="{{userInfo.status==6}}">审核不通过</text>
 <image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image> 
 </p>
 </div>

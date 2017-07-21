@@ -28,11 +28,14 @@
 
 
   <view class="section">
-    <view url="" class="item_p" wx:for="{{resultList}}" wx:key="" data-id="{{ item._id }}">
+    <view url="" class="item_p" wx:for="{{resultList}}" wx:key="{{index}}" data-id="{{ item.id }}">
       <view class="item_group_title">{{item.templateType}}--{{item.templateName}}--{{item.customerExtHospitalList.length}}人</view>
 
       <!--患者-->
-      <navigator url="" class="discover-image-two" wx:for="{{item.customerExtHospitalList}}" wx:key="" data-id="{{ item._id }}">
+      <navigator url="" class="discover-image-two" wx:for="{{item.customerExtHospitalList}}" wx:key="{{index}}" 
+      data-customerExtHosp="{{item.id}}"
+      data-customer-id="{{item.customerId}}" open-type="redirect" bindtap="navigateTo" data-id="{{item.id}}">
+       
         <view class="div_left">
           <image class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
         </view>
@@ -44,13 +47,11 @@
           </view>
           <view class="weui-media-box__desc">
             <text class="text-orangered">床位号：{{item.bedNo}}</text>
-
           </view>
           <view class="weui-media-box__desc">
             <text class="text-orangered">医生备注：{{item.remark}}</text>
           </view>
          <view class="item_line"></view>
-
         </view>
         
       </navigator>
@@ -58,31 +59,3 @@
     </view>
   </view>
 </view>
-
-
-
-
-<!--患者-->
-<navigator url="" class="discover-image-two" wx:for="{{item.customerExtHospitalList}}" wx:key="" data-id="{{ item._id }}">
-  <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
-
-    <image class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
-  </view>
-  <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-
-    <view class="weui-media-box__title">{{item.customerName }}</view>
-
-    <image class="weui-media-box__thumb" wx:if="{{item.mark==true}}" src="" />
-    <view class="weui-media-box__desc">
-      <text class="text-orangered" wx:if="{{item.sex==0}}">男   {{item.age}}岁</text>
-      <text class="text-orangered" wx:if="{{item.sex==1}}">女   {{item.age}}岁</text>
-    </view>
-    <view class="weui-media-box__desc">
-      <text class="text-orangered">床位号：{{item.bedNo}}</text>
-
-    </view>
-    <view class="weui-media-box__desc">
-      <text class="text-orangered">医生备注：{{item.remark}}</text>
-    </view>
-  </view>
-</navigator>

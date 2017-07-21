@@ -49,19 +49,3 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.no-more-data{
-  display: block;
-  vertical-align: middle;
-  text-align: center;
-
-}
-.no-more-text{
-  color: gray;
-  font-size: 12px;
-
-}
-.refeshing-text{
-  color: gray;
-  font-size: 12px;
-  margin-left: 10px;
-}

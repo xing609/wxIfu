@@ -3,7 +3,7 @@
   <view class="scroll-list">
     <view class="weui-panel weui-panel_access">
       <view class="weui-panel__bd">
-        <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{resultList}}" wx:key="" data-id="{{ item._id }}">
+        <navigator url="" class="weui-media-box weui-media-box_appmsg" bindtap="navigateTo" data-id="{{item.id}}" hover-class="weui-cell_active" wx:for="{{resultList}}" wx:key="">
 
           <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
             <view class="weui-media-box__title">{{item.templateName}}</view>

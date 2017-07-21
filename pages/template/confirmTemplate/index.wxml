@@ -1,0 +1,39 @@
+<view class="container">
+  <text> 新方案</text>
+
+
+
+ <text class="template-type"> 官方</text>
+  <text>{{template.templateName}}</text>
+  <text>{{template.templateType}}</text>
+
+  <view class="customer-info">
+    <text>{{customer.customerName}}  {{customer.age}}岁</text>
+  </view>
+
+ 
+
+  <view class="point-setting">
+    <text bindtap="choosePoint"> 起始节点：</text>
+    <text bindtap="chooseDate"> 起始日期：</text>
+
+
+    <view class="section">
+      <view class="section__title">日期选择器</view>
+      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+        <view class="picker">
+          当前选择: {{date}}
+        </view>
+      </picker>
+    </view>
+
+  </view>
+
+
+
+  <view class="bottom">
+    <text>立即给患者发送方案</text>
+    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="primary"> 确认 </button>
+  </view>
+
+</view>

@@ -1,40 +1,4 @@
-/**index.wxss**/
-.page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.container {
-	padding-bottom: 10rpx;
-  background: white;
-}
-
-.qrcode {
-    height: 420rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-}
-
-.qrcode > canvas {
-    width: 420rpx;
-    height: 420rpx;
-}
-.bottom_text{
-  display: flex;
-  align-content: center;
-}
-.txt-hint{
-  display: block;
-  vertical-align: middle;
-  font-size: 14px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  color: black;
-}
+/* detail.wxss */
 
 .top {
   display: flex;
@@ -56,7 +20,9 @@
   vertical-align: middle;
   display: flex;
   align-items: center;
-  margin-top: 15px;
+  margin: 10px;
+  padding: 10px;
+  background: white
 }
 
 .userinfo-avatar {
@@ -81,4 +47,27 @@
   font-size: 12px;
   height: 15px;
   color: black;
+}
+.txt_new_p{
+  margin-left: 20px;
+}
+.item-p{
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.content-title{
+  display: block;
+  font-size: 16px;
+  color: black;
+}
+.content-text{
+  display: block;
+  font-size: 14px;
+  color: #6e6d6b;
+}
+.line{
+  height: 1px;
+  display: block;
+  background-color: greenyellow;
 }
