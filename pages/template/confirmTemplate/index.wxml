@@ -14,13 +14,13 @@
  
 
   <view class="point-setting">
-    <text bindtap="choosePoint"> 起始节点：</text>
-    <text bindtap="chooseDate"> 起始日期：</text>
+    <text bindtap="choosePoint"> 起始节点：{{startPoint}}</text>
+    <text bindtap="showModal"> 起始日期：今天</text>
 
 
     <view class="section">
       <view class="section__title">日期选择器</view>
-      <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+      <picker mode="date" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
         <view class="picker">
           当前选择: {{date}}
         </view>
@@ -29,11 +29,11 @@
 
   </view>
 
-
-
   <view class="bottom">
     <text>立即给患者发送方案</text>
-    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="primary"> 确认 </button>
+    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="send"> 确认 </button>
   </view>
-
 </view>
+
+<import src="../../../components/actionsheet/actionsheet.wxml"/>
+<template is="actionsheet" data="{{ ...$wux.actionSheet }}"/>

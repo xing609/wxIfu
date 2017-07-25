@@ -10,3 +10,5 @@
 @import 'assets/styles/prompt.wxss';
 @import 'assets/styles/skyvow.wxss';
 
+@import 'components/wux.wxss';
+

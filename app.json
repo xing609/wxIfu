@@ -31,7 +31,6 @@
     "pages/user/info/index",
     "pages/mycustomer/detail/index",
     "pages/template/confirmTemplate/index"
-    
   ],
   "window": {
     "navigationBarBackgroundColor": "#FF9933",

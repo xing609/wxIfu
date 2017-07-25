@@ -1,5 +1,6 @@
 const App = getApp()
 const Api = require('../../utils/api.js');
+const Req = require('../../utils/req.js');
 Page({
   data: {
     userInfo: {},
@@ -18,12 +19,7 @@ Page({
         icon: '../../assets/images/iconfont-kefu.png',
         text: '联系我们',
         path: '400-618-2535',
-      },
-      {
-        icon: '../../assets/images/iconfont-help.png',
-        text: '常见问题',
-        path: '/pages/help/list/index',
-      },
+      }
     ],
     settings: [
       {
@@ -108,7 +104,11 @@ Page({
       title: '友情提示',
       content: '确定要登出吗？',
     })
-      .then(data => data.confirm == 1 && this.signOut())
+      .then(data => {
+        this.myLoginOut();
+      })
+        // App.WxService.removeStorageSync('token')
+        // App.WxService.redirectTo('/pages/login/index')})// data.confirm == 1 &&
   },
   goUserInfo() {
     App.WxService.navigateTo('/pages/user/info/index')
@@ -123,5 +123,16 @@ Page({
         }
       })
   },
+  myLoginOut(){
+    Req.req_post(Api.loginOut({
+      token: Api.getToken()
+    }),"",function success(res){
+      console.log("loginout success -------------");
+      App.WxService.removeStorageSync('token')
+      App.WxService.redirectTo('/pages/login/index')
+    },function fail(res){
+      console.log("loginout failed -------------");
+    })
+  }
 
 })

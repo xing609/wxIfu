@@ -80,13 +80,13 @@ Page({
     }
   },
   //下拉刷新
-  onPullDownRefresh:function(){
+  onPullDownRefresh: function () {
     this.getHomeNum();
   },
 
-//上拉回调
+  //上拉回调
   onReachBottom: function () {
-   
+
   },
   //主菜单跳转
   navigateTo(e) {
@@ -118,7 +118,7 @@ Page({
           wx.setStorageSync('user', res.data.model);
           //存用户TOKEN
           wx.setStorageSync('token', res.data.token);
-          
+
           //同步操作先取token
           wx.request({
             method: 'POST',
@@ -126,11 +126,11 @@ Page({
               token: Api.getToken()
             }),
             success: function (res) {
-              console.log("homenum--------------"+res);
+              console.log("homenum--------------" + res);
               that.setData({
                 model: res.data.model
               })
-             
+
             },
             complete: function () {
               // complete
@@ -143,28 +143,19 @@ Page({
       }
     })
   },
+
   getHomeNum: function () {
     var that = this;
-    wx.request({
-      method: 'POST',
-      url: Api.getHomeNum({
+    Req.req_post(Api.getHomeNum({
       token: Api.getToken()
-      }),
-      success: function (res) {
-        console.log(res);
-        that.setData({
-          model: res.data.model
-        })
-        // setTimeout(function () {
-        //   that.setData({
-        //     loadingHidden: true
-        //   })
-        // }, 1500)
-      }, complete: function () {
-        // complete
-        wx.hideNavigationBarLoading() //完成停止加载
-        wx.stopPullDownRefresh() //停止下拉刷新
-      }
+    }), "", function success(res) {
+      console.log(res);
+      that.setData({
+        model: res.data.model
+      })
+      wx.hideNavigationBarLoading() //完成停止加载
+      wx.stopPullDownRefresh() //停止下拉刷新
+    }, function fail(res) {
     })
   },
 
@@ -188,7 +179,7 @@ Page({
 
   onLoad: function () {
     this.login();
-   // this.getHomeNum();
+    // this.getHomeNum();
     this.getSliderList();
     //调用应用实例的方法获取全局数据
     App.getUserInfo(function (userInfo) {
