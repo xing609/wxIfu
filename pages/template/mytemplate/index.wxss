@@ -5,3 +5,11 @@
 .p_my_template{
   background: gainsboro;
 }
+.txt-template{
+  display: block;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  margin-top: 1px;
+  background: white;
+}

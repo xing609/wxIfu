@@ -1,0 +1,22 @@
+<scroll-view class="container">
+<text class="txt-title">{{template.templateName}}</text>
+
+<text class="txt-title">方案制作：{{template.author}}</text>
+<text class="txt-title">所属医院：{{template.hospitalName}}</text>
+<view class="line"></view>
+
+<text class="txt-title">随访节点：共{{template.pointQuantity}}个</text>
+<text class="txt-title">起始节点：{{template.startPoint}}</text>
+<text class="txt-title">结束节点：{{template.endPoint}}</text>
+
+<view class="line"></view>
+<text class="txt-title">涉及量表</text>
+ <navigator url=""  wx:for="{{template.surveyList}}" wx:key="" >
+      <view  data-index="{{index }}">
+        <view class="txt-hint"> *{{item.name}}</view>
+      </view>
+      
+    </navigator>
+<view class="line"></view>
+<text class="txt-title">补充信息</text>
+</scroll-view>

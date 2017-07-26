@@ -86,6 +86,9 @@ Page({
     var array = new Array();
     for (var i in templatePointList) {
       array.push(templatePointList[i].pointName);
+      if (i == 5) {
+          break;
+      }
     }
 
     var that = this;
@@ -102,25 +105,6 @@ Page({
         console.log(res.errMsg)
       }
     })
-
-
-    // const hideSheet = $wuxActionSheet.show({
-    //   theme: 'wx',
-    //   titleText: '*请点击以下任务节点，作为方案起始节点',
-    //   buttons: array,
-    //   // buttons:[
-    //   //   {
-    //   //     text: 'ss'
-    //   //   },
-    //   //   {
-    //   //     text: 'aa'
-    //   //   },
-    //   // ],
-    //   buttonClicked(index, item) {
-    //     console.log("index---" + item[index] + "/" + index);
-    //     return true
-    //   },
-    // })
   },
   //分配方案
   sendTemplate: function () {
@@ -148,12 +132,12 @@ Page({
         url: '/pages/template/mytemplate/index'
       })
     }, function fail(res) {
-      var msg = res.data.resDesc;
-      wx.showToast({
-        title: msg,
-        icon: 'success',
-        duration: 1000
-      });
+      // var msg = res.data.resDesc;
+      // wx.showToast({
+      //   title: msg,
+      //   icon: 'success',
+      //   duration: 1000
+      // });
     })
   },
 

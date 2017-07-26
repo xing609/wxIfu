@@ -31,6 +31,14 @@ var GET_TEMPLATE_DETAIL = 'api/doctor/template';
 var LOGIN_OUT = "api/doctor/op/logout";
 //确认方案
 var SEND_TEMPLATE ="api/doctor/customer/confirm";
+//随访方案库
+var TEMPLATE_GROUP_LIST ="api/doctor/templategroup/list";
+//方案分组
+var TEMPLATE_COMMONLIST="api/doctor/template/commonlist";
+//方案简介
+var TEMPLATE_INDRODUCE ="api/doctor/template/";
+//第三方登录
+ var THIRD_LOGIN = "api/common/thirdLogin";
 
 //===========================================请求接口==================================================
 function _openIdLogin(o) {
@@ -78,7 +86,18 @@ function _loginOut(o) {
 function _sendTemplate(o){
   return reqUrl(SEND_TEMPLATE,o);
 }
-
+function _getTemplateGroupList(o){
+  return reqUrl(TEMPLATE_GROUP_LIST,o);
+}
+function _getTemplateCommonList(o){
+  return reqUrl(TEMPLATE_COMMONLIST,o);
+}
+function _getTemplateIntroduce(id,o){
+  return reqUrlId(TEMPLATE_INDRODUCE,id,o);
+}
+function _thirdLogin(o){
+  return reqUrl(THIRD_LOGIN,o);
+}
 //========================================cache缓存=========================================
 
 //取token
@@ -135,5 +154,9 @@ module.exports = {
   getTemplateIng: _getTemplateIng,
   getTemplateDetail: _getTemplateDetail,
   loginOut: _loginOut,
-  sendTemplate: _sendTemplate
+  sendTemplate: _sendTemplate,
+  getTemplateGroupList: _getTemplateGroupList,
+  getTemplateCommonList: _getTemplateCommonList,
+  getTemplateIntroduce: _getTemplateIntroduce,
+  thirdLogin: _thirdLogin
 };

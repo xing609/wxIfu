@@ -1,12 +1,12 @@
 var wxbarcode = require("../../../utils/index.js");
-const Api = require('../../../utils/api.js');
+var Api = require('../../../utils/api.js');
+var Req = require('../../../utils/req.js');
 Page({
   data: {
     template: {},
     title: "",
-    newTemplateList: []
+    newTemplateList: [],
   },
-
   onLoad: function () {
     this.getHomeNewTemplate();
   },
@@ -26,48 +26,37 @@ Page({
       template: value[index]
     })
   },
+  onPullDownRefresh :function(){
+    this.getHomeNewTemplate();
+  },
   getHomeNewTemplate: function () {
     var that = this;
-    wx.request({
-      method: 'POST',
-      url: Api.getHomeNewTemplate({
-        token: Api.getToken(),
-
-      }),
-      success: function (res) {
-        var lastList = new Array();
-        if (res.data.model.commonList) {
-          lastList = res.data.model.commonList;
-
-          //显示顶部二维码
-          var showQr = lastList[0].weixinUrl;
-          if (showQr) {
-            wxbarcode.qrcode('qrcode', showQr, 380, 380);
-          }
+    Req.req_post(Api.getHomeNewTemplate({
+      token: Api.getToken()
+    }), "", function success(res) {
+      var lastList = new Array();
+      if (res.data.model.commonList) {
+        lastList = res.data.model.commonList;
+        //显示顶部二维码
+        var showQr = lastList[0].weixinUrl;
+        if (showQr) {
+          wxbarcode.qrcode('qrcode', showQr, 380, 380);
         }
-
-        //最新
-        if (res.data.model.newList) {
-          Array.prototype.push.apply(lastList, res.data.model.newList);
-          wx.setStorageSync('templateList', lastList);
-        }
-        console.log(res.data.model.commonList[0].author + "/");
-
-
-        that.setData({
-          newTemplateList: lastList,
-          template: lastList[0]
-        })
-        setTimeout(function () {
-          that.setData({
-            loadingHidden: true
-          })
-        }, 1500)
       }
+      //最新
+      if (res.data.model.newList) {
+        Array.prototype.push.apply(lastList, res.data.model.newList);
+        wx.setStorageSync('templateList', lastList);
+      }
+      console.log(res.data.model.commonList[0].author + "/");
+      that.setData({
+        newTemplateList: lastList,
+        template: lastList[0]
+      })
+      wx.stopPullDownRefresh() //停止下拉刷新
+    }, function fail(res) {
     })
-  },
-
-
+  }
 })
 
 

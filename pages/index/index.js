@@ -1,5 +1,6 @@
 var Api = require('../../utils/api.js');
 var Tools = require('../../helpers/Md5.js');
+var Req = require('../../utils/req.js');
 const App = getApp()
 //获取应用实例
 var arr_name = ["我的病人", "我的方案", "我的多中心项目", "待完成医用量表", "已收到量表", "未按时提交量表",]
@@ -45,7 +46,20 @@ Page({
       path: '/pages/index/nosubimt/index'
     }]
   },
-
+  onLaunch: function () {
+    var that = this;
+    // wx.login({
+    //   success: function (res) {
+    //     if (res.code) {
+    //       //发起网络请求
+    //       console.log("-----------res.code=" + res.code);
+    //       that.getSessionKey(res.code);
+    //     } else {
+    //       console.log('获取用户登录态失败！' + res.errMsg)
+    //     }
+    //   }
+    // });
+  },
 
   onReady: function () {
     // 生命周期函数--监听页面初次渲染完成
@@ -84,10 +98,6 @@ Page({
     this.getHomeNum();
   },
 
-  //上拉回调
-  onReachBottom: function () {
-
-  },
   //主菜单跳转
   navigateTo(e) {
     const index = e.currentTarget.dataset.index
@@ -103,46 +113,21 @@ Page({
   },
   // 用户登录
   login: function () {
-    wx.showNavigationBarLoading() //在标题栏中显示加载
-    var that = this;
     var password = Tools.hexMD5("111111");
-    wx.request({
-      method: 'POST',
-      url: Api.login({
-        loginName: 13641809500,
-        password: password
-      }),
-      success: function (res) {
-        console.log("---------token-----------" + res.data.token);
-        try {
-          wx.setStorageSync('user', res.data.model);
-          //存用户TOKEN
-          wx.setStorageSync('token', res.data.token);
+    var that = this;
+    Req.req_post(Api.login({
+      loginName: 13641809500,
+      password: password
 
-          //同步操作先取token
-          wx.request({
-            method: 'POST',
-            url: Api.getHomeNum({
-              token: Api.getToken()
-            }),
-            success: function (res) {
-              console.log("homenum--------------" + res);
-              that.setData({
-                model: res.data.model
-              })
-
-            },
-            complete: function () {
-              // complete
-              wx.hideNavigationBarLoading() //完成停止加载
-              wx.stopPullDownRefresh() //停止下拉刷新
-            }
-          })
-        } catch (e) {
-        }
-      }
+    }), "", function success(res) {
+      wx.setStorageSync('user', res.data.model);
+      //存用户TOKEN
+      wx.setStorageSync('token', res.data.token);
+      that.getHomeNum();
+    }, function fail(res) {
     })
   },
+
 
   getHomeNum: function () {
     var that = this;
@@ -178,19 +163,84 @@ Page({
   },
 
   onLoad: function () {
-    this.login();
-    // this.getHomeNum();
+    var that = this;
+    //this.login();
     this.getSliderList();
     //调用应用实例的方法获取全局数据
-    App.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      })
-    })
+    // App.getUserInfo(function (userInfo) {
+    //   //更新数据
+    //   that.setData({
+    //     userInfo: userInfo
+    //   })
+    // })
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+          //发起网络请求
+          console.log("-----------res.code=" + res.code);
+          that.getSessionKey(res.code);
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
+        }
+      }
+    });
+  },
+  //code 换取 session_key
+  getSessionKey: function (js_code) {
+    var that = this;
+    wx.request({
+      url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wxd992a930df145349&secret=97d950ac223a5eea24526a34155a9382&js_code=' + js_code + '&grant_type=authorization_code',
+      method: 'POST',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        var openid = res.data.openid;
 
+
+
+        wx.checkSession({
+          success: function () {
+            console.log("session 未过期，并且在本生命周期一直有效");
+
+            wx.getUserInfo({
+              success: function (res) {
+                console.log("-------res==" + res);
+                var userInfo = res.userInfo
+                that.thirdLogin(openid, JSON.stringify(userInfo));
+              }
+            })
+
+          },
+          fail: function () {
+            //登录态过期
+            //wx.login() //重新登录
+            console.log("session 登录态过期");
+          }
+        })
+
+
+        
+
+      }
+    })
   },
 
+  // type;//接口类型（0:金蝶 1：微信）
+  thirdLogin: function (openId, userInfo) {
+    Req.req_post(Api.thirdLogin({
+      userType: 2,
+      openId: openId,
+      type: 1,
+      eid: '',
+      userInfo: userInfo
+    }), "", function success(res) {
+      console.log("第三方登录成功：" + res);
+
+    }, function fail(res) {
+    })
+  },
   jumpMyQrIndex() {
     App.WxService.navigateTo('/pages/index/myqr/index')
   },
@@ -199,5 +249,11 @@ Page({
   },
   jumpTemplateQrIndex() {
     App.WxService.navigateTo('/pages/index/templateqr/index')
+  },
+  jumpTemplateGroup() {
+    App.WxService.navigateTo('/pages/template/index')
   }
+
+
 })
+

@@ -16,39 +16,47 @@ function req_get(url, message, success, fail) {
     },
     method: 'GET',
     success: function (res) {
-      console.log(res.data)
       wx.hideNavigationBarLoading()
-      if (message != "") {
-        wx.hideLoading()
-      }
+      // if (message != "") {
+      //   wx.hideLoading()
+      // }
       if (res.data.resCode == '0000') {
-        success(res)
-      } else if (res.data.resCode = '403') {//无权限，需重新登录
+        success(res);
+      } else if (res.data.resCode == '403') {//无权限，需重新登录
         App.WxService.removeStorageSync('token');
         App.WxService.redirectTo('/pages/login/index');
       } else {
-        fail(res)
+        console.log("--------reqfail---------" + res.data.resCode + "/" + res.data.resDesc);
+        if (res.data.resCode) {
+          wx.showToast({
+            title: res.data.resDesc
+          })
+        }
+        fail(res);
       }
     },
     fail: function (res) {
-      wx.hideNavigationBarLoading()
+      wx.hideNavigationBarLoading();
       if (message != "") {
-        wx.hideLoading()
+        wx.hideLoading();
       }
-      console.log(res.data.resCode + "--------reqfail---------");
-      fail(res)
+      fail(res);
     }
   })
+}
+
+function cbFail() {
+  return res;
 }
 
 //POST请求
 function req_post(url, message, success, fail) {
   wx.showNavigationBarLoading()
-  // if (message != "") {
-  //   wx.showLoading({
-  //     title: message,
-  //   })
-  // }
+  if (message != "") {
+    wx.showLoading({
+      title: message,
+    })
+  }
   wx.request({
     url: url,
     header: {
@@ -57,36 +65,34 @@ function req_post(url, message, success, fail) {
     method: 'POST',
     success: function (res) {
       wx.hideNavigationBarLoading()
-      // if (message != "") {
-      //   wx.hideLoading()
-      // }
+      if (message != "") {
+        wx.hideLoading()
+      }
       if (res.data.resCode == '0000') {
         success(res);
+      } else if (res.data.resCode == '403') {//无权限，需重新登录
+        App.WxService.removeStorageSync('token');
+        App.WxService.redirectTo('/pages/login/index');
       } else {
+        console.log("--------reqfail---------"+res.data.resCode +"/"+res.data.resDesc);
+        if(res.data.resCode){
+          wx.showToast({
+            title: res.data.resDesc
+          })
+        }
         fail(res);
       }
-
-      // else if(res.data.resCode = '403') {//无权限，需重新登录
-      // App.WxService.removeStorageSync('token');
-      // App.WxService.redirectTo('/pages/login/index');
-    
     },
     fail: function (res) {
       wx.hideNavigationBarLoading();
       if (message != "") {
         wx.hideLoading();
       }
-     if (res.data.resCode = '403') {//无权限，需重新登录
-        App.WxService.removeStorageSync('token');
-        App.WxService.redirectTo('/pages/login/index');
-      }else{
-       console.log(res.data.resCode + "--------reqfail---------");
-       fail(res);
-      }
-      
+      fail(res);
     }
   })
 }
+
 
 //JSON传参
 function req_json(url, params, message, success, fail) {
@@ -109,25 +115,30 @@ function req_json(url, params, message, success, fail) {
       //   wx.hideLoading()
       // }
       if (res.data.resCode == '0000') {
-        success(res.data)
-      } else if (res.data.resCode ='403') {//无权限，需重新登录
+        success(res);
+      } else if (res.data.resCode == '403') {//无权限，需重新登录
         App.WxService.removeStorageSync('token');
         App.WxService.redirectTo('/pages/login/index');
       } else {
+        console.log("--------reqfail---------" + res.data.resCode + "/" + res.data.resDesc);
+        if (res.data.resCode) {
+          wx.showToast({
+            title: res.data.resDesc
+          })
+        }
         fail(res);
       }
     },
     fail: function (res) {
       wx.hideNavigationBarLoading();
-      // if (message != "") {
-      //   wx.hideLoading()
-      // }
-      console.log(res.data.resCode + "--------reqfail---------");
+      if (message != "") {
+        wx.hideLoading();
+      }
       fail(res);
     }
   })
 
-//显示loadin
+  //显示loadin
   // function showLoading(mess) {
   //   if (mess!=""){
   //     wx.showLoading({
@@ -138,7 +149,7 @@ function req_json(url, params, message, success, fail) {
   //       wx.hideLoading()
   //     }, 5000)
   //   }
-    
+
   // }
 
 }

@@ -30,7 +30,9 @@
     "pages/user/index",
     "pages/user/info/index",
     "pages/mycustomer/detail/index",
-    "pages/template/confirmTemplate/index"
+    "pages/template/confirmTemplate/index",
+    "pages/template/templateChild/index",
+    "pages/template/templateIntroduce/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FF9933",

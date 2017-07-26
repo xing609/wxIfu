@@ -1,2 +1,4 @@
-<!--pages/template/index.wxml-->
-<text>pages/template/index.wxml</text>
+<view class="container">
+<import src="../common/templateGroupItem.wxml"/>
+<template is="list" data="{{resultList}}"/>
+</view>

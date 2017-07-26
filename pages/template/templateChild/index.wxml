@@ -1,0 +1,28 @@
+<view class="container">
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="搜索" />
+      </view>
+      <label class="weui-search-bar__label" bindtap="search">
+            <icon class="weui-icon-search" type="search" size="14"></icon>
+            <view class="weui-search-bar__text">搜索</view>
+        </label>
+    </view>
+  </view>
+
+  <navigator url="" class="weui-media-box weui-media-box_appmsg" bindtap="navigateTo" data-id="{{item.id}}" hover-class="weui-cell_active" wx:for="{{resultList}}" wx:key="">
+    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+      <view class="weui-media-box__title">{{item.templateName}}</view>
+      <view class="weui-media-box__desc">
+        <text class="text-orangered">{{item.templateType}}</text>
+      </view>
+      <view class="weui-media-box__desc ">
+        <text class="text-orangered" wx:if="{{item.hasTemplate}}">已添加</text>
+        <text class="text-orangered" wx:if="{{!item.hasTemplate}}">+为我的方案</text>
+      </view>
+
+    </view>
+  </navigator>
+</view>

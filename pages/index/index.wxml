@@ -23,7 +23,7 @@
 
   <view class="text">
     <view class="line_flag"></view>
-    <text>随访方案库</text>
+    <text bindtap="jumpTemplateGroup">随访方案库</text>
     <view class="line_flag_right"></view>
     <text>邀请赢好礼</text>
 

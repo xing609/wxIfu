@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "方案二维码"
+  "navigationBarTitleText": "方案二维码",
+  "enablePullDownRefresh": true
 }

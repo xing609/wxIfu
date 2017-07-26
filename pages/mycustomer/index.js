@@ -1,41 +1,28 @@
-// pages/mycustomer/index.js
-const App = getApp()
+var App = getApp()
 var Api = require('../../utils/api.js');
+var Req = require('../../utils/req.js');
 Page({
   data: {
-    indicatorDots: true,
-    vertical: false,
-    autoplay: true,
-    interval: 3000,
-    duration: 1000,
     pageCount: 0,
     currentPage: 0,
     resDesc: null,
-    loadingHidden: false,  // loading
     resultList: []
   },
   getMyCustomerList: function () {
     var that = this;
-    wx.request({
-      method: 'POST',
-      url: Api.getMyCustomerList({
-        token: Api.getToken(),
-        page: 0,
-        status:	1
-      }),
-      success: function (res) {
-        console.log(res);
-        that.setData({
-          currentPage: res.data.currentPage,
-          pageCount: res.data.pageCount,
-          resultList: res.data.resultList
-        })
-        setTimeout(function () {
-          that.setData({
-            loadingHidden: true
-          })
-        }, 1500)
-      }
+    Req.req_post(Api.getMyCustomerList({
+      token: Api.getToken(),
+      page: 0,
+      status: 1
+    }), "", function success(res) {
+      console.log(res);
+      that.setData({
+        currentPage: res.data.currentPage,
+        pageCount: res.data.pageCount,
+        resultList: res.data.resultList
+      })
+    }, function fail(res) {
+     
     })
   },
   onLoad: function () {

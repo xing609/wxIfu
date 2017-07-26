@@ -3,7 +3,7 @@
 
 
 
- <text class="template-type"> 官方</text>
+  <text class="template-type"> 官方</text>
   <text>{{template.templateName}}</text>
   <text>{{template.templateType}}</text>
 
@@ -11,22 +11,17 @@
     <text>{{customer.customerName}}  {{customer.age}}岁</text>
   </view>
 
- 
+
 
   <view class="point-setting">
-    <text bindtap="choosePoint"> 起始节点：{{startPoint}}</text>
-    <text bindtap="showModal"> 起始日期：今天</text>
+    <text class="txt-first-point" bindtap="choosePoint"> 起始节点：{{startPoint}}</text>
+    <!-- <text class="txt-first-point" bindtap="showModal"> 起始日期：今天</text> -->
 
-
-    <view class="section">
-      <view class="section__title">日期选择器</view>
-      <picker mode="date" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
-        <view class="picker">
-          当前选择: {{date}}
-        </view>
-      </picker>
-    </view>
-
+    <picker mode="date" class="txt-first-point" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
+      <view class="picker">
+        起始日期: {{date}}
+      </view>
+    </picker>
   </view>
 
   <view class="bottom">
@@ -35,5 +30,5 @@
   </view>
 </view>
 
-<import src="../../../components/actionsheet/actionsheet.wxml"/>
-<template is="actionsheet" data="{{ ...$wux.actionSheet }}"/>
+<import src="../../../components/actionsheet/actionsheet.wxml" />
+<template is="actionsheet" data="{{ ...$wux.actionSheet }}" />

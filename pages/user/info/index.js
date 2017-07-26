@@ -33,10 +33,9 @@ function initQiniu(upToken) {
 }
 
 function getUserInfo(that) {
-
   Req.req_post(Api.getUserInfo({
     token: Api.getToken()
-  }), "", function success(res) {
+  }), "加载中", function success(res) {
     wx.setStorageSync('user', res.data.model);
     that.setData({
       userInfo: res.data.model
@@ -44,26 +43,6 @@ function getUserInfo(that) {
   }, function fail(res) {
 
   })
-
-
-
-  // wx.request({
-  //   method: 'POST',
-  //   url: Api.getUserInfo({
-  //     token: Api.getToken()
-  //   }),
-  //   success: function (res) {
-  //     wx.setStorageSync('user', res.data.model);
-  //     that.setData({
-  //       userInfo: res.data.model
-  //     })
-  //     setTimeout(function () {
-  //       that.setData({
-  //         loadingHidden: true
-  //       })
-  //     }, 1500)
-  //   }
-  // })
 }
 
 
@@ -135,32 +114,6 @@ function getQiNiuToken(that, imgUrl) {
     }, function fail(res) {
     });
   }
-  //   wx.request({
-  //     dataType: JSON,
-  //     method: 'POST',
-  //     url: Api.editUserInfo({
-  //       token: Api.getToken(),
-  //       docBasic: user
-  //     }),
-  //     success: function (res) {
-  //       wx.setStorageSync('user', res.data.model);
-  //       that.setData({
-  //         userInfo: res.data.model
-  //       })
-
-  //       wx.showToast({
-  //         title: '上传成功',
-  //         icon: 'success',
-  //         duration: 1000
-  //       });
-  //       console.log("uploadface---------------ok");
-  //       setTimeout(function () {
-  //         wx.hideLoading()
-  //       }, 2000)
-  //     }
-  //   })
-  // };
-
 
 }
 

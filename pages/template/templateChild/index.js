@@ -5,17 +5,18 @@ Page({
   data: {
     pageCount: 0,
     currentPage: 0,
-    resDesc: null,
+    templateGroupId:'',
     resultList: []
   },
-  getMyTemplateList: function () {
+  getTemplateCommonList: function (templateGroupId) {
     var that = this;
-    Req.req_post(Api.getMyTemplateList({
+    Req.req_post(Api.getTemplateCommonList({
       token: Api.getToken(),
       page: 1,
-      tempname: "",
-      type: 0,
-      page: 0
+      type:1,
+      tempname:'',
+      templateGroupId: templateGroupId,
+     
     }), "", function success(res) {
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
@@ -25,9 +26,17 @@ Page({
     }, function fail(res) {
     })
   },
-  onLoad: function () {
+  onLoad: function (option) {
     var that = this;
-    this.getMyTemplateList();
+    if(option.title){//设置标题
+      wx.setNavigationBarTitle({ title: option.title })
+    }
+    if (option.templateGroupId){
+      that.setData({
+        templateGroupId: option.templateGroupId
+      })
+      this.getTemplateCommonList(option.templateGroupId);
+    }
   },
   search() {
     App.WxService.navigateTo('/pages/search/index')
@@ -35,17 +44,12 @@ Page({
   navigateTo(e) {
     console.log("--------------------templateid=" + e.currentTarget.dataset.id);
     wx.navigateTo({
-      url: "/pages/template/confirmTemplate/index?templateId=" + e.currentTarget.dataset.id
+      url: "/pages/template/templateIntroduce/index?templateId=" + e.currentTarget.dataset.id
     })
   },
   //下拉刷新
   onPullDownRefresh: function () {
-    this.getMyTemplateList();
+    var templateGroupId= this.data.templateGroupId;
+    this.getTemplateCommonList(templateGroupId);
   },
-  //全部方案
-  jumpToAllTemplate(){
-    wx.navigateTo({
-      url: "/pages/template/index"
-    })
-  }
 })
