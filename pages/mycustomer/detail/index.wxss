@@ -71,3 +71,7 @@
   display: block;
   background-color: greenyellow;
 }
+.record-text{
+  display: block;
+  padding: 5px;
+}

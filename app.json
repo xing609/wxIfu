@@ -33,7 +33,9 @@
     "pages/mycustomer/detail/index",
     "pages/template/confirmTemplate/index",
     "pages/template/templateChild/index",
-    "pages/template/templateIntroduce/index"
+    "pages/template/templateIntroduce/index",
+    "pages/template/detail/index",
+    "pages/mycustomer/record/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FF9933",

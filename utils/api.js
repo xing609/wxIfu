@@ -49,6 +49,13 @@ var RECEIVE_SURVEY ="api/doctor/myIndex/receiveSurvey";
 var NEED_DOCTOR_SURVEY="api/doctor/myIndex/doctorSurveylist";
 //获取新病人列表
 var GET_NEW_CUSTOMER ="api/doctor/customer/list";
+//方案详情
+var GET_CUSTOMER_TEMPLATE_INFO ="api/doctor/customer/info";
+//病程录
+var GET_RECORD_LIST ="api/doctor/msgMedical/getRecordList";
+
+
+
 
 //===========================================请求接口==================================================
 function _openIdLogin(o) {
@@ -123,6 +130,12 @@ function _needDoctorSurvey(o){
 function _getNewCustomer(o){
   return reqUrl(GET_NEW_CUSTOMER,o);
 }
+function _getCustomerTemplateInfo(o){
+  return reqUrl(GET_CUSTOMER_TEMPLATE_INFO,o);
+}
+function _getRecordList(o){
+  return reqUrl(GET_RECORD_LIST,o);
+}
 
 //========================================cache缓存=========================================
 
@@ -189,5 +202,7 @@ module.exports = {
   batchSendMsg: _batchSendMsg,
   receiveSurvey: _receiveSurvey,
   needDoctorSurvey: _needDoctorSurvey,
-  getNewCustomer: _getNewCustomer
+  getNewCustomer: _getNewCustomer,
+  getCustomerTemplateInfo: _getCustomerTemplateInfo,
+  getRecordList: _getRecordList
 };

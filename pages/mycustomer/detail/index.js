@@ -72,7 +72,19 @@ Page({
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
     })
-   
   },
+  navigateTo(e) {
+    var customerId = this.data.customerId;
+    console.log("customerid=====" + customerId + "&customerExtHospitalId=" + e.currentTarget.dataset.exthospitalid);
+    wx.navigateTo({
+      url: "/pages/template/detail/index?customerId=" + customerId + "&exthospitalId=" + e.currentTarget.dataset.exthospitalid
+    })
+  },//进入病程录
+  jumpToRecord(e){
+    var customerId = this.data.customerId;
+    wx.navigateTo({
+      url: "/pages/mycustomer/record/index?customerId=" + customerId + "&templateId=" + e.currentTarget.dataset.templateid
+    })
+  }
 
 })

@@ -7,21 +7,21 @@
   </view>
 </div>
 
-<navigator wx:for="{{resultList}}" wx:key="" bindtap="navigateTo" data-id="{{ item._id }}">
-  <view class="item-p">
-    <view class="item-name">{{item.realName }}</view>
-    <text class="content-title">{{item.templateName}}</text>
-    <text class="content-text">当前节点：{{item.currentPointName}} {{item.currentPointIndex}}/{{item.allPointNum}}</text>
-    <text class="content-text">提交量表：{{item.finishSurvyNum}}/{{item.allSurvyNum}}</text>
-    <text class="content-text">阅读须知：{{item.finishNoteNum}}/{{item.allNoteNum}}</text>
-    <view class="line"></view>
-    <text> 病程录:{{item.recordCount}}</text>
-    <view class="line"></view>
-  </view>
+<navigator wx:for="{{resultList}}" wx:key="{{index}}"  >
+  
+  
+  <view class="item-p" data-exthospitalid="{{item.customerExtHospitalId}}" data-templateid="{{item.templateId}}" bindtap="navigateTo">
+      <view class="item-name" >{{item.realName }}</view>
+      <text class="content-title">{{item.templateName}}</text>
+      <text class="content-text">当前节点：{{item.currentPointName}} {{item.currentPointIndex}}/{{item.allPointNum}}</text>
+      <text class="content-text">提交量表：{{item.finishSurvyNum}}/{{item.allSurvyNum}}</text>
+      <text class="content-text">阅读须知：{{item.finishNoteNum}}/{{item.allNoteNum}}</text>
+      <view class="line"></view>
+    </view>
 
-
+    <text class="record-text" data-exthospitalid="{{item.customerExtHospitalId}}" data-templateid="{{item.templateId}}" bindtap="jumpToRecord"> 病程录:{{item.recordCount}}</text>
+    <view class="line"></view>
 </navigator>
-
 <view class="view-bottom">
 
   <button bindtap="setDisabled">屏蔽</button>

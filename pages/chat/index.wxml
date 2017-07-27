@@ -1,9 +1,6 @@
 <import src="../common/prompt.wxml" />
-
- <scroll-view scroll-y="true" style="height: 100%;">
-      
   <view class="bg">
-    <navigator url="" class="nav-p" wx:for="{{resultList}}" wx:key="" bindtap="navigateTo" data-id="{{ item._id }}">
+    <navigator  class="nav-p" wx:for="{{resultList}}" wx:key="" bindtap="navigateTo" data-id="{{ item._id }}">
       <view class="img-head">
         <image class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
       </view>
@@ -17,7 +14,5 @@
 
       <view class="line"></view>
     </navigator>
-
   </view>
 
- </scroll-view>

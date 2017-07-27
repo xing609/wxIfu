@@ -14,6 +14,18 @@ Page({
     duration: 1000,
     //loadingHidden: false,  // loading
     model: {},
+    images:[
+      {
+        id: "1",
+        url:'http://www.ifuifu.com/i/up_clinic_banner1.jpg'
+      }, {
+        id: "2",
+        url: 'http://www.ifuifu.com/i/up_clinic_banner2.jpg'
+      }, {
+        id: "3",
+        url: 'http://www.ifuifu.com/i/up_clinic_banner3.jpg'
+      }
+    ],
     items: [{
       id: "1",
       num: 0,
@@ -116,7 +128,7 @@ Page({
     var password = Tools.hexMD5("111111");
     var that = this;
     Req.req_post(Api.login({
-      loginName: 13641809600,
+      loginName: 13641809635,
       password: password
 
     }), "", function success(res) {
@@ -144,28 +156,9 @@ Page({
     })
   },
 
-  //sliderList
-  getSliderList: function () {
-    var that = this;
-    wx.request({
-      url: 'http://huanqiuxiaozhen.com/wemall/slider/list',
-      method: 'GET',
-      data: {},
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function (res) {
-        that.setData({
-          images: res.data
-        })
-      }
-    })
-  },
-
   onLoad: function () {
     var that = this;
     //this.login();
-    this.getSliderList();
     //调用应用实例的方法获取全局数据
     // App.getUserInfo(function (userInfo) {
     //   //更新数据
@@ -238,7 +231,7 @@ Page({
     App.WxService.navigateTo('/pages/index/myqr/index')
   },
   jumpIfuValueIndex() {
-    App.WxService.navigateTo('/pages/index/ifuvalue/index')
+   // App.WxService.navigateTo('/pages/index/ifuvalue/index')
   },
   jumpTemplateQrIndex() {
     App.WxService.navigateTo('/pages/index/templateqr/index')

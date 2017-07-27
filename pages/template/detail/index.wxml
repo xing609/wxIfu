@@ -1,0 +1,46 @@
+<view class="trump">
+
+  <!-- <view class="title">
+        {{title}}
+    </view>-->
+
+  <view class="PicBg">
+    <image src="{{bg}}" />
+  </view>
+
+  <view class="content">
+    <swiper indicator-dots="true" class="Bannerswiper" bindchange="changeSwiper" data-bg="{{item.playUrl}}">
+      <block wx:for="{{template.templatePointList}}" wx:key="picUrl">
+        <swiper-item>
+          <view class="swiper-item ">
+            <navigator>
+              <view class="contMess">
+
+                <view class=" top-text">
+                  <text class="Mess1">{{item.pointName}}</text>
+                  <text class="Mess1 pointDate">{{item.pointDate}}</text>
+                </view>
+
+                <text class="Mess1" wx:if="{{item.pointStatus==2||item.pointStatus==3}}">已完成</text>
+                <text class="Mess1" wx:if="{{item.pointStatus==1}}">进行中</text>
+                <text class="Mess1" wx:if="{{item.pointStatus==0}}">未开始</text>
+
+                <scroll-view scroll-y="true" class="discover-image-two">
+                  <navigator wx:for="{{item.pointLinkList}}" wx:key="{{index}}" bindtap="navigateTo" data-id="{{item.id}}">
+
+                    <view class="item-bg">
+                      <image src="../../../assets/images/ic_knows.png" style="margin-bottom: 2px;margin-right: 5px;vertical-align: middle;width:20px; height: 20px;" wx:if="{{item.linkType==1}}" />
+                      <image src="../../../assets/images/ic_form.png" style="margin-bottom: 2px;margin-right: 5px;vertical-align: middle;width:20px; height: 20px;" wx:if="{{item.linkType==0}}" />
+                      <text class="link-title">{{item.linkTitle}}</text>
+                    </view>
+                  </navigator>
+                </scroll-view>
+              </view>
+
+            </navigator>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>
