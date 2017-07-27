@@ -1,66 +1,39 @@
-// pages/index/receive/index.js
+var App = getApp()
+var Api = require('../../../utils/api.js');
+var Req = require('../../../utils/req.js');
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    pageCount: 0,
+    currentPage: 0,
+    resultList: []
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+  onPullDownRefresh:function(){
+    this.receiveSurvey();
   },
+  receiveSurvey: function () {
+    var that = this;
+    Req.req_post(Api.receiveSurvey({
+      token: Api.getToken(),
+      page: 1,
+    }), "", function success(res) {
+      console.log(res);
+      that.setData({
+        resultList: res.data.resultList
+      })
+      var title = "已收到的量表（" + res.data.total + "）";
+      wx.setNavigationBarTitle({ title: title })
+      wx.stopPullDownRefresh();
+    }, function fail(res) {
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+  onLoad: function () {
+    var that = this;
+    this.receiveSurvey();
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  navigateTo(e) {
+    wx.navigateTo({
+      url: "/pages/mycustomer/detail/index?customerId=" + e.currentTarget.dataset.customerId + "&customerExtHosp=" + e.currentTarget.dataset.id
+    })
   }
 })

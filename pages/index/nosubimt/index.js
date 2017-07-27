@@ -1,66 +1,56 @@
-// pages/index/nosubimt/index.js
+var App = getApp();
+var Api = require('../../../utils/api.js');
+var Req = require('../../../utils/req.js');
+var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    hasNotice:false,
+    resultList:'',
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
+  onLoad: function () {
+    console.log('onLoad')
+    this.unSurveyCustomers();
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+  onPullDownRefresh:function(){
+    this.unSurveyCustomers();
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
+   unSurveyCustomers:function(){
+     var that=this;
+     Req.req_post(Api.unSurveyCustomers({
+       token: Api.getToken()
+     }), "", function success(res) {
+        that.setData({
+          resultList: res.data.resultList
+        })
+        var title = "未按时提交的量表（"+res.data.total+"）";
+        wx.setNavigationBarTitle({ title:title})
+        wx.stopPullDownRefresh();
+        that.setData({
+          model: res.data.model
+        })
+     }, function fail(res) {
+     })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
-})
+   navigateTo(e) {
+     console.log("jump--customerId=" + e.currentTarget.dataset.customerId);
+     wx.navigateTo({
+       url: "/pages/mycustomer/detail/index?customerId=" + e.currentTarget.dataset.customerId
+     })
+   },
+   //批量提醒
+    notice(){
+      var that=this;
+      var hasNotice=this.data.hasNotice;
+      if (hasNotice){
+           return;
+      }
+      Req.req_post(Api.batchSendMsg({
+        token: Api.getToken()
+      }), "", function success(res) {
+        that.setData({
+          hasNotice: true
+        })
+      }, function fail(res) {
+      })
+   }
+})  

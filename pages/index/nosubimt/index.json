@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "未按时提交的量表"
+  "navigationBarTitleText": "未按时提交的量表",
+  "enablePullDownRefresh": true
 }

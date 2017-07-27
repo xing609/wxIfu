@@ -10,11 +10,11 @@ Page({
         text: '医数值',
         path: ''///pages/ifuvalue/list/index
       },
-      {
-        icon: '../../assets/images/iconfont-addr.png',
-        text: '设置',
-        path: ''///pages/address/list/index
-      },
+      // {
+      //   icon: '../../assets/images/iconfont-addr.png',
+      //   text: '设置',
+      //   path: ''///pages/address/list/index
+      // },
       {
         icon: '../../assets/images/iconfont-kefu.png',
         text: '联系我们',
@@ -47,7 +47,7 @@ Page({
     const path = e.currentTarget.dataset.path
 
     switch (index) {
-      case 2:
+      case 1:
         App.WxService.makePhoneCall({
           phoneNumber: path
         })
@@ -93,7 +93,12 @@ Page({
           title: '友情提示',
           content: '确定要清除缓存吗？',
         })
-          .then(data => data.confirm == 1 && App.WxService.clearStorage())
+          .then(data => data.confirm == 1 && App.WxService.clearStorage(),
+          this.setData({
+            'settings[0].path': `0KB`
+          })
+          
+          )
         break
       default:
         App.WxService.navigateTo(path)

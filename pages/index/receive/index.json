@@ -1,3 +1,4 @@
 {
-  "navigationBarTitleText": "已收到的量表"
+  "navigationBarTitleText": "已收到的量表",
+  "enablePullDownRefresh": true
 }

@@ -4,6 +4,7 @@
     "pages/index/index",
     "pages/start/index",
     "pages/mycustomer/index",
+    "pages/newcustomer/index",
     "pages/index/myqr/index",
     "pages/template/index",
     "pages/template/mytemplate/index",

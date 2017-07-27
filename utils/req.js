@@ -1,6 +1,4 @@
 const App = getApp()
-
-
 //GET请求
 function req_get(url, message, success, fail) {
   wx.showNavigationBarLoading()
@@ -137,21 +135,6 @@ function req_json(url, params, message, success, fail) {
       fail(res);
     }
   })
-
-  //显示loadin
-  // function showLoading(mess) {
-  //   if (mess!=""){
-  //     wx.showLoading({
-  //       title: "加载中",
-  //       mask: true
-  //     })
-  //     setTimeout(function () {
-  //       wx.hideLoading()
-  //     }, 5000)
-  //   }
-
-  // }
-
 }
 
 module.exports = {

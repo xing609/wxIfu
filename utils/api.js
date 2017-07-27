@@ -30,15 +30,25 @@ var GET_TEMPLATE_DETAIL = 'api/doctor/template';
 //登出
 var LOGIN_OUT = "api/doctor/op/logout";
 //确认方案
-var SEND_TEMPLATE ="api/doctor/customer/confirm";
+var SEND_TEMPLATE = "api/doctor/customer/confirm";
 //随访方案库
-var TEMPLATE_GROUP_LIST ="api/doctor/templategroup/list";
+var TEMPLATE_GROUP_LIST = "api/doctor/templategroup/list";
 //方案分组
-var TEMPLATE_COMMONLIST="api/doctor/template/commonlist";
+var TEMPLATE_COMMONLIST = "api/doctor/template/commonlist";
 //方案简介
-var TEMPLATE_INDRODUCE ="api/doctor/template/";
+var TEMPLATE_INDRODUCE = "api/doctor/template/";
 //第三方登录
- var THIRD_LOGIN = "api/common/thirdLogin";
+var THIRD_LOGIN = "api/common/thirdLogin";
+//未按时提交量表的患者
+var NO_SUBMIT_CUSTOMER = "api/doctor/myIndex/getUnSurveyCustomers";
+//批量提醒
+var NOTICE_CUSTOMER = "api/doctor/myIndex/batchSendMsg";
+//已收到量表
+var RECEIVE_SURVEY ="api/doctor/myIndex/receiveSurvey";
+//待完成的医用量表
+var NEED_DOCTOR_SURVEY="api/doctor/myIndex/doctorSurveylist";
+//获取新病人列表
+var GET_NEW_CUSTOMER ="api/doctor/customer/list";
 
 //===========================================请求接口==================================================
 function _openIdLogin(o) {
@@ -83,21 +93,37 @@ function _getTemplateDetail(templateId, o) {
 function _loginOut(o) {
   return reqUrl(LOGIN_OUT, o);
 }
-function _sendTemplate(o){
-  return reqUrl(SEND_TEMPLATE,o);
+function _sendTemplate(o) {
+  return reqUrl(SEND_TEMPLATE, o);
 }
-function _getTemplateGroupList(o){
-  return reqUrl(TEMPLATE_GROUP_LIST,o);
+function _getTemplateGroupList(o) {
+  return reqUrl(TEMPLATE_GROUP_LIST, o);
 }
-function _getTemplateCommonList(o){
-  return reqUrl(TEMPLATE_COMMONLIST,o);
+function _getTemplateCommonList(o) {
+  return reqUrl(TEMPLATE_COMMONLIST, o);
 }
-function _getTemplateIntroduce(id,o){
-  return reqUrlId(TEMPLATE_INDRODUCE,id,o);
+function _getTemplateIntroduce(id, o) {
+  return reqUrlId(TEMPLATE_INDRODUCE, id, o);
 }
-function _thirdLogin(o){
-  return reqUrl(THIRD_LOGIN,o);
+function _thirdLogin(o) {
+  return reqUrl(THIRD_LOGIN, o);
 }
+function _unSurveyCustomers(o) {
+  return reqUrl(NO_SUBMIT_CUSTOMER, o);
+}
+function _batchSendMsg(o) {
+  return reqUrl(NOTICE_CUSTOMER, o);
+}
+function _receiveSurvey(o){
+  return reqUrl(RECEIVE_SURVEY,o);
+}
+function _needDoctorSurvey(o){
+  return reqUrl(NEED_DOCTOR_SURVEY,o);
+}
+function _getNewCustomer(o){
+  return reqUrl(GET_NEW_CUSTOMER,o);
+}
+
 //========================================cache缓存=========================================
 
 //取token
@@ -158,5 +184,10 @@ module.exports = {
   getTemplateGroupList: _getTemplateGroupList,
   getTemplateCommonList: _getTemplateCommonList,
   getTemplateIntroduce: _getTemplateIntroduce,
-  thirdLogin: _thirdLogin
+  thirdLogin: _thirdLogin,
+  unSurveyCustomers: _unSurveyCustomers,
+  batchSendMsg: _batchSendMsg,
+  receiveSurvey: _receiveSurvey,
+  needDoctorSurvey: _needDoctorSurvey,
+  getNewCustomer: _getNewCustomer
 };

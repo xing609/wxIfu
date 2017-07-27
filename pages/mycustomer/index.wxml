@@ -12,7 +12,7 @@
     </view>
   </view>
 
-  <div class="top">
+  <div class="top" bindtap="jumpToNewCustomer">
     <div class="div_left">
       <image class="imgleft" src='../../../assets/images/iconfont-order.png'></image>
       <view class="txt_new__p">
@@ -22,6 +22,7 @@
     </div>
 
     <div>
+    <text wx:if="{{newCustomerNum!=0}}">{{newCustomerNum}}</text>
       <image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image>
     </div>
   </div>
@@ -32,7 +33,7 @@
       <view class="item_group_title">{{item.templateType}}--{{item.templateName}}--{{item.customerExtHospitalList.length}}人</view>
 
       <!--患者-->
-      <navigator url="" class="discover-image-two" wx:for="{{item.customerExtHospitalList}}" wx:key="{{index}}" 
+      <navigator  class="discover-image-two" wx:for="{{item.customerExtHospitalList}}" wx:key="{{index}}" 
       data-customerExtHosp="{{item.id}}"
       data-customer-id="{{item.customerId}}" open-type="redirect" bindtap="navigateTo" data-id="{{item.id}}">
        

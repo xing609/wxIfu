@@ -1,2 +1,2 @@
-<!--pages/index/receive/index.wxml-->
-<text>pages/index/receive/index.wxml</text>
+<import src="../../common/surveyItem.wxml" />
+<template is="list" data="{{resultList}}" />

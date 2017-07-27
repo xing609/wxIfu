@@ -1,0 +1,21 @@
+<template name="list">
+<view class="section">
+    <view url="" class="item_p" wx:for="{{resultList}}" wx:key="{{index}}" data-id="{{ item.id }}">
+     <!--患者-->
+      <view class="div_left">
+          <image class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
+        </view>
+      <view class="item_group_title">{{item.customerName}}--{{item.templateName}}--{{item.pointName}}</view>
+
+      <!--量表 -->
+      <navigator  class="discover-image-two" wx:for="{{item.followPointLinkList}}" wx:key="{{index}}"  open-type="redirect" bindtap="navigateTo" >
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+          <view class="weui-media-box__desc">
+            <text class="text-orangered" wx:if="{{item.score!=null}}">{{item.linkTitle}}   {{item.score}}分</text>
+            <text class="text-orangered" wx:if="{{item.score==null}}">{{item.linkTitle}}</text>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  </template>

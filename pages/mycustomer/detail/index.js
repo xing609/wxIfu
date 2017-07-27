@@ -41,6 +41,9 @@ Page({
   //取患者信息
   getCustomerInfo: function (id, customerExtHosp) {
     var that = this;
+    if (!customerExtHosp){
+      customerExtHosp="";
+    }
     Req.req_post(Api.getCustomerInfo(id, {
       token: Api.getToken(),
       customerExtHosp: customerExtHosp

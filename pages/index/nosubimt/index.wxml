@@ -1,2 +1,14 @@
-<!--pages/index/nosubimt/index.wxml-->
-<text>pages/index/nosubimt/index.wxml</text>
+<view class="container">  
+  <view class="weui-grids">  
+    <view class="weui-grid" wx:for="{{resultList}}" bindtap="navigateTo" data-customer-id="{{item.customerId}}">  
+      <navigator >  
+        <view class="weui-grid__icon">  
+          <image class="userinfo-avatar" src=" {{item.face}}"  mode="scaleToFill" />  
+        </view>  
+        <text class="weui-grid__label">{{item.customerName}}</text>  
+      </navigator>  
+    </view>  
+  </view>  
+<button class="btn-notice" bindtap="notice" wx:if="{{!hasNotice}}">批量提醒</button>
+  <button class="btn-notice" bindtap="notice" wx:if="{{hasNotice}}">已提醒</button>
+</view> 

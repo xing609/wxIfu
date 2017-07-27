@@ -1,27 +1,29 @@
 var App = getApp()
-var Api = require('../../../utils/api.js');
-var Req = require('../../../utils/req.js');
+var Api = require('../../utils/api.js');
+var Req = require('../../utils/req.js');
 Page({
   data: {
     pageCount: 0,
     currentPage: 0,
+    resDesc: null,
     resultList: []
   },
   onPullDownRefresh: function () {
-    this.needDoctorSurvey();
+    this.getNewCustomer();
   },
-  needDoctorSurvey: function () {
+  getNewCustomer: function () {
     var that = this;
-    Req.req_post(Api.needDoctorSurvey({
+    Req.req_post(Api.getNewCustomer({
       token: Api.getToken(),
-      page: 1,
+      status: 0,
+      page: 1
     }), "", function success(res) {
       console.log(res);
       that.setData({
+        currentPage: res.data.currentPage,
+        pageCount: res.data.pageCount,
         resultList: res.data.resultList
       })
-      var title = "待完成医用量表（" + res.data.total + "）";
-      wx.setNavigationBarTitle({ title: title })
       wx.stopPullDownRefresh();
     }, function fail(res) {
 
@@ -29,7 +31,10 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    this.needDoctorSurvey();
+    this.getNewCustomer();
+  },
+  search() {
+    App.WxService.navigateTo('/pages/search/index')
   },
   navigateTo(e) {
     wx.navigateTo({

@@ -18,12 +18,12 @@ Page({
       id: "1",
       num: 0,
       text: arr_name[0],
-      path: '/pages/mycustomer/index'
+      path: '../mycustomer/index'
     }, {
       id: "2",
       num: 0,
       text: arr_name[1],
-      path: '/pages/template/mytemplate/index'
+      path: '../template/mytemplate/index'
     }, {
       id: "3",
       num: 0,
@@ -33,17 +33,17 @@ Page({
       id: "4",
       num: 0,
       text: arr_name[3],
-      path: '/pages/index/doctorwrite/index'
+      path: '../index/doctorwrite/index'
     }, {
       id: "5",
       num: 0,
       text: arr_name[4],
-      path: '/pages/index/receive/index'
+      path: '../index/receive/index'
     }, {
       id: "6",
       num: 0,
       text: arr_name[5],
-      path: '/pages/index/nosubimt/index'
+      path: '../index/nosubimt/index'
     }]
   },
   onLaunch: function () {
@@ -116,7 +116,7 @@ Page({
     var password = Tools.hexMD5("111111");
     var that = this;
     Req.req_post(Api.login({
-      loginName: 13641809500,
+      loginName: 13641809600,
       password: password
 
     }), "", function success(res) {
@@ -197,18 +197,15 @@ Page({
       success: function (res) {
         console.log(res.data)
         var openid = res.data.openid;
-
-
-
         wx.checkSession({
           success: function () {
             console.log("session 未过期，并且在本生命周期一直有效");
-
             wx.getUserInfo({
               success: function (res) {
                 console.log("-------res==" + res);
-                var userInfo = res.userInfo
-                that.thirdLogin(openid, JSON.stringify(userInfo));
+                var userInfo = res.userInfo;
+                that.login();
+                //that.thirdLogin(openid, JSON.stringify(userInfo));
               }
             })
 
@@ -219,10 +216,6 @@ Page({
             console.log("session 登录态过期");
           }
         })
-
-
-        
-
       }
     })
   },

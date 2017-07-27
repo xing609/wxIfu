@@ -128,16 +128,10 @@ Page({
         icon: 'success',
         duration: 2000
       });
-      wx.redirectTo({
-        url: '/pages/template/mytemplate/index'
+      //返回
+      wx.navigateBack ({
       })
     }, function fail(res) {
-      // var msg = res.data.resDesc;
-      // wx.showToast({
-      //   title: msg,
-      //   icon: 'success',
-      //   duration: 1000
-      // });
     })
   },
 

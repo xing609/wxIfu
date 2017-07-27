@@ -1,2 +1,2 @@
-<!--pages/scale/doctorwrite/index.wxml-->
-<text>pages/scale/doctorwrite/index.wxml</text>
+<import src="../../common/surveyItem.wxml" />
+<template is="list" data="{{resultList}}" />
