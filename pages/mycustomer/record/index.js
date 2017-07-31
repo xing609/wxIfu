@@ -28,7 +28,7 @@ Page({
       pageSize: 10,
       pageCount: 1
     })
-    this.onLoad();
+    this.getRecordList(this.data.templateId, this.data.customerId, this.data.pageNum, this.data.pageSize);
   },
   getRecordList: function (templateId, customerId, pageNum, pageSize) {
     var that = this;

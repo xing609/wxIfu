@@ -1,28 +1,35 @@
 <view class="container page">
   <div class="div_left">
-      <view class="txt_new_p">
-       <span class="left_text_name">{{template.templateName}}</span> 
-        <span class="left_text_type">{{template.templateType}}</span> 
-        <span class="left_text_hospital"> 起始节点/时间 :       {{template.startPoint}}</span>
-      </view>
-    </div>
-    <view class="qrcode">
-      <canvas canvas-id="qrcode" />
+    <view class="txt_new_p">
+      <span class="left_text_name">{{template.templateName}}</span>
+      <span class="left_text_type">{{template.templateType}}</span>
+      <span class="left_text_hospital"> 起始节点/时间 :       {{template.startPoint}}</span>
     </view>
-    <p class="bottom_text">
+  </div>
+  <view class="qrcode">
+    <canvas canvas-id="qrcode" />
+  </view>
+  <p class="bottom_text">
     <text class="txt-hint">此二维码在{{template.wxUrlExpireDate}}之前有效</text>
-    </p>
+  </p>
 </view>
 
 <scroll-view scroll-y="true">
-  <view class="bg">  
-    <navigator url=""  wx:for="{{newTemplateList}}" wx:key="" data-id="{{ item._id }}">
-     
+  <view class="bg">
+    <navigator url="" wx:for="{{newTemplateList}}" wx:key="" data-id="{{ item._id }}">
+
       <view class="item-p" data-index="{{ index }}" data-url="{{item.weixinUrl}}" catchtap="onTapTag">
-        <view class="txt-hint">{{item.templateName}}</view>
-         <view class="txt-hint">{{item.customerNum}}人</view>
+
+        <view class="item-left">
+          <view class="qr-left">
+            <image style="width:18px;height:18px;margin-left:5px;margin-right:5px;vertical-align:middle;" src='../../../assets/images/ic_team_template_qrcode.png'></image>
+            <view class="txt-templatename">{{item.templateName}}</view>
+          </view>
+          <view class="txt-num">{{item.customerNum}}人</view>
+        </view>
+
       </view>
       <view class="line"></view>
     </navigator>
   </view>
- </scroll-view>
+</scroll-view>

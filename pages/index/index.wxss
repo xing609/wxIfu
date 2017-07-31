@@ -89,6 +89,21 @@ view.text text {
   color: #333;
 }
 
+.center-item{
+  display: flex;
+  flex-direction: row;   
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.center-text{
+  font-size: 14px;
+}
+
+
+
 /*首页顶部UI*/
 
 .home_top {

@@ -1,5 +1,4 @@
 const App = getApp()
-import { $wuxActionSheet } from '../../../components/wux'
 var Api = require('../../../utils/api.js');
 var Req = require('../../../utils/req.js');
 

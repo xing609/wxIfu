@@ -1,32 +1,33 @@
 <!--detail.wxml-->
-<div class="div_left">
-  <image class="userinfo-avatar" src='{{customer.face}}'></image>
-  <view class="txt_new_p">
-    <span class="left_text_name">{{customer.customerName}}    {{customer.age}}岁</span>
-    <span class="left_text_sex">{{customer.mobile}}</span>
+<div class="div_top">
+  <view class="top-left">
+    <image class="userinfo-avatar" src='{{customer.face}}'></image>
+    <view class="txt-userinfo">
+      <span class="left_text_name">{{customer.customerName}}    {{customer.age}}岁</span>
+      <span class="left_text_name">{{customer.mobile}}</span>
+    </view>
   </view>
+  <image style="margin-right: 10px;vertical-align: middle;width:5px; height: 10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
 </div>
 
-<navigator wx:for="{{resultList}}" wx:key="{{index}}"  >
-  
-  
-  <view class="item-p" data-exthospitalid="{{item.customerExtHospitalId}}" data-templateid="{{item.templateId}}" bindtap="navigateTo">
-      <view class="item-name" >{{item.realName }}</view>
+
+<view class="list">
+  <navigator wx:for="{{resultList}}" wx:key="{{index}}">
+    <view class="item-p" data-exthospitalid="{{item.customerExtHospitalId}}" data-templateid="{{item.templateId}}" bindtap="navigateTo">
+      <view class="item-name">{{item.realName }}</view>
       <text class="content-title">{{item.templateName}}</text>
       <text class="content-text">当前节点：{{item.currentPointName}} {{item.currentPointIndex}}/{{item.allPointNum}}</text>
       <text class="content-text">提交量表：{{item.finishSurvyNum}}/{{item.allSurvyNum}}</text>
       <text class="content-text">阅读须知：{{item.finishNoteNum}}/{{item.allNoteNum}}</text>
       <view class="line"></view>
     </view>
-
     <text class="record-text" data-exthospitalid="{{item.customerExtHospitalId}}" data-templateid="{{item.templateId}}" bindtap="jumpToRecord"> 病程录:{{item.recordCount}}</text>
     <view class="line"></view>
-</navigator>
-<view class="view-bottom">
-
-  <button bindtap="setDisabled">屏蔽</button>
-  <button bindtap="setDisabled">加标</button>
-  <button bindtap="sendTemplate"> 分配方案 </button>
-
-  <button open-type="contact">进入客服会话</button>
+  </navigator>
+</view>
+<view class="bottom-btn">
+  <button class="btnAdd" bindtap="setDisabled">屏蔽</button>
+  <button class="btnAdd" bindtap="setDisabled">加标</button>
+  <button class="btnsend" bindtap="sendTemplate"> 分配方案 </button>
+  <button class="btnsend" open-type="contact">询问病情</button>
 </view>

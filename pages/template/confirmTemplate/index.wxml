@@ -29,6 +29,3 @@
     <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="send"> 确认 </button>
   </view>
 </view>
-
-<import src="../../../components/actionsheet/actionsheet.wxml" />
-<template is="actionsheet" data="{{ ...$wux.actionSheet }}" />

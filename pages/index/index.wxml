@@ -21,16 +21,16 @@
 
 
 
-  <view class="text">
-    <view class="line_flag"></view>
-    <text bindtap="jumpTemplateGroup">随访方案库</text>
-    <view class="line_flag_right"></view>
-    <text>邀请赢好礼</text>
+  <view class="center-item">
+   
+    <text class="center-text" bindtap="jumpTemplateGroup">随访方案库</text>
+    
+    <text class="center-text">邀请赢好礼</text>
 
   </view>
 
   <view>
-    <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
+    <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" wx:key="key" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
       <block wx:for="{{images}}">
         <swiper-item>
           <image src="{{item.url}}" class="slide-image" />
@@ -42,7 +42,7 @@
   </view>
 
   <view class="row">
-    <navigator wx:for="{{items}}" url="{{url}}?listId={{item.id}}&listName={{item.text}}" wx:key="" data-path="{{ item.path }}" data-index="{{ index }}" bindtap="navigateTo">
+    <navigator wx:for="{{items}}" url="{{url}}?listId={{item.id}}&listName={{item.text}}" wx:key="{{index}}" data-path="{{ item.path }}" data-index="{{ index }}" bindtap="navigateTo">
       <view class="item_size">
         <text class="text">{{item.text}}</text>
         <text class="text_num" wx:if="{{item.id ==1}}"> {{model.myCustomer}}</text>
@@ -57,8 +57,5 @@
   </view>
 
 
-  <!-- <loading hidden="{{loadingHidden}}">
-    加载中...
-  </loading> -->
 
 </view>

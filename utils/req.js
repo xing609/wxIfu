@@ -21,8 +21,10 @@ function req_get(url, message, success, fail) {
       if (res.data.resCode == '0000') {
         success(res);
       } else if (res.data.resCode == '403') {//无权限，需重新登录
-        App.WxService.removeStorageSync('token');
-        App.WxService.redirectTo('/pages/login/index');
+        wx.removeStorageSync('token');
+        wx.redirectTo({
+          url: '/pages/login/index',
+        });
       } else {
         console.log("--------reqfail---------" + res.data.resCode + "/" + res.data.resDesc);
         if (res.data.resCode) {
@@ -69,8 +71,10 @@ function req_post(url, message, success, fail) {
       if (res.data.resCode == '0000') {
         success(res);
       } else if (res.data.resCode == '403') {//无权限，需重新登录
-        App.WxService.removeStorageSync('token');
-        App.WxService.redirectTo('/pages/login/index');
+        wx.removeStorageSync('token');
+        wx.redirectTo({
+          url: '/pages/login/index',
+        });
       } else {
         console.log("--------reqfail---------"+res.data.resCode +"/"+res.data.resDesc);
         if(res.data.resCode){
@@ -115,8 +119,10 @@ function req_json(url, params, message, success, fail) {
       if (res.data.resCode == '0000') {
         success(res);
       } else if (res.data.resCode == '403') {//无权限，需重新登录
-        App.WxService.removeStorageSync('token');
-        App.WxService.redirectTo('/pages/login/index');
+        wx.removeStorageSync('token');
+        wx.redirectTo({
+          url: '/pages/login/index',
+        });
       } else {
         console.log("--------reqfail---------" + res.data.resCode + "/" + res.data.resDesc);
         if (res.data.resCode) {

@@ -1,32 +1,44 @@
 /**index.wxss**/
+
 .page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
 .container {
-	padding-bottom: 10rpx;
+  padding-bottom: 10rpx;
   background: white;
 }
 
 .qrcode {
-    height: 420rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
+  height: 420rpx;
+  display: flex;
+  width: 100%;
 }
 
 .qrcode > canvas {
-    width: 420rpx;
-    height: 420rpx;
+  width: 420rpx;
+  height: 420rpx;
+  line-height: 420px;
+  text-align: center;
 }
-.bottom_text{
+
+.txt_new_p {
+  flex-direction: column;
   display: flex;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.bottom_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-content: center;
 }
-.txt-hint{
+
+.txt-hint {
   display: block;
   vertical-align: middle;
   font-size: 14px;
@@ -45,18 +57,12 @@
 }
 
 .div_left {
-  display: -moz-box;
-  display: -webkit-box;
-  -webkit-box-orient: horizontal;
-  -moz-box-orient: horizontal;
-  -webkit-box-algin: center;
-  -moz-box-algin: center;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  vertical-align: middle;
   display: flex;
-  align-items: center;
+  flex-direction: row;
   margin-top: 15px;
+  vertical-align: middle;
+  justify-content: center;
+  width: 100%;
 }
 
 .userinfo-avatar {
@@ -76,6 +82,7 @@
   font-size: 14px;
   color: black;
 }
+
 .left_text_hospital {
   display: block;
   font-size: 12px;

@@ -52,7 +52,9 @@ Page({
     this.getNewCustomer();
   },
   search() {
-    App.WxService.navigateTo('/pages/search/index')
+    wx.navigateTo({
+      url: '/pages/search/index',
+    })
   },
   navigateTo(e) {
     wx.navigateTo({

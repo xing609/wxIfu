@@ -1,6 +1,14 @@
 'use strict';
-var HOST_URI = 'http://apitest.ifuifu.com/';
+var HOST_URI = 'https://api.ifuifu.com/';
+//开放平台医数医生端APPID
+const COMPONENT_APP_ID="wx0cedb53c749e8372";
+//小程序appid
+const APP_ID ="wxd992a930df145349"
 
+const ACCOUNT="13641809635";
+const PSW="111111";
+
+   
 //微信登录
 var OPENID_LOGIN = 'api/common/thirdLogin';
 //获取首页数量
@@ -153,6 +161,7 @@ function _getUser() {
 function _getCustomerId() {
   return wx.getStorageSync('customerId');
 }
+
 //==========================================================================================
 
 //带参数的请求
@@ -176,6 +185,10 @@ function _obj2uri(obj) {
 }
 //===========================================导出===========================================
 module.exports = {
+  getCompnentAppId: COMPONENT_APP_ID,
+  getAppId: APP_ID,
+  account: ACCOUNT,
+  psw: PSW,
   login: _login,
   getHomeNum: _getHomeNum,
   getChatList: _getChatList,
@@ -205,4 +218,5 @@ module.exports = {
   getNewCustomer: _getNewCustomer,
   getCustomerTemplateInfo: _getCustomerTemplateInfo,
   getRecordList: _getRecordList
+ 
 };

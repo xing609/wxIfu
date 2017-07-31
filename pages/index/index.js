@@ -5,6 +5,7 @@ const App = getApp()
 //获取应用实例
 var arr_name = ["我的病人", "我的方案", "我的多中心项目", "待完成医用量表", "已收到量表", "未按时提交量表",]
 var file = "../../pages/list/list"
+
 Page({
   data: {
     indicatorDots: true,
@@ -106,7 +107,7 @@ Page({
     }
   },
   //下拉刷新
-  onPullDownRefresh: function () {
+  onPullDownRefresh() {
     this.getHomeNum();
   },
 
@@ -120,17 +121,17 @@ Page({
         console.log("即将启用");
         break
       default:
-        App.WxService.navigateTo(path)
+        wx.navigateTo({
+          url: path
+        })
     }
   },
   // 用户登录
-  login: function () {
-    var password = Tools.hexMD5("111111");
+  login() {
     var that = this;
     Req.req_post(Api.login({
-      loginName: 13641809635,
-      password: password
-
+      loginName: Api.account,
+      password: Tools.hexMD5(Api.psw)
     }), "", function success(res) {
       wx.setStorageSync('user', res.data.model);
       //存用户TOKEN
@@ -140,8 +141,7 @@ Page({
     })
   },
 
-
-  getHomeNum: function () {
+  getHomeNum() {
     var that = this;
     Req.req_post(Api.getHomeNum({
       token: Api.getToken()
@@ -156,7 +156,7 @@ Page({
     })
   },
 
-  onLoad: function () {
+  onLoad() {
     var that = this;
     //this.login();
     //调用应用实例的方法获取全局数据
@@ -179,10 +179,12 @@ Page({
     });
   },
   //code 换取 session_key
-  getSessionKey: function (js_code) {
+  getSessionKey (js_code) {
     var that = this;
     wx.request({
-      url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wxd992a930df145349&secret=97d950ac223a5eea24526a34155a9382&js_code=' + js_code + '&grant_type=authorization_code',
+      url: 'https://api.weixin.qq.com/sns/jscode2session?appid=' + Api.getAppId
+      +'&secret=97d950ac223a5eea24526a34155a9382&js_code=' + js_code 
+      + '&component_appid=' + Api.getCompnentAppId+'&grant_type=authorization_code',
       method: 'POST',
       header: {
         'content-type': 'application/json'
@@ -214,12 +216,12 @@ Page({
   },
 
   // type;//接口类型（0:金蝶 1：微信）
-  thirdLogin: function (openId, userInfo) {
+  thirdLogin(openId, userInfo) {
     Req.req_post(Api.thirdLogin({
       userType: 2,
       openId: openId,
       type: 1,
-      eid: '',
+      
       userInfo: userInfo
     }), "", function success(res) {
       console.log("第三方登录成功：" + res);
@@ -228,16 +230,22 @@ Page({
     })
   },
   jumpMyQrIndex() {
-    App.WxService.navigateTo('/pages/index/myqr/index')
+    wx.navigateTo({
+      url: '/pages/index/myqr/index',
+    })
   },
   jumpIfuValueIndex() {
    // App.WxService.navigateTo('/pages/index/ifuvalue/index')
   },
   jumpTemplateQrIndex() {
-    App.WxService.navigateTo('/pages/index/templateqr/index')
+   wx.navigateTo({
+     url: '/pages/index/templateqr/index',
+   })
   },
   jumpTemplateGroup() {
-    App.WxService.navigateTo('/pages/template/index')
+    wx.navigateTo({
+      url: '/pages/template/index',
+    })
   }
 
 

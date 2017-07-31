@@ -1,39 +1,43 @@
 /**index.wxss**/
+
 .page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 .container {
-	padding-bottom: 10rpx;
+  padding-bottom: 10rpx;
   background: white;
 }
 
 .qrcode {
-    height: 420rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
+  height: 420rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .qrcode > canvas {
-    width: 420rpx;
-    height: 420rpx;
+  width: 420rpx;
+  height: 420rpx;
 }
-.bottom_text{
+
+.bottom_text {
   display: flex;
   align-content: center;
 }
-.txt-hint{
+
+.txt-hint {
   display: block;
   vertical-align: middle;
   font-size: 14px;
   height: 30px;
   line-height: 30px;
   text-align: center;
-  color: black;
+  color: #999999;
 }
 
 .top {
@@ -77,14 +81,42 @@
   color: black;
   font-style: bold;
 }
+
 .left_text_type {
   display: block;
   font-size: 14px;
-  color:greenyellow;
+  color: greenyellow;
 }
+
 .left_text_hospital {
   display: block;
   font-size: 12px;
   height: 15px;
   color: black;
+}
+
+.txt-templatename {
+  width: 200px;
+  overflow: hidden;
+  font-size: 16px;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  margin-left: 5px;
+  white-space: nowrap;
+}
+
+.item-left {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.qr-left {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+}
+.txt-num{
+  margin-right: 10px;
 }

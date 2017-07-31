@@ -38,7 +38,7 @@ Page({
     this.getUserInfo()
     this.getStorageInfo()
   },
-   //修改头像时即时更新
+  //修改头像时即时更新
   onShow: function () {
     this.getUserInfo();
   },
@@ -48,12 +48,14 @@ Page({
 
     switch (index) {
       case 1:
-        App.WxService.makePhoneCall({
+        wx.makePhoneCall({
           phoneNumber: path
         })
         break
       default:
-        App.WxService.navigateTo(path)
+        wx.navigateTo({
+          url: path,
+        })
     }
   },
   getUserInfo() {
@@ -65,77 +67,80 @@ Page({
       })
       return
     }
-
-    // App.getUserInfo()
-    //   .then(data => {
-    //     console.log(data)
-    //     this.setData({
-    //       userInfo: data
-    //     })
-    //   })
   },
   getStorageInfo() {
-    App.WxService.getStorageInfo()
-      .then(data => {
-        console.log(data)
-        this.setData({
-          'settings[0].path': `${data.currentSize}KB`
+    var that=this;
+    wx.getStorageInfo({
+      success: function(res) {
+        that.setData({
+          'settings[0].path': `${res.currentSize}KB`
         })
-      })
+      },
+    })
+
   },
   bindtap(e) {
     const index = e.currentTarget.dataset.index
     const path = e.currentTarget.dataset.path
-
+    var that = this;
     switch (index) {
       case 0:
-        App.WxService.showModal({
+        wx.showModal({
           title: '友情提示',
           content: '确定要清除缓存吗？',
+          success: function (res) {
+            if (res.confirm) {
+              that.setData({
+                'settings[0].path': `0KB`
+              })
+            }
+          }
         })
-          .then(data => data.confirm == 1 && App.WxService.clearStorage(),
-          this.setData({
-            'settings[0].path': `0KB`
-          })
-          
-          )
+
         break
       default:
-        App.WxService.navigateTo(path)
+       wx.navigateTo({
+         url: path,
+       })
     }
   },
   logout() {
-    App.WxService.showModal({
+    var that=this;
+    wx.showModal({
       title: '友情提示',
       content: '确定要登出吗？',
+      success: function (res) {
+        if (res.confirm) {
+          that.myLoginOut();
+        }
+      }
     })
-      .then(data => {
-        this.myLoginOut();
-      })
-        // App.WxService.removeStorageSync('token')
-        // App.WxService.redirectTo('/pages/login/index')})// data.confirm == 1 &&
   },
   goUserInfo() {
-    App.WxService.navigateTo('/pages/user/info/index')
+    wx.navigateTo({
+      url: '/pages/user/info/index'
+    })
   },
   signOut() {
-    App.HttpService.signOut()
-      .then(data => {
-        console.log(data)
-        if (data.meta.code == 0) {
-          App.WxService.removeStorageSync('token')
-          App.WxService.redirectTo('/pages/login/index')
-        }
-      })
+    
+    // App.HttpService.signOut()
+    //   .then(data => {
+    //     console.log(data)
+    //     if (data.meta.code == 0) {
+    //       wx.removeStorageSync('token')
+    //       wx.redirectTo('/pages/login/index')
+    //     }
+    //   })
   },
-  myLoginOut(){
+  myLoginOut() {
     Req.req_post(Api.loginOut({
       token: Api.getToken()
-    }),"",function success(res){
+    }), "", function success(res) {
       console.log("loginout success -------------");
-      App.WxService.removeStorageSync('token')
-      App.WxService.redirectTo('/pages/login/index')
-    },function fail(res){
+      wx.removeStorageSync('token')
+      wx.redirectTo({
+        url:'/pages/login/index'})
+    }, function fail(res) {
       console.log("loginout failed -------------");
     })
   }

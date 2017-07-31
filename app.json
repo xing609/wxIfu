@@ -35,7 +35,8 @@
     "pages/template/templateChild/index",
     "pages/template/templateIntroduce/index",
     "pages/template/detail/index",
-    "pages/mycustomer/record/index"
+    "pages/mycustomer/record/index",
+    "pages/register/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FF9933",

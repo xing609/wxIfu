@@ -8,21 +8,23 @@
   align-items: center;
 }
 
-.div_left {
-  display: -moz-box;
-  display: -webkit-box;
-  -webkit-box-orient: horizontal;
-  -moz-box-orient: horizontal;
-  -webkit-box-algin: center;
-  -moz-box-algin: center;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
+.div_top {
+  width: 100%;
   vertical-align: middle;
   display: flex;
   align-items: center;
-  margin: 10px;
-  padding: 10px;
-  background: white
+  background: white;
+  position: fixed;
+  justify-content: space-between;
+  top: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.top-left {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10px;
 }
 
 .userinfo-avatar {
@@ -41,37 +43,74 @@
   display: block;
   font-size: 14px;
   color: black;
+  vertical-align: middle;
 }
+
 .left_text_hospital {
   display: block;
   font-size: 12px;
   height: 15px;
   color: black;
 }
-.txt_new_p{
+
+.txt-userinfo {
   margin-left: 20px;
+  vertical-align: middle;
 }
-.item-p{
+
+.item-p {
   margin-left: 10px;
   vertical-align: middle;
 }
 
-.content-title{
+.content-title {
   display: block;
   font-size: 16px;
   color: black;
 }
-.content-text{
+
+.content-text {
   display: block;
   font-size: 14px;
   color: #6e6d6b;
 }
-.line{
+
+.line {
   height: 1px;
   display: block;
   background-color: greenyellow;
 }
-.record-text{
+
+.record-text {
   display: block;
   padding: 5px;
+}
+
+.list {
+  margin-top: 80px;
+  margin-bottom: 65px;
+}
+
+.bottom-btn {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+}
+
+.btnAdd {
+  width: 60px;
+  height: 60px;
+  font-size: 16px;
+  line-height: 60px;
+  text-align: center;
+}
+
+.btnsend {
+  flex: 1;
+  height: 60px;
+  line-height: 60px;
+  font-size: 16px;
+  text-align: center;
 }
