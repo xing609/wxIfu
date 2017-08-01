@@ -1,11 +1,43 @@
 .userinfo-avatar {
-	width: 100rpx;
-	height: 100rpx;
-	border-radius: 50%;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
 }
 
-.weui-icon-search, 
-.weui-search-bar__text {
-    vertical-align: inherit;
+.weui-icon-search, .weui-search-bar__text {
+  vertical-align: inherit;
 }
 
+.text-flow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*实线  */
+
+.line-s {
+  width: 100%;
+  height: 0;
+  border-bottom: #ddd 1px solid;
+}
+
+/*虚线  dotted:点状；solid:实线；double:双实线；dashed：虚线*/
+
+.line-x {
+  width: 100%;
+  height: 0;
+  border-bottom: #ddd 1px dashed;
+}
+
+/*箭头  */
+
+.ic-next {
+  display: flex;
+  width: 5px;
+  height: 10px;
+  margin:0 auto;
+  text-align:center;
+  line-height: 10px;
+  margin-top: 8px;
+}

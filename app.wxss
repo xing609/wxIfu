@@ -8,5 +8,5 @@
 @import 'assets/styles/user.wxss';
 @import 'assets/styles/weui.wxss';
 @import 'assets/styles/skyvow.wxss';
-
+@import 'assets/styles/survey.wxss';
 

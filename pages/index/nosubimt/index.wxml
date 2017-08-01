@@ -9,6 +9,8 @@
       </navigator>  
     </view>  
   </view>  
+
+  
 <button class="btn-notice" bindtap="notice" wx:if="{{!hasNotice}}">批量提醒</button>
   <button class="btn-notice" bindtap="notice" wx:if="{{hasNotice}}">已提醒</button>
 </view> 

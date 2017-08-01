@@ -7,7 +7,7 @@ Page({
     currentPage: 0,
     resultList: []
   },
-  onPullDownRefresh:function(){
+  onPullDownRefresh: function () {
     this.receiveSurvey();
   },
   receiveSurvey: function () {
@@ -31,9 +31,21 @@ Page({
     var that = this;
     this.receiveSurvey();
   },
+  jumpToUserInfo(e) {
+    if (e.currentTarget.dataset.customerid && e.currentTarget.dataset.exthospitalid) {
+      wx.navigateTo({
+        url: "/pages/mycustomer/detail/index?customerId=" + e.currentTarget.dataset.customerid + "&customerExtHosp=" + e.currentTarget.dataset.exthospitalid
+      })
+    } else {
+      wx.showToast({
+        title: '未获取到参数',
+      })
+    }
+
+  },
   navigateTo(e) {
-    wx.navigateTo({
-      url: "/pages/mycustomer/detail/index?customerId=" + e.currentTarget.dataset.customerId + "&customerExtHosp=" + e.currentTarget.dataset.id
-    })
+    // wx.navigateTo({
+    //   url: "/pages/mycustomer/detail/index?customerId=" + e.currentTarget.dataset.customerId + "&customerExtHosp=" + e.currentTarget.dataset.id
+    // })
   }
 })

@@ -12,17 +12,37 @@
 
 
 <view class="list">
-  <navigator wx:for="{{resultList}}" wx:key="{{index}}">
-    <view class="item-p" data-exthospitalid="{{item.customerExtHospitalId}}" data-templateid="{{item.templateId}}" bindtap="navigateTo">
-      <view class="item-name">{{item.realName }}</view>
-      <text class="content-title">{{item.templateName}}</text>
+
+  <view class="list-ing">
+    <view class="imgline"></view>
+    <text class="text-ing">进行中的方案</text>
+  </view>
+
+  <view class="line-s"></view>
+
+  <navigator class="item-p" wx:for="{{resultList}}" wx:key="{{index}}">
+    <view class="item-top" data-exthospitalid="{{item.customerExtHospitalId}}" data-templateid="{{item.templateId}}" bindtap="navigateTo">
+      <text class="content-title text-flow">{{item.templateName}}</text>
       <text class="content-text">当前节点：{{item.currentPointName}} {{item.currentPointIndex}}/{{item.allPointNum}}</text>
-      <text class="content-text">提交量表：{{item.finishSurvyNum}}/{{item.allSurvyNum}}</text>
-      <text class="content-text">阅读须知：{{item.finishNoteNum}}/{{item.allNoteNum}}</text>
+      <text class="content-text">提交量表：{{item.finishSurvyNum}}/{{item.allSurvyNum}}     阅读须知：{{item.finishNoteNum}}/{{item.allNoteNum}}</text>
+
       <view class="line"></view>
     </view>
-    <text class="record-text" data-exthospitalid="{{item.customerExtHospitalId}}" data-templateid="{{item.templateId}}" bindtap="jumpToRecord"> 病程录:{{item.recordCount}}</text>
-    <view class="line"></view>
+
+    <view class="item-bottom" data-exthospitalid="{{item.customerExtHospitalId}}" data-templateid="{{item.templateId}}" bindtap="jumpToRecord">
+
+      <view class="line-x"></view>
+
+      <view class="text-record">
+        <text class="record-text"> 病程录:</text>
+
+        <view class="text-count">
+          <text style="margin-right:10px">{{item.recordCount}}</text>
+          <image class="ic-next" src='../../../assets/images/userinfo/ic_next.png'></image>
+        </view>
+        
+      </view>
+    </view>
   </navigator>
 </view>
 <view class="bottom-btn">

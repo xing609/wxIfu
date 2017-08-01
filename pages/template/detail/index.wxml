@@ -4,13 +4,13 @@
         {{title}}
     </view>-->
 
-  <view class="PicBg">
+  <!-- <view class="PicBg">
     <image src="{{bg}}" />
-  </view>
+  </view> -->
 
   <view class="content">
-    <swiper indicator-dots="true" class="Bannerswiper" bindchange="changeSwiper" data-bg="{{item.playUrl}}">
-      <block wx:for="{{template.templatePointList}}" wx:key="picUrl">
+    <swiper indicator-dots="true" class="Bannerswiper">
+      <block wx:for="{{template.templatePointList}}" wx:key="{{index}}">
         <swiper-item>
           <view class="swiper-item ">
             <navigator>

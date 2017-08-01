@@ -166,6 +166,7 @@ Page({
     //     userInfo: userInfo
     //   })
     // })
+    console.log("test---------------------------onload")
     wx.login({
       success: function (res) {
         if (res.code) {

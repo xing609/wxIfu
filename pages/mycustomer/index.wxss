@@ -86,12 +86,6 @@
   display: block;
 }
 
-.item_line {
-  height: 1px;
-  border-top: 1px solid #ddd;
-  text-align: center;
-}
-
 .group-title {
   display: flex;
   width: 100%;
@@ -111,6 +105,8 @@
   width: 100%;
   flex-direction: column;
   display: flex;
+  margin-bottom: 10px;
+  background: white;
 }
 
 .item-text {
