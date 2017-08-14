@@ -1,5 +1,6 @@
 var Api = require('../../utils/api.js');
 var Tools = require('../../helpers/Md5.js');
+var Req = require('../../utils/req.js');
 const App = getApp()
 Page({
   data: {
@@ -44,26 +45,44 @@ Page({
       })
       return;
     }
-    wx.showNavigationBarLoading() //在标题栏中显示加载
     var that = this;
-    wx.request({
-      method: 'POST',
-      url: Api.login({
-        loginName: this.data.userName,
-        password: Tools.hexMD5(this.data.passWord)
-      }),
-      success: function (res) {
-        console.log("---------token-----------" + res.data.token);
-          wx.setStorageSync('loginName',that.data.userName);
-          wx.setStorageSync('psw', that.data.passWord);
-          wx.setStorageSync('user', res.data.model);
-          //存用户TOKEN
-          wx.setStorageSync('token', res.data.token);
-        
-          wx.switchTab({
-            url: '/pages/index/index?from=login'
-          })
-      }
+    Req.req_post(Api.login({
+      loginName: this.data.userName,
+      password: Tools.hexMD5(this.data.passWord)
+    }), "", function success(res) {
+      console.log("---------token-----------" + res.data.token);
+      wx.setStorageSync('loginName', that.data.userName);
+      wx.setStorageSync('psw', that.data.passWord);
+      wx.setStorageSync('user', res.data.model);
+      //存用户TOKEN
+      wx.setStorageSync('token', res.data.token);
+
+      wx.switchTab({
+        url: '/pages/index/index?from=login'
+      })
+    }, function fail(res) {
     })
+
+    // wx.showNavigationBarLoading() //在标题栏中显示加载
+    // var that = this;
+    // wx.request({
+    //   method: 'POST',
+    //   url: Api.login({
+    //     loginName: this.data.userName,
+    //     password: Tools.hexMD5(this.data.passWord)
+    //   }),
+    //   success: function (res) {
+    //     console.log("---------token-----------" + res.data.token);
+    //       wx.setStorageSync('loginName',that.data.userName);
+    //       wx.setStorageSync('psw', that.data.passWord);
+    //       wx.setStorageSync('user', res.data.model);
+    //       //存用户TOKEN
+    //       wx.setStorageSync('token', res.data.token);
+
+    //       wx.switchTab({
+    //         url: '/pages/index/index?from=login'
+    //       })
+    //   }
+    // })
   }
 })

@@ -8,4 +8,5 @@
 @import 'assets/styles/common.wxss';
 @import 'assets/styles/weui.wxss';
 @import 'assets/styles/survey.wxss';
+@import "utils/wxParse/wxParse.wxss";
 

@@ -6,7 +6,7 @@ const COMPONENT_APP_ID="wx0cedb53c749e8372";
 const APP_ID ="wxd992a930df145349"
 
 
-const WX_PAGE ="http://mp.weixin.qq.com/s?__biz=MzAwMzU1NjkxNQ==&mid=401971566&idx=6&sn=960fe14d513abb88a7540a325e836169";
+const WX_PAGE ="https://mp.weixin.qq.com/s?__biz=MzAwMzU1NjkxNQ==&mid=401971566&idx=6&sn=960fe14d513abb88a7540a325e836169";
 const MS_PAGE ="https://ms.ifuifu.com/index/detail/id/4803";
    
 //微信登录
@@ -187,6 +187,11 @@ function reqUrlId(url, id, o) {
 function reqCon(url) {
   return HOST_URI + url + '?';
 }
+//直接请求
+// function reqHtml(){
+//   return 
+// }
+
 function _obj2uri(obj) {
   return Object.keys(obj).map(function (k) {
     return encodeURIComponent(k) + "=" + encodeURIComponent(obj[k]);
