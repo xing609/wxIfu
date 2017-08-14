@@ -1,4 +1,4 @@
-<view class="container">  
+
   <view class="weui-grids">  
     <view class="weui-grid" wx:for="{{resultList}}" bindtap="navigateTo" data-customer-id="{{item.customerId}}">  
       <navigator >  
@@ -13,4 +13,4 @@
   
 <button class="btn-notice" bindtap="notice" wx:if="{{!hasNotice}}">批量提醒</button>
   <button class="btn-notice" bindtap="notice" wx:if="{{hasNotice}}">已提醒</button>
-</view> 
+

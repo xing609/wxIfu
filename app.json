@@ -35,7 +35,9 @@
     "pages/template/templateChild/index",
     "pages/template/templateIntroduce/index",
     "pages/template/detail/index",
+    "pages/template/knows/index",
     "pages/mycustomer/record/index",
+    "pages/auth/index",
     "pages/register/index"
   ],
   "window": {

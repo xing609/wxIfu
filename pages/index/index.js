@@ -13,7 +13,6 @@ Page({
     autoplay: true,
     interval: 3000,
     duration: 1000,
-    //loadingHidden: false,  // loading
     model: {},
     images:[
       {
@@ -130,8 +129,8 @@ Page({
   login() {
     var that = this;
     Req.req_post(Api.login({
-      loginName: Api.account,
-      password: Tools.hexMD5(Api.psw)
+      loginName: Api.getLoginName(),
+      password: Tools.hexMD5(Api.getPsw())
     }), "", function success(res) {
       wx.setStorageSync('user', res.data.model);
       //存用户TOKEN
@@ -156,8 +155,35 @@ Page({
     })
   },
 
-  onLoad() {
+  onLoad: function (option) {
     var that = this;
+    if (Api.getToken()){
+      this.getHomeNum();
+      wx.showToast({
+        title: '登录成功',
+      })
+    }else{
+      if (Api.getLoginName() &&Api.getPsw()) {
+        this.login();
+        wx.showToast({
+          title: '自动登录',
+        })
+      }else{
+        wx.redirectTo({
+          url: '/pages/login/index',
+        })
+      }
+    }
+   
+  
+   // this.getHomeNum();
+    // if (!Api.getToken()){
+    //   this.getHomeNum();
+    // }else{
+    //   wx.showToast({
+    //     title: 'no token',
+    //   })
+    // }
     //this.login();
     //调用应用实例的方法获取全局数据
     // App.getUserInfo(function (userInfo) {
@@ -167,17 +193,17 @@ Page({
     //   })
     // })
     console.log("test---------------------------onload")
-    wx.login({
-      success: function (res) {
-        if (res.code) {
-          //发起网络请求
-          console.log("-----------res.code=" + res.code);
-          that.getSessionKey(res.code);
-        } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
-        }
-      }
-    });
+    // wx.login({
+    //   success: function (res) {
+    //     if (res.code) {
+    //       //发起网络请求
+    //       console.log("-----------res.code=" + res.code);
+    //       that.getSessionKey(res.code);
+    //     } else {
+    //       console.log('获取用户登录态失败！' + res.errMsg)
+    //     }
+    //   }
+    // });
   },
   //code 换取 session_key
   getSessionKey (js_code) {
@@ -200,8 +226,8 @@ Page({
               success: function (res) {
                 console.log("-------res==" + res);
                 var userInfo = res.userInfo;
-                that.login();
-                //that.thirdLogin(openid, JSON.stringify(userInfo));
+                //that.login();
+                that.thirdLogin(openid, JSON.stringify(userInfo));
               }
             })
 

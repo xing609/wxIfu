@@ -1,3 +1,9 @@
+.container{
+  background: #F0F0F0;
+  display: block;
+  min-height: 100%;
+}
+
 .userinfo-avatar {
   width: 100rpx;
   height: 100rpx;
@@ -6,6 +12,12 @@
 
 .weui-icon-search, .weui-search-bar__text {
   vertical-align: inherit;
+}
+.input{
+  display: flex;
+  font-size: 14px;
+  background-color: white;
+  height: 40px
 }
 
 .text-flow {
@@ -36,8 +48,6 @@
   display: flex;
   width: 5px;
   height: 10px;
-  margin:0 auto;
-  text-align:center;
-  line-height: 10px;
+  vertical-align: middle;
   margin-top: 8px;
 }

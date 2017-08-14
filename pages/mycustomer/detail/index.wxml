@@ -1,4 +1,5 @@
 <!--detail.wxml-->
+<view class="container">
 <div class="div_top">
   <view class="top-left">
     <image class="userinfo-avatar" src='{{customer.face}}'></image>
@@ -7,12 +8,12 @@
       <span class="left_text_name">{{customer.mobile}}</span>
     </view>
   </view>
-  <image style="margin-right: 10px;vertical-align: middle;width:5px; height: 10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
+  <image class="ic-next" style="margin-right:10px" src='../../../assets/images/userinfo/ic_next.png'></image>
 </div>
 
 
 <view class="list">
-
+ <view style="height:80px;"></view>
   <view class="list-ing">
     <view class="imgline"></view>
     <text class="text-ing">进行中的方案</text>
@@ -44,10 +45,13 @@
       </view>
     </view>
   </navigator>
+
+  <view style="height:60px;background-color:white"></view>
 </view>
 <view class="bottom-btn">
   <button class="btnAdd" bindtap="setDisabled">屏蔽</button>
   <button class="btnAdd" bindtap="setDisabled">加标</button>
   <button class="btnsend" bindtap="sendTemplate"> 分配方案 </button>
   <button class="btnsend" open-type="contact">询问病情</button>
+</view>
 </view>

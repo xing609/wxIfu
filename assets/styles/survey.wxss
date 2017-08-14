@@ -1,5 +1,4 @@
 .item-container {
-  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -17,6 +16,7 @@
 
 
 .item-right {
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -41,7 +41,6 @@
 
 .item-bg {
   display: flex;
-  width: 100%;
   padding: 5px 5px 5px 5px;
   background-color: #eaeff9;
   height: 20px;
@@ -52,7 +51,6 @@
 .item-score-p {
   display: flex;
   flex-direction: raw;
-  width: 100%;
   justify-content: space-between;
   margin-bottom: 10px;
 }

@@ -1,8 +1,6 @@
 /* pages/mycustomer/index.wxss */
 
 .container {
-  height: 100%;
-  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -29,25 +27,26 @@
 }
 
 .list {
-  height: 100%;
-  width: 100%;
-  margin-top: 100px;
+  margin-top: 110px;
 }
 
 .top {
   display: flex;
   height: 50px;
-  background: #fff;
+  background: white;
   justify-content: space-between;
   align-items: center;
 }
 
-.div-left {
+.v-left {
   display: flex;
   flex-direction: row;
 }
-
+.v-right{
+  display: flex;
+}
 .txt_new_p {
+  display: flex;
   flex-direction: column;
   margin-left: 10px;
   vertical-align: middle;
@@ -94,8 +93,9 @@
   padding-top: 5px;
   padding-bottom: 5px;
 }
-.text-orangered{
-  color: #FF9A35;
+
+.text-orangered {
+  color: #ff9a35;
   font-size: 14px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -114,15 +114,17 @@
   color: gray;
 }
 
-.line {
-  width: 100%;
-  border-top: 1px dotted #c0c0c0;
-}
-.head-margin-left{
+.ic-newcustomer {
+  width: 40px;
+  height: 40px;
   margin-left: 10px;
 }
+
+.head-margin-left {
+  margin-left: 10px;
+}
+
 .text-remark {
-  width: 100%;
   vertical-align: middle;
   padding-left: 10px;
   flex-direction: row;
@@ -162,4 +164,3 @@
   font-size: 14px;
   padding-right: 10px;
 }
-
