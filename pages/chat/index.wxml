@@ -1,6 +1,6 @@
 <view class="container">
 <import src="../common/prompt.wxml" />
-    <navigator  class="nav-p" wx:for="{{resultList}}" wx:key="" bindtap="navigateTo" data-id="{{ item._id }}">
+    <navigator  class="nav-p" wx:for="{{resultList}}" wx:key="" bindtap="navigateTo" data-id="{{item.id }}" data-realname="{{item.realName}}">
       <view class="img-head">
         <image class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
       </view>
@@ -12,4 +12,5 @@
         <text class="content-text" wx:if="{{item.lastChat.contentType==3}}">[语音]</text>
       </view>
     </navigator>
+   
 </view>

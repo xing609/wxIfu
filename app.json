@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/template/knows/index",
     "pages/index/index",
+    "pages/template/knows/index",
     
     "pages/start/index",
     "pages/mycustomer/index",
@@ -37,7 +37,6 @@
     "pages/template/templateChild/index",
     "pages/template/templateIntroduce/index",
     "pages/template/detail/index",
-    
     "pages/mycustomer/record/index",
     "pages/auth/index",
     "pages/register/index"

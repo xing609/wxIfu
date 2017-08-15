@@ -159,15 +159,9 @@ Page({
     var that = this;
     if (Api.getToken()){
       this.getHomeNum();
-      wx.showToast({
-        title: '登录成功',
-      })
     }else{
       if (Api.getLoginName() &&Api.getPsw()) {
         this.login();
-        wx.showToast({
-          title: '自动登录',
-        })
       }else{
         wx.redirectTo({
           url: '/pages/login/index',

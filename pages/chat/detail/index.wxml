@@ -1,0 +1,61 @@
+<view class="container">
+
+  <navigator class="chat-item" wx:for="{{resultList}}" wx:key="" bindtap="navigateTo" data-id="{{ item._id }}">
+  
+  <text class="content-time">{{item.createTime}}</text>
+
+    <!--左边  -->
+    <view wx:if="{{item.direction!=1}}" class="left-view">
+
+    
+      <!--文字-->
+      <view wx:if="{{item.contentType==1}}" class="msg-txt">
+        <image class="userinfo-avatar head-left" src="{{item.sendFaceUrl}}" background-size="cover"></image>
+        <text class="content-txt-left">{{content}}</text>
+      </view>
+
+
+      <!--图片-->
+      <view wx:if="{{item.contentType==2}}" class="msg-txt">
+        <image class="userinfo-avatar head-left" src="{{item.sendFaceUrl}}" background-size="cover"></image>
+        <text class="content-img-left">{{content}}</text>
+      </view>
+
+
+      <!--语音-->
+      <view wx:if="{{item.contentType==3}}" class="msg-txt">
+        <image class="userinfo-avatar head-left" src="{{item.sendFaceUrl}}" background-size="cover"></image>
+        <text class="content-voice-left">{{content}}</text>
+      </view>
+
+    </view>
+
+    <!--右边  -->
+    <view wx:if="{{item.direction==1}}" class="right-view">
+        <!--文字-->
+        <view wx:if="{{item.contentType==1}}">
+          <text class="content-txt-right">{{item.content}}</text>
+        </view>
+
+        <!--图片-->
+        <view wx:if="{{item.contentType==2}}">
+          <image class="right-img" src="{{item.content}}"></image>
+        </view>
+
+        <!--语音-->
+        <view wx:if="{{item.contentType==3}}">
+          <text class="content-voice-right">{{item.content}}</text>
+        </view>
+
+        <image class="right-head" src="{{item.toFaceUrl}}" background-size="cover"></image>
+    
+
+    </view>
+
+
+
+
+
+  </navigator>
+
+</view>

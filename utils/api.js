@@ -7,6 +7,8 @@ const APP_ID ="wxd992a930df145349"
 
 
 const WX_PAGE ="https://mp.weixin.qq.com/s?__biz=MzAwMzU1NjkxNQ==&mid=401971566&idx=6&sn=960fe14d513abb88a7540a325e836169";
+
+const MS_PAGE_2 ="https://ms.ifuifu.com/index/detail/id/4808";
 const MS_PAGE ="https://ms.ifuifu.com/index/detail/id/4803";
    
 //微信登录
@@ -201,6 +203,7 @@ module.exports = {
   getCompnentAppId: COMPONENT_APP_ID,
   getAppId: APP_ID,
   msPage: MS_PAGE,
+  msPage2: MS_PAGE_2,
   wxPage: WX_PAGE,
   login: _login,
   getHomeNum: _getHomeNum,

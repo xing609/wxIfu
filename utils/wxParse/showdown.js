@@ -1,7 +1,4 @@
 /**
- * 
- * showdown: https://github.com/showdownjs/showdown
- * 
  * author: Di (微信小程序开发工程师)
  * organization: WeAppDev(微信小程序开发论坛)(http://weappdev.com)
  *               垂直微信小程序开发交流社区
@@ -105,23 +102,23 @@ function getDefaultOpts(simple) {
 
 // Private properties
 var showdown = {},
-  parsers = {},
-  extensions = {},
-  globalOptions = getDefaultOpts(true),
-  flavor = {
-    github: {
-      omitExtraWLInCodeBlocks: true,
-      prefixHeaderId: 'user-content-',
-      simplifiedAutoLink: true,
-      literalMidWordUnderscores: true,
-      strikethrough: true,
-      tables: true,
-      tablesHeaderId: true,
-      ghCodeBlocks: true,
-      tasklists: true
-    },
-    vanilla: getDefaultOpts(true)
-  };
+    parsers = {},
+    extensions = {},
+    globalOptions = getDefaultOpts(true),
+    flavor = {
+      github: {
+        omitExtraWLInCodeBlocks:   true,
+        prefixHeaderId:            'user-content-',
+        simplifiedAutoLink:        true,
+        literalMidWordUnderscores: true,
+        strikethrough:             true,
+        tables:                    true,
+        tablesHeaderId:            true,
+        ghCodeBlocks:              true,
+        tasklists:                 true
+      },
+      vanilla: getDefaultOpts(true)
+    };
 
 /**
  * helper namespace
@@ -322,7 +319,7 @@ function validate(extension, name) {
 
   for (var i = 0; i < extension.length; ++i) {
     var baseMsg = errMsg + ' sub-extension ' + i + ': ',
-      ext = extension[i];
+        ext = extension[i];
     if (typeof ext !== 'object') {
       ret.valid = false;
       ret.error = baseMsg + 'must be an object, but ' + typeof ext + ' given';
@@ -566,10 +563,10 @@ var rgxFindMatchPos = function (str, left, right, flags) {
         if (!--t) {
           end = m.index + m[0].length;
           var obj = {
-            left: { start: start, end: s },
-            match: { start: s, end: m.index },
-            right: { start: m.index, end: end },
-            wholeMatch: { start: start, end: end }
+            left: {start: start, end: s},
+            match: {start: s, end: m.index},
+            right: {start: m.index, end: end},
+            wholeMatch: {start: start, end: end}
           };
           pos.push(obj);
           if (!g) {
@@ -615,7 +612,7 @@ var rgxFindMatchPos = function (str, left, right, flags) {
 showdown.helper.matchRecursiveRegExp = function (str, left, right, flags) {
   'use strict';
 
-  var matchPos = rgxFindMatchPos(str, left, right, flags),
+  var matchPos = rgxFindMatchPos (str, left, right, flags),
     results = [];
 
   for (var i = 0; i < matchPos.length; ++i) {
@@ -649,8 +646,8 @@ showdown.helper.replaceRecursiveRegExp = function (str, replacement, left, right
   }
 
   var matchPos = rgxFindMatchPos(str, left, right, flags),
-    finalStr = str,
-    lng = matchPos.length;
+      finalStr = str,
+      lng = matchPos.length;
 
   if (lng > 0) {
     var bits = [];
@@ -712,33 +709,33 @@ showdown.Converter = function (converterOptions) {
   'use strict';
 
   var
-    /**
-     * Options used by this converter
-     * @private
-     * @type {{}}
-     */
-    options = {},
+      /**
+       * Options used by this converter
+       * @private
+       * @type {{}}
+       */
+      options = {},
 
-    /**
-     * Language extensions used by this converter
-     * @private
-     * @type {Array}
-     */
-    langExtensions = [],
+      /**
+       * Language extensions used by this converter
+       * @private
+       * @type {Array}
+       */
+      langExtensions = [],
 
-    /**
-     * Output modifiers extensions used by this converter
-     * @private
-     * @type {Array}
-     */
-    outputModifiers = [],
+      /**
+       * Output modifiers extensions used by this converter
+       * @private
+       * @type {Array}
+       */
+      outputModifiers = [],
 
-    /**
-     * Event listeners
-     * @private
-     * @type {{}}
-     */
-    listeners = {};
+      /**
+       * Event listeners
+       * @private
+       * @type {{}}
+       */
+      listeners = {};
 
   _constructor();
 
@@ -764,7 +761,7 @@ showdown.Converter = function (converterOptions) {
       }
     } else {
       throw Error('Converter expects the passed parameter to be an object, but ' + typeof converterOptions +
-        ' was passed instead.');
+      ' was passed instead.');
     }
 
     if (options.extensions) {
@@ -792,7 +789,7 @@ showdown.Converter = function (converterOptions) {
           'Please inform the developer that the extension should be updated!');
         legacyExtensionLoading(showdown.extensions[ext], ext);
         return;
-        // END LEGACY SUPPORT CODE
+      // END LEGACY SUPPORT CODE
 
       } else if (!showdown.helper.isUndefined(extensions[ext])) {
         ext = extensions[ext];
@@ -891,7 +888,7 @@ showdown.Converter = function (converterOptions) {
 
   function rTrimInputText(text) {
     var rsp = text.match(/^\s*/)[0].length,
-      rgx = new RegExp('^\\s{0,' + rsp + '}', 'gm');
+        rgx = new RegExp('^\\s{0,' + rsp + '}', 'gm');
     return text.replace(rgx, '');
   }
 
@@ -904,7 +901,7 @@ showdown.Converter = function (converterOptions) {
    * @param {{}} globals
    * @returns {string}
    */
-  this._dispatch = function dispatch(evtName, text, options, globals) {
+  this._dispatch = function dispatch (evtName, text, options, globals) {
     if (listeners.hasOwnProperty(evtName)) {
       for (var ei = 0; ei < listeners[evtName].length; ++ei) {
         var nText = listeners[evtName][ei](evtName, text, this, options, globals);
@@ -939,18 +936,18 @@ showdown.Converter = function (converterOptions) {
     }
 
     var globals = {
-      gHtmlBlocks: [],
-      gHtmlMdBlocks: [],
-      gHtmlSpans: [],
-      gUrls: {},
-      gTitles: {},
-      gDimensions: {},
-      gListLevel: 0,
-      hashLinkCounts: {},
-      langExtensions: langExtensions,
+      gHtmlBlocks:     [],
+      gHtmlMdBlocks:   [],
+      gHtmlSpans:      [],
+      gUrls:           {},
+      gTitles:         {},
+      gDimensions:     {},
+      gListLevel:      0,
+      hashLinkCounts:  {},
+      langExtensions:  langExtensions,
       outputModifiers: outputModifiers,
-      converter: this,
-      ghCodeBlocks: []
+      converter:       this,
+      ghCodeBlocks:    []
     };
 
     // attacklab: Replace ~ with ~T
@@ -1119,9 +1116,9 @@ showdown.subParser('anchors', function (text, options, globals) {
     }
     wholeMatch = m1;
     var linkText = m2,
-      linkId = m3.toLowerCase(),
-      url = m4,
-      title = m7;
+        linkId = m3.toLowerCase(),
+        url = m4,
+        title = m7;
 
     if (!url) {
       if (!linkId) {
@@ -1216,7 +1213,7 @@ showdown.subParser('anchors', function (text, options, globals) {
    /g,writeAnchorTag);
    */
   text = text.replace(/(\[((?:\[[^\]]*]|[^\[\]])*)]\([ \t]*()<?(.*?(?:\(.*?\).*?)?)>?[ \t]*((['"])(.*?)\6[ \t]*)?\))/g,
-    writeAnchorTag);
+                      writeAnchorTag);
 
   //
   // Last, handle reference-style shortcuts: [link text]
@@ -1244,10 +1241,10 @@ showdown.subParser('autoLinks', function (text, options, globals) {
 
   text = globals.converter._dispatch('autoLinks.before', text, options, globals);
 
-  var simpleURLRegex = /\b(((https?|ftp|dict):\/\/|www\.)[^'">\s]+\.[^'">\s]+)(?=\s|$)(?!["<>])/gi,
-    delimUrlRegex = /<(((https?|ftp|dict):\/\/|www\.)[^'">\s]+)>/gi,
-    simpleMailRegex = /(?:^|[ \n\t])([A-Za-z0-9!#$%&'*+-/=?^_`\{|}~\.]+@[-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+)(?:$|[ \n\t])/gi,
-    delimMailRegex = /<(?:mailto:)?([-.\w]+@[-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+)>/gi;
+  var simpleURLRegex  = /\b(((https?|ftp|dict):\/\/|www\.)[^'">\s]+\.[^'">\s]+)(?=\s|$)(?!["<>])/gi,
+      delimUrlRegex   = /<(((https?|ftp|dict):\/\/|www\.)[^'">\s]+)>/gi,
+      simpleMailRegex = /(?:^|[ \n\t])([A-Za-z0-9!#$%&'*+-/=?^_`\{|}~\.]+@[-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+)(?:$|[ \n\t])/gi,
+      delimMailRegex  = /<(?:mailto:)?([-.\w]+@[-a-z0-9]+(\.[-a-z0-9]+)*\.[a-z]+)>/gi;
 
   text = text.replace(delimUrlRegex, replaceLink);
   text = text.replace(delimMailRegex, replaceMail);
@@ -1387,8 +1384,8 @@ showdown.subParser('codeBlocks', function (text, options, globals) {
   var pattern = /(?:\n\n|^)((?:(?:[ ]{4}|\t).*\n+)+)(\n*[ ]{0,3}[^ \t\n]|(?=~0))/g;
   text = text.replace(pattern, function (wholeMatch, m1, m2) {
     var codeblock = m1,
-      nextChar = m2,
-      end = '\n';
+        nextChar = m2,
+        end = '\n';
 
     codeblock = showdown.subParser('outdent')(codeblock);
     codeblock = showdown.subParser('encodeCode')(codeblock);
@@ -1455,7 +1452,7 @@ showdown.subParser('codeSpans', function (text, options, globals) {
    /gm, function(){...});
    */
 
-  if (typeof (text) === 'undefined') {
+  if (typeof(text) === 'undefined') {
     text = '';
   }
   text = text.replace(/(^|[^\\])(`+)([^\r]*?[^`])\2(?!`)/gm,
@@ -1487,7 +1484,7 @@ showdown.subParser('detab', function (text) {
   // use the sentinel to anchor our regex so it doesn't explode
   text = text.replace(/~B(.+?)~A/g, function (wholeMatch, m1) {
     var leadingText = m1,
-      numSpaces = 4 - leadingText.length % 4;  // g_tab_width
+        numSpaces = 4 - leadingText.length % 4;  // g_tab_width
 
     // there *must* be a better way to do this:
     for (var i = 0; i < numSpaces; i++) {
@@ -1678,7 +1675,7 @@ showdown.subParser('githubCodeBlocks', function (text, options, globals) {
     // Since GHCodeblocks can be false positives, we need to
     // store the primitive text and the parsed text in a global var,
     // and then return a token
-    return '\n\n~G' + (globals.ghCodeBlocks.push({ text: wholeMatch, codeblock: codeblock }) - 1) + 'G\n\n';
+    return '\n\n~G' + (globals.ghCodeBlocks.push({text: wholeMatch, codeblock: codeblock}) - 1) + 'G\n\n';
   });
 
   // attacklab: strip sentinel
@@ -1717,41 +1714,41 @@ showdown.subParser('hashHTMLBlocks', function (text, options, globals) {
   'use strict';
 
   var blockTags = [
-    'pre',
-    'div',
-    'h1',
-    'h2',
-    'h3',
-    'h4',
-    'h5',
-    'h6',
-    'blockquote',
-    'table',
-    'dl',
-    'ol',
-    'ul',
-    'script',
-    'noscript',
-    'form',
-    'fieldset',
-    'iframe',
-    'math',
-    'style',
-    'section',
-    'header',
-    'footer',
-    'nav',
-    'article',
-    'aside',
-    'address',
-    'audio',
-    'canvas',
-    'figure',
-    'hgroup',
-    'output',
-    'video',
-    'p'
-  ],
+      'pre',
+      'div',
+      'h1',
+      'h2',
+      'h3',
+      'h4',
+      'h5',
+      'h6',
+      'blockquote',
+      'table',
+      'dl',
+      'ol',
+      'ul',
+      'script',
+      'noscript',
+      'form',
+      'fieldset',
+      'iframe',
+      'math',
+      'style',
+      'section',
+      'header',
+      'footer',
+      'nav',
+      'article',
+      'aside',
+      'address',
+      'audio',
+      'canvas',
+      'figure',
+      'hgroup',
+      'output',
+      'video',
+      'p'
+    ],
     repFunc = function (wholeMatch, match, left, right) {
       var txt = wholeMatch;
       // check if this html element is marked as markdown
@@ -1816,7 +1813,7 @@ showdown.subParser('hashPreCodeTags', function (text, config, globals) {
   var repFunc = function (wholeMatch, match, left, right) {
     // encode html entities
     var codeblock = left + showdown.subParser('encodeCode')(match) + right;
-    return '\n\n~G' + (globals.ghCodeBlocks.push({ text: wholeMatch, codeblock: codeblock }) - 1) + 'G\n\n';
+    return '\n\n~G' + (globals.ghCodeBlocks.push({text: wholeMatch, codeblock: codeblock}) - 1) + 'G\n\n';
   };
 
   text = showdown.helper.replaceRecursiveRegExp(text, repFunc, '^(?: |\\t){0,3}<pre\\b[^>]*>\\s*<code\\b[^>]*>', '^(?: |\\t){0,3}</code>\\s*</pre>', 'gim');
@@ -1829,31 +1826,31 @@ showdown.subParser('headers', function (text, options, globals) {
   text = globals.converter._dispatch('headers.before', text, options, globals);
 
   var prefixHeader = options.prefixHeaderId,
-    headerLevelStart = (isNaN(parseInt(options.headerLevelStart))) ? 1 : parseInt(options.headerLevelStart),
+      headerLevelStart = (isNaN(parseInt(options.headerLevelStart))) ? 1 : parseInt(options.headerLevelStart),
 
-    // Set text-style headers:
-    //	Header 1
-    //	========
-    //
-    //	Header 2
-    //	--------
-    //
-    setextRegexH1 = (options.smoothLivePreview) ? /^(.+)[ \t]*\n={2,}[ \t]*\n+/gm : /^(.+)[ \t]*\n=+[ \t]*\n+/gm,
-    setextRegexH2 = (options.smoothLivePreview) ? /^(.+)[ \t]*\n-{2,}[ \t]*\n+/gm : /^(.+)[ \t]*\n-+[ \t]*\n+/gm;
+  // Set text-style headers:
+  //	Header 1
+  //	========
+  //
+  //	Header 2
+  //	--------
+  //
+      setextRegexH1 = (options.smoothLivePreview) ? /^(.+)[ \t]*\n={2,}[ \t]*\n+/gm : /^(.+)[ \t]*\n=+[ \t]*\n+/gm,
+      setextRegexH2 = (options.smoothLivePreview) ? /^(.+)[ \t]*\n-{2,}[ \t]*\n+/gm : /^(.+)[ \t]*\n-+[ \t]*\n+/gm;
 
   text = text.replace(setextRegexH1, function (wholeMatch, m1) {
 
     var spanGamut = showdown.subParser('spanGamut')(m1, options, globals),
-      hID = (options.noHeaderId) ? '' : ' id="' + headerId(m1) + '"',
-      hLevel = headerLevelStart,
-      hashBlock = '<h' + hLevel + hID + '>' + spanGamut + '</h' + hLevel + '>';
+        hID = (options.noHeaderId) ? '' : ' id="' + headerId(m1) + '"',
+        hLevel = headerLevelStart,
+        hashBlock = '<h' + hLevel + hID + '>' + spanGamut + '</h' + hLevel + '>';
     return showdown.subParser('hashBlock')(hashBlock, options, globals);
   });
 
   text = text.replace(setextRegexH2, function (matchFound, m1) {
     var spanGamut = showdown.subParser('spanGamut')(m1, options, globals),
-      hID = (options.noHeaderId) ? '' : ' id="' + headerId(m1) + '"',
-      hLevel = headerLevelStart + 1,
+        hID = (options.noHeaderId) ? '' : ' id="' + headerId(m1) + '"',
+        hLevel = headerLevelStart + 1,
       hashBlock = '<h' + hLevel + hID + '>' + spanGamut + '</h' + hLevel + '>';
     return showdown.subParser('hashBlock')(hashBlock, options, globals);
   });
@@ -1867,9 +1864,9 @@ showdown.subParser('headers', function (text, options, globals) {
   //
   text = text.replace(/^(#{1,6})[ \t]*(.+?)[ \t]*#*\n+/gm, function (wholeMatch, m1, m2) {
     var span = showdown.subParser('spanGamut')(m2, options, globals),
-      hID = (options.noHeaderId) ? '' : ' id="' + headerId(m2) + '"',
-      hLevel = headerLevelStart - 1 + m1.length,
-      header = '<h' + hLevel + hID + '>' + span + '</h' + hLevel + '>';
+        hID = (options.noHeaderId) ? '' : ' id="' + headerId(m2) + '"',
+        hLevel = headerLevelStart - 1 + m1.length,
+        header = '<h' + hLevel + hID + '>' + span + '</h' + hLevel + '>';
 
     return showdown.subParser('hashBlock')(header, options, globals);
   });
@@ -1907,14 +1904,14 @@ showdown.subParser('images', function (text, options, globals) {
 
   text = globals.converter._dispatch('images.before', text, options, globals);
 
-  var inlineRegExp = /!\[(.*?)]\s?\([ \t]*()<?(\S+?)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*(?:(['"])(.*?)\6[ \t]*)?\)/g,
-    referenceRegExp = /!\[([^\]]*?)] ?(?:\n *)?\[(.*?)]()()()()()/g;
+  var inlineRegExp    = /!\[(.*?)]\s?\([ \t]*()<?(\S+?)>?(?: =([*\d]+[A-Za-z%]{0,4})x([*\d]+[A-Za-z%]{0,4}))?[ \t]*(?:(['"])(.*?)\6[ \t]*)?\)/g,
+      referenceRegExp = /!\[([^\]]*?)] ?(?:\n *)?\[(.*?)]()()()()()/g;
 
-  function writeImageTag(wholeMatch, altText, linkId, url, width, height, m5, title) {
+  function writeImageTag (wholeMatch, altText, linkId, url, width, height, m5, title) {
 
-    var gUrls = globals.gUrls,
-      gTitles = globals.gTitles,
-      gDims = globals.gDimensions;
+    var gUrls   = globals.gUrls,
+        gTitles = globals.gTitles,
+        gDims   = globals.gDimensions;
 
     linkId = linkId.toLowerCase();
 
@@ -1955,7 +1952,7 @@ showdown.subParser('images', function (text, options, globals) {
     }
 
     if (width && height) {
-      width = (width === '*') ? 'auto' : width;
+      width  = (width === '*') ? 'auto' : width;
       height = (height === '*') ? 'auto' : height;
 
       result += ' width="' + width + '"';
@@ -2014,7 +2011,7 @@ showdown.subParser('lists', function (text, options, globals) {
    * @param {boolean} trimTrailing
    * @returns {string}
    */
-  function processListItems(listStr, trimTrailing) {
+  function processListItems (listStr, trimTrailing) {
     // The $g_list_level global keeps track of when we're inside a list.
     // Each time we enter a list, we increment it; when we leave a list,
     // we decrement. If it's zero, we're not in a list anymore.
@@ -2044,12 +2041,12 @@ showdown.subParser('lists', function (text, options, globals) {
     listStr += '~0';
 
     var rgx = /(\n)?(^[ \t]*)([*+-]|\d+[.])[ \t]+((\[(x|X| )?])?[ \t]*[^\r]+?(\n{1,2}))(?=\n*(~0|\2([*+-]|\d+[.])[ \t]+))/gm,
-      isParagraphed = (/\n[ \t]*\n(?!~0)/.test(listStr));
+        isParagraphed = (/\n[ \t]*\n(?!~0)/.test(listStr));
 
     listStr = listStr.replace(rgx, function (wholeMatch, m1, m2, m3, m4, taskbtn, checked) {
       checked = (checked && checked.trim() !== '');
       var item = showdown.subParser('outdent')(m4, options, globals),
-        bulletStyle = '';
+          bulletStyle = '';
 
       // Support for github tasklists
       if (taskbtn && options.tasklists) {
@@ -2079,7 +2076,7 @@ showdown.subParser('lists', function (text, options, globals) {
           item = showdown.subParser('spanGamut')(item, options, globals);
         }
       }
-      item = '\n<li' + bulletStyle + '>' + item + '</li>\n';
+      item =  '\n<li' + bulletStyle + '>' + item + '</li>\n';
       return item;
     });
 
@@ -2193,8 +2190,8 @@ showdown.subParser('paragraphs', function (text, options, globals) {
   text = text.replace(/\n+$/g, '');
 
   var grafs = text.split(/\n{2,}/g),
-    grafsOut = [],
-    end = grafs.length; // Wrap <p> tags
+      grafsOut = [],
+      end = grafs.length; // Wrap <p> tags
 
   for (var i = 0; i < end; i++) {
     var str = grafs[i];
@@ -2213,12 +2210,12 @@ showdown.subParser('paragraphs', function (text, options, globals) {
   end = grafsOut.length;
   for (i = 0; i < end; i++) {
     var blockText = '',
-      grafsOutIt = grafsOut[i],
-      codeFlag = false;
+        grafsOutIt = grafsOut[i],
+        codeFlag = false;
     // if this is a marker for an html block...
     while (grafsOutIt.search(/~(K|G)(\d+)\1/) >= 0) {
       var delim = RegExp.$1,
-        num = RegExp.$2;
+          num   = RegExp.$2;
 
       if (delim === 'K') {
         blockText = globals.gHtmlBlocks[num];
@@ -2372,7 +2369,7 @@ showdown.subParser('stripLinkDefinitions', function (text, options, globals) {
       }
       if (options.parseImgDimensions && width && height) {
         globals.gDimensions[linkId] = {
-          width: width,
+          width:  width,
           height: height
         };
       }
@@ -2426,7 +2423,7 @@ showdown.subParser('tables', function (text, options, globals) {
 
   function buildTable(headers, cells) {
     var tb = '<table>\n<thead>\n<tr>\n',
-      tblLgn = headers.length;
+        tblLgn = headers.length;
 
     for (var i = 0; i < tblLgn; ++i) {
       tb += headers[i];
@@ -2460,12 +2457,12 @@ showdown.subParser('tables', function (text, options, globals) {
       }
     }
 
-    var rawHeaders = tableLines[0].split('|').map(function (s) { return s.trim(); }),
-      rawStyles = tableLines[1].split('|').map(function (s) { return s.trim(); }),
-      rawCells = [],
-      headers = [],
-      styles = [],
-      cells = [];
+    var rawHeaders = tableLines[0].split('|').map(function (s) { return s.trim();}),
+        rawStyles = tableLines[1].split('|').map(function (s) { return s.trim();}),
+        rawCells = [],
+        headers = [],
+        styles = [],
+        cells = [];
 
     tableLines.shift();
     tableLines.shift();
