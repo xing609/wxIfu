@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/mycustomer/customerinfo/index",
     "pages/index/index",
+    "pages/mycustomer/customerinfo/index",
+    "pages/template/knows/index",
     "pages/start/index",
     "pages/mycustomer/index",
     "pages/newcustomer/index",
@@ -11,6 +12,7 @@
     "pages/index/templateqr/index",
     "pages/index/ifuvalue/index",
     "pages/chat/index",
+    "pages/chat/detail/index",
     "pages/index/doctorwrite/index",
     "pages/index/receive/index",
     "pages/index/nosubimt/index",
@@ -36,7 +38,7 @@
     "pages/template/templateIntroduce/index",
     "pages/template/detail/index",
     "pages/mycustomer/record/index",
-    
+    "pages/auth/index",
     "pages/register/index"
   ],
   "window": {

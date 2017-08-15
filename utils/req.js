@@ -45,6 +45,41 @@ function req_get(url, message, success, fail) {
   })
 }
 
+
+
+//h5请求
+function req_get_html(url, message, success, fail) {
+  wx.showNavigationBarLoading()
+  if (message != "") {
+    wx.showLoading({
+      title: message,
+    })
+  }
+  wx.request({
+    url: url,
+    header: {
+      'content-type': 'application/json'
+    },
+    method: 'GET',
+    success: function (res) {
+      wx.hideNavigationBarLoading()
+      if (res) {
+        success(res);
+      } else {
+        fail(res);
+      }
+    },
+    fail: function (res) {
+      if (message != "") {
+        wx.hideLoading();
+      }
+      fail(res);
+    }
+  })
+}
+
+
+
 function cbFail() {
   return res;
 }
@@ -76,8 +111,8 @@ function req_post(url, message, success, fail) {
           url: '/pages/login/index',
         });
       } else {
-        console.log("--------reqfail---------"+res.data.resCode +"/"+res.data.resDesc);
-        if(res.data.resCode){
+        console.log("--------reqfail---------" + res.data.resCode + "/" + res.data.resDesc);
+        if (res.data.resCode) {
           wx.showToast({
             title: res.data.resDesc
           })
@@ -146,5 +181,6 @@ function req_json(url, params, message, success, fail) {
 module.exports = {
   req_post: req_post,
   req_get: req_get,
-  req_json: req_json
+  req_json: req_json,
+  req_get_html: req_get_html
 }

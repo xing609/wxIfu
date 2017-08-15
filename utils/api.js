@@ -5,9 +5,11 @@ const COMPONENT_APP_ID="wx0cedb53c749e8372";
 //小程序appid
 const APP_ID ="wxd992a930df145349"
 
-const ACCOUNT="13641809635";
-const PSW="111111";
 
+const WX_PAGE ="https://mp.weixin.qq.com/s?__biz=MzAwMzU1NjkxNQ==&mid=401971566&idx=6&sn=960fe14d513abb88a7540a325e836169";
+
+const MS_PAGE_2 ="https://ms.ifuifu.com/index/detail/id/4808";
+const MS_PAGE ="https://ms.ifuifu.com/index/detail/id/4803";
    
 //微信登录
 var OPENID_LOGIN = 'api/common/thirdLogin';
@@ -61,7 +63,8 @@ var GET_NEW_CUSTOMER ="api/doctor/customer/list";
 var GET_CUSTOMER_TEMPLATE_INFO ="api/doctor/customer/info";
 //病程录
 var GET_RECORD_LIST ="api/doctor/msgMedical/getRecordList";
-
+//聊天详情
+var CHAT_DETAIL ="api/common/chat/list";
 
 
 
@@ -144,8 +147,19 @@ function _getCustomerTemplateInfo(o){
 function _getRecordList(o){
   return reqUrl(GET_RECORD_LIST,o);
 }
-
+function _chatDetail(o){
+  return reqUrl(CHAT_DETAIL,o);
+}
 //========================================cache缓存=========================================
+//用户帐号
+function _getLoginName(){
+  return wx.getStorageSync('loginName');
+}
+
+//密码
+function _getPsw(){
+  return wx.getStorageSync('psw');
+}
 
 //取token
 function _getToken() {
@@ -178,6 +192,7 @@ function reqUrlId(url, id, o) {
 function reqCon(url) {
   return HOST_URI + url + '?';
 }
+
 function _obj2uri(obj) {
   return Object.keys(obj).map(function (k) {
     return encodeURIComponent(k) + "=" + encodeURIComponent(obj[k]);
@@ -187,12 +202,15 @@ function _obj2uri(obj) {
 module.exports = {
   getCompnentAppId: COMPONENT_APP_ID,
   getAppId: APP_ID,
-  account: ACCOUNT,
-  psw: PSW,
+  msPage: MS_PAGE,
+  msPage2: MS_PAGE_2,
+  wxPage: WX_PAGE,
   login: _login,
   getHomeNum: _getHomeNum,
   getChatList: _getChatList,
   openIdLogin: _openIdLogin,
+  getLoginName:_getLoginName,
+  getPsw:_getPsw,
   getToken: _getToken,
   getUser: _getUser,
   getCustomerId: _getCustomerId,
@@ -217,6 +235,7 @@ module.exports = {
   needDoctorSurvey: _needDoctorSurvey,
   getNewCustomer: _getNewCustomer,
   getCustomerTemplateInfo: _getCustomerTemplateInfo,
-  getRecordList: _getRecordList
+  getRecordList: _getRecordList,
+  chatDetail: _chatDetail
  
 };

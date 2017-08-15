@@ -2,8 +2,8 @@
   background-color: gainsboro;
 }
 .img-head{
-  height: 44px;
-  width: 44px;
+  display: flex;
+  justify-content: center;
   margin-left: 10px;
 }
 .line{
@@ -13,20 +13,15 @@
   background-color: royalblue;
 }
 .item-p{
-  display: inline-block;
-  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 5px;
 }
 .nav-p{
-  display: -moz-box;
-  display: -webkit-box;
-  -webkit-box-orient: horizontal;
-  -moz-box-orient: horizontal;
-  -webkit-box-algin: center;
-  -moz-box-algin: center;
-  -webkit-box-flex: 1;
-  -moz-box-flex: 1;
-  vertical-align: middle;
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
   background: white;
   margin-top: 1px;
@@ -35,11 +30,12 @@
 }
 .item-name{
   color: black;
+  display: flex;
+  justify-content: center;
+  height: 24px;
+  line-height: 26px;
+  text-align: center;
   font-size: 12px;
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 .content-text{
   color: gray;

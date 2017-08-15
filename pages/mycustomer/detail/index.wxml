@@ -13,12 +13,12 @@
       <span class="left_text_name">{{customer.mobile}}</span>
     </view>
   </view>
-  <image style="margin-right: 10px;vertical-align: middle;width:5px; height: 10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
+  <image class="ic-next" style="margin-right:10px" src='../../../assets/images/userinfo/ic_next.png'></image>
 </div>
 
 
 <view class="list">
-
+ <view style="height:80px;"></view>
   <view class="list-ing">
     <view class="imgline"></view>
     <text class="text-ing">进行中的方案</text>
@@ -50,6 +50,8 @@
       </view>
     </view>
   </navigator>
+
+  <view style="height:60px;background-color:white"></view>
 </view>
 <view class="bottom-btn">
   <button class="btnAdd" bindtap="setDisabled">屏蔽</button>
