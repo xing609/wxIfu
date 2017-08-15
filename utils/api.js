@@ -61,7 +61,8 @@ var GET_NEW_CUSTOMER ="api/doctor/customer/list";
 var GET_CUSTOMER_TEMPLATE_INFO ="api/doctor/customer/info";
 //病程录
 var GET_RECORD_LIST ="api/doctor/msgMedical/getRecordList";
-
+//聊天详情
+var CHAT_DETAIL ="api/common/chat/list";
 
 
 
@@ -144,7 +145,9 @@ function _getCustomerTemplateInfo(o){
 function _getRecordList(o){
   return reqUrl(GET_RECORD_LIST,o);
 }
-
+function _chatDetail(o){
+  return reqUrl(CHAT_DETAIL,o);
+}
 //========================================cache缓存=========================================
 //用户帐号
 function _getLoginName(){
@@ -187,10 +190,6 @@ function reqUrlId(url, id, o) {
 function reqCon(url) {
   return HOST_URI + url + '?';
 }
-//直接请求
-// function reqHtml(){
-//   return 
-// }
 
 function _obj2uri(obj) {
   return Object.keys(obj).map(function (k) {
@@ -233,6 +232,7 @@ module.exports = {
   needDoctorSurvey: _needDoctorSurvey,
   getNewCustomer: _getNewCustomer,
   getCustomerTemplateInfo: _getCustomerTemplateInfo,
-  getRecordList: _getRecordList
+  getRecordList: _getRecordList,
+  chatDetail: _chatDetail
  
 };

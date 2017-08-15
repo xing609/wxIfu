@@ -45,6 +45,8 @@ function req_get(url, message, success, fail) {
   })
 }
 
+
+
 //h5请求
 function req_get_html(url, message, success, fail) {
   wx.showNavigationBarLoading()
@@ -56,7 +58,7 @@ function req_get_html(url, message, success, fail) {
   wx.request({
     url: url,
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/json'
     },
     method: 'GET',
     success: function (res) {

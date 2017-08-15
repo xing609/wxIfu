@@ -2,7 +2,7 @@
   "pages": [
     "pages/template/knows/index",
     "pages/index/index",
-   
+    
     "pages/start/index",
     "pages/mycustomer/index",
     "pages/newcustomer/index",
@@ -12,6 +12,7 @@
     "pages/index/templateqr/index",
     "pages/index/ifuvalue/index",
     "pages/chat/index",
+    "pages/chat/detail/index",
     "pages/index/doctorwrite/index",
     "pages/index/receive/index",
     "pages/index/nosubimt/index",
