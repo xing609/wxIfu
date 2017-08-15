@@ -1,7 +1,6 @@
 .item-container {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
   padding: 10px;
   background: white;
   margin-bottom: 10px;
@@ -10,10 +9,9 @@
 .item-left {
   display: flex;
   flex-direction: column;
-  margin-right: 10px;
+  width: 70px;
   vertical-align: middle;
 }
-
 
 .item-right {
   width: 100%;

@@ -18,14 +18,16 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  background-color: white;
+  
 }
 
 .right-head {
   display: flex;
-  flex-direction: row;
-  height: 40px;
-  width: 40px;
+  justify-content: flex-end;
+  vertical-align: middle;
+  align-items: center;
+  height: 50px;
+  width: 50px;
 }
 
 .right-img {
@@ -34,10 +36,18 @@
   margin-right: 10px;
 }
 
-.content-txt-right {
+.content-txt-p {
   display: flex;
- flex-direction: row;
-  margin-left: 40px;
+  justify-content: flex-end;
+  width: 250px;
   margin-top: 10px;
+  font-size: 12px;
+}
+
+.content-txt-right {
+  padding: 5px;
+  background-color: red;
+  margin-right: 5px;
+  color: white;
   font-size: 12px;
 }
