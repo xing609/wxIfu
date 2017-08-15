@@ -3,7 +3,6 @@
   flex-direction: column;
   padding-top: 10px;
 }
-
 .item{
   margin-top: 1px;
   display: flex;
@@ -28,6 +27,8 @@
   margin-right: 5px;
   margin-left: 10px;
 }
+
+
 
 .btnLogin{
   margin: 15px;

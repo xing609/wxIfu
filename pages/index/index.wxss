@@ -1,7 +1,3 @@
-.container {
-  background-color: #f2f2f2;
-}
-
 .swiper_box {
   height: 130px;
   margin-left: 10px;

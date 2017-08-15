@@ -1,4 +1,4 @@
-<scroll-view class="container">
+<view class="container">
 	<view class="login-p">
   
   <view class="item">
@@ -15,4 +15,4 @@
   </view>
 
   <button class="btnLogin" bindtap="btnLogin"> 登录</button>
-</scroll-view> 
+</view> 

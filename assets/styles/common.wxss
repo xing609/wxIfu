@@ -1,7 +1,5 @@
 .container{
-  background: #F0F0F0;
-  display: block;
-  min-height: 100%;
+  background-color: #F0F0F0;
 }
 
 .userinfo-avatar {

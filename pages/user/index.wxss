@@ -5,7 +5,9 @@
 	align-items: center;
 	background: #FF9933;
 }
-
+page {  
+  background-color: #F0F0F0;  
+}
 .userinfo-avatar {
 	width: 128rpx;
 	height: 128rpx;
