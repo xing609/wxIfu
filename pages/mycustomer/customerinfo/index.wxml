@@ -1,0 +1,39 @@
+<scroll-view class="container container-p">
+<!--患者信息  -->
+ <div class="div_top">
+  <view class="top-left">
+    <image class="userinfo-avatar" src='{{customer.face}}'></image>
+    <view class="info-p">
+      <view class="info-content">
+        <text class="left_text_name">{{customer.customerName}}</text>
+        <text class="left_text_1" wx:if="{{customer.sex==0}}">男</text>
+        <text class="left_text_1" wx:if="{{customer.sex==1}}">女</text>
+        <text class="left_text_1">{{customer.age}}岁</text>
+      </view>
+
+      <span class="left_text_name">{{customer.mobile}}</span>
+    </view>
+  </view>
+  <image style="margin-right: 10px;vertical-align: middle;width:18px; height: 18px;" src='../../../assets/images/ic_hasremark.png'></image>
+</div>
+  
+<!--备注信息  -->
+ <view class="remark-p">
+
+<view class="item-1">
+<text class="text-14-gray">患者备注名</text>
+<text >患者备注名ddddddd</text>
+<view class="item-right">
+
+<image class="ic-next" src='../../../assets/images/userinfo/ic_next.png'></image>
+</view>
+
+</view>
+
+
+</view>
+
+<!--医生备注  -->
+
+<!--患者登记  -->
+</scroll-view>

@@ -41,3 +41,10 @@
   line-height: 10px;
   margin-top: 8px;
 }
+
+/*灰色-text-14*/
+.text-14-gray{
+  font-size: 14px;
+  color: #999999;
+}
+

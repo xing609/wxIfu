@@ -5,7 +5,7 @@
  */
 
 
-@import 'assets/styles/user.wxss';
+@import 'assets/styles/base.wxss';
 @import 'assets/styles/weui.wxss';
 @import 'assets/styles/skyvow.wxss';
 @import 'assets/styles/survey.wxss';

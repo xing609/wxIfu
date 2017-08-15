@@ -7,12 +7,12 @@ Page({
   data: {
     customer: {},
     resultList: [],
-    customerId:'',
-    customerExtHosp:''
+    customerId: '',
+    customerExtHosp: ''
   },
 
   onLoad: function (option) {
-    var that=this;
+    var that = this;
     console.log(option.customerId + "/" + option.customerExtHosp);
     if (option.customerId) {
       this.getCustomerInfo(option.customerId, option.customerExtHosp);
@@ -41,8 +41,8 @@ Page({
   //取患者信息
   getCustomerInfo: function (id, customerExtHosp) {
     var that = this;
-    if (!customerExtHosp){
-      customerExtHosp="";
+    if (!customerExtHosp) {
+      customerExtHosp = "";
     }
     Req.req_post(Api.getCustomerInfo(id, {
       token: Api.getToken(),
@@ -51,28 +51,12 @@ Page({
       that.setData({
         customer: res.data.model
       })
-      that.getTemplateIng(id);
+     
     }, function fail(res) {
 
     })
   },
-  //进行中的方案
-  getTemplateIng: function (customerId) {
-    var that = this;
-    Req.req_post(Api.getTemplateIng({
-      token: Api.getToken(),
-      customerId: customerId
-    }), "加载中", function success(res) {
-         that.setData({
-           resultList: res.data.resultList
-        })
-        wx.hideNavigationBarLoading() //完成停止加载
-        wx.stopPullDownRefresh() //停止下拉刷新
-    }, function fail(res) {
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
-    })
-  },
+  
   navigateTo(e) {
     var customerId = this.data.customerId;
     console.log("customerid=====" + customerId + "&customerExtHospitalId=" + e.currentTarget.dataset.exthospitalid);
@@ -80,17 +64,10 @@ Page({
       url: "/pages/template/detail/index?customerId=" + customerId + "&exthospitalId=" + e.currentTarget.dataset.exthospitalid
     })
   },//进入病程录
-  jumpToRecord(e){
+  jumpToRecord(e) {
     var customerId = this.data.customerId;
     wx.navigateTo({
       url: "/pages/mycustomer/record/index?customerId=" + customerId + "&templateId=" + e.currentTarget.dataset.templateid
-    })
-  },
-  jumpToCustomerInfo(){
-    var customerId = this.data.customerId;
-    var customerExtHosp = this.data.customerExtHosp;
-    wx.navigateTo({
-      url: "/pages/mycustomer/customerinfo/index?customerId=" + customerId + "&customerExtHosp=" + customerExtHosp
     })
   }
 

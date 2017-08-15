@@ -1,6 +1,6 @@
 {
   "pages": [
-    
+    "pages/mycustomer/customerinfo/index",
     "pages/index/index",
     "pages/start/index",
     "pages/mycustomer/index",
@@ -36,6 +36,7 @@
     "pages/template/templateIntroduce/index",
     "pages/template/detail/index",
     "pages/mycustomer/record/index",
+    
     "pages/register/index"
   ],
   "window": {
