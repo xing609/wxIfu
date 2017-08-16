@@ -1,6 +1,6 @@
 const App = getApp()
 var Api = require('../../utils/api.js');
-var Tools = require('../../helpers/Md5.js');
+var Tools = require('../../utils/md5.js');
 Page({
     data: {
         indicatorDots: !1,

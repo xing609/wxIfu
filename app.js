@@ -1,6 +1,6 @@
 
-import WxValidate from 'helpers/WxValidate'
-import Tools from 'helpers/Tools'
+//  import WxValidate from 'utils/wxValidate'
+//  import Tools from 'utils/tools'
 
 App({
 	onLaunch() {

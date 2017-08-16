@@ -14,11 +14,85 @@
   font-size: 12px;
 }
 
+/*左边
+*/
+
+.left-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.left-head {
+  display: flex;
+  justify-content: flex-start;
+  vertical-align: middle;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  margin-left: 10px;
+}
+
+.left-img {
+  height: 120px;
+  width: 120px;
+  margin-top: 10px;
+  margin-left: 3px;
+  border-radius: 6px;
+  border: 1px solid white;
+}
+
+.content-txt-p-left {
+  display: flex;
+  justify-content: flex-start;
+  vertical-align: middle;
+  width: 250px;
+  font-size: 12px;
+}
+
+.content-txt-left {
+  padding: 5px;
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid white;
+  margin-top: 10px;
+  margin-left: 3px;
+  color: black;
+  font-size: 12px;
+}
+
+.content-voice-p-left{
+  display: flex;
+  justify-content: flex-end;
+  width: 80px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-left: 3px;
+  border-radius: 6px;
+  border: 1px solid white;
+  background: white;
+}
+
+.content-voice-left{
+  width: 32px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.voice-time-left{
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  color: #6e6d6b;
+}
+
+/** 右边*/
+
 .right-view {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  
 }
 
 .right-head {
@@ -33,21 +107,53 @@
 .right-img {
   height: 120px;
   width: 120px;
-  margin-right: 10px;
+  margin-top: 10px;
+  margin-right: 3px;
+  border-radius: 6px;
+  border: 1px solid white;
 }
 
-.content-txt-p {
+.content-txt-p-right {
   display: flex;
   justify-content: flex-end;
+  vertical-align: middle;
   width: 250px;
-  margin-top: 10px;
   font-size: 12px;
 }
 
 .content-txt-right {
   padding: 5px;
-  background-color: red;
-  margin-right: 5px;
+  background-color: #f93;
+  border-radius: 6px;
+  border: 1px solid #f93;
+  margin-top: 10px;
+  margin-right: 3px;
   color: white;
   font-size: 12px;
+}
+
+.content-voice-p-right {
+  display: flex;
+  justify-content: flex-start;
+  width: 80px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-right: 3px;
+  border-radius: 6px;
+  border: 1px solid #f93;
+  background: white;
+}
+
+.content-voice-right {
+  width: 32px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.voice-time-right {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  color: #6e6d6b;
 }

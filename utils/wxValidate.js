@@ -5,7 +5,7 @@
  * @param {Object} messages 验证字段的提示信息
  * 
  */
-class WxValidate {
+class wxValidate {
 	constructor(rules = {}, messages = {}) {
 		Object.assign(this, {
 			rules, 
@@ -415,4 +415,4 @@ class WxValidate {
 	}
 }
 
-export default WxValidate
+export default wxValidate

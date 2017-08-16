@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/template/knows/index",
     "pages/index/index",
     "pages/mycustomer/customerinfo/index",
-    "pages/template/knows/index",
+    
     "pages/start/index",
     "pages/mycustomer/index",
     "pages/newcustomer/index",

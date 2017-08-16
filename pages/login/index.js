@@ -1,5 +1,5 @@
-var Api = require('../../utils/api.js');
-var Tools = require('../../helpers/Md5.js');
+﻿var Api = require('../../utils/api.js');
+var Tools = require('../../utils/md5.js');
 var Req = require('../../utils/req.js');
 const App = getApp()
 Page({

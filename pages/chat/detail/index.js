@@ -1,6 +1,7 @@
 var App = getApp()
 var Api = require('../../../utils/api.js');
 var Req = require('../../../utils/req.js');
+var Tools = require('../../../utils/tools.js');
 var totalData = [];
 Page({
   data: {
@@ -56,6 +57,25 @@ Page({
       } else {
         totalData = res.data.resultList;
       }
+
+      if(totalData){
+          for(var j in totalData){
+            var message = totalData[j];
+            var upDate = 0;
+            if (j > 0) {
+              upDate = new Date(totalData[j - 1].createTime);
+            }
+            var nextDate = new Date(message.createTime);
+            var min = parseInt((nextDate - upDate) / 60000);
+            if (min < 1) {//两条聊天记录5分钟内的不显示时间
+              message.createTimeStr = null;
+            } else {
+              message.createTimeStr = Tools.dateToShortTimeString(new Date(message.createTime));
+            }
+          }
+      }
+
+
       that.setData({
         currentPage: res.data.currentPage,
         pageCount: res.data.pageCount,
@@ -66,9 +86,108 @@ Page({
 
     })
   },
+  //进入患者详情
   navigateTo(e) {
-    wx.navigateTo({
-      url: "/pages/chat/detail/index?customerId=1"
+    var sendId = e.currentTarget.dataset.sendid;
+    console.log("===============sendid=" + sendId);
+    if(sendId){
+      wx.navigateTo({
+        url: "/pages/mycustomer/detail/index?customerId=" + sendId
+      })
+    }
+  },
+  onReady: function (e) {
+    // 使用 wx.createAudioContext 获取 audio 上下文 context
+    this.rightAudio= wx.createAudioContext('rightAudio')
+  },
+  audioPlay: function () {
+    this.rightAudio = wx.createAudioContext('rightAudio');
+    this.rightAudio.play()
+    wx.showToast({
+      title: 'play',
     })
   },
+  audioPause: function () {
+    this.rightAudio.pause()
+  },
+  audio14: function () {
+    this.rightAudio.seek(14)
+  },
+  audioStart: function () {
+    this.rightAudio.seek(0)
+  },
+
+  //语音播放
+  playRightVoice(e){
+    var path = e.currentTarget.dataset.rightvoice;
+    //var path="http://qqma.tingge123.com:823/mp3/2015-06-13/1434188181.mp3";
+    console.log("log----path=" + path);
+    wx.showToast({
+      title: 'click'+path,
+    })
+
+
+    wx.playVoice({
+      filePath: path,
+      complete: function () {
+        wx.showToast({
+          title: 'ok',
+        })
+      }
+    })
+
+    wx.saveFile({
+      tempFilePath: path,
+      success: function (res) {
+        var savedFilePath = res.savedFilePath
+
+        console.log("log----save="+savedFilePath);
+        if (savedFilePath) {
+          wx.showToast({
+            title: 'play',
+          })
+          wx.playVoice({
+            filePath: savedFilePath,
+            complete: function () {
+            }
+          })
+        }
+      }
+    })
+  
+   
+    
+  },
+  playLeftVoice(e) {
+    //var tempFilePath = e.currentTarget.dataset.leftvoice;
+    var tempFilePath = "http://qqma.tingge123.com:823/mp3/2015-06-13/1434188181.mp3";
+    if (tempFilePath) {
+      wx.showToast({
+        title: 'play',
+      })
+      wx.playVoice({
+        filePath: tempFilePath,
+        complete: function () {
+          wx.showToast({
+            title: 'over',
+          })
+        }
+      })
+    }
+  },
+  //图片预览
+  previewImage: function (e) {
+    var that = this;
+    var url = e.currentTarget.dataset.imgurl;
+    if (url) {
+      var picArray = new Array();
+      picArray.push(url);
+      wx.previewImage({
+        //当前显示下表
+        current: picArray[0],
+        //数据源
+        urls: picArray
+      })
+    }
+  }
 })

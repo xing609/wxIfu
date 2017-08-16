@@ -1,5 +1,5 @@
 'use strict';
-var HOST_URI = 'https://apitest.ifuifu.com/';
+var HOST_URI = 'https://api.ifuifu.com/';
 //开放平台医数医生端APPID
 const COMPONENT_APP_ID="wx0cedb53c749e8372";
 //小程序appid
