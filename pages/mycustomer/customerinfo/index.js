@@ -56,19 +56,26 @@ Page({
 
     })
   },
-  
-  navigateTo(e) {
-    var customerId = this.data.customerId;
-    console.log("customerid=====" + customerId + "&customerExtHospitalId=" + e.currentTarget.dataset.exthospitalid);
-    wx.navigateTo({
-      url: "/pages/template/detail/index?customerId=" + customerId + "&exthospitalId=" + e.currentTarget.dataset.exthospitalid
-    })
-  },//进入病程录
-  jumpToRecord(e) {
-    var customerId = this.data.customerId;
-    wx.navigateTo({
-      url: "/pages/mycustomer/record/index?customerId=" + customerId + "&templateId=" + e.currentTarget.dataset.templateid
-    })
+
+  //图片预览
+  previewImage: function (e) {
+    var that = this;
+    var index = e.currentTarget.dataset.index;
+    var picArray = e.currentTarget.dataset.imgurl;
+    console.log(picArray + "/" + index);
+    if (picArray) {
+      var urlArray = new Array();
+      for(var i in picArray){
+        urlArray.push(picArray[i].url);
+        console.log("url------" + picArray[i].url);
+      }
+      wx.previewImage({
+        //当前显示下表
+        current: urlArray[index],
+        //数据源
+        urls: urlArray
+      })
+    }
   }
 
 })

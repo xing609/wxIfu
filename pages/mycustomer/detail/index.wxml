@@ -51,7 +51,7 @@
     </view>
   </navigator>
 
-  <view style="height:60px;background-color:white"></view>
+  <view style="height:60px;"></view>
 </view>
 <view class="bottom-btn">
   <button class="btnAdd" bindtap="setDisabled">屏蔽</button>

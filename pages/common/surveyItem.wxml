@@ -17,7 +17,6 @@
              <text class="item-text" wx:if="{{item.score!=null}}">{{item.score}}分</text>
       </navigator>
 </view>
-
 </view>
-    </view>
-  </template>
+</view>
+</template>

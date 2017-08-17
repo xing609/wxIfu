@@ -25,13 +25,17 @@ function wxParse(bindName = 'wxParseData', type='html', data='<div class="color:
   var transData = {};//存放转化后的数据
   if (type == 'html') {
     transData = HtmlToJson.html2json(data, bindName);
-    console.log(JSON.stringify(transData, ' ', ' '));
+    console.log("得到的json数据-----------------------"+JSON.stringify(transData, ' ', ' '));
+   // transData.nodes[0].nodes[1].nodes[7].nodes[0].text = "";
   } else if (type == 'md' || type == 'markdown') {
     var converter = new showdown.Converter();
     var html = converter.makeHtml(data);
     transData = HtmlToJson.html2json(html, bindName);
     console.log(JSON.stringify(transData, ' ', ' '));
+   
   }
+ //console.log("json数组长度：-------------" + transData.nodes[0].nodes[1].nodes[7].nodes[0].text);
+
   transData.view = {};
   transData.view.imagePadding = 0;
   if(typeof(imagePadding) != 'undefined'){

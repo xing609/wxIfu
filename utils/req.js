@@ -58,7 +58,7 @@ function req_get_html(url, message, success, fail) {
   wx.request({
     url: url,
     header: {
-      'content-type': 'application/json'
+      'Content-Type': 'application/json'
     },
     method: 'GET',
     success: function (res) {

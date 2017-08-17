@@ -1,39 +1,72 @@
-<scroll-view class="container container-p">
-<!--患者信息  -->
- <div class="div_top">
-  <view class="top-left">
-    <image class="userinfo-avatar" src='{{customer.face}}'></image>
-    <view class="info-p">
-      <view class="info-content">
-        <text class="left_text_name">{{customer.customerName}}</text>
-        <text class="left_text_1" wx:if="{{customer.sex==0}}">男</text>
-        <text class="left_text_1" wx:if="{{customer.sex==1}}">女</text>
-        <text class="left_text_1">{{customer.age}}岁</text>
-      </view>
+<scroll-view class="container">
+  <!--患者信息  -->
+  <div class="div_top">
+    <view class="top-left">
+      <image class="userinfo-avatar" src='{{customer.face}}'></image>
+      <view class="info-p">
+        <view class="info-content">
+          <text class="left_text_name">{{customer.customerName}}</text>
+          <text class="left_text_1" wx:if="{{customer.sex==0}}">男</text>
+          <text class="left_text_1" wx:if="{{customer.sex==1}}">女</text>
+          <text class="left_text_1" wx:if="{{customer.age>0}}">{{customer.age}}岁</text>
+        </view>
 
-      <span class="left_text_name">{{customer.mobile}}</span>
+        <span class="left_text_name">{{customer.mobile}}</span>
+      </view>
+    </view>
+    <image wx:if="{{customer.mark==true}}" style="margin-right: 10px;vertical-align: middle;width:18px; height: 18px;" src='../../../assets/images/ic_hasremark.png'></image>
+  </div>
+
+  <!--备注信息  -->
+  <view class="remark-p">
+
+    <view class="item-1">
+      <text class="text-14-gray">患者备注名</text>
+      <view class="item-right">
+        <input class="input" type="text" value="{{custoomer.customerAlias}}" />
+        <image style="vertical-align: middle;width:8px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
+      </view>
+    </view>
+
+    <view class="item-1">
+      <text class="text-14-gray">住院号</text>
+      <view class="item-right">
+        <input class="input" type="text" value="{{customer.customerCode}}" />
+        <image style="vertical-align: middle;width:8px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
+      </view>
+    </view>
+
+    <view class="item-1">
+      <text class="text-14-gray">床位号</text>
+      <view class="item-right">
+        <input class="input" type="text" value="{{customer.bedNo}}" />
+        <image style="vertical-align: middle;width:8px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
+      </view>
+    </view>
+
+
+    <view class="item-2">
+      <text class="text-remark">医生备注</text>
+      <text class="text-value">{{customer.remark}}</text>
+    </view>
+
+  </view>
+
+  <!--医生备注  -->
+  <view class="weui-grids">
+    <view class="weui-grid" wx:for="{{customer.markMedias}}" wx:key="{{index}}">
+      <navigator>
+        <view class="weui-grid__icon">
+          <image data-index="{{index}}" bindtap="previewImage" data-index="{{index}}" data-imgurl="{{customer.markMedias}}" src=" {{item.url}}" mode="scaleToFill" />
+        </view>
+      </navigator>
     </view>
   </view>
-  <image style="margin-right: 10px;vertical-align: middle;width:18px; height: 18px;" src='../../../assets/images/ic_hasremark.png'></image>
-</div>
-  
-<!--备注信息  -->
- <view class="remark-p">
 
-<view class="item-1">
-<text class="text-14-gray">患者备注名</text>
-<text >患者备注名ddddddd</text>
-<view class="item-right">
+  <!--患者登记  -->
+  <view class="item-3" wx:if="{{customer.descMedias!=null}}">
+    <text class="text-remark">患者登记病情</text>
+    <text class="text-value">{{customer.descMedias}}</text>
+  </view>
 
-<image class="ic-next" src='../../../assets/images/userinfo/ic_next.png'></image>
-</view>
-
-</view>
-
-
-</view>
-
-<!--医生备注  -->
-
-<!--患者登记  -->
 </scroll-view>

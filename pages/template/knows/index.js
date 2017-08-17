@@ -15,50 +15,21 @@ Page({
     this.onLoad();
   }, 
   getHtmlContent: function(that) {
-    Req.req_get_html(Api.msPage2, "", function success(res) {
+    //var url ="https://www.ifuifu.com/up_clinic";
+    //var url ="https://ms.ifuifu.com/Index/detail/id/2747";
+    var url ="https://ms.ifuifu.com/Index/detail/id/5825";
+    //var url ="https://mp.weixin.qq.com/s?__biz=MzI5MTA0NzExNA==&mid=2650961056&idx=1&sn=1258be34beb948c78fd84e768f2c1e49&chksm=f7e04705c097ce13b6b8645368f909ec4bab28d1bed427c39f14f76a4d78f44ace8718feec37&mpshare=1&scene=23&srcid=08174JojcRMVz38oPlxy4YMO#rd";
+    //var url ="https://mp.weixin.qq.com/s?__biz=MzAwMzU1NjkxNQ==&mid=401971566&idx=6&sn=960fe14d513abb88a7540a325e836169";
+    Req.req_get_html(url, "", function success(res) {
       var data=res.data;
-      console.log("html-success-------------" + data);
-      WxParse.wxParse('content', 'html', data, that, 5);
-      //WxParse.wxParse('article', 'html', data, that, 5);
 
-
-
-
-      var repliesArray = result.replies;
-      var l = 100;
-      if (repliesArray.length < l) {
-        l = repliesArray.length;
+      console.log("--------------------------------------------html-success-------------" + data);
+      if(data){
+       
+        WxParse.wxParse('article', 'html', data, that, 5);
       }
-      var replyArr = [];
-      for (var i = 0; i < l; i++) {
-        if (repliesArray[i].content) {
-          var c = repliesArray[i].content;
-          if (c.length > 0) {
-            replyArr.push(repliesArray[i].content);
-          }
-        }
-      }
-      /**
-      * WxParse.wxParseTemArray(temArrayName,bindNameReg,total,that)
-      * 1.temArrayName: 为你调用时的数组名称
-      * 3.bindNameReg为循环的共同体 如绑定为reply1，reply2...则bindNameReg = 'reply'
-      * 3.total为reply的个数
-      */
-      console.log('replies:' + replyArr.length);
-      if (replyArr.length > 0) {
-        for (let i = 0; i < replyArr.length; i++) {
-          WxParse.wxParse('reply' + i, 'html', replyArr[i], p);
-          if (i === replyArr.length - 1) {
-            WxParse.wxParseTemArray("replyTemArray", 'reply', replyArr.length, p)
-          }
-        }
-      }            
-
-
-
-
-
-
+     
+   
     }, function fail(res) {
       
     })

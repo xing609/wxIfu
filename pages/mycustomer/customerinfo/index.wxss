@@ -1,18 +1,10 @@
 /* pages/mycustomer/customerinfo/index.wxss */
-.container-p{
-  display: flex;
-  flex-direction: column;
-  
-}
+
 .div_top {
-  width: 100%;
-  vertical-align: middle;
   display: flex;
   align-items: center;
   background: white;
-  position: fixed;
   justify-content: space-between;
-  top: 0;
   padding-top: 10px;
   padding-bottom: 10px;
 }
@@ -22,18 +14,21 @@
   flex-direction: row;
   padding-left: 10px;
 }
-.info-p{
+
+.info-p {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
   justify-content: center;
 }
-.info-content{
+
+.info-content {
   display: flex;
   flex-direction: raw;
   align-items: center;
   justify-content: center;
 }
+
 .userinfo-avatar {
   width: 50px;
   height: 50px;
@@ -46,29 +41,89 @@
   color: black;
   vertical-align: middle;
 }
+
 .left_text_1 {
   margin-left: 10px;
   font-size: 14px;
   color: black;
   vertical-align: middle;
 }
-.remark-p{
+
+/*备注*/
+
+.remark-p {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  background: white;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
-.item-1{
+.item-1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  vertical-align: middle
+  vertical-align: middle;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 40px;
+  margin-top: 1px;
+  align-items: center;
+  background: white;
 }
 
-.item-right{
+.input {
+  width: 150px;
+  height: 40px;
+  text-align: right;
+  background-color: white;
+  margin-right: 5px;
+}
+
+.item-right {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.text-14-gray {
+  display: flex;
+  justify-content: flex-start;
+  min-width: 80px;
+  font-size: 14px;
+  color: gray;
+}
+
+.text-remark {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 14px;
+  margin-top: 10px;
+  color: gray;
+}
+
+.item-2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  margin-top: 1px;
+  background: white;
+}
+.item-3 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  background: white;
+}
+
+.text-value {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 14px;
+  margin-top: 5px;
+  color: black;
 }
