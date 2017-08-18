@@ -18,7 +18,7 @@
 
 
 <view class="list">
- <view style="height:80px;"></view>
+  <view style="height:80px;"></view>
   <view class="list-ing">
     <view class="imgline"></view>
     <text class="text-ing">进行中的方案</text>
@@ -27,23 +27,26 @@
   <view class="line-s"></view>
 
   <navigator class="item-p" wx:for="{{resultList}}" wx:key="{{index}}">
-    <view class="item-top" data-exthospitalid="{{item.customerExtHospitalId}}" data-templateid="{{item.templateId}}" bindtap="navigateTo">
-      <text class="content-title text-flow">{{item.templateName}}</text>
+    <view class="item-top" data-exthospitalid="{{item.customerExtHospitalId}}" data-doctorid="{{item.doctorId}}" data-templateid="{{item.templateId}}" bindtap="navigateTo">
+      <text wx:if="{{item.doctorId==doctorId}}" class="content-title text-flow">{{item.templateName}}</text>
+       <text wx:if="{{item.doctorId!=doctorId}}" class="content-title template-title-gray">{{item.templateName}}</text>
+      
+      
       <text class="content-text">当前节点：{{item.currentPointName}} {{item.currentPointIndex}}/{{item.allPointNum}}</text>
       <text class="content-text">提交量表：{{item.finishSurvyNum}}/{{item.allSurvyNum}}     阅读须知：{{item.finishNoteNum}}/{{item.allNoteNum}}</text>
 
       <view class="line"></view>
     </view>
 
-    <view class="item-bottom" data-exthospitalid="{{item.customerExtHospitalId}}" data-templateid="{{item.templateId}}" bindtap="jumpToRecord">
-
+    <view class="item-bottom" data-exthospitalid="{{item.customerExtHospitalId}}" data-doctorid="{{item.doctorId}}" data-templateid="{{item.templateId}}" bindtap="jumpToRecord">
       <view class="line-x"></view>
-
       <view class="text-record">
-        <text class="record-text"> 病程录:</text>
-
+        <text wx:if="{{item.doctorId==doctorId}}" class="record-text"> 病程录</text>
+        <text wx:if="{{item.doctorId!=doctorId}}" class="record-text-gray"> 病程录</text>
         <view class="text-count">
-          <text style="margin-right:10px">{{item.recordCount}}</text>
+          <text wx:if="{{item.doctorId==doctorId}}" class="record-text margin-right-10">{{item.recordCount}}</text>
+          <text wx:if="{{item.doctorId!=doctorId}}" class="record-text-gray margin-right-10" >{{item.recordCount}}</text>
+
           <image class="ic-next" src='../../../assets/images/userinfo/ic_next.png'></image>
         </view>
 
@@ -54,8 +57,19 @@
   <view style="height:60px;"></view>
 </view>
 <view class="bottom-btn">
-  <button class="btnAdd" bindtap="setDisabled">屏蔽</button>
-  <button class="btnAdd" bindtap="setDisabled">加标</button>
-  <button class="btnsend" bindtap="sendTemplate"> 分配方案 </button>
-  <button class="btnsend" open-type="contact">询问病情</button>
+
+  <view class="btnAdd" bindtap="btnShield">
+    <image style="width:20px; height:20px;" wx:if="{{customer.isBlocked==true}}" src="../../../assets/images/ic_has_nochat.png"></image>
+    <image style="width:20px; height:20px;" wx:if="{{customer.isBlocked==false}}" src="../../../assets/images/ic_has_chat.png"></image>
+    <text class="btnText">屏蔽</text>
+  </view>
+
+  <view class="btnAdd margin-left-1" bindtap="btnMark">
+    <image style="width:20px; height:20px;" wx:if="{{customer.mark==false}}" src="../../../assets/images/ic_noremark.png"></image>
+    <image style="width:20px; height:20px;" wx:if="{{customer.mark==true}}" src="../../../assets/images/ic_hasremark.png"></image>
+    <text class="btnText">加标</text>
+  </view>
+
+  <text class="btnsend" bindtap="sendTemplate"> 分配方案 </text>
+  <text class="btnChat" open-type="contact">询问病情</text>
 </view>

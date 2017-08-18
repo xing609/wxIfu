@@ -135,7 +135,7 @@ Page({
   myLoginOut() {
     Req.req_post(Api.loginOut({
       token: Api.getToken()
-    }), "", function success(res) {
+    }), "正在退出", function success(res) {
       console.log("loginout success -------------");
       wx.removeStorageSync('token')
       wx.redirectTo({

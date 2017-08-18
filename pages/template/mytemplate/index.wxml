@@ -11,9 +11,40 @@
         </label>
     </view>
   </view>
+  <view class="all-template" bindtap="jumpToAllTemplate">
+    <view class="txt-all-template">
+      <image style="width:25px;height:25px; vertical-align:middle" src="../../../assets/images/template/ic_all_template.png"></image>
+      <text class="txt-template">全部方案</text>
+    </view>
+    <image style="width:5px;height:10px; vertical-align:middle" src='../../../assets/images/userinfo/ic_next.png'></image>
+  </view>
+  <view class="my-template">
+    <image style="width:25px;height:25px; vertical-align: middle" src="../../../assets/images/template/ic_mytemplate.png"></image>
+    <text class="txt-template">个人方案</text>
+  </view>
 
-  <text class="txt-template" bindtap="jumpToAllTemplate">全部方案</text>
-  <text class="txt-template">个人方案</text>
-  <import src="../../common/templateItem.wxml" />
-  <template is="list" data="{{resultList}}" />
+  <navigator url="" class="item-p" bindtap="navigateTo" data-id="{{item.id}}" hover-class="weui-cell_active" wx:for="{{resultList}}" wx:key="">
+    <view class="item-top">
+      <view class="item-top-left">
+        <text class="item_title text-flow">{{item.templateName}}</text>
+        <text class="item_type">{{item.templateType}}</text>
+      </view>
+
+      <image style="width:22px;height:22px; vertical-align: middle" src="../../../assets/images/template/ic_my_qrcode_lilte.png"></image>
+
+    </view>
+    <view class="item-bottom">
+      <text class="item-type-2" wx:if="{{item.type==0}}"> 私人</text>
+      <text class="item-type-2" wx:if="{{item.type==1}}"> 官方</text>
+      <text class="item-type-2" wx:if="{{item.type==2}}"> 顾问医生</text>
+      <text class="item-type-2" wx:if="{{item.type==3}}">多中心</text>
+      <text class="item-type-2" wx:if="{{item.type==4}}">共享</text>
+      <text class="item-type-2" wx:if="{{item.type==6}}">科室共享</text>
+      <text class="item-type-2" wx:if="{{item.type==7}}">院内共享</text>
+      <text class="item-count" wx:if="{{item.customerNum==null||item.customerNum==0}}">患者人数：0</text>
+      <text class="item-count" wx:if="{{item.customerNum!=null&&item.customerNum>0}}">患者人数：{{item.customerNum}}</text>
+    </view>
+  </navigator>
+
+
 </view>

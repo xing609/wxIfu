@@ -1,31 +1,31 @@
 <view class="container">
-  <text> 新方案</text>
-
-
-
-  <text class="template-type"> 官方</text>
-  <text>{{template.templateName}}</text>
-  <text>{{template.templateType}}</text>
-
-  <view class="customer-info">
-    <text>{{customer.customerName}}  {{customer.age}}岁</text>
+  <view class="new-tempate-p">
+    <view class="xian"> </view>
+    <text class="text-new-template"> 新方案</text>
   </view>
-
-
-
+  <view class="template-detail">
+    <text class="template-name">{{template.templateName}}</text>
+    <view class="template-type">
+      <text class="item-type-2" wx:if="{{template.type==0}}"> 私人</text>
+      <text class="item-type-2" wx:if="{{template.type==1}}"> 官方</text>
+      <text class="item-type-2" wx:if="{{template.type==2}}"> 顾问医生</text>
+      <text class="item-type-2" wx:if="{{template.type==3}}">多中心</text>
+      <text class="item-type-2" wx:if="{{template.type==4}}">共享</text>
+      <text class="item-type-2" wx:if="{{template.type==6}}">科室共享</text>
+      <text class="item-type-2" wx:if="{{template.type==7}}">院内共享</text>
+      <text class="item_type">{{template.templateType}}</text>
+    </view>
+    <text wx:if="{{customer.sex==1}}" class="customer-info">{{customer.customerName}}  {{customer.age}}岁   女</text>
+    <text wx:if="{{customer.sex==0}}" class="customer-info">{{customer.customerName}}  {{customer.age}}岁   男</text>
+  </view>
   <view class="point-setting">
     <text class="txt-first-point" bindtap="choosePoint"> 起始节点：{{startPoint}}</text>
-    <!-- <text class="txt-first-point" bindtap="showModal"> 起始日期：今天</text> -->
-
     <picker mode="date" class="txt-first-point" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
-      <view class="picker">
-        起始日期: {{date}}
-      </view>
+      <view class="picker" bindchange="bindDateChange">起始日期: {{date}}</view>
     </picker>
   </view>
-
-  <view class="bottom">
-    <text>立即给患者发送方案</text>
-    <button type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="send"> 确认 </button>
+  <view class="bottom-view">
+    <text class="text-send">立即给患者发送方案</text>
+    <text class="btn-send" bindtap="send"> 确认 </text>
   </view>
 </view>

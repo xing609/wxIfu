@@ -65,10 +65,26 @@ var GET_CUSTOMER_TEMPLATE_INFO ="api/doctor/customer/info";
 var GET_RECORD_LIST ="api/doctor/msgMedical/getRecordList";
 //聊天详情
 var CHAT_DETAIL ="api/common/chat/list";
-
-
+//屏蔽
+var BTN_SHIELD ="api/doctor/customer/imstatus";
+//加标
+var BTN_REMARK ="api/doctor/customer/edit";
+//取随访记录列表
+var GET_CUSTOMER_EXTHOSPTIAL_LIST="api/doctor/customer/customerExtHospitalList";
 
 //===========================================请求接口==================================================
+
+function _getCustomerExtHosptialList(o){
+  return reqUrl(GET_CUSTOMER_EXTHOSPTIAL_LIST,o);
+}
+
+function _btnShield(o){
+  return reqUrl(BTN_SHIELD,o);
+}
+function _btnRemark(o){
+ return reqUrl(BTN_REMARK,o);
+}
+
 function _openIdLogin(o) {
   return reqUrl(OPENID_LOGIN, o);
 }
@@ -236,6 +252,8 @@ module.exports = {
   getNewCustomer: _getNewCustomer,
   getCustomerTemplateInfo: _getCustomerTemplateInfo,
   getRecordList: _getRecordList,
-  chatDetail: _chatDetail
- 
+  chatDetail: _chatDetail,
+  btnShield:_btnShield,
+  btnRemark:_btnRemark,
+  getCustomerExtHosptialList: _getCustomerExtHosptialList
 };

@@ -1,8 +1,8 @@
-<view class="about">
+<view class="container">
 	
    <view class="version_p">
-   <image class="about_app_icon" src="../../assets/images/ic_set_icon.png"></image>
-   	<text class="about_version">医数医生端v1.0Beta</text>
+   <image class="about_app_icon" src="../../assets/images/ic_ifu_qr.jpg"></image>
+   	<text class="about_version">微信扫一扫，使用医数小程序V1.0</text>
    </view>
    
 

@@ -1,4 +1,3 @@
-<import src="../common/prompt.wxml" />
 <template name="list">
   <view class="scroll-list">
     <view class="weui-panel weui-panel_access">

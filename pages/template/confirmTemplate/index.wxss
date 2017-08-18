@@ -1,40 +1,138 @@
-.container{
+.container {
   height: 100%;
   width: 100%;
-  
 }
-.customer-info{
-  background: white;
-  display: block;
+
+.customer-info {
+  display: flex;
+  font-size: 14px;
+  color: #999;
 }
-.template-title{
+
+.template-title {
   display: block;
   font-size: 16px;
   color: black;
 }
-.template-type{
+
+.template-type {
   display: block;
   font-size: 14px;
-  color: #FF9933;
-
+  color: #f93;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
-.point-setting{
-  display: block;
+
+.point-setting {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+.txt-first-point {
   background: white;
-}
-.bottom{
-  display: block;
-  background: white;
+  margin-top: 1px;
+  display: flex;
+  font-size: 16px;
+  padding: 10px;
+  color: #666;
+
 }
 
-.chooseDate{
-  color: black
-}
-.choosePoint{
-  color: black
+.item_type{
+  color: #607fb9;
+  font-size: 12px;
+  margin-left: 10px;
 }
 
-.txt-first-point{
-  display: block;
+/*新方案*/
+
+.new-tempate-p {
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.text-new-template {
+  font-size: 14px;
+  margin-left: 5px;
+  color: #666;
+}
+
+.xian {
+  height: 18px;
+  width: 4px;
+  background-color: #ed992c;
+}
+
+/*底部发送*/
+
+.bottom-view {
+  flex-direction: row;
+  vertical-align: middle;
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+  position: fixed;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  bottom: 0;
+  background-color: white;
+  align-items: center;
+}
+
+.text-send {
+  font-size: 16px;
+  color: #666;
+  margin-left: 10px;
+}
+
+.btn-send {
+  font-size: 16px;
+  color: white;
+  border-radius: 20px;
+  border: 1px solid #f63;
+  background-color: #f63;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
+  width: 110px;
+  margin-right: 10px;
+}
+
+.template-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.template-name {
+  color: black;
+  font-size: 16px;
+}
+
+.template-type {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.item-type-2 {
+  font-size: 12px;
+  color: #93de65;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid #93de65;
 }

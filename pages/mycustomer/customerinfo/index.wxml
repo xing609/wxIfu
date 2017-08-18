@@ -24,7 +24,7 @@
       <text class="text-14-gray">患者备注名</text>
       <view class="item-right">
         <input class="input" type="text" value="{{custoomer.customerAlias}}" />
-        <image style="vertical-align: middle;width:8px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
+        <image style="vertical-align: middle;width:5px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
       </view>
     </view>
 
@@ -32,7 +32,7 @@
       <text class="text-14-gray">住院号</text>
       <view class="item-right">
         <input class="input" type="text" value="{{customer.customerCode}}" />
-        <image style="vertical-align: middle;width:8px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
+        <image style="vertical-align: middle;width:5px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
       </view>
     </view>
 
@@ -40,7 +40,7 @@
       <text class="text-14-gray">床位号</text>
       <view class="item-right">
         <input class="input" type="text" value="{{customer.bedNo}}" />
-        <image style="vertical-align: middle;width:8px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
+        <image style="vertical-align: middle;width:5px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
       </view>
     </view>
 
@@ -66,7 +66,7 @@
   <!--患者登记  -->
   <view class="item-3" wx:if="{{customer.descMedias!=null}}">
     <text class="text-remark">患者登记病情</text>
-    <text class="text-value">{{customer.descMedias}}</text>
+    <text class="text-value">{{customer.customerDesc}}</text>
   </view>
 
 </scroll-view>

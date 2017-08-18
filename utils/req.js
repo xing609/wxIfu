@@ -1,48 +1,58 @@
 const App = getApp()
 //GET请求
 function req_get(url, message, success, fail) {
-  wx.showNavigationBarLoading()
-  if (message != "") {
-    wx.showLoading({
-      title: message,
-    })
-  }
-  wx.request({
-    url: url,
-    header: {
-      'content-type': 'application/x-www-form-urlencoded'
-    },
-    method: 'GET',
-    success: function (res) {
-      wx.hideNavigationBarLoading()
-      // if (message != "") {
-      //   wx.hideLoading()
-      // }
-      if (res.data.resCode == '0000') {
-        success(res);
-      } else if (res.data.resCode == '403') {//无权限，需重新登录
-        wx.removeStorageSync('token');
-        wx.redirectTo({
-          url: '/pages/login/index',
-        });
-      } else {
-        console.log("--------reqfail---------" + res.data.resCode + "/" + res.data.resDesc);
-        if (res.data.resCode) {
-          wx.showToast({
-            title: res.data.resDesc
-          })
+  wx.onNetworkStatusChange(function (res) {
+    console.log(res)
+    if (res.networkType == "none") {
+      wx.showToast({
+        title: '网络无连接，请重试',
+      })
+      return;
+    } 
+    if (message != "") {
+      wx.showLoading({
+        title: message,
+      })
+    }
+    wx.request({
+      url: url,
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method: 'GET',
+      success: function (res) {
+        //wx.hideNavigationBarLoading()
+        // if (message != "") {
+        //   wx.hideLoading()
+        // }
+        if (res.data.resCode == '0000') {
+          success(res);
+        } else if (res.data.resCode == '403') {//无权限，需重新登录
+          wx.removeStorageSync('token');
+          wx.redirectTo({
+            url: '/pages/login/index',
+          });
+        } else {
+          console.log("--------reqfail---------" + res.data.resCode + "/" + res.data.resDesc);
+          if (res.data.resCode) {
+            wx.showToast({
+              title: res.data.resDesc
+            })
+          }
+          fail(res);
+        }
+      },
+      fail: function (res) {
+        wx.hideNavigationBarLoading();
+        if (message != "") {
+          wx.hideLoading();
         }
         fail(res);
       }
-    },
-    fail: function (res) {
-      wx.hideNavigationBarLoading();
-      if (message != "") {
-        wx.hideLoading();
-      }
-      fail(res);
-    }
+    })
   })
+
+
 }
 
 
@@ -86,7 +96,19 @@ function cbFail() {
 
 //POST请求
 function req_post(url, message, success, fail) {
-  wx.showNavigationBarLoading()
+  wx.onNetworkStatusChange(function (res) {
+    console.log(res)
+    if (res.networkType == "none") {
+      wx.showToast({
+        title: '网络无连接，请稍候重试',
+      })
+      return;
+    } else {
+      //wx.showNavigationBarLoading()
+      
+    }
+  })
+
   if (message != "") {
     wx.showLoading({
       title: message,
@@ -99,7 +121,7 @@ function req_post(url, message, success, fail) {
     },
     method: 'POST',
     success: function (res) {
-      wx.hideNavigationBarLoading()
+      //wx.hideNavigationBarLoading()
       if (message != "") {
         wx.hideLoading()
       }
@@ -128,6 +150,7 @@ function req_post(url, message, success, fail) {
       fail(res);
     }
   })
+
 }
 
 

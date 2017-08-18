@@ -43,11 +43,9 @@
 /*箭头  */
 
 .ic-next {
-  display: flex;
   width: 5px;
   height: 10px;
   vertical-align: middle;
-  margin-top: 8px;
 }
 
 /*

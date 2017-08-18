@@ -1,4 +1,4 @@
-﻿var Api = require('../../utils/api.js');
+var Api = require('../../utils/api.js');
 var Tools = require('../../utils/md5.js');
 var Req = require('../../utils/req.js');
 const App = getApp()
@@ -35,7 +35,7 @@ Page({
       id: "2",
       num: 0,
       text: arr_name[1],
-      path: '../template/mytemplate/index'
+      path: '../template/mytemplate/index?from=home'
     }, {
       id: "3",
       num: 0,

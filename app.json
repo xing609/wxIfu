@@ -1,6 +1,8 @@
 {
   "pages": [
+    
     "pages/index/index",
+    "pages/about/index",
     "pages/template/knows/index",
     "pages/mycustomer/customerinfo/index",
     "pages/start/index",
@@ -28,12 +30,12 @@
     "pages/help/list/index",
     "pages/help/detail/index",
     "pages/search/index",
-    "pages/about/index",
+    "pages/template/confirmTemplate/index",
     "pages/login/index",
     "pages/user/index",
     "pages/user/info/index",
     "pages/mycustomer/detail/index",
-    "pages/template/confirmTemplate/index",
+   
     "pages/template/templateChild/index",
     "pages/template/templateIntroduce/index",
     "pages/template/detail/index",
