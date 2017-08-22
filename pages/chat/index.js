@@ -1,6 +1,7 @@
 var App = getApp()
 var Api = require('../../utils/api.js');
 var Req = require('../../utils/req.js');
+import { $wuxPrompt } from '../../components/wux'
 var totalData = [];
 Page({
   data: {
@@ -9,7 +10,12 @@ Page({
     resultList: []
   },
   onLoad: function () {
-    this.getChatList(this.data.currentPage);
+    $wuxPrompt.init('msg1', {
+      title: '空空如也',
+      text: '暂时没有相关数据',
+    }).show()
+    console.log("加载样式---------------------------");
+    //this.getChatList(this.data.currentPage);
   },
   //下拉刷新
   onPullDownRefresh: function () {

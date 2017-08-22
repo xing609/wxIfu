@@ -7,9 +7,14 @@
 page {  
   background-color: #F0F0F0;  
 }
+
+@import 'components/wux.wxss';
+@import 'assets/styles/weui.wxss';
+@import 'assets/styles/skyvow.wxss';
+
 @import 'assets/styles/base.wxss';
 @import 'assets/styles/common.wxss';
-@import 'assets/styles/weui.wxss';
 @import 'assets/styles/survey.wxss';
 @import 'assets/styles/gridview.wxss';
 @import 'utils/wxParse/wxParse.wxss';
+

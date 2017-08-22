@@ -1,16 +1,17 @@
-<view class="container">
-<import src="../common/prompt.wxml" />
-    <navigator  class="nav-p" wx:for="{{resultList}}" wx:key="" bindtap="navigateTo" data-id="{{item.id }}" data-realname="{{item.realName}}">
-      <view class="img-head">
-        <image class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
-      </view>
+<import src="../../components/prompt/prompt.wxml" />
+<navigator class="nav-p" wx:for="{{resultList}}" wx:key="" bindtap="navigateTo" data-id="{{item.id }}" data-realname="{{item.realName}}">
+  <view class="img-head">
+    <image class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
+  </view>
 
-      <view class="item-p">
-        <view class="item-name">{{item.realName }}</view>
-        <text class="content-text" wx:if="{{item.lastChat.contentType==1}}">{{item.lastChat.content}}</text>
-        <text class="content-text" wx:if="{{item.lastChat.contentType==2}}">[图片]</text>
-        <text class="content-text" wx:if="{{item.lastChat.contentType==3}}">[语音]</text>
-      </view>
-    </navigator>
-   
-</view>
+  <view class="item-p">
+    <view class="item-name">{{item.realName }}</view>
+    <text class="content-text" wx:if="{{item.lastChat.contentType==1}}">{{item.lastChat.content}}</text>
+    <text class="content-text" wx:if="{{item.lastChat.contentType==2}}">[图片]</text>
+    <text class="content-text" wx:if="{{item.lastChat.contentType==3}}">[语音]</text>
+  </view>
+</navigator>
+
+<template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg1 }}" />
+<template is="prompt" data="{{ ...$wux.prompt.msg2 }}" />
+<template is="prompt" data="{{ ...$wux.prompt.msg3 }}" />

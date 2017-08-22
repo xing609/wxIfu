@@ -120,8 +120,18 @@ Page({
         console.log("即将启用");
         break
       default:
+      
         wx.navigateTo({
-          url: path
+          url: path,
+          success: function (res) {
+            // success
+          },
+          fail: function (res) {
+            // fail
+          },
+          complete: function (res) {
+            // complete
+          }
         })
     }
   },
