@@ -18,10 +18,6 @@
     "pages/index/doctorwrite/index",
     "pages/index/receive/index",
     "pages/index/nosubimt/index",
-    "pages/address/list/index",
-    "pages/address/add/index",
-    "pages/address/edit/index",
-    "pages/address/confirm/index",
     "pages/ifuvalue/list/index",
     "pages/ifuvalue/confirm/index",
     "pages/ifuvalue/detail/index",
@@ -35,12 +31,11 @@
     "pages/user/index",
     "pages/user/info/index",
     "pages/mycustomer/detail/index",
-   
     "pages/template/templateChild/index",
-    "pages/template/templateIntroduce/index",
     "pages/template/detail/index",
     "pages/mycustomer/record/index",
     "pages/auth/index",
+    "pages/template/templateIntroduce/index",
     "pages/register/index"
   ],
   "window": {

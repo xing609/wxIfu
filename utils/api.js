@@ -59,7 +59,7 @@ var RECEIVE_SURVEY ="api/doctor/myIndex/receiveSurvey";
 var NEED_DOCTOR_SURVEY="api/doctor/myIndex/doctorSurveylist";
 //获取新病人列表
 var GET_NEW_CUSTOMER ="api/doctor/customer/list";
-//方案详情
+//患者方案详情
 var GET_CUSTOMER_TEMPLATE_INFO ="api/doctor/customer/info";
 //病程录
 var GET_RECORD_LIST ="api/doctor/msgMedical/getRecordList";
@@ -71,9 +71,23 @@ var BTN_SHIELD ="api/doctor/customer/imstatus";
 var BTN_REMARK ="api/doctor/customer/edit";
 //取随访记录列表
 var GET_CUSTOMER_EXTHOSPTIAL_LIST="api/doctor/customer/customerExtHospitalList";
+//停用方案
+var STOP_TEMPLATE ="api/doctor/template/stop";
+//启用用方案
+var START_TEMPLATE = "api/doctor/template/start";
+//简介方案详情
+var INTRODUCE_TEMPLATE_DETAIL ="api/doctor/template/";
 
 //===========================================请求接口==================================================
-
+function _getIntroduceTemplateDetail(templateId, o) {
+  return reqUrlId(INTRODUCE_TEMPLATE_DETAIL, templateId, o);
+}
+function _stopTeamplate(o){
+  return reqUrl(STOP_TEMPLATE,o);
+}
+function _startTemplate(o){
+  return reqUrl(START_TEMPLATE,o);
+}
 function _getCustomerExtHosptialList(o){
   return reqUrl(GET_CUSTOMER_EXTHOSPTIAL_LIST,o);
 }
@@ -255,5 +269,8 @@ module.exports = {
   chatDetail: _chatDetail,
   btnShield:_btnShield,
   btnRemark:_btnRemark,
-  getCustomerExtHosptialList: _getCustomerExtHosptialList
+  getCustomerExtHosptialList: _getCustomerExtHosptialList,
+  stopTemplate:_stopTeamplate,
+  startTemplate:_startTemplate,
+  getIntroduceTemplateDetail:_getIntroduceTemplateDetail
 };

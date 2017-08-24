@@ -1,3 +1,4 @@
+<import src="../../../components/prompt/prompt.wxml" />
 <view class="container">
   <view class="weui-search-bar">
     <view class="weui-search-bar__form">
@@ -45,6 +46,5 @@
       <text class="item-count" wx:if="{{item.customerNum!=null&&item.customerNum>0}}">患者人数：{{item.customerNum}}</text>
     </view>
   </navigator>
-
-
 </view>
+<template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg3}}" />

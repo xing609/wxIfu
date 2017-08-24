@@ -44,6 +44,11 @@
 }
 .v-right{
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+
 }
 .txt_new_p {
   display: flex;
@@ -163,4 +168,11 @@
 .item-title-num {
   font-size: 14px;
   padding-right: 10px;
+}
+
+.customer-num{
+ font-size: 14px;
+ margin-right: 5px;
+ vertical-align: middle;
+ color:#999999
 }

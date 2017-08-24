@@ -10,12 +10,11 @@ Page({
     resultList: []
   },
   onLoad: function () {
-    $wuxPrompt.init('msg1', {
-      title: '空空如也',
+    $wuxPrompt.init('msg3', {
+      icon: '../../assets/images/iconfont-empty.png',
       text: '暂时没有相关数据',
     }).show()
-    console.log("加载样式---------------------------");
-    //this.getChatList(this.data.currentPage);
+    this.getChatList(this.data.currentPage);
   },
   //下拉刷新
   onPullDownRefresh: function () {
@@ -50,6 +49,18 @@ Page({
       } else {
         totalData = res.data.resultList;
       }
+      if(totalData.length>0){
+        $wuxPrompt.init('msg3', {
+          icon: '../../assets/images/iconfont-empty.png',
+          text: '暂时没有相关数据',
+        }).hide();
+      }else{
+        $wuxPrompt.init('msg3', {
+          icon: '../../assets/images/iconfont-empty.png',
+          text: '暂时没有相关数据',
+        }).show();
+      }
+
       that.setData({
         currentPage: res.data.currentPage,
         pageCount: res.data.pageCount,

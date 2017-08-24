@@ -1,6 +1,7 @@
 var App = getApp()
 var Api = require('../../../utils/api.js');
 var Req = require('../../../utils/req.js');
+import { $wuxPrompt } from '../../../components/wux'
 Page({
   data: {
     pageCount: 0,
@@ -16,11 +17,23 @@ Page({
       token: Api.getToken(),
       page: 1,
     }), "", function success(res) {
-      console.log(res);
       that.setData({
         resultList: res.data.resultList
       })
-      var title = "已收到的量表（" + res.data.total + "）";
+      var num=0;
+      if(res.data.resultList.length>0){
+        $wuxPrompt.init('msg3', {
+          icon: '../../../assets/images/iconfont-empty.png',
+          text: '暂时没有相关数据',
+        }).hide();
+        num = res.data.total;
+      }else{
+        $wuxPrompt.init('msg3', {
+          icon: '../../../assets/images/iconfont-empty.png',
+          text: '暂时没有相关数据',
+        }).show();
+      }
+      var title = "已收到的量表（" + num + "）";
       wx.setNavigationBarTitle({ title: title })
       wx.stopPullDownRefresh();
     }, function fail(res) {

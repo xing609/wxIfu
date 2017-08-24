@@ -1,6 +1,7 @@
 var App = getApp()
 var Api = require('../../utils/api.js');
 var Req = require('../../utils/req.js');
+import {$wuxPrompt } from '../../components/wux'
 Page({
   data: {
     pageCount: 0,
@@ -18,7 +19,19 @@ Page({
       status: 0,
       page: 1
     }), "", function success(res) {
-      console.log(res);
+      if(res.data.resultList!=null&&res.data.resultList.length>0){
+        $wuxPrompt.init('msg3', {
+          icon: '../../assets/images/iconfont-empty.png',
+          text: '暂时没有相关数据',
+        }).hide();
+        console.log("hasdata-----------");
+      }else{
+        $wuxPrompt.init('msg3', {
+          icon: '../../assets/images/iconfont-empty.png',
+          text: '暂时没有相关数据',
+        }).show();
+        console.log("nodata-----------");
+      }
       that.setData({
         currentPage: res.data.currentPage,
         pageCount: res.data.pageCount,

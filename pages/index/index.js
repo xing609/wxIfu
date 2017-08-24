@@ -153,7 +153,7 @@ Page({
   getHomeNum() {
     var that = this;
     Req.req_post(Api.getHomeNum({
-      token: Api.getToken()
+       token: Api.getToken()
     }), "", function success(res) {
       console.log(res);
       that.setData({

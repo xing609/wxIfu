@@ -1,16 +1,217 @@
-.container{
-  height: 100%;
-  width: 100%;
-  padding: 10px;
-}
-.txt-title{
+.top {
   display: block;
+  flex-direction: column;
 }
-.line{
+
+/*方案名称*/
+
+.template-title {
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.template-author-p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1px;
+  background-color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.point-p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1px;
+  background-color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 33px;
+  padding-right: 10px;
+}
+
+.point-end-p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 33px;
+  padding-right: 10px;
+}
+
+.template-name {
+  font-size: 14px;
+  margin-left: 5px;
+  color: #666;
+}
+
+.xian {
+  height: 18px;
+  width: 4px;
+  background-color: #ed992c;
+}
+
+.txt-title {
+  display: flex;
+}
+
+.line {
   height: 1px;
-  background-color: grey
+  background-color: grey;
 }
-.txt-hint{
+
+.txt-hint {
   display: block;
   margin-left: 10px;
+}
+
+.text-author {
+  font-size: 16px;
+  margin-left: 10px;
+  color: #999;
+}
+
+.text-author-value {
+  font-size: 16px;
+  color: black;
+}
+
+.margin-top-10 {
+  margin-top: 10px;
+}
+
+.template-author-p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1px;
+  background-color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.from-p {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.text-template-desc {
+  font-size: 16px;
+  color: black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 33px;
+  padding-right: 10px;
+}
+
+.desc-p {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  justify-content: center;
+  background-color: white;
+}
+
+.text-hint {
+  font-size: 14px;
+  color: #999;
+}
+
+.bottom-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 60px;
+}
+
+.bottom-btn {
+  display: flex;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  vertical-align: middle;
+  justify-content: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.btn-stop {
+  flex: 1;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: white;
+  vertical-align: middle;
+  background-color: red;
+  border-radius: 20px;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+.btn-start{
+  flex: 1;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: white;
+  vertical-align: middle;
+  background-color: #81D84B;
+  border-radius: 20px;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+.margin-top-1{
+  margin-top: 1px;
+}
+.padding-left-30{
+  padding-left: 30px;
+}
+.margin-left-10{
+  margin-left: 10px;
+}
+.btn-detail {
+  flex: 1;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: white;
+  background-color: #86bff4;
+  border-radius: 20px;
+  margin-left: 10px;
+  margin-right: 5px;
+  
 }

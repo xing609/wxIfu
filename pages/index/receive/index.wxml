@@ -1,4 +1,4 @@
-<view class="container">
+<import src="../../../components/prompt/prompt.wxml" />
 <import src="../../common/surveyItem.wxml" />
 <template is="list" data="{{resultList}}" />
-</view>
+<template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg3}}" />

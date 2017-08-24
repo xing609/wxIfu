@@ -1,6 +1,7 @@
 const App = getApp()
 var Api = require('../../../utils/api.js');
 var Req = require('../../../utils/req.js');
+import { $wuxPrompt } from '../../../components/wux'
 var frompage;//哪个页面进入
 Page({
   data: {
@@ -31,6 +32,17 @@ Page({
         that.setData({
           resultList: res.data.resultList
         })
+        if(res.data.resultList.length>0){
+          $wuxPrompt.init('msg3', {
+            icon: '../../../assets/images/iconfont-empty.png',
+            text: '暂时没有相关数据',
+          }).hide();
+        }else{
+          $wuxPrompt.init('msg3', {
+            icon: '../../../assets/images/iconfont-empty.png',
+            text: '暂时没有相关数据',
+          }).show();
+        }
       } else if (frompage == "sendTemplate") {
         var mytemplateList = new Array();
         for (var i in res.data.resultList) {
@@ -48,7 +60,6 @@ Page({
   onLoad: function (option) {
     frompage = option.from;
     var that = this;
-    //来自首页
     this.getMyTemplateList();
   },
   //取随访记录列表
@@ -83,20 +94,29 @@ Page({
       that.setData({
         resultList: templateList
       })
+      if(templateList.length>0){
+        if (res.data.resultList.length > 0) {
+          $wuxPrompt.init('msg3', {
+            icon: '../../../assets/images/iconfont-empty.png',
+            text: '暂时没有相关数据',
+          }).hide();
+        }
+      }else{
+          $wuxPrompt.init('msg3', {
+            icon: '../../../assets/images/iconfont-empty.png',
+            text: '暂时没有相关数据',
+          }).show();
+        }
     }, function fail(res) {
 
     })
   },
-  onLoad: function (option) {
-    frompage = option.from;
-    this.getMyTemplateList();
-  },
+ 
   search() {
     App.WxService.navigateTo('/pages/search/index')
   },
   //item 点击事件
   navigateTo(e) {
-    console.log("--------------------templateid=" + e.currentTarget.dataset.id);
     if (frompage == "home") {
       wx.navigateTo({
         url: "/pages/template/templateIntroduce/index?templateId=" + e.currentTarget.dataset.id

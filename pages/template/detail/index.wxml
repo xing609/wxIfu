@@ -1,13 +1,6 @@
+<import src="../../../components/button/button.wxml"/>
+<template is="button" data="{{ ...$wux.button.br }}"/>
 <view class="trump">
-
-  <!-- <view class="title">
-        {{title}}
-    </view>-->
-
-  <!-- <view class="PicBg">
-    <image src="{{bg}}" />
-  </view> -->
-
   <view class="content">
     <swiper indicator-dots="true" class="Bannerswiper">
       <block wx:for="{{template.templatePointList}}" wx:key="{{index}}">
@@ -16,21 +9,24 @@
             <navigator>
               <view class="contMess">
 
-                <view class=" top-text">
-                  <text class="Mess1">{{item.pointName}}</text>
-                  <text class="Mess1 pointDate">{{item.pointDate}}</text>
+                <view class="top-text">
+                  <text class="pointDate">{{item.pointName}}</text>
+                  <text class="pointDate">{{item.pointDate}}</text>
                 </view>
 
-                <text class="Mess1" wx:if="{{item.pointStatus==2||item.pointStatus==3}}">已完成</text>
-                <text class="Mess1" wx:if="{{item.pointStatus==1}}">进行中</text>
-                <text class="Mess1" wx:if="{{item.pointStatus==0}}">未开始</text>
+                <text class="pointStatus" wx:if="{{item.pointStatus==2||item.pointStatus==3}}">已完成</text>
+                <text class="pointStatus" wx:if="{{item.pointStatus==1}}">进行中</text>
+                <text class="pointStatus" wx:if="{{item.pointStatus==0}}">未开始</text>
 
                 <scroll-view scroll-y="true" class="discover-image-two">
                   <navigator wx:for="{{item.pointLinkList}}" wx:key="{{index}}" bindtap="navigateTo" data-id="{{item.id}}">
 
                     <view class="item-bg">
-                      <image src="../../../assets/images/ic_knows.png" style="margin-bottom: 2px;margin-right: 5px;vertical-align: middle;width:20px; height: 20px;" wx:if="{{item.linkType==1}}" />
-                      <image src="../../../assets/images/ic_form.png" style="margin-bottom: 2px;margin-right: 5px;vertical-align: middle;width:20px; height: 20px;" wx:if="{{item.linkType==0}}" />
+                      <view class="know-img">
+                        <image src="../../../assets/images/ic_knows.png" style="vertical-align: middle;width:20px; height: 20px;" wx:if="{{item.linkType==1}}" />
+                        <image src="../../../assets/images/ic_form.png" style="vertical-align: middle;width:22px; height: 20px;" wx:if="{{item.linkType==0}}" />
+                      </view>
+
                       <text class="link-title">{{item.linkTitle}}</text>
                     </view>
                   </navigator>
@@ -44,3 +40,29 @@
     </swiper>
   </view>
 </view>
+<!-- <view class="page">
+    <view class="page__hd">
+        <view class="page__title">Button</view>
+        <view class="page__desc">浮动按钮</view>
+    </view>
+    <view class="page__bd">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_select">
+                <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                    <view class="weui-label">切换位置</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker bindchange="pickerChange" value="{{ index }}" range="{{ types }}">
+                        <view class="weui-select weui-select_in-select-after">{{ types[index] }}</view>
+                    </picker>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_switch">
+                <view class="weui-cell__bd">切换状态</view>
+                <view class="weui-cell__ft">
+                    <switch bindchange="switchChange" checked="{{ opened }}" />
+                </view>
+            </view>
+        </view>
+    </view>
+</view> -->

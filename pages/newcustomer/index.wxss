@@ -1,1 +1,121 @@
-/* pages/newcustomer/index.wxss */
+/* pages/mycustomer/index.wxss */
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.v-left {
+  display: flex;
+  flex-direction: row;
+}
+.v-right{
+  display: flex;
+}
+.txt_new_p {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.left_text_new {
+  display: block;
+  font-size: 14px;
+  color: black;
+}
+
+.left_text_manager {
+  display: block;
+  font-size: 12px;
+  height: 15px;
+  color: lightgray;
+}
+
+
+/**患者**/
+
+.item_p {
+  display: block;
+}
+
+.group-title {
+  display: flex;
+  width: 100%;
+  background-color: gainsboro;
+  justify-content: space-between;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.text-orangered {
+  color: #ff9a35;
+  font-size: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.item-top {
+  width: 100%;
+  flex-direction: column;
+  display: flex;
+  margin-bottom: 10px;
+  background: white;
+}
+
+.item-text {
+  font-size: 14px;
+  color: gray;
+}
+
+.ic-newcustomer {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+}
+
+.head-margin-left {
+  margin-left: 10px;
+}
+
+.text-remark {
+  vertical-align: middle;
+  padding-left: 10px;
+  flex-direction: row;
+  display: block;
+}
+
+.item-user-info {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  justify-content: space-between;
+  vertical-align: middle;
+}
+
+.div-left-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.txt-info {
+  vertical-align: middle;
+  flex-direction: column;
+  padding-left: 10px;
+  display: flex;
+}
+
+.item-title {
+  width: 230px;
+  font-size: 14px;
+  overflow: hidden;
+  padding-left: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-title-num {
+  font-size: 14px;
+  padding-right: 10px;
+}

@@ -1,4 +1,6 @@
 <!--index.wxml-->
+<import src="../../components/toast/toast.wxml"/>
+<template is="toast" data="{{ ...$wux.toast }}"/>
 <view class="container">
 
   <view class="home_top">

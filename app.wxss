@@ -6,7 +6,7 @@
 
 page {  
   background-color: #F0F0F0;  
-}
+} 
 
 @import 'components/wux.wxss';
 @import 'assets/styles/weui.wxss';

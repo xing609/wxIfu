@@ -1,6 +1,6 @@
-<view class="container">
-  <view class="top-container">
-    <view class="weui-search-bar">
+<import src="../../components/prompt/prompt.wxml" />
+<view class="top-container">
+<view class="weui-search-bar">
       <view class="weui-search-bar__form">
         <view class="weui-search-bar__box">
           <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
@@ -11,64 +11,59 @@
         <view class="weui-search-bar__text">搜索</view>
       </label>
       </view>
+    </view> 
+
+  <view class="top" bindtap="jumpToNewCustomer">
+    <view class="v-left">
+      <image class="ic-newcustomer" src='../../assets/images/ic_new_customer.png'></image>
+      <view class="txt_new_p">
+        <text class="left_text_new">新病人</text>
+        <text class="left_text_manager">未进行管理</text>
+      </view>
     </view>
-
-    <view class="top" bindtap="jumpToNewCustomer">
-      <view class="v-left">
-        <image class="ic-newcustomer" src='../../assets/images/ic_new_customer.png'></image>
-        <view class="txt_new_p">
-          <text class="left_text_new">新病人</text>
-          <text class="left_text_manager">未进行管理</text>
-        </view>
-      </view>
-
-
-
-      <view class="v-right">
-        <text wx:if="{{newCustomerNum!=0}}">{{newCustomerNum}}</text>
-        <image class="ic-next" style="margin-right: 10px;" src='../../assets/images/userinfo/ic_next.png'></image>
-      </view>
+    <view class="v-right">
+      <text class="customer-num" wx:if="{{newCustomerNum!=0}}">{{newCustomerNum}}</text>
+      <image class="ic-next" style="margin-right: 10px;" src='../../assets/images/userinfo/ic_next.png'></image>
     </view>
   </view>
+</view>
 
-  <view class="list">
-    <view url="" class="item_p" wx:for="{{resultList}}" wx:key="{{index}}" data-id="{{ item.id }}">
+<view class="list">
+  <view url="" class="item_p" wx:for="{{resultList}}" wx:key="{{index}}" data-id="{{ item.id }}">
 
-      <view class="group-title">
-        <view class="item-title">{{item.templateType}}--{{item.templateName}}</view>
-        <view class="item-title-num">共{{item.customerExtHospitalList.length}}人</view>
+    <view class="group-title">
+      <view class="item-title">{{item.templateType}}--{{item.templateName}}</view>
+      <view class="item-title-num">共{{item.customerExtHospitalList.length}}人</view>
+    </view>
+
+
+    <!--患者-->
+    <navigator class="item-top" wx:for="{{item.customerExtHospitalList}}" wx:key="{{index}}" data-customerExtHosp="{{item.id}}" data-customer-id="{{item.customerId}}" open-type="redirect" bindtap="navigateTo" data-id="{{item.id}}">
+
+      <view class="item-user-info">
+        <view class="div-left-head">
+
+          <image class="userinfo-avatar" wx:if="{{item.face!=null&&item.face!=''}}" src="{{item.face}}" background-size="cover"></image>
+          <image class="userinfo-avatar" wx:if="{{item.face==null||item.face==''}}" src="../../assets/images/ic_default_customer.png" background-size="cover"></image>
+          <view class="txt-info">
+            <text class="item-text" wx:if="{{item.sex==0}}">{{item.customerName }}   男   {{item.age}}岁</text>
+            <text class="item-text" wx:if="{{item.sex==1}}">{{item.customerName }}   女   {{item.age}}岁</text>
+
+            <text class="item-text">床位号：{{item.bedNo}}</text>
+          </view>
+        </view>
+
+        <image wx:if="{{item.mark}}" style="width:16px;height:16px;vertical-align:middle;" src='../../assets/images/ic_hasremark.png'></image>
       </view>
 
-
-      <!--患者-->
-      <navigator class="item-top" wx:for="{{item.customerExtHospitalList}}" wx:key="{{index}}" data-customerExtHosp="{{item.id}}" data-customer-id="{{item.customerId}}" open-type="redirect" bindtap="navigateTo" data-id="{{item.id}}">
-
-          <view class="item-user-info">
-            <view class="div-left-head">
-              <image class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
-
-              <view class="txt-info">
-                <text class="item-text" wx:if="{{item.sex==0}}">{{item.customerName }}   男   {{item.age}}岁</text>
-                <text class="item-text" wx:if="{{item.sex==1}}">{{item.customerName }}   女   {{item.age}}岁</text>
-
-                <text class="item-text">床位号：{{item.bedNo}}</text>
-              </view>
-            </view>
-
-            <image wx:if="{{item.mark}}" style="width:16px;height:16px;vertical-align:middle;" src='../../assets/images/ic_hasremark.png'></image>
-          </view>
-
-          <view class="text-remark">
-            <view class="line-x"></view>
-            <text class="text-orangered">医生备注:</text>
-            <image wx:if="{{item.remarkNum>0}}" style="width:14px;height:14px;margin-left:5px;margin-right:5px;vertical-align:middle;" src='../../assets/images/ic_imgmark_yellow.png'></image>
-            <text class="text-orangered">{{item.remark}}</text>
-          </view>
-
-        
-      </navigator>
-
-    </view>
+      <view class="text-remark">
+        <view class="line-x"></view>
+        <text class="text-orangered">医生备注:</text>
+        <image wx:if="{{item.remarkNum>0}}" style="width:14px;height:14px;margin-left:5px;margin-right:5px;vertical-align:middle;" src='../../assets/images/ic_imgmark_yellow.png'></image>
+        <text class="text-orangered">{{item.remark}}</text>
+      </view>
+    </navigator>
   </view>
 
 </view>
+<template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg3}}" />

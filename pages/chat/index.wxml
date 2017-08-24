@@ -12,6 +12,4 @@
   </view>
 </navigator>
 
-<template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg1 }}" />
-<template is="prompt" data="{{ ...$wux.prompt.msg2 }}" />
-<template is="prompt" data="{{ ...$wux.prompt.msg3 }}" />
+<template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg3}}" />

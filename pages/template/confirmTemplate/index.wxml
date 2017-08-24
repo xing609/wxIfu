@@ -1,10 +1,13 @@
 <view class="container">
-  <view class="new-tempate-p">
-    <view class="xian"> </view>
-    <text class="text-new-template"> 新方案</text>
-  </view>
+  
   <view class="template-detail">
-    <text class="template-name">{{template.templateName}}</text>
+    
+
+<view class="template-title">
+    <view class="xian"> </view>
+    <text class="text-new-template">{{template.templateName}}</text>
+  </view>
+
     <view class="template-type">
       <text class="item-type-2" wx:if="{{template.type==0}}"> 私人</text>
       <text class="item-type-2" wx:if="{{template.type==1}}"> 官方</text>

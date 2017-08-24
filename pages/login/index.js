@@ -1,4 +1,4 @@
-﻿var Api = require('../../utils/api.js');
+var Api = require('../../utils/api.js');
 var Tools = require('../../utils/md5.js');
 var Req = require('../../utils/req.js');
 const App = getApp()
@@ -49,7 +49,7 @@ Page({
     Req.req_post(Api.login({
       loginName: this.data.userName,
       password: Tools.hexMD5(this.data.passWord)
-    }), "", function success(res) {
+    }), "正在登录", function success(res) {
       console.log("---------token-----------" + res.data.token);
       wx.setStorageSync('loginName', that.data.userName);
       wx.setStorageSync('psw', that.data.passWord);

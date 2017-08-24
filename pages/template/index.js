@@ -1,6 +1,7 @@
 const App = getApp()
 var Api = require('../../utils/api.js');
 var Req = require('../../utils/req.js');
+import { $wuxPrompt } from '../../components/wux'
 Page({
   data: {
     resultList: []
@@ -17,12 +18,23 @@ Page({
       that.setData({
         resultList: res.data.resultList
       })
+      if(res.data.resultList.length>0){
+        $wuxPrompt.init('msg3', {
+          icon: '../../assets/images/iconfont-empty.png',
+          text: '暂时没有相关数据',
+        }).hide();
+      }else{
+        $wuxPrompt.init('msg3', {
+          icon: '../../assets/images/iconfont-empty.png',
+          text: '暂时没有相关数据',
+        }).show();
+      }
     }, function fail(res) {
     })
   },
   onLoad: function () {
     var that = this;
-    this.getTemplateGroupList();
+   this.getTemplateGroupList();
   },
   search() {
     App.WxService.navigateTo('/pages/search/index')

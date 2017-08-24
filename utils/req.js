@@ -1,4 +1,5 @@
 const App = getApp()
+import { $wuxToast } from '../components/wux'
 //GET请求
 function req_get(url, message, success, fail) {
   wx.onNetworkStatusChange(function (res) {
@@ -35,9 +36,7 @@ function req_get(url, message, success, fail) {
         } else {
           console.log("--------reqfail---------" + res.data.resCode + "/" + res.data.resDesc);
           if (res.data.resCode) {
-            wx.showToast({
-              title: res.data.resDesc
-            })
+            showToastErr(res.data.resDesc);
           }
           fail(res);
         }
@@ -55,6 +54,16 @@ function req_get(url, message, success, fail) {
 
 }
 
+ //自定义错误提示
+ function showToastErr(content) {
+  $wuxToast.show({
+    type: 'forbidden',
+    timer: 1500,
+    color: '#fff',
+    text: content,
+    success: () => console.log(content)
+  })
+}
 
 
 //h5请求
@@ -135,9 +144,7 @@ function req_post(url, message, success, fail) {
       } else {
         console.log("--------reqfail---------" + res.data.resCode + "/" + res.data.resDesc);
         if (res.data.resCode) {
-          wx.showToast({
-            title: res.data.resDesc
-          })
+          showToastErr(res.data.resDesc);
         }
         fail(res);
       }
@@ -184,9 +191,7 @@ function req_json(url, params, message, success, fail) {
       } else {
         console.log("--------reqfail---------" + res.data.resCode + "/" + res.data.resDesc);
         if (res.data.resCode) {
-          wx.showToast({
-            title: res.data.resDesc
-          })
+          showToastErr(res.data.resDesc);
         }
         fail(res);
       }

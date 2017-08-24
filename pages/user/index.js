@@ -6,7 +6,7 @@ Page({
     userInfo: {},
     items: [
       {
-        icon: '../../assets/images/iconfont-order.png',
+        icon: '../../assets/images/iconfont-kefu.png',
         text: '医数值',
         path: ''///pages/ifuvalue/list/index
       },

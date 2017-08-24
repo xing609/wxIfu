@@ -75,7 +75,7 @@ Page({
     if (doctorId){
       if (doctorId == this.data.doctorId){
         wx.navigateTo({
-          url: "/pages/template/detail/index?customerId=" + customerId + "&exthospitalId=" + e.currentTarget.dataset.exthospitalid
+          url: "/pages/template/detail/index?customerId=" + customerId + "&exthospitalId=" + e.currentTarget.dataset.exthospitalid+"&from=customer"
         })
       }else{
         wx.showToast({

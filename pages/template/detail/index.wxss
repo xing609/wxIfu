@@ -82,13 +82,25 @@
   height: 320px;
 }
 
-.top-text{
+.top-text {
   display: flex;
   justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 5px;
 }
-.pointDate{
+
+.pointDate {
+  font-size: 14px;
+  color: white;
   margin-right: 10px;
 }
+
+.pointStatus {
+  margin-left: 5px;
+  font-size: 14px;
+  color: white;
+}
+
 .img-type {
   height: 30px;
   width: 30px;
@@ -105,14 +117,34 @@
 
 .item-bg {
   display: flex;
-  background-color: #fdf2d4;
-  padding: 10px;
+  justify-content: flex-start;
+  height: 40px;
   color: #666;
   align-items: center;
+  vertical-align: middle;
   margin: 10px;
+  background-color: #fdf2d4;
   border-radius: 6px 6px 6px 6px;
 }
 
 .link-title {
+  font-size: 14px;
+  color: black;
+  width: 250px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.know-img {
   display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 22px;
+  width: 22px;
+  margin-right: 5px;
 }
