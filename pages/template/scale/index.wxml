@@ -1,0 +1,57 @@
+<view class="padding">
+  <view class="top">
+    <text class="title">{{model.title}}</text>
+    <view class="score-p">
+      <text class="system-scole">系统评分：</text>
+      <text class="system-scole">共{{questionList.length}}题</text>
+    </view>
+    <text class="system-scole">答题时间：</text>
+    <text wx:if="{{item.surveyDesc!=null}}" class="system-scole">{{item.surveyDesc}}</text>
+  </view>
+  <navigator class="nav-p" wx:for="{{questionList}}" wx:key="" data-id="{{item.id }}" wx:for-index="index">
+   <view class="line-x margin-top"></view>
+    <text class="question-title">{{item.questionCode}}.{{item.questionTitle}}</text>
+    <!--单选题-->
+    <view wx:if="{{item.questionType==0}}" class="classname">
+      <navigator wx:for="{{item.optionList}}">
+        <radio class="option-content" value="{{item.optionText}}" checked="{{item.selected}}" />{{item.optionText}}
+      </navigator>
+    </view>
+
+    <!--多选题-->
+    <view wx:if="{{item.questionType==1}}" class="classname">
+      <navigator wx:for="{{item.optionList}}">
+        <checkbox class="option-content" value="{{item.optionText}}" checked="{{item.selected}}" />{{item.optionText}}
+      </navigator>
+    </view>
+
+    <!--判断题-->
+    <view wx:if="{{item.questionType==2}}" class="classname">
+      <navigator wx:for="{{item.optionList}}">
+        <radio class="option-content" value="{{item.optionText}}" />{{item.optionText}}
+      </navigator>
+
+    </view>
+
+    <!--填空题-->
+    <text class="option-content" wx:if="{{item.questionType==3&&item.optionList[0].optionText!=null}}" class="option-edit">{{item.optionList[0].optionText}}</text>
+    <text wx:if="{{item.questionType==3&&item.optionList[0].optionText==null}}" class="option-edit"></text>
+
+
+    <!--打分题-->
+    <view wx:if="{{item.questionType==4}}" class="classname">
+      <navigator class="option-score-text" wx:for="{{item.optionList}}">
+        <text class="item-score-text">{{item.optionText}}</text>
+      </navigator>
+
+      <!--疼痛题长度为10，第一个是无痛，最后一个是剧烈痛 ，否则是打分题 -->
+      <image wx:if="{{item.optionList.length==11&&item.optionList[0].optionText=='无痛'&&item.optionList[10].optionText=='剧烈痛'}}" style="width:280px;height:140px" src="../../../assets/images/scale/ic_pain.png"></image>
+    </view>
+
+    <!--手绘题-->
+    <view wx:if="{{item.questionType==5}}" class="classname">
+      <image bindtap="previewImage" data-imgurl="{{item.optionList[0].pic}}" wx:if="{{item.optionList.length>0}}" style="width:280px;height:150px;" src="{{item.optionList[0].pic}}"></image>
+    </view>
+   
+  </navigator>
+</view>

@@ -1,0 +1,78 @@
+/* pages/template/scale/index.wxss */
+
+.top {
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+}
+
+.padding {
+  padding: 10px;
+  background-color: white;
+}
+
+.title {
+  font-size: 16px;
+  color: black;
+}
+
+.score-p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.system-scole {
+  font-size: 14px;
+  color: #666;
+}
+
+.question-title {
+  font-size: 16px;
+  color: black;
+}
+
+.nav-p {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  vertical-align: middle;
+  margin-top: 5px;
+}
+
+/*填空题  */
+
+.option-edit {
+  width: 280px;
+  height: 40px;
+  border-radius: 16px;
+  font-size: 14px;
+  color: white;
+  vertical-align: middle;
+  border: 1px solid #999;
+}
+
+.option-content {
+  font-size: 14px;
+  color: #999;
+}
+
+/*打分题  */
+
+.option-score-text {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.item-score-text {
+  font-size: 12px;
+  color: #999;
+}
+
+.margin-top {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

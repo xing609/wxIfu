@@ -1,5 +1,5 @@
-<import src="../../../components/button/button.wxml"/>
-<template is="button" data="{{ ...$wux.button.br }}"/>
+<import src="../../../components/button/button.wxml" />
+<template is="button" data="{{ ...$wux.button.br }}" />
 <view class="trump">
   <view class="content">
     <swiper indicator-dots="true" class="Bannerswiper">
@@ -21,13 +21,15 @@
                 <scroll-view scroll-y="true" class="discover-image-two">
                   <navigator wx:for="{{item.pointLinkList}}" wx:key="{{index}}" bindtap="navigateTo" data-id="{{item.id}}">
 
-                    <view class="item-bg">
+                    <view class="item-bg" data-item="{{item}}" bindtap="jumpToScalDetail">
                       <view class="know-img">
                         <image src="../../../assets/images/ic_knows.png" style="vertical-align: middle;width:20px; height: 20px;" wx:if="{{item.linkType==1}}" />
                         <image src="../../../assets/images/ic_form.png" style="vertical-align: middle;width:22px; height: 20px;" wx:if="{{item.linkType==0}}" />
                       </view>
 
                       <text class="link-title">{{item.linkTitle}}</text>
+                        
+                      <!-- <image wx:if="{{item.isDoctorOnly==0}}" src="../../../assets/images//scale/doctor_only.png" style="vertical-align: middle;width:40px; height: 50px;" /> -->
                     </view>
                   </navigator>
                 </scroll-view>

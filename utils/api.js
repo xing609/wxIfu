@@ -76,9 +76,21 @@ var STOP_TEMPLATE ="api/doctor/template/stop";
 //启用用方案
 var START_TEMPLATE = "api/doctor/template/start";
 //简介方案详情
-var INTRODUCE_TEMPLATE_DETAIL ="api/doctor/template/";
+var INTRODUCE_TEMPLATE_DETAIL ="api/doctor/template";
+//量表详情
+var SCALE_DETAIL ="api/doctor/survey";
+//须知详情
+var KNOWS_DETAIL ="api/doctor/notes";
 
 //===========================================请求接口==================================================
+function _getKnowDetail(noteId,o){
+  return reqUrlId(KNOWS_DETAIL, noteId, o);
+}
+
+function _getScaleDetail(surveryId,o){
+  return reqUrlId(SCALE_DETAIL,surveryId,o);
+}
+
 function _getIntroduceTemplateDetail(templateId, o) {
   return reqUrlId(INTRODUCE_TEMPLATE_DETAIL, templateId, o);
 }
@@ -230,6 +242,8 @@ function _obj2uri(obj) {
 }
 //===========================================导出===========================================
 module.exports = {
+  getKnowsDetail:_getKnowDetail,
+  getScaleDetail:_getScaleDetail,
   getCompnentAppId: COMPONENT_APP_ID,
   getAppId: APP_ID,
   msPage: MS_PAGE,

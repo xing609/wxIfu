@@ -21,7 +21,6 @@ Page({
       }
       this.getCustomerTemplateInfo(option.customerId, option.exthospitalId);
     }
-   
   },
   getCustomerTemplateInfo: function (customerId, customerExtHosp) {
     var that = this;
@@ -61,6 +60,20 @@ Page({
 
     }, function fail(res) {
     })
+  },
+  jumpToScalDetail(e){
+    console.log("item-============" + e.currentTarget.dataset.item);
+    var item = e.currentTarget.dataset.item;
+    console.log("item-id============" + item.id);
+    if (item.linkType ==0){//量表
+      wx.navigateTo({
+        url: "/pages/template/scale/index?linkPointId=" + item.id + "&linkId=" + item.linkId
+      })
+    }else{//须知
+      wx.navigateTo({
+        url: "/pages/template/knows/index?nodeId=" + item.linkId 
+      })
+    }
   },
 
 

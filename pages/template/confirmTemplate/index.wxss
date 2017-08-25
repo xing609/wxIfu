@@ -10,9 +10,11 @@
 }
 
 .template-title {
-  display: block;
-  font-size: 16px;
-  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 5px;
 }
 
 .template-type {
@@ -62,7 +64,7 @@
 }
 
 .text-new-template {
-  font-size: 14px;
+  font-size: 16px;
   margin-left: 5px;
   color: #666;
 }

@@ -36,6 +36,7 @@
     "pages/mycustomer/record/index",
     "pages/auth/index",
     "pages/template/templateIntroduce/index",
+    "pages/template/scale/index",
     "pages/register/index"
   ],
   "window": {

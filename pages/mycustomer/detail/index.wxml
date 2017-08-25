@@ -71,5 +71,5 @@
   </view>
 
   <text class="btnsend" bindtap="sendTemplate"> 分配方案 </text>
-  <text class="btnChat" open-type="contact">询问病情</text>
+  <text class="btnChat" bindtap="goChat">询问病情</text>
 </view>

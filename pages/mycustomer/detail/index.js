@@ -3,6 +3,7 @@ var Api = require('../../../utils/api.js');
 var Req = require('../../../utils/req.js');
 const App = getApp()
 var customerId;
+var realName;
 var customerExtHosp;
 Page({
   data: {
@@ -43,6 +44,7 @@ Page({
       token: Api.getToken(),
       customerExtHosp: customerExtHosp
     }), "加载中", function success(res) {
+      realName = res.data.model.customerName;
       that.setData({
         doctorId:Api.getUser().id,
         customer: res.data.model
@@ -101,6 +103,9 @@ Page({
   },
   //更多信息
   jumpToCustomerInfo(){
+    if (!customerExtHosp){
+      customerExtHosp=this.data.customer.id;
+    }
     wx.navigateTo({
       url: "/pages/mycustomer/customerinfo/index?customerId=" + customerId + "&customerExtHosp=" + customerExtHosp
     })
@@ -160,6 +165,12 @@ Page({
       }
     }, function fail(res) {
 
+    })
+  },
+  //聊天
+  goChat(){
+    wx.navigateTo({
+      url: "/pages/chat/detail/index?customerId=" + customerId + "&realName=" + realName
     })
   }
 

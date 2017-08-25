@@ -27,7 +27,7 @@
    
     <text class="center-text" bindtap="jumpTemplateGroup">随访方案库</text>
     
-    <text class="center-text">邀请赢好礼</text>
+    <text hidden="true" class="center-text">邀请赢好礼</text>
 
   </view>
 
