@@ -29,7 +29,7 @@ Page({
     this.setData({
       passWord: e.detail.value
     })
-    console.log(e.detail.value)
+   
   },
 
   btnLogin() {
@@ -62,27 +62,5 @@ Page({
       })
     }, function fail(res) {
     })
-
-    // wx.showNavigationBarLoading() //在标题栏中显示加载
-    // var that = this;
-    // wx.request({
-    //   method: 'POST',
-    //   url: Api.login({
-    //     loginName: this.data.userName,
-    //     password: Tools.hexMD5(this.data.passWord)
-    //   }),
-    //   success: function (res) {
-    //     console.log("---------token-----------" + res.data.token);
-    //       wx.setStorageSync('loginName',that.data.userName);
-    //       wx.setStorageSync('psw', that.data.passWord);
-    //       wx.setStorageSync('user', res.data.model);
-    //       //存用户TOKEN
-    //       wx.setStorageSync('token', res.data.token);
-
-    //       wx.switchTab({
-    //         url: '/pages/index/index?from=login'
-    //       })
-    //   }
-    // })
   }
 })

@@ -21,8 +21,8 @@
 
 .imgleft {
   vertical-align: middle;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   margin-left: 10px;
   margin-right: 10px;
 }
@@ -74,21 +74,25 @@
 .user_desc_p {
   background: white;
   vertical-align: middle;
+  margin-top: 1px;
   padding-bottom: 10px;
 }
 
 .user_desc_text {
-  margin-left: 20px;
-  margin-right: 20px;
+  display: flex;
+  margin-left: 10px;
+  margin-right: 10px;
   font-size: 14px;
   color: silver;
-  background: greenyellow;
+  padding: 5px;
+  border-radius: 6px 6px 6px 6px;
+  background-color: #F0F0F0;
 }
-
+.desc-p{
+  display:flex;
+}
 .img_next {
   width: 5px;
   height: 10px;
-  margin-right: 10px;
-  margin-left: 10px;
   vertical-align: middle;
 }

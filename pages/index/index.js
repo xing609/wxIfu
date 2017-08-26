@@ -14,10 +14,10 @@ Page({
     interval: 3000,
     duration: 1000,
     model: {},
-    images:[
+    images: [
       {
         id: "1",
-        url:'http://www.ifuifu.com/i/up_clinic_banner1.jpg'
+        url: 'http://www.ifuifu.com/i/up_clinic_banner1.jpg'
       }, {
         id: "2",
         url: 'http://www.ifuifu.com/i/up_clinic_banner2.jpg'
@@ -120,7 +120,7 @@ Page({
         console.log("即将启用");
         break
       default:
-      
+
         wx.navigateTo({
           url: path,
           success: function (res) {
@@ -153,7 +153,7 @@ Page({
   getHomeNum() {
     var that = this;
     Req.req_post(Api.getHomeNum({
-       token: Api.getToken()
+      token: Api.getToken()
     }), "", function success(res) {
       console.log(res);
       that.setData({
@@ -167,20 +167,20 @@ Page({
 
   onLoad: function (option) {
     var that = this;
-    if (Api.getToken()){
+    if (Api.getToken()) {
       this.getHomeNum();
-    }else{
-      if (Api.getLoginName() &&Api.getPsw()) {
+    } else {
+      if (Api.getLoginName() && Api.getPsw()) {
         this.login();
-      }else{
+      } else {
         wx.redirectTo({
           url: '/pages/login/index',
         })
       }
     }
-   
-  
-   // this.getHomeNum();
+
+
+    // this.getHomeNum();
     // if (!Api.getToken()){
     //   this.getHomeNum();
     // }else{
@@ -210,12 +210,12 @@ Page({
     // });
   },
   //code 换取 session_key
-  getSessionKey (js_code) {
+  getSessionKey(js_code) {
     var that = this;
     wx.request({
       url: 'https://api.weixin.qq.com/sns/jscode2session?appid=' + Api.getAppId
-      +'&secret=97d950ac223a5eea24526a34155a9382&js_code=' + js_code 
-      + '&component_appid=' + Api.getCompnentAppId+'&grant_type=authorization_code',
+      + '&secret=97d950ac223a5eea24526a34155a9382&js_code=' + js_code
+      + '&component_appid=' + Api.getCompnentAppId + '&grant_type=authorization_code',
       method: 'POST',
       header: {
         'content-type': 'application/json'
@@ -252,7 +252,7 @@ Page({
       userType: 2,
       openId: openId,
       type: 1,
-      
+
       userInfo: userInfo
     }), "", function success(res) {
       console.log("第三方登录成功：" + res);
@@ -266,12 +266,12 @@ Page({
     })
   },
   jumpIfuValueIndex() {
-   // App.WxService.navigateTo('/pages/index/ifuvalue/index')
+    // App.WxService.navigateTo('/pages/index/ifuvalue/index')
   },
   jumpTemplateQrIndex() {
-   wx.navigateTo({
-     url: '/pages/index/templateqr/index',
-   })
+    wx.navigateTo({
+      url: '/pages/index/templateqr/index',
+    })
   },
   jumpTemplateGroup() {
     wx.navigateTo({

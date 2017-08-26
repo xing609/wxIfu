@@ -10,20 +10,23 @@ Page({
     resultList: []
   },
   onLoad: function () {
-    $wuxPrompt.init('msg3', {
-      icon: '../../assets/images/iconfont-empty.png',
-      text: '暂时没有相关数据',
-    }).show()
-    this.getChatList(this.data.currentPage);
-  },
-  //下拉刷新
-  onPullDownRefresh: function () {
     this.setData({
       currentPage: 1,
       resultList: []
     })
-    this.getChatList(1);
+    this.getChatList(this.data.currentPage);
   },
+  //下拉刷新
+  onPullDownRefresh: function () {
+    this.onLoad();
+  },
+   onShow:function(){//检测是否有发送新消息
+     var hasMess=wx.getStorageSync('hasNewMess');
+     if(hasMess){
+       this.onLoad();
+     }
+   },
+
   //上拉回调
   onReachBottom: function () {
     var currentPage = this.data.currentPage + 1;
@@ -49,6 +52,8 @@ Page({
       } else {
         totalData = res.data.resultList;
       }
+
+      wx.setStorageSync('hasNewMess', false);
       if(totalData.length>0){
         $wuxPrompt.init('msg3', {
           icon: '../../assets/images/iconfont-empty.png',

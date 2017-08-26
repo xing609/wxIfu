@@ -81,8 +81,13 @@ var INTRODUCE_TEMPLATE_DETAIL ="api/doctor/template";
 var SCALE_DETAIL ="api/doctor/survey";
 //须知详情
 var KNOWS_DETAIL ="api/doctor/notes";
+//发送消息
+var SEND_CHAT_MESS ="api/common/chat/sendMsg";
 
 //===========================================请求接口==================================================
+function _sendChatMess(o){
+  return reqUrl(SEND_CHAT_MESS,o);
+}
 function _getKnowDetail(noteId,o){
   return reqUrlId(KNOWS_DETAIL, noteId, o);
 }
@@ -242,6 +247,7 @@ function _obj2uri(obj) {
 }
 //===========================================导出===========================================
 module.exports = {
+  sendChatMess:_sendChatMess,
   getKnowsDetail:_getKnowDetail,
   getScaleDetail:_getScaleDetail,
   getCompnentAppId: COMPONENT_APP_ID,

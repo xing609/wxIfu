@@ -11,7 +11,6 @@ Page({
     resultList: [],
     customerId:'',
     doctorId:'',
-    customerExtHosp:'',
   },
 
   onLoad: function (option) {
@@ -49,6 +48,7 @@ Page({
         doctorId:Api.getUser().id,
         customer: res.data.model
       })
+      customerExtHosp = res.data.model.id;
       that.getTemplateIng(id);
     }, function fail(res) {
 
@@ -148,7 +148,7 @@ Page({
     Req.req_post(Api.btnRemark({
       token: Api.getToken(),
       mark: markType,
-      customerExtHosp: customerExtHosp
+      customerExtHosp: that.data.customer.id
     }), "加载中", function success(res) {
       bean.mark = !ismark;
       that.setData({

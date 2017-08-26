@@ -6,7 +6,7 @@ Page({
     userInfo: {},
     items: [
       {
-        icon: '../../assets/images/iconfont-kefu.png',
+        icon: '../../assets/images/userinfo/ic_ifu_value.png',
         text: '医数值',
         path: ''///pages/ifuvalue/list/index
       },
@@ -16,19 +16,19 @@ Page({
       //   path: ''///pages/address/list/index
       // },
       {
-        icon: '../../assets/images/iconfont-kefu.png',
+        icon: '../../assets/images/userinfo/ic_contact_us.png',
         text: '联系我们',
         path: '400-618-2535',
       }
     ],
     settings: [
       {
-        icon: '../../assets/images/iconfont-clear.png',
+        icon: '../../assets/images/userinfo/i_setting.png',
         text: '清除缓存',
         path: '0.0KB'
       },
       {
-        icon: '../../assets/images/iconfont-about.png',
+        icon: '../../assets/images/userinfo/ic_about_us.png',
         text: '关于医数',
         path: '/pages/about/index'
       },

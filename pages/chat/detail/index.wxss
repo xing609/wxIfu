@@ -7,6 +7,10 @@
   margin-top: 10px;
 }
 
+.sv {
+  margin-bottom: 130px;
+}
+
 .content-time {
   display: flex;
   flex-direction: row;
@@ -61,7 +65,7 @@
   font-size: 12px;
 }
 
-.content-voice-p-left{
+.content-voice-p-left {
   display: flex;
   justify-content: flex-end;
   width: 80px;
@@ -73,14 +77,14 @@
   background: white;
 }
 
-.content-voice-left{
+.content-voice-left {
   width: 32px;
   height: 24px;
   display: flex;
   justify-content: center;
 }
 
-.voice-time-left{
+.voice-time-left {
   display: flex;
   justify-content: center;
   font-size: 14px;
@@ -132,9 +136,17 @@
   font-size: 12px;
 }
 
+.right-voice {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  vertical-align: middle;
+}
+
 .content-voice-p-right {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   width: 80px;
   padding: 5px;
   margin-top: 10px;
@@ -152,8 +164,80 @@
 }
 
 .voice-time-right {
-  display: flex;
-  justify-content: center;
+  margin-top: 10px;
   font-size: 14px;
+  margin-right: 5px;
   color: #6e6d6b;
+}
+
+/*底部发送  */
+
+.v-bottom {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  background-color: #f8f8f8;
+}
+
+.chat-input {
+  background: white;
+  max-height: 120px;
+  min-height: 40px;
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 6px;
+  border: 1px solid #f0f0f0;
+  padding-left: 5px;
+  padding-right: 5px;
+  flex: 5;
+}
+
+.send-p {
+  display: flex;
+  flex-direction: row;
+}
+
+.btnSend {
+  display: flex;
+  height: 38px;
+  margin-right: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
+  flex: 1;
+  justify-content: center;
+  line-height: 40px;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 6px;
+  border: 0.5px solid #818181;
+}
+
+.more-p {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.choose-img-p {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.choose-img {
+  width: 30px;
+  height: 30px;
+}
+
+.choose-text {
+  margin-top: 5px;
+  font-size: 14px;
+  color: #818181;
 }

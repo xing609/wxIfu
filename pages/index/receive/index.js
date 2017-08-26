@@ -57,8 +57,15 @@ Page({
 
   },
   navigateTo(e) {
-    // wx.navigateTo({
-    //   url: "/pages/mycustomer/detail/index?customerId=" + e.currentTarget.dataset.customerId + "&customerExtHosp=" + e.currentTarget.dataset.id
-    // })
+    var item = e.currentTarget.dataset.item;
+    if (item.linkType == 0) {//量表
+      wx.navigateTo({
+        url: "/pages/template/scale/index?linkPointId=" + item.id + "&linkId=" + item.linkId
+      })
+    } else {//须知
+      wx.navigateTo({
+        url: "/pages/template/knows/index?nodeId=" + item.linkId
+      })
+    }
   }
 })

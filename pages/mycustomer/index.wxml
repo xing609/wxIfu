@@ -1,6 +1,6 @@
 <import src="../../components/prompt/prompt.wxml" />
-<view class="top-container">
-<view class="weui-search-bar">
+ <view class="top-container"> 
+<!-- <view class="weui-search-bar">
       <view class="weui-search-bar__form">
         <view class="weui-search-bar__box">
           <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
@@ -11,7 +11,7 @@
         <view class="weui-search-bar__text">搜索</view>
       </label>
       </view>
-    </view> 
+    </view>  -->
 
   <view class="top" bindtap="jumpToNewCustomer">
     <view class="v-left">
@@ -26,7 +26,7 @@
       <image class="ic-next" style="margin-right: 10px;" src='../../assets/images/userinfo/ic_next.png'></image>
     </view>
   </view>
-</view>
+ </view> 
 
 <view class="list">
   <view url="" class="item_p" wx:for="{{resultList}}" wx:key="{{index}}" data-id="{{ item.id }}">

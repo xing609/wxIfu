@@ -554,39 +554,9 @@ class tools {
 //export default tools
 
 
-function dateToShortTimeString(date) {
-  if (!(date instanceof Date)) return '';
-  var year = date.getFullYear();
-  var month = date.getMonth() + 1;
-  var dateStr = date.getDate();
-  var currentYear = new Date().getFullYear();
-  var currentMonth = new Date().getMonth() + 1;
-  var currentDate = new Date().getDate();
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  if (month < 10) month = '0' + month;
-  if (hours < 10) hours = hours = '0' + hours;
-  if (minutes < 10) minutes = minutes = '0' + minutes;
-
-  var timeStr = hours + ':' + minutes;
-  var returnValue = timeStr;
-
-  var time = Date.UTC(year, month, dateStr);
-  var currentTime = Date.UTC(currentYear, currentMonth, currentDate - 1);
-  if (time < currentTime) {
-    returnValue = month + '月' + dateStr + '日' + ' ' + timeStr;
-    if (year < currentYear) {
-      returnValue = year + '年' + month + '月' + dateStr + '日' + ' ' + timeStr;
-    }
-  }
-  if (time == currentTime) {
-    returnValue = '昨天';
-  }
-  return date;
-}
 
 module.exports={
-  dateToShortTimeString: dateToShortTimeString,
+ 
 }
 
 // function qrc(id, code, width, height) {

@@ -6,7 +6,7 @@
 
 <!--head-->
 <p>
-<image class="imgleft" src='../../../assets/images/iconfont-kefu.png'></image> 
+<image class="imgleft" src='../../../assets/images/userinfo/ic_info_head.png'></image> 
 <span class="left_text">头像</span>
 </p>
 <p>
@@ -18,7 +18,7 @@
 <!--认证信息-->
 <div class="item">
 <p>
-<image class="imgleft" src='../../../assets/images/iconfont-kefu.png'></image> 
+<image class="imgleft" src='../../../assets/images/userinfo/ic_cerfity_status.png'></image> 
 <span class="left_text">认证信息</span>
 </p>
 <p>
@@ -34,7 +34,7 @@
 <!--姓名-->
 <div class="item_margin_15">
 <p>
-<image class="imgleft" src='../../../assets/images/iconfont-kefu.png'></image> 
+<image class="imgleft" src='../../../assets/images/userinfo/ic_info_name.png'></image> 
 <span class="left_text">姓名</span>
 <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
 </p>
@@ -47,7 +47,7 @@
 <!--性别-->
 <div class="item">
 <p>
-<image class="imgleft" src='../../../assets/images/iconfont-kefu.png'></image> 
+<image class="imgleft" src='../../../assets/images/userinfo/ic_info_sex.png'></image> 
 <span class="left_text">性别</span>
 </p>
 <p>
@@ -60,7 +60,7 @@
 <!--医院-->
 <div class="item_margin_15">
 <p>
-<image class="imgleft" src='../../../assets/images/iconfont-kefu.png'></image> 
+<image class="imgleft" src='../../../assets/images/userinfo/ic_info_hospital.png'></image> 
 <span class="left_text">医院</span>
 <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
 </p>
@@ -74,7 +74,7 @@
 <!--科室-->
 <div class="item">
 <p>
-<image class="imgleft" src='../../../assets/images/iconfont-kefu.png'></image> 
+<image class="imgleft" src='../../../assets/images/userinfo/ic_info_department.png'></image> 
 <span class="left_text">科室</span>
 <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
 </p>
@@ -87,7 +87,7 @@
 <!--职称-->
 <div class="item">
 <p>
-<image class="imgleft" src='../../../assets/images/iconfont-kefu.png'></image> 
+<image class="imgleft" src='../../../assets/images/userinfo/ic_info_position.png'></image> 
 <span class="left_text">职称</span>
 <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
 </p>
@@ -100,7 +100,7 @@
 <!--专业-->
 <div class="item">
 <p>
-<image class="imgleft" src='../../../assets/images/iconfont-kefu.png'></image> 
+<image class="imgleft" src='../../../assets/images/userinfo/professional.png'></image> 
 <span class="left_text">专业</span>
 <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
 </p>
@@ -115,7 +115,7 @@
 <!--门诊-->
 <div class="item">
 <p>
-<image class="imgleft" src='../../../assets/images/iconfont-kefu.png'></image> 
+<image class="imgleft" src='../../../assets/images/userinfo/ic_schedule.png'></image> 
 <span class="left_text">门诊/手术日</span>
 </p>
 <p>
@@ -128,7 +128,7 @@
 <view class="user_desc_p">
 <div class="item">
 <p>
-<image class="imgleft" src='../../../assets/images/iconfont-kefu.png'></image> 
+<image class="imgleft" src='../../../assets/images/userinfo/ic_info_intro.png'></image> 
 <span class="left_text">简介</span>
 <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image> 
 </p>
@@ -136,5 +136,7 @@
 <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image> 
 </p>
 </div>
-<text class="user_desc_text">{{userInfo.doctorDesc}}</text>
+<view class="desc-p">
+<text class="user_desc_text">{{userInfo.doctorDesc}}xxxxxxxxxxxxxxxxxxxxxxxxxxxsssss中国人亿地 煤工工业区 煤蒌肖 膛我乐我</text>
+</view>
 </view>

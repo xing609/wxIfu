@@ -5,7 +5,6 @@ const Api = require('../../../utils/api.js');
 const Req = require('../../../utils/req.js');
 Page({
   data: {
-    imageObject: {},
     uptoken: '',
     userInfo: {}
   },
