@@ -3,7 +3,8 @@
     <view class="item-container">
      <!--患者-->
       <view class="item-left" data-customerid="{{item.customerId}}" data-exthospitalid="{{item.customerExtHospitalId}}" bindtap="jumpToUserInfo">
-          <image class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
+          <image wx:if="{{item.face!=null}}" class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
+          <image class="userinfo-avatar" wx:if="{{item.face==null||item.face==''}}" src="../../assets/images/ic_default_customer.png" background-size="cover"></image>
           <text class="item-name text-flow">{{item.customerName}}</text>
         </view>
 

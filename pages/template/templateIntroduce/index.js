@@ -36,6 +36,7 @@ Page({
       wx.showToast({
         title: '停用方案成功',
       })
+      wx.setStorageSync('hasChange', true);
     }, function fail(res) {
     })
   },
@@ -52,6 +53,8 @@ Page({
       wx.showToast({
         title: '启用方案成功',
       })
+
+      wx.setStorageSync('hasChange', true);
     }, function fail(res) {
     })
   },

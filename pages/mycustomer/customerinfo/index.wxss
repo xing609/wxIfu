@@ -127,3 +127,55 @@
   margin-top: 5px;
   color: black;
 }
+/*底部按钮  */
+
+.bottom-btn {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  flex-direction: row;
+  display: flex;
+  background: #f0f0f0;
+}
+
+.btnAdd {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  vertical-align: middle;
+  align-items: center;
+}
+
+.margin-left-1 {
+  margin-left: 1px;
+}
+.btnText {
+  font-size: 14px;
+  color: black;
+}
+/**分配方案*/
+
+.btnsend {
+  flex: 1;
+  height: 60px;
+  line-height: 60px;
+  font-size: 16px;
+  background-color: #81d84b;
+  color: white;
+  text-align: center;
+}
+
+/**询问病情*/
+
+.btnChat {
+  flex: 1;
+  height: 60px;
+  line-height: 60px;
+  font-size: 16px;
+  background-color: #98b2e5;
+  color: white;
+  text-align: center;
+}

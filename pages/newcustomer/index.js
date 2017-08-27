@@ -51,7 +51,7 @@ Page({
   },
   navigateTo(e) {
     wx.navigateTo({
-      url: "/pages/mycustomer/detail/index?customerId=" + e.currentTarget.dataset.customerId + "&customerExtHosp=" + e.currentTarget.dataset.id
+      url: "/pages/mycustomer/customerinfo/index?customerId=" + e.currentTarget.dataset.customerId + "&customerExtHosp=" + e.currentTarget.dataset.id+"&from=newCustomer"
     })
   }
 })

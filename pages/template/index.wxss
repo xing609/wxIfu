@@ -1,1 +1,84 @@
 /* pages/template/index.wxss */
+
+.view-p {
+  display: flex;
+  flex-direction: row;
+}
+
+/*左侧主专区  */
+
+.view-left {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+/*子专区  */
+
+.view-right {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  background-color: white;
+}
+.item-p{
+  display: flex;
+  flex-direction: column;
+  margin-top: 1px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.child-title {
+  font-size: 16px;
+  color: black;
+}
+
+.item_type {
+  color: #607fb9;
+  font-size: 12px;
+}
+
+.item-type-2 {
+  display: flex;
+  font-size: 12px;
+  color: #93de65;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: white;
+  border-radius: 4px;
+  border: 1px solid #93de65;
+}
+
+.child-has-add {
+  font-size: 14px;
+  color: #999;
+}
+
+/*加为我的方案  */
+
+.child-add-mytempalte {
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #81d84b;
+  border-radius: 10px;
+  border: 1px solid #81d84b;
+}
+
+.child-type{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.child-add-p{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  vertical-align: middle;
+}
+.margin-10{
+  margin-top: 5px;
+  margin-bottom:5px;
+}

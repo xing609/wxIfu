@@ -7,6 +7,8 @@
       <view class="txt-info">
         <text class="item-text" wx:if="{{item.sex==0}}">{{item.customerName }}   男   {{item.age}}岁</text>
         <text class="item-text" wx:if="{{item.sex==1}}">{{item.customerName }}   女   {{item.age}}岁</text>
+        <!--示例病人  -->
+         <text class="item-text" wx:if="{{item.sex!=1&&item.sex!=0}}">{{item.customerName }}     {{item.age}}岁</text>
         <text class="item-text">床位号：{{item.bedNo}}</text>
       </view>
     </view>

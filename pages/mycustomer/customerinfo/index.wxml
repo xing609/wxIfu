@@ -2,7 +2,10 @@
   <!--患者信息  -->
   <div class="div_top">
     <view class="top-left">
-      <image class="userinfo-avatar" src='{{customer.face}}'></image>
+      <image class="userinfo-avatar" wx:if="{{customer.face!=null&&customer.face!=''}}" src="{{customer.face}}" background-size="cover"></image>
+      <image class="userinfo-avatar" wx:if="{{customer.face==null||customer.face==''}}" src="../../../assets/images/ic_default_customer.png" background-size="cover"></image>
+
+
       <view class="info-p">
         <view class="info-content">
           <text class="left_text_name">{{customer.customerName}}</text>
@@ -70,3 +73,22 @@
   </view>
 
 </scroll-view>
+
+
+<view hidden="{{hiddenBottom}}" class="bottom-btn">
+
+  <view class="btnAdd" bindtap="btnShield">
+    <image style="width:20px; height:20px;" wx:if="{{customer.isBlocked==true}}" src="../../../assets/images/ic_has_nochat.png"></image>
+    <image style="width:20px; height:20px;" wx:if="{{customer.isBlocked==false}}" src="../../../assets/images/ic_has_chat.png"></image>
+    <text class="btnText">屏蔽</text>
+  </view>
+
+  <view class="btnAdd margin-left-1" bindtap="btnMark">
+    <image style="width:20px; height:20px;" wx:if="{{customer.mark==false}}" src="../../../assets/images/ic_noremark.png"></image>
+    <image style="width:20px; height:20px;" wx:if="{{customer.mark==true}}" src="../../../assets/images/ic_hasremark.png"></image>
+    <text class="btnText">加标</text>
+  </view>
+
+  <text class="btnsend" bindtap="sendTemplate"> 分配方案 </text>
+  <text class="btnChat" bindtap="goChat">询问病情</text>
+</view>

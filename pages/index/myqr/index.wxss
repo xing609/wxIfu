@@ -13,14 +13,18 @@
 
 .qrcode {
   height: 420rpx;
+  height: 420rpx;
   display: flex;
-  width: 100%;
+  margin-left: 10px;
   justify-content: center;
+  align-items: center;
 }
 
 .qrcode > canvas {
-  width: 420rpx;
-  height: 420rpx;
+  width: 400rpx;
+  height: 400rpx;
+  display: flex;
+  justify-content: center;
 }
 
 .txt_new_p {

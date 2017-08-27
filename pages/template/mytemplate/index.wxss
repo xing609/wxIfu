@@ -87,3 +87,20 @@
   color: #A9A9A9;
   margin-left: 10px;
 }
+.bottom-left{
+  display: flex;
+  flex-direction: row;
+  align-items: center
+}
+.item-status{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  vertical-align: middle;
+  align-items: center;
+}
+/*停用  */
+.template-stauts{
+  font-size: 14px;
+  color: red
+}

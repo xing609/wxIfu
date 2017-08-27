@@ -1,6 +1,7 @@
 <view class="container">
-  <view bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{ userInfo.face }}" background-size="cover" bindtap="goUserInfo"></image>
+  <view bindtap="goUserInfo" class="userinfo">
+    <image wx:if="{{userInfo.face!=null}}" class="userinfo-avatar" src="{{ userInfo.face }}" background-size="cover" ></image>   
+    <image wx:if="{{userInfo.face==null}}" class="userinfo-avatar" src="../../assets/images/userinfo/ic_default_doctor.png" background-size="cover"></image>
     <text bindtap="goUserInfo" class="userinfo-nickname">{{ userInfo.doctorName}}</text>
   </view>
   <view class="info_list">

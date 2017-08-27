@@ -215,3 +215,16 @@
   margin-right: 5px;
   
 }
+.btn-add{
+  flex: 1;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  color: white;
+  vertical-align: middle;
+  background-color: #81d84b;
+  border-radius: 20px;
+  margin-right: 10px;
+  margin-left: 5px;
+}

@@ -9,6 +9,7 @@
 
     <view class="left-head" bindtap="navigateTo" data-sendid="{{item.sendId}}">
       <image class="userinfo-avatar" src="{{item.sendFaceUrl}}" background-size="cover"></image>
+      <image wx:if="{{item.sendFaceUrl==null}}" class="userinfo-avatar" src="../../../assets/images/ic_default_customer.png" background-size="cover"></image>
     </view>
     <!--文字-->
     <view wx:if="{{item.contentType==1}}">
@@ -52,7 +53,8 @@
     </view>
 
     <view class="right-head">
-      <image class="userinfo-avatar" src="{{item.sendFaceUrl}}" background-size="cover"></image>
+      <image wx:if="{{item.sendFaceUrl!=null}}" class="userinfo-avatar" src="{{item.sendFaceUrl}}" background-size="cover"></image>
+      <image wx:if="{{item.sendFaceUrl==null}}" class="userinfo-avatar" src="../../../assets/images/userinfo/ic_default_doctor.png" background-size="cover"></image>
     </view>
 
   </view>

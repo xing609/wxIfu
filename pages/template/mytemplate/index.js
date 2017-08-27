@@ -11,6 +11,11 @@ Page({
     resultList: [],
     extHosptialList: []
   },
+  onShow:function(){
+    if(wx.getStorageSync('hasChange')){
+      this.getMyTemplateList();
+    }
+  },
   //我的方案
   getMyTemplateList: function () {
     var that = this;
@@ -28,6 +33,7 @@ Page({
         })
         return
       }
+      wx.setStorageSync('hasChange', false);
       if (frompage == "home") {
         that.setData({
           resultList: res.data.resultList

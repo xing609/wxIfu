@@ -45,6 +45,10 @@ Page({
       }
       //最新
       if (res.data.model.newList) {
+        for (var j in res.data.model.newList){
+          var bean = res.data.model.newList[j];
+          bean.new=true;
+        }
         Array.prototype.push.apply(lastList, res.data.model.newList);
         wx.setStorageSync('templateList', lastList);
       }
@@ -55,6 +59,12 @@ Page({
       })
       wx.stopPullDownRefresh() //停止下拉刷新
     }, function fail(res) {
+    })
+  },
+  // 查看全部方案
+  jumpToAllTemplate(){
+    wx.navigateTo({
+      url: "/pages/template/index"
     })
   }
 })

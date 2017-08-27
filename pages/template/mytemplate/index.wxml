@@ -31,9 +31,10 @@
         <text class="item_type">{{item.templateType}}</text>
       </view>
 
-      <image style="width:22px;height:22px; vertical-align: middle" src="../../../assets/images/template/ic_my_qrcode_lilte.png"></image>
+      <image wx:if="{{item.status==0}}" style="width:22px;height:22px; vertical-align: middle" src="../../../assets/images/template/ic_my_qrcode_lilte.png"></image>
 
     </view>
+    <view class="item-status">
     <view class="item-bottom">
       <text class="item-type-2" wx:if="{{item.type==0}}"> 私人</text>
       <text class="item-type-2" wx:if="{{item.type==1}}"> 官方</text>
@@ -45,6 +46,8 @@
       <text class="item-count" wx:if="{{item.customerNum==null||item.customerNum==0}}">患者人数：0</text>
       <text class="item-count" wx:if="{{item.customerNum!=null&&item.customerNum>0}}">患者人数：{{item.customerNum}}</text>
     </view>
+   <text class="template-stauts" wx:if="{{item.status==1}}">已停用</text>
+</view>
   </navigator>
 </view>
 <template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg3}}" />
