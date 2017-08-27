@@ -60,6 +60,13 @@ Page({
 
   onLoad: function () {
     var that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          scrollHeight: parseInt(res.windowHeight) + 200
+        })
+      }
+    });
    this.getTemplateGroupList();
   },
   search() {
