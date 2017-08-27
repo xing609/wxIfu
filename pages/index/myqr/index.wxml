@@ -1,6 +1,6 @@
-<view class="container page">
- 
-  <div class="div_left">
+<view class="container bg">
+  <view class="center">
+    <div class="div_left">
       <image class="userinfo-avatar" src='{{userInfo.face}}'></image>
       <view class="txt_new_p">
         <span class="left_text_name">{{userInfo.doctorName}}</span>
@@ -8,14 +8,14 @@
       </view>
     </div>
 
-    <view class="qrcode">
+    <view  class="qrcode">
       <canvas canvas-id="qrcode" />
     </view>
 
+    <view  class="bottom_text">
+      <text class="txt-hint">出示给患者扫码</text>
+      <text class="txt-hint">扫码工具：微信/医数App</text>
+    </view>
+  </view>
 
-    <p class="bottom_text">
-    <text class="txt-hint">出示给患者扫码</text>
-    <text class="txt-hint">扫码工具：微信/医数App</text>
-    </p>
-  
 </view>

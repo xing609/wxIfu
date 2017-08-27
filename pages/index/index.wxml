@@ -1,6 +1,6 @@
 <!--index.wxml-->
-<import src="../../components/toast/toast.wxml"/>
-<template is="toast" data="{{ ...$wux.toast }}"/>
+<import src="../../components/toast/toast.wxml" />
+<template is="toast" data="{{ ...$wux.toast }}" />
 <view class="container">
 
   <view class="home_top">
@@ -23,10 +23,10 @@
 
 
 
-  <view class="center-item">
-   
+  <view hidden="true" class="center-item">
+
     <text class="center-text" bindtap="jumpTemplateGroup">随访方案库</text>
-    
+
     <text hidden="true" class="center-text">邀请赢好礼</text>
 
   </view>
@@ -43,19 +43,20 @@
 
   </view>
 
-   <view class="grids grids-small">
-   <block wx:for="{{ items }}" wx:key="">
-    <navigator class="grid" url="" wx:key="{{index}}" data-path="{{ item.path }}" data-index="{{ index }}" bindtap="navigateTo">
-      <view class="item_size">
-        <text class="text">{{item.text}}</text>
-        <text class="text_num" wx:if="{{item.id ==1}}"> {{model.myCustomer}}</text>
-        <text class="text_num" wx:if="{{item.id ==2}}"> {{model.myTemplate}}</text>
-        <text class="text_will_open" wx:if="{{item.id ==3}}"> 即将启用</text>
-        <text class="text_num" wx:if="{{item.id ==4}}"> {{model.doctorSurvey}}张量表</text>
-        <text class="text_num" wx:if="{{item.id ==5}}"> {{model.doctorReceiveSurvey}}张量表</text>
-        <text class="text_num" wx:if="{{item.id ==6}}"> {{model.noCustomerSurvey}}位患者</text>
-      </view>
-    </navigator>
+  <view class="grids grids-small">
+    <block wx:for="{{ items }}" wx:key="">
+      <navigator class="grid" url="" wx:key="{{index}}" data-path="{{ item.path }}" data-index="{{ index }}" bindtap="navigateTo">
+        <view class="item_size">
+          <text class="text">{{item.text}}</text>
+
+          <text class="text_will_open" wx:if="{{item.id ==1}}"></text>
+          <text class="text_num" wx:if="{{item.id ==2}}"> {{model.myCustomer}}</text>
+          <text class="text_num" wx:if="{{item.id ==3}}"> {{model.myTemplate}}</text>
+          <text class="text_num" wx:if="{{item.id ==4}}"> {{model.doctorSurvey}}张量表</text>
+          <text class="text_num" wx:if="{{item.id ==5}}"> {{model.doctorReceiveSurvey}}张量表</text>
+          <text class="text_num" wx:if="{{item.id ==6}}"> {{model.noCustomerSurvey}}位患者</text>
+        </view>
+      </navigator>
     </block>
   </view>
 </view>

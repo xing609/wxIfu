@@ -1,5 +1,5 @@
 .swiper_box {
-  height: 130px;
+  height: 150px;
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px
@@ -31,14 +31,12 @@ view.text:before {
 }
 
 .line_flag {
-  height: 100%;
   height: 15px;
   padding: 0, 0, 0, 0;
   display: inline-block;
 }
 
 .line_flag_right {
-  height: 100%;
   height: 15px;
   width: 20%;
   margin-left: 20px;

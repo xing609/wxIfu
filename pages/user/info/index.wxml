@@ -23,10 +23,10 @@
     <span class="left_text">认证信息</span>
   </p>
   <p>
-    <text class="user_text_value" wx:if="{{userInfo.status==0}}">已认证</text>
-    <text class="user_text_value" wx:if="{{userInfo.status==1}}">待审核</text>
-    <text class="user_text_value" wx:if="{{userInfo.status==4}}">审核中</text>
-    <text class="user_text_value" wx:if="{{userInfo.status==6}}">审核不通过</text>
+    <text class="user_text_value margin-right-10" wx:if="{{userInfo.status==0}}">已认证</text>
+    <text class="user_text_value margin-right-10" wx:if="{{userInfo.status==1}}">待审核</text>
+    <text class="user_text_value margin-right-10" wx:if="{{userInfo.status==4}}">审核中</text>
+    <text class="user_text_value margin-right-10" wx:if="{{userInfo.status==6}}">审核不通过</text>
     <image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image>
   </p>
 </div>
@@ -120,7 +120,7 @@
     <span class="left_text">门诊/手术日</span>
   </p>
   <p>
-    <text class="user_text_value">周一 上午 普通</text>
+    <text class="user_text_value margin-right-10">周一 上午 普通</text>
     <image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image>
   </p>
 </div>
@@ -138,6 +138,6 @@
     </p>
   </div>
   <view class="desc-p">
-    <text class="user_desc_text">{{userInfo.doctorDesc}}xxxxxxxxxxxxxxxxxxxxxxxxxxxsssss中国人亿地 煤工工业区 煤蒌肖 膛我乐我</text>
+    <text class="user_desc_text">{{userInfo.doctorDesc}}</text>
   </view>
 </view>

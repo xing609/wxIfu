@@ -1,6 +1,6 @@
 <import src="../../../components/prompt/prompt.wxml" />
 <view class="container">
-  <view class="weui-search-bar">
+  <!-- <view class="weui-search-bar">
     <view class="weui-search-bar__form">
       <view class="weui-search-bar__box">
         <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
@@ -11,7 +11,7 @@
             <view class="weui-search-bar__text">搜索</view>
         </label>
     </view>
-  </view>
+  </view> -->
   <view class="all-template" bindtap="jumpToAllTemplate">
     <view class="txt-all-template">
       <image style="width:25px;height:25px; vertical-align:middle" src="../../../assets/images/template/ic_all_template.png"></image>
