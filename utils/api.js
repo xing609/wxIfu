@@ -83,8 +83,26 @@ var SCALE_DETAIL ="api/doctor/survey";
 var KNOWS_DETAIL ="api/doctor/notes";
 //发送消息
 var SEND_CHAT_MESS ="api/common/chat/sendMsg";
+//加为我的方案
+var ADD_MY_TEMPLATE ="api/doctor/template/choiceTempletes";
+//终止方案
+var STOP_TEMPLATE ="api/doctor/customer/deleteCustomerExtHospital";
+//重置方案
+var RETSETTING_TEMPLATE ="api/doctor/customer/resetting";
 
 //===========================================请求接口==================================================
+function _resettingTemplate(o){
+  return reqUrl(RETSETTING_TEMPLATE,o);
+}
+
+function _stopTemplate(o){
+  return reqUrl(STOP_TEMPLATE,o);
+}
+
+function _addMyTemplate(o){
+  return reqUrl(ADD_MY_TEMPLATE,o);
+}
+
 function _sendChatMess(o){
   return reqUrl(SEND_CHAT_MESS,o);
 }
@@ -247,6 +265,9 @@ function _obj2uri(obj) {
 }
 //===========================================导出===========================================
 module.exports = {
+  resettingTemplate: _resettingTemplate,
+  stopTemplate: _stopTemplate,
+  addMyTemplate: _addMyTemplate,
   sendChatMess:_sendChatMess,
   getKnowsDetail:_getKnowDetail,
   getScaleDetail:_getScaleDetail,

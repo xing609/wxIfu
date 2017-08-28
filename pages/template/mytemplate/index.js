@@ -11,8 +11,8 @@ Page({
     resultList: [],
     extHosptialList: []
   },
-  onShow:function(){
-    if(wx.getStorageSync('hasChange')){
+  onShow: function () {
+    if (wx.getStorageSync('hasChange')) {
       this.getMyTemplateList();
     }
   },
@@ -38,12 +38,12 @@ Page({
         that.setData({
           resultList: res.data.resultList
         })
-        if(res.data.resultList.length>0){
+        if (res.data.resultList.length > 0) {
           $wuxPrompt.init('msg3', {
             icon: '../../../assets/images/iconfont-empty.png',
             text: '暂时没有相关数据',
           }).hide();
-        }else{
+        } else {
           $wuxPrompt.init('msg3', {
             icon: '../../../assets/images/iconfont-empty.png',
             text: '暂时没有相关数据',
@@ -57,7 +57,7 @@ Page({
             mytemplateList.push(bean);
           }
         }
-        
+
         that.getExHosptialList(mytemplateList);
       }
     }, function fail(res) {
@@ -100,24 +100,24 @@ Page({
       that.setData({
         resultList: templateList
       })
-      if(templateList.length>0){
+      if (templateList.length > 0) {
         if (res.data.resultList.length > 0) {
           $wuxPrompt.init('msg3', {
             icon: '../../../assets/images/iconfont-empty.png',
             text: '暂时没有相关数据',
           }).hide();
         }
-      }else{
-          $wuxPrompt.init('msg3', {
-            icon: '../../../assets/images/iconfont-empty.png',
-            text: '暂时没有相关数据',
-          }).show();
-        }
+      } else {
+        $wuxPrompt.init('msg3', {
+          icon: '../../../assets/images/iconfont-empty.png',
+          text: '暂时没有相关数据',
+        }).show();
+      }
     }, function fail(res) {
 
     })
   },
- 
+
   search() {
     App.WxService.navigateTo('/pages/search/index')
   },
@@ -129,7 +129,7 @@ Page({
       })
     } else if (frompage == "sendTemplate") {
       wx.navigateTo({
-        url: "/pages/template/confirmTemplate/index?templateId=" + e.currentTarget.dataset.id
+        url: "/pages/template/confirmTemplate/index?templateId=" + e.currentTarget.dataset.id+"&actionType=send"
       })
     }
   },

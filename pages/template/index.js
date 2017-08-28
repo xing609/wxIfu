@@ -2,10 +2,11 @@ const App = getApp()
 var Api = require('../../utils/api.js');
 var Req = require('../../utils/req.js');
 import { $wuxPrompt } from '../../components/wux'
+var groupId;
 Page({
   data: {
     resultList: [],
-    childList:[]
+    childList: []
   },
   // 主专区方案
   getTemplateGroupList: function () {
@@ -13,23 +14,23 @@ Page({
     Req.req_post(Api.getTemplateGroupList({
       token: Api.getToken(),
       page: 1,
-      specialtyId:''
+      specialtyId: ''
     }), "", function success(res) {
       wx.hideNavigationBarLoading() //完成停止加载
       wx.stopPullDownRefresh() //停止下拉刷新
       that.setData({
         resultList: res.data.resultList
       })
-      if(res.data.resultList.length>0){
+      if (res.data.resultList.length > 0) {
         var childBean = res.data.resultList[0];
-        var groupId=childBean.id;
+        groupId = childBean.id;
         that.getTemplateChildList(groupId);
 
         $wuxPrompt.init('msg3', {
           icon: '../../assets/images/iconfont-empty.png',
           text: '暂时没有相关数据',
         }).hide();
-      }else{
+      } else {
         $wuxPrompt.init('msg3', {
           icon: '../../assets/images/iconfont-empty.png',
           text: '暂时没有相关数据',
@@ -38,7 +39,7 @@ Page({
     }, function fail(res) {
     })
   },
-// 子专区方案
+  // 子专区方案
   getTemplateChildList: function (templateGroupId) {
     var that = this;
     Req.req_post(Api.getTemplateCommonList({
@@ -54,10 +55,16 @@ Page({
       that.setData({
         childList: res.data.resultList
       })
+      wx.setStorageSync('hasChange', false);
     }, function fail(res) {
     })
   },
 
+  onShow:function(){
+    if (wx.getStorageSync('hasChange')){
+      this.getTemplateChildList(groupId);
+    }
+  },
   onLoad: function () {
     var that = this;
     wx.getSystemInfo({
@@ -67,15 +74,48 @@ Page({
         })
       }
     });
-   this.getTemplateGroupList();
+    this.getTemplateGroupList();
   },
   search() {
     App.WxService.navigateTo('/pages/search/index')
   },
+  //加为我的方案
+  addMyTemplate(e) {
+    var that=this;
+    var id = e.currentTarget.dataset.id;
+    if (id) {
+      var list=new Array();
+      var bean=new Object();
+      bean.id=id;
+      list.push(bean);
+      Req.req_post(Api.addMyTemplate({
+        token: Api.getToken(),
+        templateIds: JSON.stringify(list)
+      }), "加载中", function success(res) {
+        var newList = that.data.childList;
+        if (newList) {
+          for (var i in newList) {
+            if (newList[i].id = id) {
+              newList[i].hasTemplate=true;
+              break;
+            }
+          }
+        }
+        that.setData({
+          childList: newList
+        })
+        wx.showToast({
+          title: '添加成功',
+        })
+        
+      }, function fail(res) {
+      })
+    }
+  },
   navigateTo(e) {
-    if (e.currentTarget.dataset.id){
+    if (e.currentTarget.dataset.id) {
       this.getTemplateChildList(e.currentTarget.dataset.id);
-    } 
+    }
     //console.log("--------------------templateGroupId=" + e.currentTarget.dataset.id);
     // wx.navigateTo({
     //   url: "/pages/template/templateChild/index?templateGroupId=" + e.currentTarget.dataset.id+"&title="+e.currentTarget.dataset.title

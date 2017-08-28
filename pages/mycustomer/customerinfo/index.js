@@ -7,20 +7,20 @@ var customerExtHosp;
 Page({
   data: {
     customer: {},
-    hiddenBottom:false,
+    hiddenBottom: false,
     resultList: []
   },
   onLoad: function (option) {
     var that = this;
-    console.log(option.customerId + "/" + option.customerExtHosp+"/"+option.from);
-    if (option.from =="newCustomer"){//新病人
-       that.setData({
-         hiddenBottom: false
-       })
-       wx.showToast({
-         title: 'new',
-       })
-    }else{
+    console.log(option.customerId + "/" + option.customerExtHosp + "/" + option.from);
+    if (option.from == "newCustomer") {//新病人
+      that.setData({
+        hiddenBottom: false
+      })
+      wx.showToast({
+        title: 'new',
+      })
+    } else {
       that.setData({
         hiddenBottom: true
       })
@@ -29,6 +29,13 @@ Page({
       this.getCustomerInfo(option.customerId, option.customerExtHosp);
       customerId = option.customerId;
       customerExtHosp = option.customerExtHosp;
+    }
+  }, //打电话
+  callMobile() {
+    if (this.data.customer.mobile) {
+      wx.makePhoneCall({
+        phoneNumber: this.data.customer.mobile
+      })
     }
   },
 
@@ -58,7 +65,7 @@ Page({
     console.log(picArray + "/" + index);
     if (picArray) {
       var urlArray = new Array();
-      for(var i in picArray){
+      for (var i in picArray) {
         urlArray.push(picArray[i].url);
         console.log("url------" + picArray[i].url);
       }
@@ -70,7 +77,7 @@ Page({
       })
     }
   }
-,
+  ,
   //屏蔽
   btnShield() {
     var isblock = this.data.customer.isBlocked;
@@ -130,7 +137,7 @@ Page({
   },
   //聊天
   goChat() {
-    var realName=this.data.customer.customerName;
+    var realName = this.data.customer.customerName;
     wx.navigateTo({
       url: "/pages/chat/detail/index?customerId=" + customerId + "&realName=" + realName
     })

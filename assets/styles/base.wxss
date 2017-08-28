@@ -7,7 +7,7 @@
 .weui-icon-search, .weui-search-bar__text {
   vertical-align: inherit;
 }
-
+/*单行显示，超出省略号  */
 .text-flow {
   overflow: hidden;
   text-overflow: ellipsis;

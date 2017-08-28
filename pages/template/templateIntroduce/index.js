@@ -6,15 +6,12 @@ Page({
   data: {
     template: '',
     status: 0
-
   },
   getTemplateIntroduce: function (id) {
     var that = this;
     Req.req_post(Api.getTemplateIntroduce(id, {
       token: Api.getToken()
     }), "加载中", function success(res) {
-      wx.hideNavigationBarLoading() //完成停止加载
-      wx.stopPullDownRefresh() //停止下拉刷新
       that.setData({
         template: res.data.model,
         status: res.data.model.status
@@ -75,5 +72,33 @@ Page({
     wx.navigateTo({
       url: "/pages/template/detail/index?templateId=" + this.data.template.id + "&from=introduce"
     })
-  }
+  },
+  //加为我的方案
+  addMyTemplate(e) {
+    var that = this;
+    var id = this.data.template.id;
+    if (id) {
+      var list = new Array();
+      var bean = new Object();
+      bean.id = id;
+      list.push(bean);
+      Req.req_post(Api.addMyTemplate({
+        token: Api.getToken(),
+        templateIds: JSON.stringify(list)
+      }), "加载中", function success(res) {
+        that.getTemplateIntroduce(id);
+        // var newTemplate = that.data.template;
+        // newTemplate.hasTemplate=true;
+        // that.setData({
+        //   status: 0,
+        //   template: newTemplate
+        // })
+        wx.showToast({
+          title: '添加成功',
+        })
+        wx.setStorageSync('hasChange', true);
+      }, function fail(res) {
+      })
+    }
+  },
 })
