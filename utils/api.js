@@ -72,7 +72,7 @@ var BTN_REMARK ="api/doctor/customer/edit";
 //取随访记录列表
 var GET_CUSTOMER_EXTHOSPTIAL_LIST="api/doctor/customer/customerExtHospitalList";
 //停用方案
-var STOP_TEMPLATE ="api/doctor/template/stop";
+var STOP_TEMPLATE_TRODUCE ="api/doctor/template/stop";
 //启用用方案
 var START_TEMPLATE = "api/doctor/template/start";
 //简介方案详情
@@ -99,6 +99,9 @@ function _stopTemplate(o){
   return reqUrl(STOP_TEMPLATE,o);
 }
 
+function _stopTemplateIntroduce(o) {
+  return reqUrl(STOP_TEMPLATE_TRODUCE, o);
+}
 function _addMyTemplate(o){
   return reqUrl(ADD_MY_TEMPLATE,o);
 }
@@ -311,7 +314,7 @@ module.exports = {
   btnShield:_btnShield,
   btnRemark:_btnRemark,
   getCustomerExtHosptialList: _getCustomerExtHosptialList,
-  stopTemplate:_stopTeamplate,
+  stopTemplateIntroduce: _stopTemplateIntroduce,
   startTemplate:_startTemplate,
   getIntroduceTemplateDetail:_getIntroduceTemplateDetail
 };

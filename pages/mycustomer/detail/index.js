@@ -113,9 +113,11 @@ Page({
               actionType="stop";
               break;
           }
-          wx.navigateTo({
-            url: "/pages/template/confirmTemplate/index?template=" + bean + "&actionType=" + actionType
-          })
+          if(actionType){
+            wx.navigateTo({
+              url: "/pages/template/confirmTemplate/index?template=" + bean + "&actionType=" + actionType
+            })
+          }
         },
         fail: function (res) {
           console.log(res.errMsg)

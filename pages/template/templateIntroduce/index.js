@@ -23,9 +23,14 @@ Page({
   stop: function () {
     var that = this;
     var id = this.data.template.id;
-    Req.req_post(Api.stopTemplate({
+    var list = new Array();
+    var bean = new Object();
+    bean.id = id;
+    list.push(bean);
+    
+    Req.req_post(Api.stopTemplateIntroduce({
       token: Api.getToken(),
-      templateIds: id
+      templateIds: JSON.stringify(list)
     }), "加载中", function success(res) {
       that.setData({
         status: 1
