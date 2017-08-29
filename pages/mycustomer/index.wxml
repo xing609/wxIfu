@@ -38,7 +38,7 @@
 
 
     <!--患者-->
-    <navigator class="item-top" wx:for="{{item.customerExtHospitalList}}" wx:key="{{index}}" data-customerExtHosp="{{item.id}}" data-customer-id="{{item.customerId}}" open-type="redirect" bindtap="navigateTo" data-id="{{item.id}}">
+    <view class="item-top" wx:for="{{item.customerExtHospitalList}}" wx:key="{{index}}" data-customerExtHosp="{{item.id}}" data-customer-id="{{item.customerId}}" open-type="redirect" bindtap="navigateTo" data-id="{{item.id}}">
 
       <view class="item-user-info">
         <view class="div-left-head">
@@ -62,7 +62,7 @@
         <image wx:if="{{item.remarkNum>0}}" style="width:14px;height:14px;margin-left:5px;margin-right:5px;vertical-align:middle;" src='../../assets/images/ic_imgmark_yellow.png'></image>
         <text class="text-orangered">{{item.remark}}</text>
       </view>
-    </navigator>
+    </view>
   </view>
 
 </view>

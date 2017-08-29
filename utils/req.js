@@ -1,5 +1,20 @@
 const App = getApp()
 import { $wuxToast } from '../components/wux'
+
+// 请求头配置
+var header={
+  'content-type': 'application/x-www-form-urlencoded',
+  appVersionCode: 3001030,
+  appVersionName: "3.1.3",
+  userId: "",
+  channel: "wxapp",
+  mobileType: 2,
+  mobileModel: "",
+  osVersionCode: "",
+  userType: 2,
+}
+
+
 //GET请求
 function req_get(url, message, success, fail) {
   wx.onNetworkStatusChange(function (res) {
@@ -17,9 +32,7 @@ function req_get(url, message, success, fail) {
     }
     wx.request({
       url: url,
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
+      header: header,
       method: 'GET',
       success: function (res) {
         //wx.hideNavigationBarLoading()
@@ -50,8 +63,6 @@ function req_get(url, message, success, fail) {
       }
     })
   })
-
-
 }
 
  //自定义错误提示
@@ -76,9 +87,7 @@ function req_get_html(url, message, success, fail) {
   }
   wx.request({
     url: url,
-    header: {
-      'Content-Type': 'application/json'
-    },
+    header: header,
     method: 'GET',
     success: function (res) {
       wx.hideNavigationBarLoading()
@@ -125,9 +134,7 @@ function req_post(url, message, success, fail) {
   }
   wx.request({
     url: url,
-    header: {
-      'content-type': 'application/x-www-form-urlencoded'
-    },
+    header: header,
     method: 'POST',
     success: function (res) {
       //wx.hideNavigationBarLoading()

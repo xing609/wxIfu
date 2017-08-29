@@ -62,9 +62,7 @@ Page({
     })
   },
   jumpToScalDetail(e){
-    console.log("item-============" + e.currentTarget.dataset.item);
     var item = e.currentTarget.dataset.item;
-    console.log("item-id============" + item.id);
     if (item.linkType ==0){//量表
       wx.navigateTo({
         url: "/pages/template/scale/index?linkPointId=" + item.id + "&linkId=" + item.linkId

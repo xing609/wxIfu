@@ -14,7 +14,7 @@
 
 </view>
 <view class="list">
-<navigator  wx:for="{{newTemplateList}}" wx:key="" data-id="{{ item._id }}">
+<view  wx:for="{{newTemplateList}}" wx:key="" data-id="{{ item._id }}">
  
   <view class="item-p" data-index="{{ index }}" data-url="{{item.weixinUrl}}" catchtap="onTapTag">
    
@@ -30,6 +30,6 @@
    
   </view>
    <view class="line-x"></view>
-</navigator>
+</view>
 </view>
 <button class="all-template" bindtap="jumpToAllTemplate">查看全部方案</button>

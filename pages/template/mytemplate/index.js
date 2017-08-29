@@ -1,19 +1,60 @@
 const App = getApp()
 var Api = require('../../../utils/api.js');
 var Req = require('../../../utils/req.js');
+var wxbarcode = require("../../../utils/index.js");
 import { $wuxPrompt } from '../../../components/wux'
 var frompage;//哪个页面进入
+var oldTemplate;//原方案
 Page({
   data: {
     pageCount: 0,
     currentPage: 0,
     resDesc: null,
     resultList: [],
-    extHosptialList: []
+    extHosptialList: [],
+
+    animationData: "",
+    showModalStatus: false,
+    imageHeight: 0,
+    imageWidth: 0,
+    showModal: false,//是否显示弹窗
+    bean:{},
   },
-  onShow:function(){
-    if(wx.getStorageSync('hasChange')){
+  // 自定义弹窗
+
+  /**
+   * 弹出框蒙层截断touchmove事件
+   */
+  preventTouchMove: function () {
+  },
+
+  // /**
+  //  * 对话框取消按钮点击事件
+  //  */
+  // onCancel: function () {
+  //   //this.hideModal();
+  //   this.setData({
+  //     showModal: false
+  //   });
+  // },
+  // /**
+  //  * 对话框确认按钮点击事件
+  //  */
+  // onConfirm: function () {
+  //   //this.hideModal();
+  //   this.setData({
+  //     showModal: false
+  //   });
+  // },
+
+  onShow: function () {
+    if (wx.getStorageSync('hasChange')) {
       this.getMyTemplateList();
+    }
+    if (wx.getStorageSync('sendStatus')) {
+      //刚分配完或替换方案后返回
+      wx.navigateBack({
+      })
     }
   },
   //我的方案
@@ -38,18 +79,18 @@ Page({
         that.setData({
           resultList: res.data.resultList
         })
-        if(res.data.resultList.length>0){
+        if (res.data.resultList.length > 0) {
           $wuxPrompt.init('msg3', {
             icon: '../../../assets/images/iconfont-empty.png',
             text: '暂时没有相关数据',
           }).hide();
-        }else{
+        } else {
           $wuxPrompt.init('msg3', {
             icon: '../../../assets/images/iconfont-empty.png',
             text: '暂时没有相关数据',
           }).show();
         }
-      } else if (frompage == "sendTemplate") {
+      } else if (frompage == "sendTemplate" || frompage == "replace") {
         var mytemplateList = new Array();
         for (var i in res.data.resultList) {
           var bean = res.data.resultList[i];
@@ -57,7 +98,6 @@ Page({
             mytemplateList.push(bean);
           }
         }
-        
         that.getExHosptialList(mytemplateList);
       }
     }, function fail(res) {
@@ -65,7 +105,20 @@ Page({
   },
   onLoad: function (option) {
     frompage = option.from;
-    var that = this;
+
+    // var code = "userInfo.weixinUrl";
+
+    // if (code) {
+    //   wxbarcode.qrcode('qrcode', code, 380, 380);
+    // }
+
+    // this.setData({
+    //   showModal: true
+    // });
+
+    if (frompage == "replace") {
+      oldTemplate = option.template;
+    }
     this.getMyTemplateList();
   },
   //取随访记录列表
@@ -100,24 +153,24 @@ Page({
       that.setData({
         resultList: templateList
       })
-      if(templateList.length>0){
+      if (templateList.length > 0) {
         if (res.data.resultList.length > 0) {
           $wuxPrompt.init('msg3', {
             icon: '../../../assets/images/iconfont-empty.png',
             text: '暂时没有相关数据',
           }).hide();
         }
-      }else{
-          $wuxPrompt.init('msg3', {
-            icon: '../../../assets/images/iconfont-empty.png',
-            text: '暂时没有相关数据',
-          }).show();
-        }
+      } else {
+        $wuxPrompt.init('msg3', {
+          icon: '../../../assets/images/iconfont-empty.png',
+          text: '暂时没有相关数据',
+        }).show();
+      }
     }, function fail(res) {
 
     })
   },
- 
+
   search() {
     App.WxService.navigateTo('/pages/search/index')
   },
@@ -129,7 +182,11 @@ Page({
       })
     } else if (frompage == "sendTemplate") {
       wx.navigateTo({
-        url: "/pages/template/confirmTemplate/index?templateId=" + e.currentTarget.dataset.id
+        url: "/pages/template/confirmTemplate/index?templateId=" + e.currentTarget.dataset.id + "&actionType=send"
+      })
+    } else if (frompage == "replace") {
+      wx.navigateTo({
+        url: "/pages/template/confirmTemplate/index?templateId=" + e.currentTarget.dataset.id + "&actionType=replace" + "&oldTemplate=" + oldTemplate
       })
     }
   },
@@ -142,5 +199,33 @@ Page({
     wx.navigateTo({
       url: "/pages/template/index"
     })
+  },
+  //显示方案二维码弹窗
+  showTemplateQr: function (e) {
+    var bean=e.currentTarget.dataset.bean;
+    var code = bean.weixinUrl;
+    if (code!=null) {
+      wxbarcode.qrcode('qrcode', code, 380, 380);
+    }
+    this.setData({
+      bean:bean,
+      showModal: true
+    });
+  },
+  // 查看患者
+  lookCustomer: function () {
+    this.setData({
+      showModal: false
+    });
+
+    wx.navigateTo({
+      url: "/pages/mycustomer/index"
+    })
+  },
+  //关闭弹窗
+  closeDialog:function(){
+    this.setData({
+      showModal: false
+    });
   }
 })

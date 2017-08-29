@@ -1,34 +1,180 @@
 <view class="container">
-  
-  <view class="template-detail">
-    
+  <!--分配方案  -->
+  <view wx:if="{{actionType=='send'}}" class="view-p">
+    <view class="template-detail">
+      <view class="template-title">
+        <view class="xian"> </view>
+        <text class="text-new-template">{{template.templateName}}</text>
+      </view>
 
-<view class="template-title">
-    <view class="xian"> </view>
-    <text class="text-new-template">{{template.templateName}}</text>
-  </view>
-
-    <view class="template-type">
-      <text class="item-type-2" wx:if="{{template.type==0}}"> 私人</text>
-      <text class="item-type-2" wx:if="{{template.type==1}}"> 官方</text>
-      <text class="item-type-2" wx:if="{{template.type==2}}"> 顾问医生</text>
-      <text class="item-type-2" wx:if="{{template.type==3}}">多中心</text>
-      <text class="item-type-2" wx:if="{{template.type==4}}">共享</text>
-      <text class="item-type-2" wx:if="{{template.type==6}}">科室共享</text>
-      <text class="item-type-2" wx:if="{{template.type==7}}">院内共享</text>
-      <text class="item_type">{{template.templateType}}</text>
+      <view class="template-type">
+        <text class="item-type-2" wx:if="{{template.type==0}}"> 私人</text>
+        <text class="item-type-2" wx:if="{{template.type==1}}"> 官方</text>
+        <text class="item-type-2" wx:if="{{template.type==2}}"> 顾问医生</text>
+        <text class="item-type-2" wx:if="{{template.type==3}}">多中心</text>
+        <text class="item-type-2" wx:if="{{template.type==4}}">共享</text>
+        <text class="item-type-2" wx:if="{{template.type==6}}">科室共享</text>
+        <text class="item-type-2" wx:if="{{template.type==7}}">院内共享</text>
+        <text class="item_type">{{template.templateType}}</text>
+      </view>
+      <text wx:if="{{customer.sex==1}}" class="customer-info">{{customer.customerName}}    {{customer.age}}岁    女</text>
+      <text wx:if="{{customer.sex==0}}" class="customer-info">{{customer.customerName}}    {{customer.age}}岁    男</text>
     </view>
-    <text wx:if="{{customer.sex==1}}" class="customer-info">{{customer.customerName}}  {{customer.age}}岁   女</text>
-    <text wx:if="{{customer.sex==0}}" class="customer-info">{{customer.customerName}}  {{customer.age}}岁   男</text>
+    <view class="change-point-p" bindtap="choosePoint">
+      <text class="txt-change-point"> 起始节点：  {{startPoint}}</text>
+      <image style="vertical-align: middle;width:5px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
+    </view>
+
+    <view class="change-point-p">
+      <picker mode="date" class="txt-change-date" start="{{startDate}}" value="{{date}}" end="{{endDate}}" bindchange="bindDateChange">
+        <text class="txt-change-date">起始日期：  {{date}}</text>
+      </picker>
+      <image style="vertical-align: middle;width:5px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
+    </view>
+
   </view>
-  <view class="point-setting">
-    <text class="txt-first-point" bindtap="choosePoint"> 起始节点：{{startPoint}}</text>
-    <picker mode="date" class="txt-first-point" value="{{date}}" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
-      <view class="picker" bindchange="bindDateChange">起始日期: {{date}}</view>
-    </picker>
+
+  <!--终止方案  -->
+  <view wx:if="{{actionType=='stop'}}" class="view-p">
+    <view class="template-detail bg-white">
+      <view class="template-title">
+        <view class="xian"> </view>
+        <text class="text-new-template">{{template.templateName}}</text>
+      </view>
+
+      <view class="template-type">
+        <text class="item-type-2" wx:if="{{template.type==0}}"> 私人</text>
+        <text class="item-type-2" wx:if="{{template.type==1}}"> 官方</text>
+        <text class="item-type-2" wx:if="{{template.type==2}}"> 顾问医生</text>
+        <text class="item-type-2" wx:if="{{template.type==3}}">多中心</text>
+        <text class="item-type-2" wx:if="{{template.type==4}}">共享</text>
+        <text class="item-type-2" wx:if="{{template.type==6}}">科室共享</text>
+        <text class="item-type-2" wx:if="{{template.type==7}}">院内共享</text>
+        <text class="item_type">{{template.templateType}}</text>
+      </view>
+
+      <text class="customer-info">当前节点：{{currentPointName}}</text>
+      <text class="customer-info">节点日期：{{currentPointDate}}</text>
+      <text wx:if="{{customer.sex==1}}" class="customer-info">患者信息：{{customer.customerName}}  {{customer.age}}岁   女</text>
+      <text wx:if="{{customer.sex==0}}" class="customer-info">患者信息：{{customer.customerName}}  {{customer.age}}岁   男</text>
+
+    </view>
+    <text class="stop-hint">*终止方案后患者不能查看方案</text>
   </view>
+
+
+  <!--重置方案  -->
+  <view wx:if="{{actionType=='resetting'}}" class="view-p">
+    <view class="template-detail bg-white">
+      <view class="template-title">
+        <view class="xian"> </view>
+        <text class="text-new-template">{{template.templateName}}</text>
+      </view>
+
+      <view class="template-type">
+        <text class="item-type-2" wx:if="{{template.type==0}}"> 私人</text>
+        <text class="item-type-2" wx:if="{{template.type==1}}"> 官方</text>
+        <text class="item-type-2" wx:if="{{template.type==2}}"> 顾问医生</text>
+        <text class="item-type-2" wx:if="{{template.type==3}}">多中心</text>
+        <text class="item-type-2" wx:if="{{template.type==4}}">共享</text>
+        <text class="item-type-2" wx:if="{{template.type==6}}">科室共享</text>
+        <text class="item-type-2" wx:if="{{template.type==7}}">院内共享</text>
+        <text class="item_type">{{template.templateType}}</text>
+      </view>
+      <text wx:if="{{customer.sex==1}}" class="customer-info">患者信息：{{customer.customerName}}  {{customer.age}}岁   女</text>
+      <text wx:if="{{customer.sex==0}}" class="customer-info">患者信息：{{customer.customerName}}  {{customer.age}}岁   男</text>
+
+    </view>
+
+    <view class="template-detail bg-white margin-top">
+      <text class="customer-info">当前节点：{{currentPointName}}</text>
+      <text class="customer-info">节点日期：{{currentPointDate}}</text>
+    </view>
+
+
+    <view class="change-point-p" bindtap="choosePoint">
+      <text class="txt-change-point"> 调整节点：  {{startPoint}}</text>
+      <image style="vertical-align: middle;width:5px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
+    </view>
+
+    <view class="change-point-p">
+      <picker mode="date" class="txt-change-date" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
+        <text class="txt-change-date">激活日期：  {{date}}</text>
+      </picker>
+      <image style="vertical-align: middle;width:5px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
+    </view>
+    <text class="stop-hint">*重置后随访数据将会清除,可登录doctor-console.ifuifu.com 先行导出</text>
+  </view>
+
+
+  <!--替换方案  -->
+  <view wx:if="{{actionType=='replace'}}" class="view-p">
+    <!--old  -->
+    <view class="template-old-bq bg-white padding-left-10">
+        <view class="xian"> </view>
+        <text class="text-new-template">原方案</text>
+      </view>
+    <view class="template-detail">
+      <text class="text-replate-title margin-top-10">{{oldTemplate.templateName}}</text>
+      <view class="template-type">
+        <text class="item-type-2" wx:if="{{oldTemplate.type==0}}"> 私人</text>
+        <text class="item-type-2" wx:if="{{oldTemplate.type==1}}"> 官方</text>
+        <text class="item-type-2" wx:if="{{oldTemplate.type==2}}"> 顾问医生</text>
+        <text class="item-type-2" wx:if="{{oldTemplate.type==3}}">多中心</text>
+        <text class="item-type-2" wx:if="{{oldTemplate.type==4}}">共享</text>
+        <text class="item-type-2" wx:if="{{oldTemplate.type==6}}">科室共享</text>
+        <text class="item-type-2" wx:if="{{oldTemplate.type==7}}">院内共享</text>
+        <text class="item_type">{{oldTemplate.templateType}}</text>
+      </view>
+    </view>
+    <view class="template-detail">
+      <text class="replate-customer-info">当前节点：{{oldcurrentPointName}}</text>
+      <text class="replate-customer-info">节点日期：{{oldcurrentPointDate}}</text>
+    </view>
+
+    <!--new -->
+     <view class="template-old-bq bg-white padding-left-10" >
+        <view class="xian"> </view>
+        <text class="text-new-template">新方案</text>
+      </view>
+    <view class="template-detail">
+      <text class="text-replate-title margin-top-10">{{template.templateName}}</text>
+
+      <view class="template-type">
+        <text class="item-type-2" wx:if="{{template.type==0}}"> 私人</text>
+        <text class="item-type-2" wx:if="{{template.type==1}}"> 官方</text>
+        <text class="item-type-2" wx:if="{{template.type==2}}"> 顾问医生</text>
+        <text class="item-type-2" wx:if="{{template.type==3}}">多中心</text>
+        <text class="item-type-2" wx:if="{{template.type==4}}">共享</text>
+        <text class="item-type-2" wx:if="{{template.type==6}}">科室共享</text>
+        <text class="item-type-2" wx:if="{{template.type==7}}">院内共享</text>
+        <text class="item_type">{{template.templateType}}</text>
+      </view>
+      <text wx:if="{{customer.sex==1}}" class="customer-info">患者信息：{{customer.customerName}}  {{customer.age}}岁   女</text>
+      <text wx:if="{{customer.sex==0}}" class="customer-info">患者信息：{{customer.customerName}}  {{customer.age}}岁   男</text>
+    </view>
+    <view class="change-point-p" bindtap="choosePoint">
+      <text class="txt-change-point"> 起始节点：  {{startPoint}}</text>
+      <image style="vertical-align: middle;width:5px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
+    </view>
+
+    <view class="change-point-p">
+      <picker mode="date" class="txt-change-date" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
+        <text class="txt-change-date">起始日期：  {{date}}</text>
+      </picker>
+      <image style="vertical-align: middle;width:5px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
+    </view>
+    <text class="stop-hint">*替换后原方案随访数据将会清除,可登录doctor-console.ifuifu.com 先行导出</text>
+  </view>
+
+
+
+
   <view class="bottom-view">
-    <text class="text-send">立即给患者发送方案</text>
+    <text wx:if="{{actionType=='send'}}" class="text-send">立即给患者分配方案</text>
+    <text wx:if="{{actionType=='stop'}}" class="text-send">方案立即终止</text>
+    <text wx:if="{{actionType=='resetting'}}" class="text-send">立即重置方案</text>
+    <text wx:if="{{actionType=='replace'}}" class="text-send">立即给患者替换方案</text>
     <text class="btn-send" bindtap="send"> 确认 </text>
   </view>
 </view>

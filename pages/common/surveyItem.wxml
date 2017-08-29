@@ -13,10 +13,10 @@
       <text class="item-title">{{item.templateName}}</text>
        <text class="item-text">{{item.pointName}}</text>
       <!--量表 -->
-      <navigator class="item-score-p item-bg" wx:for="{{item.followPointLinkList}}" wx:key="{{index}}" data-item="{{item}}" open-type="redirect" bindtap="navigateTo" >
+      <view class="item-score-p item-bg" wx:for="{{item.followPointLinkList}}" wx:key="{{index}}" data-item="{{item}}" open-type="redirect" bindtap="navigateTo" >
             <text class="item-link-title">{{item.linkTitle}}</text>
              <text class="item-text" wx:if="{{item.score!=null}}">{{item.score}}分</text>
-      </navigator>
+      </view>
 </view>
 </view>
 </view>

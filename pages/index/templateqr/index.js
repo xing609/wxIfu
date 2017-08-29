@@ -33,7 +33,7 @@ Page({
     var that = this;
     Req.req_post(Api.getHomeNewTemplate({
       token: Api.getToken()
-    }), "", function success(res) {
+    }), "加载中", function success(res) {
       var lastList = new Array();
       if (res.data.model.commonList) {
         lastList = res.data.model.commonList;
@@ -52,7 +52,6 @@ Page({
         Array.prototype.push.apply(lastList, res.data.model.newList);
         wx.setStorageSync('templateList', lastList);
       }
-      console.log(res.data.model.commonList[0].author + "/");
       that.setData({
         newTemplateList: lastList,
         template: lastList[0]

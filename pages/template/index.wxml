@@ -1,34 +1,41 @@
 <import src="../../components/prompt/prompt.wxml" />
 <template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg3}}" />
-<view class="view-p">
 
-  <scroll-view class="view-left" style="height:{{scrollHeight}}px;" bindscrolltolower="lower" 
-    scroll-y="true">
+<view class="view-p" >
+<!-- style="height:{{scrollHeight}}px;" -->
+  <scroll-view class="view-left"  bindscrolltolower="lower" scroll-y="true">
     <import src="../common/templateGroupItem.wxml" />
     <template is="list" data="{{resultList}}" />
   </scroll-view>
 
-  <view class="view-right">
-    <navigator class="item-p " url="" bindtap="navigateChildTo" data-id="{{item.id}}" wx:for="{{childList}}">
 
-      <text class="child-title">{{item.templateName}}</text>
-      <view class="child-add-p">
-        <view class="child-type">
-          <text class="item-type-2" wx:if="{{item.type==0}}"> 私人医生</text>
-          <text class="item-type-2" wx:if="{{item.type==1}}"> 官方</text>
-          <text class="item-type-2" wx:if="{{item.type==2}}"> 顾问医生</text>
-          <text class="item-type-2" wx:if="{{item.type==3}}">多中心</text>
-          <text class="item-type-2" wx:if="{{item.type==4}}">共享</text>
-          <text class="item-type-2" wx:if="{{item.type==6}}">科室共享</text>
-          <text class="item-type-2" wx:if="{{item.type==7}}">院内共享</text>
+  <scroll-view class="view-right" bindscrolltolower="lower" scroll-y="true">
+    <view url="" wx:for="{{childList}}">
+      <view class="item-p" bindtap="navigateChildTo" data-id="{{item.id}}">
+        <text class="child-title">{{item.templateName}}</text>
+        <view class="child-add-p">
+          <view class="child-type">
+            <text class="item-type-2" wx:if="{{item.type==0}}"> 私人医生</text>
+            <text class="item-type-2" wx:if="{{item.type==1}}"> 官方</text>
+            <text class="item-type-2" wx:if="{{item.type==2}}"> 顾问医生</text>
+            <text class="item-type-2" wx:if="{{item.type==3}}">多中心</text>
+            <text class="item-type-2" wx:if="{{item.type==4}}">共享</text>
+            <text class="item-type-2" wx:if="{{item.type==6}}">科室共享</text>
+            <text class="item-type-2" wx:if="{{item.type==7}}">院内共享</text>
+          </view>
+          <text class="child-has-add" wx:if="{{item.hasTemplate}}">已添加</text>
+          <!-- <text class="child-add-mytempalte" wx:if="{{!item.hasTemplate}}" data-id="{{item.id}}" bindtap="addMyTemplate">+为我的方案</text> -->
+
         </view>
-        <text class="child-has-add" wx:if="{{item.hasTemplate}}">已添加</text>
-        <text class="child-add-mytempalte" wx:if="{{!item.hasTemplate}}">+为我的方案</text>
       </view>
-
-      <text class="item_type">{{item.templateType}}</text>
+      <view class="add-p">
+        <text class="item_type text-flow">{{item.templateType}}</text>
+        <text class="child-add-mytempalte" wx:if="{{!item.hasTemplate}}" data-id="{{item.id}}" bindtap="addMyTemplate">+为我的方案</text>
+      </view>
       <view class="line-x margin-5"></view>
-    </navigator>
-  </view>
+
+    </view>
+  </scroll-view>
+
 
 </view>

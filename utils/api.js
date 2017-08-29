@@ -72,7 +72,7 @@ var BTN_REMARK ="api/doctor/customer/edit";
 //取随访记录列表
 var GET_CUSTOMER_EXTHOSPTIAL_LIST="api/doctor/customer/customerExtHospitalList";
 //停用方案
-var STOP_TEMPLATE ="api/doctor/template/stop";
+var STOP_TEMPLATE_TRODUCE ="api/doctor/template/stop";
 //启用用方案
 var START_TEMPLATE = "api/doctor/template/start";
 //简介方案详情
@@ -83,8 +83,29 @@ var SCALE_DETAIL ="api/doctor/survey";
 var KNOWS_DETAIL ="api/doctor/notes";
 //发送消息
 var SEND_CHAT_MESS ="api/common/chat/sendMsg";
+//加为我的方案
+var ADD_MY_TEMPLATE ="api/doctor/template/choiceTempletes";
+//终止方案
+var STOP_TEMPLATE ="api/doctor/customer/deleteCustomerExtHospital";
+//重置方案
+var RETSETTING_TEMPLATE ="api/doctor/customer/resetting";
 
 //===========================================请求接口==================================================
+function _resettingTemplate(o){
+  return reqUrl(RETSETTING_TEMPLATE,o);
+}
+
+function _stopTemplate(o){
+  return reqUrl(STOP_TEMPLATE,o);
+}
+
+function _stopTemplateIntroduce(o) {
+  return reqUrl(STOP_TEMPLATE_TRODUCE, o);
+}
+function _addMyTemplate(o){
+  return reqUrl(ADD_MY_TEMPLATE,o);
+}
+
 function _sendChatMess(o){
   return reqUrl(SEND_CHAT_MESS,o);
 }
@@ -247,6 +268,9 @@ function _obj2uri(obj) {
 }
 //===========================================导出===========================================
 module.exports = {
+  resettingTemplate: _resettingTemplate,
+  stopTemplate: _stopTemplate,
+  addMyTemplate: _addMyTemplate,
   sendChatMess:_sendChatMess,
   getKnowsDetail:_getKnowDetail,
   getScaleDetail:_getScaleDetail,
@@ -290,7 +314,7 @@ module.exports = {
   btnShield:_btnShield,
   btnRemark:_btnRemark,
   getCustomerExtHosptialList: _getCustomerExtHosptialList,
-  stopTemplate:_stopTeamplate,
+  stopTemplateIntroduce: _stopTemplateIntroduce,
   startTemplate:_startTemplate,
   getIntroduceTemplateDetail:_getIntroduceTemplateDetail
 };

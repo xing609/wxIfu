@@ -8,28 +8,28 @@
     <text class="system-scole">答题时间：</text>
     <text wx:if="{{item.surveyDesc!=null}}" class="system-scole">{{item.surveyDesc}}</text>
   </view>
-  <navigator class="nav-p" wx:for="{{questionList}}" wx:key="" data-id="{{item.id }}" wx:for-index="index">
+  <view class="nav-p" wx:for="{{questionList}}" wx:key="" data-id="{{item.id }}" wx:for-index="index">
    <view class="line-x margin-top"></view>
     <text class="question-title">{{item.questionCode}}.{{item.questionTitle}}</text>
     <!--单选题-->
     <view wx:if="{{item.questionType==0}}" class="classname">
-      <navigator wx:for="{{item.optionList}}">
+      <view wx:for="{{item.optionList}}" wx:key="">
         <radio class="option-content" value="{{item.optionText}}" checked="{{item.selected}}" />{{item.optionText}}
-      </navigator>
+      </view>
     </view>
 
     <!--多选题-->
     <view wx:if="{{item.questionType==1}}" class="classname">
-      <navigator wx:for="{{item.optionList}}">
+      <view wx:for="{{item.optionList}}" wx:key="">
         <checkbox class="option-content" value="{{item.optionText}}" checked="{{item.selected}}" />{{item.optionText}}
-      </navigator>
+      </view>
     </view>
 
     <!--判断题-->
     <view wx:if="{{item.questionType==2}}" class="classname">
-      <navigator wx:for="{{item.optionList}}">
+      <view wx:for="{{item.optionList}}" wx:key="">
         <radio class="option-content" value="{{item.optionText}}" />{{item.optionText}}
-      </navigator>
+      </view>
 
     </view>
 
@@ -40,9 +40,9 @@
 
     <!--打分题-->
     <view wx:if="{{item.questionType==4}}" class="classname">
-      <navigator class="option-score-text" wx:for="{{item.optionList}}">
+      <view class="option-score-text"wx:key="" wx:for="{{item.optionList}}">
         <text class="item-score-text">{{item.optionText}}</text>
-      </navigator>
+      </view>
 
       <!--疼痛题长度为10，第一个是无痛，最后一个是剧烈痛 ，否则是打分题 -->
       <image wx:if="{{item.optionList.length==11&&item.optionList[0].optionText=='无痛'&&item.optionList[10].optionText=='剧烈痛'}}" style="width:280px;height:140px" src="../../../assets/images/scale/ic_pain.png"></image>
@@ -53,5 +53,5 @@
       <image bindtap="previewImage" data-imgurl="{{item.optionList[0].pic}}" wx:if="{{item.optionList.length>0}}" style="width:280px;height:150px;" src="{{item.optionList[0].pic}}"></image>
     </view>
    
-  </navigator>
+  </view>
 </view>

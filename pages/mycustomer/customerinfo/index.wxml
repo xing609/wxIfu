@@ -14,7 +14,7 @@
           <text class="left_text_1" wx:if="{{customer.age>0}}">{{customer.age}}岁</text>
         </view>
 
-        <span class="left_text_name">{{customer.mobile}}</span>
+        <text class="left_text_name" bindtap="callMobile">{{customer.mobile}}</text>
       </view>
     </view>
     <image wx:if="{{customer.mark==true}}" style="margin-right: 10px;vertical-align: middle;width:18px; height: 18px;" src='../../../assets/images/ic_hasremark.png'></image>

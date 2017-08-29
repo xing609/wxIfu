@@ -1,12 +1,12 @@
 <import src="../../../components/prompt/prompt.wxml" />
 <view class="weui-grids">
   <view class="weui-grid" wx:for="{{resultList}}" bindtap="navigateTo" data-customer-id="{{item.customerId}}">
-    <navigator>
+    <view>
       <view class="weui-grid__icon">
         <image class="userinfo-avatar" src=" {{item.face}}" mode="scaleToFill" />
       </view>
       <text class="weui-grid__label">{{item.customerName}}</text>
-    </navigator>
+    </view>
   </view>
 </view>
 

@@ -72,7 +72,7 @@
     <text class="btn-stop" wx:if="{{status==0&&template.hasTemplate}}" bindtap="stopTemplate">停用</text>
     <text class="btn-start" wx:if="{{status==1&&template.hasTemplate}}" bindtap="stopTemplate">启用</text>
     <!--加为我的方案  -->
-    <text class="btn-add" wx:if="{{!template.hasTemplate}}" bindtap="addTemplate">+为我的方案</text>
+    <text class="btn-add" wx:if="{{!template.hasTemplate}}" bindtap="addMyTemplate">+为我的方案</text>
     <text class="btn-detail" bindtap="jumpToTemplateDetail">方案详情</text>
   </view>
 </scroll-view>

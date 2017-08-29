@@ -127,8 +127,8 @@ Page({
   playVoice(e) {
     var path = e.currentTarget.dataset.voiceurl;
     if (path) {
-      if (path.indexOf("http") >= 0) {
-        path = path.replace('http', 'https');
+      if (path.indexOf("http:") >= 0) {
+        path = path.replace('http:', 'https:');
       }
     }
     if (!path) {
