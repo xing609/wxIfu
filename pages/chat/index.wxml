@@ -1,5 +1,5 @@
 <import src="../../components/prompt/prompt.wxml" />
-<navigator class="nav-p" wx:for="{{resultList}}" wx:key="" bindtap="navigateTo" data-id="{{item.id }}" data-realname="{{item.realName}}">
+<view class="nav-p" wx:for="{{resultList}}" wx:key="" bindtap="navigateTo" data-id="{{item.id }}" data-realname="{{item.realName}}">
   <view class="img-head">
     <image wx:if="{{item.face!=null}}" class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
     <image wx:if="{{item.face==null}}" class="userinfo-avatar" src="../../assets/images/ic_default_customer.png" background-size="cover"></image>
@@ -11,6 +11,6 @@
     <text class="content-text" wx:if="{{item.lastChat.contentType==2}}">[图片]</text>
     <text class="content-text" wx:if="{{item.lastChat.contentType==3}}">[语音]</text>
   </view>
-</navigator>
+</view>
 
 <template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg3}}" />

@@ -18,7 +18,7 @@ Page({
       token: Api.getToken(),
       page: 0,
       status: 1
-    }), "", function success(res) {
+    }), "加载中", function success(res) {
       if(res.data.resultList.length>0){
         $wuxPrompt.init('msg3', {
           icon: '../../assets/images/iconfont-empty.png',

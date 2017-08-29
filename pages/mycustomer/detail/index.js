@@ -79,13 +79,13 @@ Page({
     })
   },
   //打电话
-  callMobile() {
-    if (this.data.customer.mobile) {
-      wx.makePhoneCall({
-        phoneNumber: this.data.customer.mobile
-      })
-    }
-  },
+  // callMobile() {
+  //   if (this.data.customer.mobile) {
+  //     wx.makePhoneCall({
+  //       phoneNumber: this.data.customer.mobile
+  //     })
+  //   }
+  // },
   //进入方案
   navigateTo(e) {
     let that = this;
@@ -105,18 +105,22 @@ Page({
           switch (res.tapIndex) {
             case 0:
               actionType ="resetting";
+              wx.navigateTo({
+                url: "/pages/template/confirmTemplate/index?template=" + bean + "&actionType=" + actionType
+              })
               break;
             case 1:
               actionType="replace";
+              wx.navigateTo({
+                url: "/pages/template/mytemplate/index?from=replace" + "&template=" + bean+"&actionType=" + actionType
+              })
               break;
             case 2:
               actionType="stop";
+              wx.navigateTo({
+                url: "/pages/template/confirmTemplate/index?template=" + bean + "&actionType=" + actionType
+              })
               break;
-          }
-          if(actionType){
-            wx.navigateTo({
-              url: "/pages/template/confirmTemplate/index?template=" + bean + "&actionType=" + actionType
-            })
           }
         },
         fail: function (res) {

@@ -1,18 +1,18 @@
 <!--detail.wxml-->
-<div class="div_top" >
+<div class="div_top">
   <view class="top-left" bindtap="jumpToCustomerInfo">
-    <image class="userinfo-avatar" src='{{customer.face}}' ></image>
+    <image class="userinfo-avatar" src='{{customer.face}}'></image>
     <view class="info-p">
       <view class="info-top">
-        <text class="left_text_name" bindtap="jumpToCustomerInfo">{{customer.customerName}}</text>
+        <text class="left_text_name">{{customer.customerName}}</text>
         <text class="left_text_1" wx:if="{{customer.sex==0}}">男</text>
         <text class="left_text_1" wx:if="{{customer.sex==1}}">女</text>
         <text class="left_text_1">{{customer.age}}岁</text>
       </view>
-      <text class="left_text_name" bindtap="callMobile">{{customer.mobile}}</text>
+      <text class="left_text_name">{{customer.mobile}}</text>
     </view>
   </view>
-  <image class="ic-next" bindtap="jumpToCustomerInfo" style="margin-right:10px" src='../../../assets/images/userinfo/ic_next.png'></image>
+  <image class="ic-next" style="margin-right:10px" src='../../../assets/images/userinfo/ic_next.png'></image>
 </div>
 
 
@@ -25,16 +25,14 @@
 
   <view class="line-s"></view>
 
-  <navigator class="item-p" wx:for="{{resultList}}" wx:key="{{index}}">
-    <view class="item-top" data-exthospitalid="{{item.customerExtHospitalId}}" data-bean="{{item}}" data-doctorid="{{item.doctorId}}" data-templateid="{{item.templateId}}" 
-    bindtouchstart="mytouchstart" bindtouchend="mytouchend" bindtap="navigateTo">
+  <view class="item-p" wx:for="{{resultList}}" wx:key="{{index}}">
+    <view class="item-top" data-exthospitalid="{{item.customerExtHospitalId}}" data-bean="{{item}}" data-doctorid="{{item.doctorId}}" data-templateid="{{item.templateId}}" bindtouchstart="mytouchstart" bindtouchend="mytouchend" bindtap="navigateTo">
       <text wx:if="{{item.doctorId==doctorId}}" class="content-title text-flow">{{item.templateName}}</text>
-       <text wx:if="{{item.doctorId!=doctorId}}" class="content-title template-title-gray">{{item.templateName}}</text>
-      
-      
-      <text class="content-text">当前节点：{{item.currentPointName}} {{item.currentPointIndex}}/{{item.allPointNum}}</text>
-      <text class="content-text">提交量表：{{item.finishSurvyNum}}/{{item.allSurvyNum}}     阅读须知：{{item.finishNoteNum}}/{{item.allNoteNum}}</text>
+      <text wx:if="{{item.doctorId!=doctorId}}" class="content-title template-title-gray">{{item.templateName}}</text>
+      <text wx:if="{{item.currentPointName!=null}}" class="content-text">当前节点：{{item.currentPointName}} {{item.currentPointIndex}}/{{item.allPointNum}}</text>
+      <text wx:if="{{item.currentPointName==null}}" class="content-text">当前节点：无  {{item.currentPointIndex}}/{{item.allPointNum}}</text>
 
+      <text class="content-text">提交量表：{{item.finishSurvyNum}}/{{item.allSurvyNum}}     阅读须知：{{item.finishNoteNum}}/{{item.allNoteNum}}</text>
       <view class="line"></view>
     </view>
 
@@ -45,14 +43,14 @@
         <text wx:if="{{item.doctorId!=doctorId}}" class="record-text-gray"> 病程录</text>
         <view class="text-count">
           <text wx:if="{{item.doctorId==doctorId}}" class="record-text margin-right-10">{{item.recordCount}}</text>
-          <text wx:if="{{item.doctorId!=doctorId}}" class="record-text-gray margin-right-10" >{{item.recordCount}}</text>
+          <text wx:if="{{item.doctorId!=doctorId}}" class="record-text-gray margin-right-10">{{item.recordCount}}</text>
 
           <image class="ic-next" src='../../../assets/images/userinfo/ic_next.png'></image>
         </view>
 
       </view>
     </view>
-  </navigator>
+  </view>
 
   <view style="height:60px;"></view>
 </view>

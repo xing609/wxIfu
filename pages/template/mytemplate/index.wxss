@@ -1,24 +1,26 @@
-.top_all_template{
+.top_all_template {
   text-align: center;
   color: black;
 }
 
-.txt-template{
+.txt-template {
   font-size: 16px;
   color: black;
   margin-left: 10px;
 }
+
 /*全部方案*/
-.all-template{
+
+.all-template {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
   background-color: white;
   align-items: center;
-  
 }
-.txt-all-template{
+
+.txt-all-template {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -26,17 +28,17 @@
 }
 
 /*我的方案*/
-.my-template{
+
+.my-template {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   margin-top: 10px;
   padding: 10px;
   background: white;
-
 }
 
-.item-p{
+.item-p {
   display: flex;
   flex-direction: column;
   vertical-align: middle;
@@ -44,63 +46,212 @@
   padding: 10px;
   background-color: white;
 }
-.item-top{
+
+.item-top {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
-.item_title{
+
+.item_title {
   font-size: 16px;
   width: 280px;
   color: black;
 }
-.item_type{
+
+.item_type {
   color: #607fb9;
   font-size: 12px;
 }
 
-.item-top-left{
+.item-top-left {
   display: flex;
   flex-direction: column;
-  justify-content:flex-start;
+  justify-content: flex-start;
 }
 
-.item-bottom{
+.item-bottom {
   display: flex;
   flex-direction: row;
   margin-top: 5px;
   justify-content: flex-start;
 }
 
-.item-type-2{
+.item-type-2 {
   font-size: 12px;
-  color: #93DE65;
+  color: #93de65;
   padding-left: 10px;
   padding-right: 10px;
   background-color: white;
   border-radius: 4px;
-  border: 1px solid #93DE65;
+  border: 1px solid #93de65;
 }
-.item-count{
+
+.item-count {
   font-size: 12px;
-  color: #A9A9A9;
+  color: #a9a9a9;
   margin-left: 10px;
 }
-.bottom-left{
+
+.bottom-left {
   display: flex;
   flex-direction: row;
-  align-items: center
+  align-items: center;
 }
-.item-status{
+
+.item-status {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   vertical-align: middle;
   align-items: center;
 }
+
 /*停用  */
-.template-stauts{
+
+.template-stauts {
   font-size: 14px;
-  color: red
+  color: red;
+}
+
+/*自定义弹窗  */
+
+.show-btn {
+  margin-top: 100rpx;
+  color: #2c2;
+}
+
+.modal-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  opacity: 0.5;
+  overflow: hidden;
+  z-index: 9000;
+  color: #fff;
+}
+
+.modal-dialog {
+  width: 600rpx;
+  overflow: hidden;
+  position: fixed;
+  top: 30%;
+  left: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  margin: -180rpx 75rpx;
+  border-radius: 26rpx;
+}
+
+.close-dialog {
+  overflow: hidden;
+  position: fixed;
+  top: 24%;
+  right: 0;
+  z-index: 9999;
+  margin: -180rpx 58rpx;
+ 
+}
+
+.qrcode {
+  height: 350rpx;
+  width: 420rpx;
+  display: flex;
+  margin-left: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.qrcode > canvas {
+  width: 400rpx;
+  height: 350rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.dialog-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.dialog-point {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+}
+.dialog-first{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 5px;
+}
+.dialog-first-point-text {
+  font-size: 14px;
+  color: #9c9c9c;
+}
+
+.dialog-first-point-value {
+  font-size: 14px;
+  color: black;
+}
+
+.margin-left-20 {
+  margin-left: 20px;
+}
+
+.dialog-title {
+  font-size: 16px;
+  color: black;
+}
+
+.dialog-template-type {
+  font-size: 14px;
+  color: #fcc48b;
+}
+
+.btn-look-customer {
+  width: 180px;
+  font-size: 16px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  color: white;
+  vertical-align: middle;
+  text-align: center;
+  background-color: #f93;
+  border-radius: 20px;
+  margin-right: 10px;
+  margin-left: 5px;
+}
+
+.dialog-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
+  align-items: center;
+}
+
+.dialog-qr-hint-text {
+  font-size: 12px;
+  color: #9c9c9c;
+}
+
+.btn-look {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }

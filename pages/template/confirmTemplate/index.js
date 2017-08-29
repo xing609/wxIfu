@@ -18,8 +18,11 @@ Page({
     endDate: "",
     date: '',
     actionType: 'send',
-    currentPointName: "",
-    currentPointDate: '',
+    oldTemplate:{},
+    oldcurrentPointName: "无",
+    oldcurrentPointDate: '无',
+    currentPointName: "无",
+    currentPointDate: '无',
   },
   onLoad: function (option) {
     actionType = option.actionType;
@@ -39,6 +42,14 @@ Page({
       endDate.addDay(30);//调用原型方法加30天
 
       this.getTemplateDetail(option.templateId);
+      this.setData({
+        template: template,
+        endDate: endDate,
+        date: nowDate,
+        actionType: actionType,
+        currentPointDate: currentPointDate,
+        currentPointName: currentPointName
+      })
     } else if (actionType == 'stop') {
       title = "终止方案";
       var pointInfo = this.getPointInfoByTemplate(template);
@@ -46,6 +57,15 @@ Page({
         currentPointName = pointInfo.currentPointName;
         currentPointDate = pointInfo.currentPointDate;
       }
+      this.getTemplateDetail(option.templateId);
+      this.setData({
+        template: template,
+        endDate: endDate,
+        date: nowDate,
+        actionType: actionType,
+        currentPointDate: currentPointDate,
+        currentPointName: currentPointName
+      })
     } else if (actionType == 'resetting') {
       nowDate = this.getNowFormatDate();
       Date.prototype.addDay = function (num) { if (!isNaN(num)) this.setDate(this.getDate() + parseInt(num)); return this; }//给日期原型加个方法
@@ -57,25 +77,39 @@ Page({
         currentPointName = pointInfo.currentPointName;
         currentPointDate = pointInfo.currentPointDate;
       }
+      this.getCustomerTemplateInfo(template.customerExtHospitalId);
 
-      this.getTemplateDetail(template.templateId);
-
+      this.setData({
+        template: template,
+        endDate: endDate,
+        date: "",
+        actionType: actionType,
+        currentPointDate: currentPointDate,
+        currentPointName: currentPointName
+      })
     } else if (actionType == 'replace') {
       title = "替换方案";
+      var oldTemplate = JSON.parse(option.oldTemplate);
+      this.getTemplateDetail(option.templateId);
+     
+      var pointInfo = this.getPointInfoByTemplate(oldTemplate);
+      if (pointInfo) {
+        var oldcurrentPointName = pointInfo.currentPointName;
+        var oldcurrentPointDate = pointInfo.currentPointDate;
+      }
+      this.setData({
+        template: template,
+        oldTemplate: oldTemplate,
+        endDate: endDate,
+        date: nowDate,
+        actionType: actionType,
+        oldcurrentPointDate: oldcurrentPointName,
+        oldcurrentPointName: oldcurrentPointDate
+      })
     }
-
-    this.setData({
-      template: template,
-      endDate: endDate,
-      date: nowDate,
-      actionType: actionType,
-      currentPointDate: currentPointDate,
-      currentPointName: currentPointName
-    })
     wx.setNavigationBarTitle({
       title: title,
     })
-
   },
 
   //取节点信息
@@ -162,7 +196,7 @@ Page({
       doctorId: doctorId,
       customerId: customerId
 
-    }), "", function success(res) {
+    }), "加载中", function success(res) {
       that.setData({
         customer: res.data.model
       })
@@ -183,7 +217,7 @@ Page({
     var that = this;
     Req.req_post(Api.getTemplateDetail(templateid, {
       token: Api.getToken()
-    }), "", function success(res) {
+    }), "加载中", function success(res) {
       that.setData({
         template: res.data.model,
         startPoint: res.data.model.startPoint,
@@ -200,9 +234,8 @@ Page({
     } else if (actionType == 'resetting') {
       this.resettingTemplate();
     } else if (actionType == 'replace') {
-
+      this.sendTemplate();
     }
-
   },
 
   //选择节点
@@ -220,24 +253,34 @@ Page({
     wx.showActionSheet({
       itemList: array,
       success: function (res) {
-        console.log(res.tapIndex)
-        that.setData({
-          startPoint: templatePointList[res.tapIndex].pointName,
-          pointId: templatePointList[res.tapIndex].id
-        })
+        console.log("index=========="+res.tapIndex);
+        if(res.tapIndex!=null){
+          console.log("pointName=============="+templatePointList[res.tapIndex].pointName);
+          that.setData({
+            startPoint: templatePointList[res.tapIndex].pointName,
+            pointId: templatePointList[res.tapIndex].id
+          })
+        }
+       
       },
       fail: function (res) {
         console.log(res.errMsg)
       }
     })
   },
-  //分配方案
+  //分配方案-替换方案
   sendTemplate: function () {
     var customer = this.data.customer;
     var template = this.data.template;
     time = this.data.date + " 00:00:00";
     var pointId = this.data.pointId;
     var that = this;
+    var oldTemplateId;
+    if (actionType == 'send') {
+      oldTemplateId="";
+    } else if (actionType == 'replace') {
+      oldTemplateId = that.data.oldTemplate.id;
+    }
     Req.req_post(Api.sendTemplate({
       token: Api.getToken(),
       customerId: Api.getCustomerId(),
@@ -246,10 +289,16 @@ Page({
       templateName: template.templateName,
       pointId: pointId,
       firstPointStartTime: time,
-      oldTemplateId: ""
+      oldTemplateId: oldTemplateId
     }), "加载中", function (res) {
+      var hint;
+      if (actionType == 'send') {
+        hint = "分配成功";
+      } else if (actionType == 'replace') {
+        hint = "替换成功";
+      }
       wx.showToast({
-        title: '分配成功！',
+        title: hint,
         icon: 'success',
         duration: 2000
       });
@@ -260,6 +309,22 @@ Page({
     }, function fail(res) {
     })
   },
+  // 取原方案详情
+  getCustomerTemplateInfo: function (customerExtHosp){
+    var that=this;
+    Req.req_post(Api.getCustomerTemplateInfo({
+      token: Api.getToken(),
+      customerId: Api.getCustomerId(),
+      customerExtHosp: customerExtHosp,
+    }), "加载中", function (res) {
+      that.setData({
+        template: res.data.model
+      })
+    }, function fail(res) {
+    })
+  },
+
+
   //终止方案
   stopTemplate: function () {
     var that = this;
@@ -285,7 +350,7 @@ Page({
     time = that.data.date + " 00:00:00";
     Req.req_post(Api.resettingTemplate({
       token: Api.getToken(),
-      pointId:that.data.template.id,
+      pointId: that.data.pointId,
       pointName: that.data.startPoint,
       firstPointStartTime: time,
       customerExtHospId: that.data.template.customerExtHospitalId

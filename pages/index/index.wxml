@@ -45,7 +45,7 @@
 
   <view class="grids grids-small">
     <block wx:for="{{ items }}" wx:key="">
-      <navigator class="grid" url="" wx:key="{{index}}" data-path="{{ item.path }}" data-index="{{ index }}" bindtap="navigateTo">
+      <view class="grid" url="" wx:key="{{index}}" data-path="{{ item.path }}" data-index="{{ index }}" bindtap="navigateTo">
         <view class="item_size">
           <text class="text">{{item.text}}</text>
 
@@ -56,7 +56,7 @@
           <text class="text_num" wx:if="{{item.id ==5}}"> {{model.doctorReceiveSurvey}}张量表</text>
           <text class="text_num" wx:if="{{item.id ==6}}"> {{model.noCustomerSurvey}}位患者</text>
         </view>
-      </navigator>
+      </view>
     </block>
   </view>
 </view>

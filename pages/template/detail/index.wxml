@@ -19,7 +19,7 @@
                 <text class="pointStatus" wx:if="{{item.pointStatus==0}}">未开始</text>
 
                 <scroll-view scroll-y="true" class="discover-image-two">
-                  <navigator wx:for="{{item.pointLinkList}}" wx:key="{{index}}" bindtap="navigateTo" data-id="{{item.id}}">
+                  <block wx:for="{{item.pointLinkList}}" wx:key="{{index}}" bindtap="navigateTo" data-id="{{item.id}}">
 
                     <view class="item-bg" data-item="{{item}}" bindtap="jumpToScalDetail">
                       <view class="know-img">
@@ -28,10 +28,10 @@
                       </view>
 
                       <text class="link-title">{{item.linkTitle}}</text>
-                        
+
                       <!-- <image wx:if="{{item.isDoctorOnly==0}}" src="../../../assets/images//scale/doctor_only.png" style="vertical-align: middle;width:40px; height: 50px;" /> -->
                     </view>
-                  </navigator>
+                  </block>
                 </scroll-view>
               </view>
 

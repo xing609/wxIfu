@@ -1,7 +1,7 @@
 <template name="gridview">
  <view class="weui-grids">
       <view class="weui-grid" wx:for="{{item.msgMedicals}}" wx:key="{{index}}" bindtap="navigateTo" data-customer-id="{{item.customerId}}">
-        <navigator>
+        <view>
           <view class="weui-grid__icon">
             <image wx:if="{{item.msgMedicalType==1}}" 
             data-index="{{index}}" bindtap="previewImage" data-imgurl="{{item.msgBody}}" src=" {{item.msgBody}}" mode="scaleToFill" />
@@ -9,7 +9,7 @@
             <image wx:if="{{item.msgMedicalType==3}}" src="../../../assets/images/ic_set_icon.png" style="vertical-align: middle;width:100%; height: 80px;" mode="scaleToFill" />
           </view>
           <!-- <text class="weui-grid__label">{{item.customerName}}</text> -->
-        </navigator>
+        </view>
       </view>
     </view>
   </template>

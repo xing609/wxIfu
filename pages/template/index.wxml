@@ -8,7 +8,7 @@
   </scroll-view>
 
   <scroll-view class="view-right" bindscrolltolower="lower" scroll-y="true">
-    <navigator url="" wx:for="{{childList}}">
+    <view url="" wx:for="{{childList}}">
       <view class="item-p" bindtap="navigateChildTo" data-id="{{item.id}}">
         <text class="child-title">{{item.templateName}}</text>
         <view class="child-add-p">
@@ -30,7 +30,7 @@
         <text class="child-add-mytempalte" wx:if="{{!item.hasTemplate}}" data-id="{{item.id}}" bindtap="addMyTemplate">+为我的方案</text>
       </view>
       <view class="line-x margin-5"></view>
-    </navigator>
+    </view>
   </scroll-view>
 
 </view>

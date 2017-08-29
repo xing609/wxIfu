@@ -10,6 +10,12 @@
   color: #999;
 }
 
+.replate-customer-info{
+   display: flex;
+  font-size: 14px;
+  color: #999;
+}
+
 .template-title {
   display: flex;
   flex-direction: row;
@@ -18,12 +24,18 @@
   margin-top: 5px;
 }
 
+.template-old-bq {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .template-type {
-  display: block;
+  display: flex;
   font-size: 14px;
-  color: #f93;
   margin-top: 5px;
-  margin-bottom: 5px;
+  color: #f93;
 }
 
 .point-setting {
@@ -32,18 +44,15 @@
   justify-content: flex-start;
 }
 
-
 .txt-first-point {
-  background: white;
   margin-top: 1px;
   display: flex;
   font-size: 16px;
   padding: 10px;
   color: #666;
-
 }
 
-.item_type{
+.item_type {
   color: #607fb9;
   font-size: 12px;
   margin-left: 10px;
@@ -67,15 +76,20 @@
 .text-new-template {
   font-size: 16px;
   margin-left: 5px;
-  color: #666;
+  color: black;
 }
 
+.text-replate-title {
+  font-size: 16px;
+  color: black;
+}
 .xian {
   height: 18px;
   width: 4px;
   background-color: #ed992c;
 }
-.margin-top{
+
+.margin-top {
   margin-top: 10px;
 }
 
@@ -143,13 +157,45 @@
   border-radius: 4px;
   border: 1px solid #93de65;
 }
+
 /*终止方案  */
-.stop-hint{
+
+.stop-hint {
   font-size: 12px;
   color: red;
   margin-top: 5px;
   padding: 10px;
 }
-.bg-white{
-  background-color: white
+
+.bg-white {
+  background-color: white;
+}
+
+.change-point-p {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+  margin-top: 1px;
+}
+
+.padding-left-10 {
+  padding-left: 10px;
+}
+.margin-top-10 {
+  margin-top: 10px;
+}
+.txt-change-point {
+  font-size: 16px;
+  color: black;
+  vertical-align: middle;
+}
+
+.txt-change-date {
+  font-size: 16px;
+  color: black;
+  vertical-align: middle;
+  width: 260px;
 }

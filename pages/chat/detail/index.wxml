@@ -1,7 +1,4 @@
-<import src="../../components/prompt/prompt.wxml" />
-
-<navigator class="chat-item" wx:for="{{resultList}}" wx:key="" data-id="{{ item._id }}">
-
+<view class="chat-item" wx:for="{{resultList}}" wx:key="" data-id="{{ item._id }}">
   <text class="content-time" wx:if="{{item.createTimeStr!=null}}">{{item.createTimeStr}}</text>
 
   <!--左边  -->
@@ -58,7 +55,7 @@
     </view>
 
   </view>
-</navigator>
+</view>
 
 <view style="height:120px;"></view>
 <view class="v-bottom">
