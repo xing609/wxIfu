@@ -2,14 +2,13 @@
 <template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg3}}" />
 <view class="view-p">
 
-  <scroll-view class="view-left" style="height:{{scrollHeight}}px;"bindscrolltolower="lower" 
+  <scroll-view class="view-left" style="height:{{scrollHeight}}px;" bindscrolltolower="lower" 
     scroll-y="true">
     <import src="../common/templateGroupItem.wxml" />
     <template is="list" data="{{resultList}}" />
   </scroll-view>
 
-  <scroll-view class="view-right" style="height:{{scrollHeight}}px;" bindscrolltolower="lower" 
-    scroll-y="true">
+  <view class="view-right">
     <navigator class="item-p " url="" bindtap="navigateChildTo" data-id="{{item.id}}" wx:for="{{childList}}">
 
       <text class="child-title">{{item.templateName}}</text>
@@ -30,6 +29,6 @@
       <text class="item_type">{{item.templateType}}</text>
       <view class="line-x margin-5"></view>
     </navigator>
-  </scroll-view>
+  </view>
 
 </view>
