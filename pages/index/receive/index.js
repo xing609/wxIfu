@@ -16,7 +16,7 @@ Page({
     Req.req_post(Api.receiveSurvey({
       token: Api.getToken(),
       page: 1,
-    }), "", function success(res) {
+    }), "加载中", function success(res) {
       that.setData({
         resultList: res.data.resultList
       })
@@ -56,11 +56,20 @@ Page({
     }
 
   },
+  clickItem(e){
+    var bean = e.currentTarget.dataset.bean;
+    this.setData({
+      customerExtHospitalId: bean.customerExtHospitalId,
+      customerId: bean.customerId
+    })
+  },
   navigateTo(e) {
     var item = e.currentTarget.dataset.item;
+    var customerExtHospitalId = this.data.customerExtHospitalId;
+    var customerId = this.data.customerId;
     if (item.linkType == 0) {//量表
       wx.navigateTo({
-        url: "/pages/template/scale/index?linkPointId=" + item.id + "&linkId=" + item.linkId
+        url: "/pages/template/scale/index?linkPointId=" + item.linkPointId + "&linkId=" + item.linkId + "&isAnswer=true" + "&customerExtHosp=" + customerExtHospitalId + "&customerId=" + customerId
       })
     } else {//须知
       wx.navigateTo({

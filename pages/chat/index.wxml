@@ -1,4 +1,5 @@
 <import src="../../components/prompt/prompt.wxml" />
+
 <view class="nav-p" wx:for="{{resultList}}" wx:key="" bindtap="navigateTo" data-id="{{item.id }}" data-realname="{{item.realName}}">
   <view class="img-head">
     <image wx:if="{{item.face!=null}}" class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>

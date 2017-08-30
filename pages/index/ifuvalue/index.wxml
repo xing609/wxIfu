@@ -1,2 +1,15 @@
-<!--/pages/index/ifuvalue/index.wxml-->
-<text>/pages/index/ifuvalue/index.wxml</text>
+<import src="../../components/prompt/prompt.wxml" />
+<view class="view-top">
+  <text class="text-ifu">医数值:</text>
+  <text class="text-value">{{allcredic}}</text>
+</view>
+<view class="nav-p" wx:for="{{resultList}}" wx:key="" bindtap="navigateTo" data-id="{{item.id }}">
+  <view class="item-top">
+    <text class="item-title">{{item.desc}}</text>
+    <text wx:if="{{item.credit!=null}}" class="item-title">+{{item.credit}}</text>
+  </view>
+  <text class="item-time">{{item.createTime}}</text>
+  <view class="line-x"></view>
+</view>
+
+<template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg3}}" />

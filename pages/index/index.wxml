@@ -8,8 +8,7 @@
       <text class="home_top_text_my">我</text>
       <image class="home_top_img_my" src="../../assets/images/ic_home_qr_bg.png"></image>
     </view>
-    <image class="home_circle_p" src="../../assets/images/ic_ifuvalue_bg.png" bindtap="jumpIfuValueIndex">
-
+    <image class="home_circle_p" src="../../assets/images/ic_ifuvalue_bg.png" data-allcredic="{{model.allCredit}}" bindtap="jumpIfuValueIndex">
       <text class="home_ifu_value">{{model.allCredit}}</text>
       <text class="home_my_value">我的医数值</text>
     </image>

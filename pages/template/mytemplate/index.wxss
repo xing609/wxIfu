@@ -188,6 +188,7 @@
   flex-direction: column;
   justify-content: center;
   margin-top: 10px;
+  margin-bottom: 20px;
 }
 .dialog-first{
   display: flex;

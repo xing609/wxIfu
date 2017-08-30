@@ -4,24 +4,19 @@ const Req = require('../../utils/req.js');
 Page({
   data: {
     userInfo: {},
-    items: [
-      {
-        icon: '../../assets/images/userinfo/ic_ifu_value.png',
-        text: '医数值',
-        path: ''///pages/ifuvalue/list/index
-      },
-      // {
-      //   icon: '../../assets/images/iconfont-addr.png',
-      //   text: '设置',
-      //   path: ''///pages/address/list/index
-      // },
+    // items: [
+    //   {
+    //     icon: '../../assets/images/userinfo/ic_contact_us.png',
+    //     text: '联系我们',
+    //     path: '400-618-2535',
+    //   }
+    // ],
+    settings: [
       {
         icon: '../../assets/images/userinfo/ic_contact_us.png',
         text: '联系我们',
         path: '400-618-2535',
-      }
-    ],
-    settings: [
+      },
       {
         icon: '../../assets/images/userinfo/i_setting.png',
         text: '清除缓存',
@@ -42,25 +37,24 @@ Page({
   onShow: function () {
     this.getUserInfo();
   },
-  navigateTo(e) {
-    const index = e.currentTarget.dataset.index
-    const path = e.currentTarget.dataset.path
+  // navigateTo(e) {
+  //   const index = e.currentTarget.dataset.index
+  //   const path = e.currentTarget.dataset.path
 
-    switch (index) {
-      case 1:
-        wx.makePhoneCall({
-          phoneNumber: path
-        })
-        break
-      default:
-        wx.navigateTo({
-          url: path,
-        })
-    }
-  },
+  //   switch (index) {
+  //     case 0:
+  //       wx.makePhoneCall({
+  //         phoneNumber: path
+  //       })
+  //       break
+  //     default:
+  //       wx.navigateTo({
+  //         url: path,
+  //       })
+  //   }
+  // },
   getUserInfo() {
     var userInfo = Api.getUser();
-    // const userInfo = App.globalData.userInfo
     if (userInfo) {
       this.setData({
         userInfo: userInfo
@@ -69,11 +63,11 @@ Page({
     }
   },
   getStorageInfo() {
-    var that=this;
+    var that = this;
     wx.getStorageInfo({
-      success: function(res) {
+      success: function (res) {
         that.setData({
-          'settings[0].path': `${res.currentSize}KB`
+          'settings[1].path': `${res.currentSize}KB`
         })
       },
     })
@@ -85,6 +79,11 @@ Page({
     var that = this;
     switch (index) {
       case 0:
+        wx.makePhoneCall({
+          phoneNumber: path
+        })
+        break
+      case 1:
         wx.showModal({
           title: '友情提示',
           content: '确定要清除缓存吗？',
@@ -96,16 +95,15 @@ Page({
             }
           }
         })
-
         break
       default:
-       wx.navigateTo({
-         url: path,
-       })
+        wx.navigateTo({
+          url: path,
+        })
     }
   },
   logout() {
-    var that=this;
+    var that = this;
     wx.showModal({
       title: '友情提示',
       content: '确定要登出吗？',
@@ -122,7 +120,7 @@ Page({
     })
   },
   signOut() {
-    
+
     // App.HttpService.signOut()
     //   .then(data => {
     //     console.log(data)
@@ -139,7 +137,8 @@ Page({
       console.log("loginout success -------------");
       wx.removeStorageSync('token')
       wx.redirectTo({
-        url:'/pages/login/index'})
+        url: '/pages/login/index'
+      })
     }, function fail(res) {
       console.log("loginout failed -------------");
     })

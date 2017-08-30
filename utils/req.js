@@ -153,7 +153,7 @@ function req_post(url, message, success, fail) {
         if (res.data.resCode) {
           showToastErr(res.data.resDesc);
         }
-        fail(res);
+        
       }
     },
     fail: function (res) {

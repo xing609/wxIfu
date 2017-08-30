@@ -9,7 +9,7 @@
         </view>
 
 
-     <view class="item-right">
+     <view class="item-right" bindtouchstart="clickItem"  data-bean="{{item}}" >
       <text class="item-title">{{item.templateName}}</text>
        <text class="item-text">{{item.pointName}}</text>
       <!--量表 -->

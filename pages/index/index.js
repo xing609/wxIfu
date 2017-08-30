@@ -172,8 +172,6 @@ Page({
         })
       }
     }
-
-
     // this.getHomeNum();
     // if (!Api.getToken()){
     //   this.getHomeNum();
@@ -259,8 +257,11 @@ Page({
       url: '/pages/index/myqr/index',
     })
   },
-  jumpIfuValueIndex() {
-    // App.WxService.navigateTo('/pages/index/ifuvalue/index')
+  jumpIfuValueIndex(option) {
+    var allcredic = option.currentTarget.dataset.allcredic;
+    wx.navigateTo({
+      url: '/pages/index/ifuvalue/index?allcredic=' + allcredic,
+    })
   },
   jumpTemplateQrIndex() {
     wx.navigateTo({

@@ -16,9 +16,9 @@ Page({
     Req.req_post(Api.needDoctorSurvey({
       token: Api.getToken(),
       page: 1,
-    }), "", function success(res) {
+    }), "加载中", function success(res) {
       var num=0;
-      var title = "待完成医用量表（" +num + "）";
+      
       if(res.data.resultList.length>0){
         $wuxPrompt.init('msg3', {
           icon: '../../../assets/images/iconfont-empty.png',
@@ -34,6 +34,7 @@ Page({
       that.setData({
         resultList: res.data.resultList
       })
+      var title = "待完成医用量表（" + num + "）";
       wx.setNavigationBarTitle({ title: title })
       wx.stopPullDownRefresh();
     }, function fail(res) {
@@ -60,7 +61,7 @@ Page({
     var item = e.currentTarget.dataset.item;
     if (item.linkType == 0) {//量表
       wx.navigateTo({
-        url: "/pages/template/scale/index?linkPointId=" + item.linkPointId + "&linkId=" + item.linkId
+        url: "/pages/template/scale/index?linkPointId=" + item.linkPointId + "&linkId=" + item.linkId + "&canEdit=true"
       })
     } else {//须知
       wx.navigateTo({

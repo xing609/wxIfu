@@ -32,4 +32,4 @@
    <view class="line-x"></view>
 </view>
 </view>
-<button class="all-template" bindtap="jumpToAllTemplate">查看全部方案</button>
+<button class="all-template" hidden="true" bindtap="jumpToAllTemplate">查看全部方案</button>

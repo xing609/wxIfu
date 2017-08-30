@@ -65,6 +65,7 @@ Page({
     wx.navigateTo({
       url: "/pages/template/index"
     })
+   
   }
 })
 
