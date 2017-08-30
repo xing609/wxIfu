@@ -20,33 +20,12 @@ Page({
     showModal: false,//是否显示弹窗
     bean:{},
   },
-  // 自定义弹窗
-
+ 
   /**
    * 弹出框蒙层截断touchmove事件
    */
   preventTouchMove: function () {
   },
-
-  // /**
-  //  * 对话框取消按钮点击事件
-  //  */
-  // onCancel: function () {
-  //   //this.hideModal();
-  //   this.setData({
-  //     showModal: false
-  //   });
-  // },
-  // /**
-  //  * 对话框确认按钮点击事件
-  //  */
-  // onConfirm: function () {
-  //   //this.hideModal();
-  //   this.setData({
-  //     showModal: false
-  //   });
-  // },
-
   onShow: function () {
     if (wx.getStorageSync('hasChange')) {
       this.getMyTemplateList();
@@ -214,9 +193,9 @@ Page({
   },
   // 查看患者
   lookCustomer: function () {
-    this.setData({
-      showModal: false
-    });
+    // this.setData({
+    //   showModal: false
+    // });
 
     wx.navigateTo({
       url: "/pages/mycustomer/index"
