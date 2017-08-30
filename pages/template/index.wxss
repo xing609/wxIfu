@@ -8,7 +8,7 @@
 /*左侧主专区  */
 
 .view-left {
-  display: flex;
+  display: block;
   flex: 1;
   flex-direction: row;
 }

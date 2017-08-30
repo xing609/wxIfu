@@ -1,15 +1,14 @@
 <import src="../../components/prompt/prompt.wxml" />
 <template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg3}}" />
 
-<view class="view-p" >
-<!-- style="height:{{scrollHeight}}px;" -->
-  <scroll-view class="view-left"  bindscrolltolower="lower" scroll-y="true">
+ <view class="view-p" >
+  <scroll-view style="display: flex;flex:0.8;height:{{scrollHeight}}px;flex-direction:row;"  bindscrolltolower="lower" scroll-y="true">
     <import src="../common/templateGroupItem.wxml" />
     <template is="list" data="{{resultList}}" />
   </scroll-view>
 
 
-  <scroll-view class="view-right" bindscrolltolower="lower" scroll-y="true">
+  <scroll-view style="display: block;flex:2;background-color:white; height:{{scrollHeight}}px;flex-direction:row;" bindscrolltolower="lower" scroll-y="true">
     <view url="" wx:for="{{childList}}">
       <view class="item-p" bindtap="navigateChildTo" data-id="{{item.id}}">
         <text class="child-title">{{item.templateName}}</text>
@@ -36,6 +35,4 @@
 
     </view>
   </scroll-view>
-
-
 </view>

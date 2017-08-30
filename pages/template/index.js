@@ -70,7 +70,7 @@ Page({
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
-          scrollHeight: parseInt(res.windowHeight) + 200
+          scrollHeight: parseInt(res.windowHeight)
         })
       }
     });
