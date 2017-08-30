@@ -1,1 +1,38 @@
 /* /pages/index/ifuvalue/index.wxss */
+.view-top{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  vertical-align: middle;
+  align-items: center;
+  padding: 10px;
+  min-height: 50px;
+  background-color: #f93
+}
+.text-ifu{
+  font-size: 16px;
+  color: white;
+}
+.text-value{
+  font-size: 20px;
+  color: white;
+  margin-left: 10px;
+}
+.item-top{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.item-title{
+ font-size: 16px;
+ color: black;
+}
+.item-time{
+ font-size: 14px;
+ color: #AAAAAA;
+ padding-left: 10px;
+}

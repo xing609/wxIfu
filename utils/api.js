@@ -89,8 +89,20 @@ var ADD_MY_TEMPLATE ="api/doctor/template/choiceTempletes";
 var STOP_TEMPLATE ="api/doctor/customer/deleteCustomerExtHospital";
 //重置方案
 var RETSETTING_TEMPLATE ="api/doctor/customer/resetting";
+//医数值
+var GET_IFU_VALUE ="api/doctor/credit/logList";
+//量表答题
+var SUBMIT_ANSWER ="api/doctor/survey/answer";
 
 //===========================================请求接口==================================================
+function _submitAnswer(o){
+  return reqUrl(SUBMIT_ANSWER,o);
+}
+
+function _getIfuValue(o){
+  return reqUrl(GET_IFU_VALUE,o);
+}
+
 function _resettingTemplate(o){
   return reqUrl(RETSETTING_TEMPLATE,o);
 }
@@ -268,6 +280,8 @@ function _obj2uri(obj) {
 }
 //===========================================导出===========================================
 module.exports = {
+  submitAnswer: _submitAnswer,
+  getIfuValue: _getIfuValue,
   resettingTemplate: _resettingTemplate,
   stopTemplate: _stopTemplate,
   addMyTemplate: _addMyTemplate,

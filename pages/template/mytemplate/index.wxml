@@ -48,8 +48,7 @@
     </view>
   </view>
 </view>
-<!-- 
-catchtouchmove="preventTouchMove"  -->
+
 <!--弹窗  -->
 <view class="modal-mask" bindtap="hideModal" wx:if="{{showModal}}" catchtouchmove="preventTouchMove"></view>
 <view class="modal-dialog" wx:if="{{showModal}}" catchtouchmove="preventTouchMove">
@@ -80,7 +79,7 @@ catchtouchmove="preventTouchMove"  -->
       </view>
     </view>
   </view>
-  <view class="btn-look" bindtap="lookCustomer">
+  <view class="btn-look" hidden="true" bindtap="lookCustomer">
     <text class="btn-look-customer">查看患者</text>
   </view>
 

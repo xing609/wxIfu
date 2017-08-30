@@ -18,7 +18,7 @@ Page({
     var that = this;
     Req.req_post(Api.unSurveyCustomers({
       token: Api.getToken()
-    }), "", function success(res) {
+    }), "加载中", function success(res) {
       that.setData({
         resultList: res.data.resultList
       })
