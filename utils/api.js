@@ -94,7 +94,11 @@ var GET_IFU_VALUE ="api/doctor/credit/logList";
 //量表答题
 var SUBMIT_ANSWER ="api/doctor/survey/answer";
 
+
+
 //===========================================请求接口==================================================
+
+
 function _submitAnswer(o){
   return reqUrl(SUBMIT_ANSWER,o);
 }

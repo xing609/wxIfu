@@ -79,8 +79,10 @@ Page({
     console.log("test onReady");
   },
   onShow: function () {
-    // 生命周期函数--监听页面显示
-    console.log("test onShow");
+    
+    if (wx.getStorageSync('homeRefresh')) {
+      this.getHomeNum();
+    }
   },
   onHide: function () {
     // 生命周期函数--监听页面隐藏
@@ -149,7 +151,7 @@ Page({
     Req.req_post(Api.getHomeNum({
       token: Api.getToken()
     }), "", function success(res) {
-      console.log(res);
+      wx.setStorageSync('homeRefresh', false);
       that.setData({
         model: res.data.model
       })

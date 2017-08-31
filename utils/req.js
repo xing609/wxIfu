@@ -47,10 +47,17 @@ function req_get(url, message, success, fail) {
             url: '/pages/login/index',
           });
         } else {
-          console.log("--------reqfail---------" + res.data.resCode + "/" + res.data.resDesc);
-          if (res.data.resCode) {
-            showToastErr(res.data.resDesc);
+          if (res.data.resCode='A002'){
+            wx.removeStorageSync('token');
+            wx.redirectTo({
+              url: '/pages/login/index',
+            });
+          }else{
+            if (res.data.resCode) {
+              showToastErr(res.data.resDesc);
+            }
           }
+          console.log("--------reqfail---------" + res.data.resCode + "/" + res.data.resDesc);
           fail(res);
         }
       },

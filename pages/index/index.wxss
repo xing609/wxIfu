@@ -2,7 +2,7 @@
   height: 150px;
   margin-left: 10px;
   margin-right: 10px;
-  margin-bottom: 10px
+  margin-bottom: 10px;
 }
 
 swiper-item image {
@@ -28,6 +28,22 @@ view.text:before {
   width: 2px;
   height: 100%;
   background-color: #09bb07;
+}
+
+/* 今日 */
+
+.today-add-num {
+  font-size: 12px;
+  color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  background-color: #ff4723;
+  border-radius: 20px;
+  position: absolute;
+  top: 90rpx;
+  right: 240rpx;
 }
 
 .line_flag {
@@ -85,20 +101,19 @@ view.text text {
   text-align: center;
   color: #333;
 }
-.center-item{
+
+.center-item {
   display: flex;
-  flex-direction: row;   
+  flex-direction: row;
   justify-content: space-between;
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
 }
 
-.center-text{
+.center-text {
   font-size: 14px;
 }
-
-
 
 /*首页顶部UI*/
 
@@ -170,8 +185,8 @@ view.text text {
 
 .home_ifu_value {
   position: absolute;
-  left:0;
-  right:0;
+  left: 0;
+  right: 0;
   margin: auto;
   bottom: 65px;
   font-size: 30px;
@@ -188,14 +203,12 @@ view.text text {
   color: white;
 }
 
-
 .item_size {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 120rpx;
-  
 }
 
 .text {

@@ -9,15 +9,16 @@
 .padding {
   padding: 10px;
   background-color: white;
-  
 }
 
 .title {
   font-size: 16px;
   color: black;
 }
+
 /*修改过表单  */
-.has-change-survey{
+
+.has-change-survey {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,8 +27,9 @@
   padding-top: 5px;
   padding-bottom: 5px;
   color: red;
-  background-color: #FDF3E7
+  background-color: #fdf3e7;
 }
+
 .score-p {
   display: flex;
   flex-direction: row;
@@ -35,28 +37,33 @@
   align-items: center;
   vertical-align: middle;
 }
-.left-score{
+
+.left-score {
   display: flex;
   flex-direction: row;
   vertical-align: middle;
 }
+
 .system-score {
   font-size: 14px;
   color: #666;
 }
 
-.score{
+.score {
   font-size: 14px;
   color: red;
 }
+
 .question-title {
   font-size: 14px;
   color: black;
 }
-.item-question-value{
+
+.item-question-value {
   font-size: 14px;
-  color: #6B6B6B;
+  color: #6b6b6b;
 }
+
 .nav-p {
   display: flex;
   flex-direction: column;
@@ -69,13 +76,16 @@
 
 .option-edit {
   width: 280px;
-  height: 40px;
-  border-radius: 16px;
+  min-height: 40px;
+  max-height: 100px;
+  border-radius: 2px;
   margin-left: 10px;
   font-size: 14px;
-  color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: black;
   vertical-align: middle;
-  border: 1px solid #999;
+  border: 0.5px solid #999;
 }
 
 .option-content {
@@ -92,13 +102,13 @@
   justify-content: center;
 }
 
-.slider-p{
+.slider-p {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.question-type-score{
+.question-type-score {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -107,10 +117,12 @@
   vertical-align: middle;
   align-items: center;
 }
-.question-type-score-content{
+
+.question-type-score-content {
   font-size: 12px;
-  color: #999
+  color: #999;
 }
+
 .item-score-text {
   font-size: 12px;
   color: #999;
@@ -119,4 +131,21 @@
 .margin-top {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+/*提交  */
+
+.submit {
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  line-height: 45px;
+  text-align: center;
+  font-size: 16px;
+  color: white;
+  background-color: #81d84b;
 }

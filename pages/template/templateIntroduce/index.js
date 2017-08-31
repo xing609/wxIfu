@@ -92,12 +92,6 @@ Page({
         templateIds: JSON.stringify(list)
       }), "加载中", function success(res) {
         that.getTemplateIntroduce(id);
-        // var newTemplate = that.data.template;
-        // newTemplate.hasTemplate=true;
-        // that.setData({
-        //   status: 0,
-        //   template: newTemplate
-        // })
         wx.showToast({
           title: '添加成功',
         })

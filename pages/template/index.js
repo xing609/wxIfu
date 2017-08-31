@@ -122,7 +122,6 @@ Page({
     // })
   },
   navigateChildTo(e) {
-    console.log("--------------------templateid=" + e.currentTarget.dataset.id);
     wx.navigateTo({
       url: "/pages/template/templateIntroduce/index?templateId=" + e.currentTarget.dataset.id
     })

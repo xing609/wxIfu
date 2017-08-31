@@ -29,7 +29,6 @@ Page({
       customerId: customerId,
       customerExtHosp: customerExtHosp
     }), "加载中", function success(res) {
-      console.log(res);
       that.setData({
         template: res.data.model
       })
@@ -48,7 +47,6 @@ Page({
       token: Api.getToken(),
      
     }), "加载中", function success(res) {
-      console.log(res);
       that.setData({
         template: res.data.model
       })

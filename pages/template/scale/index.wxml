@@ -1,77 +1,80 @@
 <text class="has-change-survey" wx:if="{{hasChange}}">您修改过表单</text>
 <view class="padding">
-  <view class="top">
-    <text class="title">{{model.title}}</text>
-    <view class="score-p">
-      <view class="left-score">
-        <text class="system-score">系统评分：</text>
-        <text wx:if="{{model.isFinished}}" class="score">{{model.score}}分</text>
-      </view>
-      <text class="system-score">共{{questionList.length}}题</text>
+    <view class="top">
+        <text class="title">{{model.title}}</text>
+        <view class="score-p">
+            <view class="left-score">
+                <text class="system-score">系统评分：</text>
+                <text wx:if="{{model.isFinished}}" class="score">{{model.score}}分</text>
+            </view>
+            <text class="system-score">共{{questionList.length}}题</text>
+        </view>
+        <text class="system-score" wx:if="{{model.modifyDate!=null}}">答题时间：{{model.modifyDate}}</text>
+        <text wx:if="{{item.surveyDesc!=null}}" class="system-score">{{item.surveyDesc}}</text>
     </view>
-    <text class="system-score" wx:if="{{model.modifyDate!=null}}">答题时间：{{model.modifyDate}}</text>
-    <text wx:if="{{item.surveyDesc!=null}}" class="system-score">{{item.surveyDesc}}</text>
-  </view>
-  <view class="nav-p" wx:for="{{questionList}}" wx:key="" data-id="{{item.id }}" wx:for-index="index">
-    <view class="line-x margin-top"></view>
-    <text class="question-title">{{item.questionCode}}.{{item.questionTitle}}</text>
-   
-    <!--单选题 或 判断题-->
-    <radio-group class="radio-group" wx:if="{{item.questionType==0||item.questionType==2}}">
-      <label class="radio" wx:for="{{item.optionList}}" wx:key="">
+    <view class="nav-p" wx:for="{{questionList}}" data-id="{{item.id }}" wx:for-index="index">
+        <view class="line-x margin-top"></view>
+        <text class="question-title">{{item.questionCode}}.{{item.questionTitle}}</text>
+
+        <!--单选题 或 判断题   bindchange="radioChange" -->
+        <radio-group class="radio-group" wx:if="{{item.questionType==0||item.questionType==2}}">
+            <label class="radio" wx:for="{{item.optionList}}">
         <view wx:if="{{model.isFinished&&item.selected}}">
-          <radio class="option-content" value="{{item.optionText}}" disabled="{{canEdit}}" checked="{{item.selected}}" />
+          <radio class="option-content" value="{{item.questionId}}"  disabled="{{canEdit}}" checked="{{item.selected}}" />
           <text class="item-question-value">{{item.optionText}}</text>
         </view>
-        <view wx:if="{{!model.isFinished}}">
-          <radio class="option-content" value="{{item.optionText}}" disabled="{{canEdit}}" checked="{{item.selected}}" />
+        <view wx:if="{{!model.isFinished}}" bindtap="radioChange" data-item="{{item}}">
+          <radio class="option-content" value="{{item.questionId}}"  disabled="{{canEdit}}" checked="{{item.selected}}" />
           <text class="item-question-value">{{item.optionText}}</text>
         </view>
       </label>
-    </radio-group>
+        </radio-group>
 
 
-
-
-    <!--多选题-->
-    <checkbox-group wx:if="{{item.questionType==1}}">
-      <label wx:for="{{item.optionList}}" wx:key="">
+        <!--多选题 bindchange="checkboxChange"-->
+        <checkbox-group wx:if="{{item.questionType==1}}" bindchange="checkboxChange">
+            <label wx:for="{{item.optionList}}" wx:key="">
         <view wx:if="{{model.isFinished&&item.selected}}">
           <checkbox class="option-content" value="{{item.optionText}}" disabled="{{canEdit}}" checked="{{item.selected}}" />
           <text class="item-question-value">{{item.optionText}}</text>
         </view>
 
-        <view wx:if="{{!model.isFinished}}">
-          <checkbox class="option-content" value="{{item.optionText}}" disabled="{{canEdit}}" />
+        <view wx:if="{{!model.isFinished}}" bindtouchstart="touchCheckBox"  data-item="{{item}}" >
+          <checkbox class="option-content" value="{{item.id}}" disabled="{{canEdit}}" />
           <text class="item-question-value">{{item.optionText}}</text>
         </view>
       </label>
-    </checkbox-group>
+        </checkbox-group>
 
-    <!--填空题-->
-    <text wx:if="{{item.questionType==3&&item.optionList[0].optionText!=null}}" class="option-edit">{{item.optionList[0].optionText}}</text>
-    <text wx:if="{{item.questionType==3&&item.optionList[0].optionText==null}}" class="option-edit"></text>
+        <!--填空题-->
+
+        <input wx:if="{{item.questionType==3&&canEdit}}" value="{{item.optionList[0].optionText}}" class="option-edit" disabled="{{canEdit}}" />
+
+        <input wx:if="{{item.questionType==3&&!canEdit}}" value="{{item.optionList[0].optionText}}" data-item="{{item}}" bindtouchstart="touchInput" placeholder="请输入内容" bindinput="inputEditContent" class="option-edit" disabled="{{canEdit}}" />
 
 
-    <!--打分题-->
-    <view wx:if="{{item.questionType==4}}" class="classname">
-      <view class="option-score-text" wx:key="" wx:for="{{item.optionList}}">
-        <slider wx:if="{{model.isFinished&&item.selected}}" value="{{index+1}}" disabled="{{canEdit}}" show-value min="0" max="{{item.max}}" bindchange="sliderChange" />
-      </view>
+        <!--打分题-->
+        <view wx:if="{{item.questionType==4}}" bindtouchstart="touchSlider" data-optionlist="{{item.optionList}}">
+            <view class="option-score-text" wx:key="" wx:for="{{item.optionList}}">
+                <slider wx:if="{{model.isFinished&&item.selected}}" value="{{index+1}}" disabled="{{canEdit}}" show-value min="0" max="{{item.max}}" />
+                <slider wx:if="{{!model.isFinished&&!item.selected&&index==0}}" value="{{0}}" disabled="{{canEdit}}" show-value min="0" max="{{item.max}}" bindchange="sliderChange" />
+            </view>
 
-      <!--疼痛题长度为10，第一个是无痛，最后一个是剧烈痛 ，否则是打分题 -->
-      <image wx:if="{{item.optionList.length==11&&item.optionList[0].optionText=='无痛'&&item.optionList[10].optionText=='剧烈痛'}}" style="width:280px;height:150px;margin-left: 10px;" src="../../../assets/images/scale/ic_pain.png"></image>
+            <!--疼痛题长度为10，第一个是无痛，最后一个是剧烈痛 ，否则是打分题 -->
+            <image wx:if="{{item.optionList.length==11&&item.optionList[0].optionText=='无痛'&&item.optionList[10].optionText=='剧烈痛'}}" style="width:280px;height:150px;margin-left: 10px;" src="../../../assets/images/scale/ic_pain.png"></image>
 
-      <view class="question-type-score" wx:if="{{item.optionList.length>0&&item.optionList.length!=11&&item.optionList[0].optionText!='无痛'&&item.optionList[10].optionText!='剧烈痛'}}">
-        <text class="question-type-score-content">{{item.optionList[0].optionText}}</text>
-        <text class="question-type-score-content">{{item.optionList[item.optionList.length-1].optionText}}</text>
-      </view>
+            <view class="question-type-score" wx:if="{{item.optionList.length>0&&item.optionList.length!=11&&item.optionList[0].optionText!='无痛'&&item.optionList[10].optionText!='剧烈痛'}}">
+                <text class="question-type-score-content">{{item.optionList[0].optionText}}</text>
+                <text class="question-type-score-content">{{item.optionList[item.optionList.length-1].optionText}}</text>
+            </view>
+        </view>
+
+        <!--手绘题-->
+        <view wx:if="{{item.questionType==5}}" class="classname">
+            <image bindtap="previewImage" data-imgurl="{{item.optionList[0].pic}}" wx:if="{{item.optionList.length>0}}" style="width:280px;height:150px;margin-left: 10px" src="{{item.optionList[0].pic}}"></image>
+        </view>
     </view>
-
-    <!--手绘题-->
-    <view wx:if="{{item.questionType==5}}" class="classname">
-      <image bindtap="previewImage" data-imgurl="{{item.optionList[0].pic}}" wx:if="{{item.optionList.length>0}}" style="width:280px;height:150px;margin-left: 10px" src="{{item.optionList[0].pic}}"></image>
-    </view>
-
-  </view>
 </view>
+<view wx:if="{{!canEdit}}" style="height:50px;"></view>
+<text wx:if="{{!canEdit}}" style="position: fixed;bottom: 0px;display: flex;width: 100%;align-items: center;justify-content: center;vertical-align: middle;line-height: 45px;text-align: center;font-size: 16px;color: white;background-color: {{btnColor}};"
+    bindtap="submitAnswer">提交</text>
