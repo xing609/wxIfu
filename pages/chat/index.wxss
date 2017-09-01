@@ -1,60 +1,95 @@
-.bg{
-  background-color: gainsboro;
-}
-.img-head{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 55px;
-  height: 55px;
-}
-.line{
-  height: 1px;
-  line-height: 1px;
-  display: block;
-  background-color: royalblue;
-}
-.item-p{
-  display: flex;
-  flex-direction: column;
-  margin: 5px;
-}
-.nav-p{
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  background: white;
-  margin-top: 1px;
-  padding-top: 5px;
-  padding-left: 5px;
-  padding-bottom: 5px;
-}
-.item-name{
-  color: black;
-  display: flex;
-  justify-content: flex-start;
-  height: 24px;
-  line-height: 26px;
-  text-align: center;
-  font-size: 12px;
-}
-.content-text{
-  color: gray;
-  font-size: 12px;
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.bg {
+    background-color: gainsboro;
 }
 
+.img-head {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55px;
+    height: 55px;
+}
 
+.item-p {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin: 5px;
+}
 
+/*时间  */
 
+.item-time-p {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    vertical-align: middle;
+    align-items: center;
+}
 
-.page, 
-.page__bd, 
-.weui-tab__content {
-	height: 100%;
-	padding-bottom: 0;
+.nav-p {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background: white;
+    margin-top: 1px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+}
+
+.item-time {
+    font-size: 12px;
+    color: gray;
+}
+
+.item-name {
+    color: black;
+    display: flex;
+    justify-content: flex-start;
+    max-width: 180px;
+    font-size: 12px;
+}
+
+.content-text {
+    color: gray;
+    font-size: 12px;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.page, .page__bd, .weui-tab__content {
+    height: 100%;
+    padding-bottom: 0;
+}
+
+/*未读消息数  */
+
+.num-p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    background-color: red;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    min-height: 16px;
+    min-width: 16px;
+    border: 1px white solid;
+    position: relative; /*启用相对定位*/
+    left: -10px; /*相对于自己往右偏离150*/
+    top: 0px;
+}
+
+.unread-num {
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+    font-size: 10px;
+    color: white;
 }

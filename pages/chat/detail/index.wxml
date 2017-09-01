@@ -1,85 +1,86 @@
 <view class="chat-item" wx:for="{{resultList}}" wx:key="" data-id="{{ item._id }}">
-  <text class="content-time" wx:if="{{item.createTimeStr!=null}}">{{item.createTimeStr}}</text>
+    <text class="content-time" wx:if="{{item.createTimeStr!=null}}">{{item.createTimeStr}}</text>
 
-  <!--左边  -->
-  <view wx:if="{{item.direction!=1}}" class="left-view">
+    <!--左边  -->
+    <view wx:if="{{item.direction!=1}}" class="left-view">
 
-    <view class="left-head" bindtap="navigateTo" data-sendid="{{item.sendId}}">
-      <image class="userinfo-avatar" src="{{item.sendFaceUrl}}" background-size="cover"></image>
-      <image wx:if="{{item.sendFaceUrl==null}}" class="userinfo-avatar" src="../../../assets/images/ic_default_customer.png" background-size="cover"></image>
-    </view>
-    <!--文字-->
-    <view wx:if="{{item.contentType==1}}">
-      <view class="content-txt-p-left">
-        <text class="content-txt-left">{{item.content}}</text>
-      </view>
-    </view>
-    <!--图片-->
-    <view wx:if="{{item.contentType==2}}">
-      <image class="left-img" bindtap="previewImage" data-imgurl="{{item.content}}" src="{{item.content}}"></image>
-    </view>
+        <view class="left-head" bindtap="navigateTo" data-sendid="{{item.sendId}}">
+            <image class="userinfo-avatar" src="{{item.sendFaceUrl}}" background-size="cover"></image>
+            <image wx:if="{{item.sendFaceUrl==null}}" class="userinfo-avatar" src="../../../assets/images/ic_default_customer.png" background-size="cover"></image>
+        </view>
+        <!--文字-->
+        <view wx:if="{{item.contentType==1}}">
+            <view class="content-txt-p-left">
+                <text class="content-txt-left">{{item.content}}</text>
+            </view>
+        </view>
+        <!--图片-->
+        <view wx:if="{{item.contentType==2}}">
+            <image class="left-img" bindtap="previewImage" data-imgurl="{{item.content}}" src="{{item.content}}"></image>
+        </view>
 
-    <!--语音-->
-    <view wx:if="{{item.contentType==3}}">
-      <view class="content-voice-p-left" data-voiceurl="{{item.content}}" data-type="left" bindtap="playVoice">
-        <text class="voice-time-left" wx:if="{{item.contentDuration>0}}">{{item.contentDuration}}</text>
-        <image class="content-voice-left" src="../../../assets/images/chat/voice-left.png"></image>
-      </view>
-    </view>
-  </view>
+        <!--语音-->
+        <view wx:if="{{item.contentType==3}}" class='left-voice'>
+            <view class="content-voice-p-left" data-voiceurl="{{item.content}}" data-type="left" bindtap="playVoice">
+                <image class="content-voice-left" src="../../../assets/images/chat/voice-left.png"></image>
+            </view>
 
-  <!--右边  -->
-  <view wx:if="{{item.direction==1}}" class="right-view">
-    <!--文字-->
-    <view wx:if="{{item.contentType==1}}">
-      <view class="content-txt-p-right">
-        <text class="content-txt-right">{{item.content}}</text>
-      </view>
-    </view>
-    <!--图片-->
-    <view wx:if="{{item.contentType==2}}">
-      <image class="right-img" bindtap="previewImage" data-imgurl="{{item.content}}" src="{{item.content}}"></image>
+            <text class="voice-time-left" wx:if="{{item.contentDuration>0}}">{{item.contentDuration}}</text>
+        </view>
     </view>
 
-    <!--语音-->
-    <view class="right-voice" wx:if="{{item.contentType==3}}">
-      <text class="voice-time-right" wx:if="{{item.contentDuration!=null}}">{{item.contentDuration}}</text>
-      <view class="content-voice-p-right" data-voiceurl="{{item.content}}" data-type="right" bindtap="playVoice">
-        <image class="content-voice-right" src="../../../assets/images/chat/voice-right.png"></image>
-      </view>
-    </view>
+    <!--右边  -->
+    <view wx:if="{{item.direction==1}}" class="right-view">
+        <!--文字-->
+        <view wx:if="{{item.contentType==1}}">
+            <view class="content-txt-p-right">
+                <text class="content-txt-right">{{item.content}}</text>
+            </view>
+        </view>
+        <!--图片-->
+        <view wx:if="{{item.contentType==2}}">
+            <image class="right-img" bindtap="previewImage" data-imgurl="{{item.content}}" src="{{item.content}}"></image>
+        </view>
 
-    <view class="right-head">
-      <image wx:if="{{item.sendFaceUrl!=null}}" class="userinfo-avatar" src="{{item.sendFaceUrl}}" background-size="cover"></image>
-      <image wx:if="{{item.sendFaceUrl==null}}" class="userinfo-avatar" src="../../../assets/images/userinfo/ic_default_doctor.png" background-size="cover"></image>
-    </view>
+        <!--语音-->
+        <view class="right-voice" wx:if="{{item.contentType==3}}">
+            <text class="voice-time-right" wx:if="{{item.contentDuration!=null}}">{{item.contentDuration}}</text>
+            <view class="content-voice-p-right" data-voiceurl="{{item.content}}" data-type="right" bindtap="playVoice">
+                <image class="content-voice-right" src="../../../assets/images/chat/voice-right.png"></image>
+            </view>
+        </view>
 
-  </view>
+        <view class="right-head">
+            <image wx:if="{{item.sendFaceUrl!=null}}" class="userinfo-avatar" src="{{item.sendFaceUrl}}" background-size="cover"></image>
+            <image wx:if="{{item.sendFaceUrl==null}}" class="userinfo-avatar" src="../../../assets/images/userinfo/ic_default_doctor.png" background-size="cover"></image>
+        </view>
+
+    </view>
 </view>
 
 <view style="height:120px;"></view>
 <view class="v-bottom">
 
-  <view class="send-p">
-    <input class="chat-input" type="text" value="{{chatInput}}" bindinput="chatInput" />
-    <text class="btnSend" bindtap="btnSend">发送</text>
-  </view>
-
-  <view class="more-p">
-    <view class="choose-img-p" bindtap="didPressChooesImage">
-      <image class="choose-img" src="../../../assets/images/chat/rc_ic_picture.png"></image>
-      <text class="choose-text">图片</text>
+    <view class="send-p">
+        <input class="chat-input" type="text" value="{{chatInput}}" bindinput="chatInput" />
+        <text class="btnSend" bindtap="btnSend">发送</text>
     </view>
 
-    <view class="choose-img-p">
-      <image class="choose-img" src="../../../assets/images/chat/rc_ic_picture.png"></image>
-      <text class="choose-text" bindtouchstart="touchdown" bindtouchend="touchup">{{speak}}</text>
-    </view>
+    <view class="more-p">
+        <view class="choose-img-p" bindtap="didPressChooesImage">
+            <image class="choose-img" src="../../../assets/images/chat/rc_ic_picture.png"></image>
+            <text class="choose-text">图片</text>
+        </view>
 
-    <view class="choose-img-p">
-      <image class="choose-img" src="../../../assets/images/chat/ic_often_language.png"></image>
-      <text class="choose-text">常用语</text>
+        <view class="choose-img-p">
+            <image class="choose-img" src="../../../assets/images/chat/rc_ic_picture.png"></image>
+            <text class="choose-text" bindtouchstart="touchdown" bindtouchend="touchup">{{speak}}</text>
+        </view>
+
+        <view class="choose-img-p">
+            <image class="choose-img" src="../../../assets/images/chat/ic_often_language.png"></image>
+            <text class="choose-text">常用语</text>
+        </view>
     </view>
-  </view>
 
 </view>

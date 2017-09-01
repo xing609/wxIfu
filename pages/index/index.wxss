@@ -1,226 +1,228 @@
 .swiper_box {
-  height: 150px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
+    height: 282rpx;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 swiper-item image {
-  width: 100%;
-  display: inline-block;
-  overflow: hidden;
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
 }
 
 view.text {
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding: 10px 10px 10px 12px;
-  font-size: 15px;
-  color: #656565;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 10px 10px 10px 12px;
+    font-size: 15px;
+    color: #656565;
 }
 
 view.text:before {
-  position: absolute;
-  display: block;
-  content: ' ';
-  left: -5px;
-  width: 2px;
-  height: 100%;
-  background-color: #09bb07;
+    position: absolute;
+    display: block;
+    content: ' ';
+    left: -5px;
+    width: 2px;
+    height: 100%;
+    background-color: #09bb07;
 }
 
 /* 今日 */
 
 .today-add-num {
-  font-size: 12px;
-  color: white;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 2px;
-  padding-bottom: 2px;
-  background-color: #ff4723;
-  border-radius: 20px;
-  position: absolute;
-  top: 90rpx;
-  right: 240rpx;
+    font-size: 12px;
+    color: white;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: #ff4723;
+    border-radius: 20px;
+    position: absolute;
+    top: 84rpx;
+    right: 254rpx;
 }
 
 .line_flag {
-  height: 15px;
-  padding: 0, 0, 0, 0;
-  display: inline-block;
+    height: 15px;
+    padding: 0, 0, 0, 0;
+    display: inline-block;
 }
 
 .line_flag_right {
-  height: 15px;
-  width: 20%;
-  margin-left: 20px;
-  padding: 0, 0, 0, 0;
-  display: inline-block;
-  text-align: center;
+    height: 15px;
+    width: 20%;
+    margin-left: 20px;
+    padding: 0, 0, 0, 0;
+    display: inline-block;
+    text-align: center;
 }
 
 view.text text {
-  margin-left: 10px;
-  line-height: 18px;
-  font-weight: bold;
+    margin-left: 10px;
+    line-height: 18px;
+    font-weight: bold;
 }
 
 .venues_box {
-  padding: 0 10rpx;
+    padding: 0 10rpx;
 }
 
 .venues_item {
-  display: inline-block;
-  width: 49%;
-  margin: 0 0.5%;
+    display: inline-block;
+    width: 49%;
+    margin: 0 0.5%;
 }
 
 .venues_item image {
-  width: 100%;
-  height: 90px;
+    width: 100%;
+    height: 90px;
 }
 
 .choice_box {
-  padding: 0 10rpx;
+    padding: 0 10rpx;
 }
 
 .choice_box .choice_list .choice_item {
-  margin-bottom: 15px;
+    margin-bottom: 15px;
 }
 
 .choice_box .choice_list image {
-  width: 100%;
-  height: 200px;
+    width: 100%;
+    height: 200px;
 }
 
 .choice_box .choice_list .title {
-  font-size: 12px;
-  font-weight: bold;
-  text-align: center;
-  color: #333;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
 }
 
 .center-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .center-text {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 /*首页顶部UI*/
 
 .home_top {
-  padding: 10px 10px 10px 10px;
-  background-color: #f93;
-  height: 160px;
-  margin: 10px;
-  position: relative;
-  border-radius: 6px 6px 6px 6px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    vertical-align: middle;
+    justify-content: space-between;
+    background-color: #f93;
+    height: 340rpx;
+    margin: 10px;
+    border-radius: 6px 6px 6px 6px;
 }
 
 .home_top_text_template {
-  position: absolute;
-  bottom: -6px;
-  left: 32px;
-  color: white;
+    left: 32px;
+    color: white;
 }
 
 .home_top_text_my {
-  position: absolute;
-  bottom: -6px;
-  left: 23px;
-  color: white;
+    left: 23px;
+    color: white;
 }
 
 .home_my_p {
-  width: 80px;
-  height: 80px;
-  position: absolute;
-  bottom: 40px;
-  left: 10px;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    flex-direction: column;
+    margin-top:40rpx;
+    width: 80px;
+    align-items: center;
+    vertical-align: middle;
+    height: 80px;
 }
 
 .home_template_p {
-  width: 80px;
-  height: 80px;
-  position: absolute;
-  bottom: 40px;
-  right: 10px;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    margin-top: 40rpx;
+    flex: 1;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    vertical-align: middle;
 }
 
 .home_top_img_my {
-  position: absolute;
-  width: 56px;
-  height: 48px;
-  top: 10px;
-  left: 5px;
+    width: 56px;
+    height: 48px;
 }
 
 .home_top_img_template {
-  position: absolute;
-  width: 56px;
-  height: 48px;
-  top: 10px;
-  left: 20px;
+    width: 56px;
+    height: 48px;
 }
 
 .home_circle_p {
-  position: absolute;
-  width: 150px;
-  height: 150px;
-  text-align: center;
-  left: 0;
-  right: 0;
-  top: 20px;
-  margin: auto;
+    display: flex;
+    flex: 1;
+    justify-content: center;
 }
 
+.ifu-p {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 90px;
+    height: 90px;
+    background-color: transparent;
+    text-align: center;
+    border-radius: 100px;
+    border: 3px white solid;
+}
+
+/*医数值  */
+
 .home_ifu_value {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-  bottom: 65px;
-  font-size: 30px;
-  text-align: center;
-  color: white;
+    font-size: 30px;
+    text-align: center;
+    color: white;
 }
 
 .home_my_value {
-  position: absolute;
-  font-size: 12px;
-  text-align: center;
-  bottom: 51px;
-  right: 46px;
-  color: white;
+    font-size: 12px;
+    text-align: center;
+    color: white;
 }
 
 .item_size {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 120rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 120rpx;
 }
 
 .text {
-  font-size: 12px;
+    font-size: 12px;
 }
 
 .text_num {
-  font-size: 12px;
-  color: #f93;
+    font-size: 12px;
+    color: #f93;
 }
 
 .text_will_open {
-  font-size: 12px;
-  color: #999;
+    font-size: 12px;
+    color: #999;
 }

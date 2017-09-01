@@ -1,11 +1,13 @@
 const App = getApp()
 var Api = require('../../../utils/api.js');
 var Req = require('../../../utils/req.js');
+var wxbarcode = require("../../../utils/index.js");
 var bean;
 Page({
   data: {
     template: '',
-    status: 0
+    status: 0,
+    showModal: false,//是否显示弹窗
   },
   getTemplateIntroduce: function (id) {
     var that = this;
@@ -100,4 +102,32 @@ Page({
       })
     }
   },
+ 
+  //显示方案二维码弹窗
+  showTemplateQr: function (e) {
+    if (this.data.status == 0){
+      var bean = e.currentTarget.dataset.bean;
+      var code = bean.weixinUrl;
+
+      console.log("code----------------------", code);
+      if (code != null) {
+        wxbarcode.qrcode('qrcode', code, 380, 380);
+      }
+      this.setData({
+        bean: bean,
+        showModal: true
+      });
+    }else{
+      wx.showToast({
+        title: '请先启用方案才能查看',
+      })
+    }
+    
+  },
+  //关闭弹窗
+  closeDialog: function () {
+    this.setData({
+      showModal: false
+    });
+  }
 })

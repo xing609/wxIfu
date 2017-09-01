@@ -23,6 +23,7 @@ Page({
     oldcurrentPointDate: '无',
     currentPointName: "无",
     currentPointDate: '无',
+    customerExtHospitalId:''//终止方案时用到
   },
   onLoad: function (option) {
     actionType = option.actionType;
@@ -32,6 +33,7 @@ Page({
     if (option.template) {
       template = JSON.parse(option.template);
     }
+  
     this.getCustomerInfo();
     var title = "分配方案"
     if (actionType == 'send') {
@@ -57,8 +59,9 @@ Page({
         currentPointName = pointInfo.currentPointName;
         currentPointDate = pointInfo.currentPointDate;
       }
-      this.getTemplateDetail(option.templateId);
+      console.log("终止方案:customerExtHospitalId----------" + template.customerExtHospitalId);
       this.setData({
+        customerExtHospitalId:template.customerExtHospitalId,
         template: template,
         endDate: endDate,
         date: nowDate,
@@ -66,6 +69,7 @@ Page({
         currentPointDate: currentPointDate,
         currentPointName: currentPointName
       })
+      this.getTemplateDetail(template.templateId);
     } else if (actionType == 'resetting') {
       nowDate = this.getNowFormatDate();
       Date.prototype.addDay = function (num) { if (!isNaN(num)) this.setDate(this.getDate() + parseInt(num)); return this; }//给日期原型加个方法
@@ -297,6 +301,7 @@ Page({
       } else if (actionType == 'replace') {
         hint = "替换成功";
       }
+      wx.setStorageSync('homeRefresh', true);//刷新主页
       wx.showToast({
         title: hint,
         icon: 'success',
@@ -330,13 +335,14 @@ Page({
     var that = this;
     Req.req_post(Api.stopTemplate({
       token: Api.getToken(),
-      customerExtHospId: that.data.template.customerExtHospitalId
+      customerExtHospId: that.data.customerExtHospitalId
     }), "加载中", function (res) {
       wx.showToast({
         title: '终止成功！',
         icon: 'success',
         duration: 2000
       });
+      wx.setStorageSync('homeRefresh', true);//刷新主页
       wx.setStorageSync('sendStatus', true);
       //返回
       wx.navigateBack({
@@ -360,6 +366,7 @@ Page({
         icon: 'success',
         duration: 2000
       });
+      wx.setStorageSync('homeRefresh', true);//刷新主页
       wx.setStorageSync('sendStatus', true);
       //返回
       wx.navigateBack({

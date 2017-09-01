@@ -26,7 +26,7 @@
     <view class="item-1">
       <text class="text-14-gray">患者备注名</text>
       <view class="item-right">
-        <input class="input" type="text" value="{{custoomer.customerAlias}}" />
+        <input class="input" type="text" bindinput="customerAliasInput"  value="{{customer.customerAlias}}" />
         <image style="vertical-align: middle;width:5px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
       </view>
     </view>
@@ -34,7 +34,7 @@
     <view class="item-1">
       <text class="text-14-gray">住院号</text>
       <view class="item-right">
-        <input class="input" type="text" value="{{customer.customerCode}}" />
+        <input class="input" type="text" bindinput="customerCodeInput" value="{{customer.customerCode}}" />
         <image style="vertical-align: middle;width:5px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
       </view>
     </view>
@@ -42,7 +42,7 @@
     <view class="item-1">
       <text class="text-14-gray">床位号</text>
       <view class="item-right">
-        <input class="input" type="text" value="{{customer.bedNo}}" />
+        <input class="input" type="text" bindinput="bedNoInput" value="{{customer.bedNo}}" />
         <image style="vertical-align: middle;width:5px; height:10px;" src='../../../assets/images/userinfo/ic_next.png'></image>
       </view>
     </view>
@@ -84,11 +84,16 @@
   </view>
 
   <view class="btnAdd margin-left-1" bindtap="btnMark">
-    <image style="width:20px; height:20px;" wx:if="{{customer.mark==false}}" src="../../../assets/images/ic_noremark.png"></image>
-    <image style="width:20px; height:20px;" wx:if="{{customer.mark==true}}" src="../../../assets/images/ic_hasremark.png"></image>
+    <image style="width:20px; height:20px;" wx:if="{{!customer.mark}}" src="../../../assets/images/ic_noremark.png"></image>
+    <image style="width:20px; height:20px;" wx:if="{{customer.mark}}" src="../../../assets/images/ic_hasremark.png"></image>
     <text class="btnText">加标</text>
   </view>
 
   <text class="btnsend" bindtap="sendTemplate"> 分配方案 </text>
   <text class="btnChat" bindtap="goChat">询问病情</text>
 </view>
+
+
+
+<import src="../../common/doingtemplate.wxml" />
+<template is="doingtemplate" data="{{resultList}}" />

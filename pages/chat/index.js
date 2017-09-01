@@ -1,6 +1,7 @@
 var App = getApp()
 var Api = require('../../utils/api.js');
 var Req = require('../../utils/req.js');
+var util = require('../../utils/util.js');
 import { $wuxPrompt } from '../../components/wux'
 var totalData = [];
 Page({
@@ -20,12 +21,12 @@ Page({
   onPullDownRefresh: function () {
     this.onLoad();
   },
-   onShow:function(){//检测是否有发送新消息
-     var hasMess=wx.getStorageSync('hasNewMess');
-     if(hasMess){
-       this.onLoad();
-     }
-   },
+  onShow: function () {//检测是否有发送新消息
+    var hasMess = wx.getStorageSync('hasNewMess');
+    if (hasMess) {
+      this.onLoad();
+    }
+  },
 
   //上拉回调
   onReachBottom: function () {
@@ -44,7 +45,7 @@ Page({
       page: page
     }), "", function success(res) {
       if (page != 1 && page <= that.data.pageCount) {
-        if (res.data.resultList){
+        if (res.data.resultList) {
           for (var i in res.data.resultList) {
             totalData.push(res.data.resultList[i])
           }
@@ -54,12 +55,18 @@ Page({
       }
 
       wx.setStorageSync('hasNewMess', false);
-      if(totalData.length>0){
+      if (totalData.length > 0) {
+        for (var i in totalData) {
+          var item = totalData[i];
+          if (item.lastChat.createTime) {
+            totalData[i].lastChat.createTime = util.formatTime(new Date(item.lastChat.createTime));
+          }
+        }
         $wuxPrompt.init('msg3', {
           icon: '../../assets/images/iconfont-empty.png',
           text: '暂时没有相关数据',
         }).hide();
-      }else{
+      } else {
         $wuxPrompt.init('msg3', {
           icon: '../../assets/images/iconfont-empty.png',
           text: '暂时没有相关数据',
@@ -76,9 +83,14 @@ Page({
 
     })
   },
+
   navigateTo(e) {
+    var item=e.currentTarget.dataset.item
+    if (item.unReadChatNums>0){
+      wx.setStorageSync('hasNewMess', true);
+    }
     wx.navigateTo({
-      url: "/pages/chat/detail/index?customerId=" + e.currentTarget.dataset.id + "&realName=" + e.currentTarget.dataset.realname  
+      url: "/pages/chat/detail/index?customerId=" + item.id + "&realName=" + item.realName
     })
   },
 })

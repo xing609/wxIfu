@@ -67,7 +67,7 @@ Page({
     wx.getStorageInfo({
       success: function (res) {
         that.setData({
-          'settings[1].path': `${res.currentSize}KB`
+          'settings[0.path': `${res.currentSize}KB`
         })
       },
     })

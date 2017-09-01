@@ -47,12 +47,11 @@
         </checkbox-group>
 
         <!--填空题-->
+        <view class='input-p'>
+            <textarea wx:if="{{item.questionType==3&&canEdit}}"  value="{{item.optionList[0].optionText}}" class="option-edit" disabled="{{canEdit}}" />
 
-        <input wx:if="{{item.questionType==3&&canEdit}}" value="{{item.optionList[0].optionText}}" class="option-edit" disabled="{{canEdit}}" />
-
-        <input wx:if="{{item.questionType==3&&!canEdit}}" value="{{item.optionList[0].optionText}}" data-item="{{item}}" bindtouchstart="touchInput" placeholder="请输入内容" bindinput="inputEditContent" class="option-edit" disabled="{{canEdit}}" />
-
-
+            <textarea wx:if="{{item.questionType==3&&!canEdit}}" value="{{item.optionList[0].optionText}}" data-item="{{item}}" bindtouchstart="touchInput" placeholder="请输入内容" bindinput="inputEditContent" class="option-edit" disabled="{{canEdit}}" />
+</view>
         <!--打分题-->
         <view wx:if="{{item.questionType==4}}" bindtouchstart="touchSlider" data-optionlist="{{item.optionList}}">
             <view class="option-score-text" wx:key="" wx:for="{{item.optionList}}">
@@ -70,7 +69,7 @@
         </view>
 
         <!--手绘题-->
-        <view wx:if="{{item.questionType==5}}" class="classname">
+        <view wx:if="{{item.questionType==5}}">
             <image bindtap="previewImage" data-imgurl="{{item.optionList[0].pic}}" wx:if="{{item.optionList.length>0}}" style="width:280px;height:150px;margin-left: 10px" src="{{item.optionList[0].pic}}"></image>
         </view>
     </view>

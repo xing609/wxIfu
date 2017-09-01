@@ -1,7 +1,7 @@
 var App = getApp()
 var Api = require('../../utils/api.js');
 var Req = require('../../utils/req.js');
-import {$wuxPrompt } from '../../components/wux'
+import { $wuxPrompt } from '../../components/wux'
 Page({
   data: {
     pageCount: 0,
@@ -19,13 +19,13 @@ Page({
       status: 0,
       page: 1
     }), "", function success(res) {
-      if(res.data.resultList!=null&&res.data.resultList.length>0){
+      if (res.data.resultList != null && res.data.resultList.length > 0) {
         $wuxPrompt.init('msg3', {
           icon: '../../assets/images/iconfont-empty.png',
           text: '暂时没有相关数据',
         }).hide();
         console.log("hasdata-----------");
-      }else{
+      } else {
         $wuxPrompt.init('msg3', {
           icon: '../../assets/images/iconfont-empty.png',
           text: '暂时没有相关数据',
@@ -51,7 +51,7 @@ Page({
   },
   navigateTo(e) {
     wx.navigateTo({
-      url: "/pages/mycustomer/customerinfo/index?customerId=" + e.currentTarget.dataset.customerId + "&customerExtHosp=" + e.currentTarget.dataset.id+"&from=newCustomer"
+      url: "/pages/mycustomer/customerinfo/index?customerId=" + e.currentTarget.dataset.customerId + "&customerExtHosp=" + e.currentTarget.dataset.id + "&from=newCustomer"
     })
   }
 })

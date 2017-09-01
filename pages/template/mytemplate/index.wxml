@@ -1,4 +1,5 @@
 <import src="../../../components/prompt/prompt.wxml" />
+<import src="../../common/qrdialog.wxml" />
 <view class="container">
   <!-- <view class="weui-search-bar">
     <view class="weui-search-bar__form">
@@ -55,7 +56,7 @@
 
   <view class="dialog-top">
     <text class="dialog-title">{{bean.templateName}}</text>
-    <text class="dialog-template-type">{{item.templateType}}</text>
+    <text class="dialog-template-type">{{bean.templateType}}</text>
   </view>
 
   <view class="dialog-center">
@@ -87,7 +88,6 @@
 <view class="close-dialog" bindtap="closeDialog" wx:if="{{showModal}}">
   <image style="width:25px;height:25px; vertical-align: middle" src="../../../assets/images/template/ic_delete_dialog.png"></image>
 </view>
-
 
 
 <template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg3}}" />

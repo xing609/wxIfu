@@ -114,6 +114,29 @@ Page({
       questionList: resultList,
       hasChange: hasChange
     })
+
+    //默认手绘题.填空题非必填
+    if (canEdit && resultList.length > 0) {
+      for (var i in resultList) {
+        var bean = resultList[i];
+        if (bean.questionType == 5) {
+          var obj = new Object();
+          obj.optionText = bean.optionList[0].pic;
+          obj.questionId = bean.id;
+          obj.id = "-1";
+
+          console.log("手绘题--id---------------" + obj.questionId + "/" + obj.optionText);
+          this.addDataForList(obj);
+        } else if (bean.questionType == 3) {
+          var obj = new Object();
+          obj.optionText = "";
+          obj.questionId = bean.id;
+          obj.id = "-1";
+          console.log("edit--id---------------" + obj.questionId + "/" + obj.optionText);
+          this.addDataForList(obj);
+        }
+      }
+    }
   },
   //下拉刷新
   onPullDownRefresh: function () {
@@ -162,7 +185,7 @@ Page({
     obj.questionId = item.id;
     obj.id = "-1";
 
-    console.log("edit--id---------------" + obj.questionId +"/"+obj.optionText);
+    console.log("edit--id---------------" + obj.questionId + "/" + obj.optionText);
     this.addDataForList(obj);
 
   },
@@ -206,13 +229,13 @@ Page({
   checkboxChange: function (e) {
     var cbid = e.detail.value;
     var item = this.data.cbitem;
-    if(cbid!=null){
+    if (cbid != null) {
       //var array = cbid;
       item.id = cbid.join(",");//数组转逗号字符串
     }
 
-    console.log("多选 id-----------" + item.id );
-    item.optionText="";
+    console.log("多选 id-----------" + item.id);
+    item.optionText = "";
     this.addDataForList(item);
 
   },
@@ -243,7 +266,7 @@ Page({
         bean.q = item.questionId;
         if (item.optionText != null) {//填空和手绘题输入值
           bean.v = item.optionText;
-        }else{
+        } else {
           bean.v = "";
         }
         totalList.push(bean);
@@ -275,9 +298,6 @@ Page({
   submitAnswer: function () {
     var that = this;
     if (that.checkStatus()) {
-      // wx.showToast({
-      //   title: '提交成功' + that.data.customerExtHosp,
-      // })
       Req.req_post(Api.submitAnswer({
         token: Api.getToken(),
         linkPointId: linkPointId,

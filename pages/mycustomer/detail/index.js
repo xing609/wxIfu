@@ -106,19 +106,19 @@ Page({
             case 0:
               actionType ="resetting";
               wx.navigateTo({
-                url: "/pages/template/confirmTemplate/index?template=" + bean + "&actionType=" + actionType
+                url: "/pages/template/confirmTemplate/index?template=" + bean + "&actionType=" + actionType + "&templateId=" + e.currentTarget.dataset.templateid
               })
               break;
             case 1:
               actionType="replace";
               wx.navigateTo({
-                url: "/pages/template/mytemplate/index?from=replace" + "&template=" + bean+"&actionType=" + actionType
+                url: "/pages/template/mytemplate/index?from=replace" + "&template=" + bean + "&actionType=" + actionType + "&templateId=" + e.currentTarget.dataset.templateid
               })
               break;
             case 2:
               actionType="stop";
               wx.navigateTo({
-                url: "/pages/template/confirmTemplate/index?template=" + bean + "&actionType=" + actionType
+                url: "/pages/template/confirmTemplate/index?template=" + bean + "&actionType=" + actionType + "&templateId=" + e.currentTarget.dataset.templateid
               })
               break;
           }
@@ -136,7 +136,7 @@ Page({
           })
         } else {
           wx.showToast({
-            title: '无限查看此方案',
+            title: '无权查看此方案',
           })
         }
       }
@@ -152,7 +152,7 @@ Page({
         })
       } else {
         wx.showToast({
-          title: '无限查看此方案',
+          title: '无权查看此方案',
         })
       }
     }
@@ -235,7 +235,7 @@ Page({
     that.setData({
       touch_start: e.timeStamp
     })
-    console.log(e.timeStamp + '- touch-start')
+    
   },
   //按下事件结束  
   mytouchend: function (e) {
@@ -243,7 +243,6 @@ Page({
     that.setData({
       touch_end: e.timeStamp
     })
-    console.log(e.timeStamp + '- touch-end')
   },
 
 })

@@ -1,17 +1,23 @@
 <import src="../../components/prompt/prompt.wxml" />
 
-<view class="nav-p" wx:for="{{resultList}}" wx:key="" bindtap="navigateTo" data-id="{{item.id }}" data-realname="{{item.realName}}">
-  <view class="img-head">
-    <image wx:if="{{item.face!=null}}" class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
-    <image wx:if="{{item.face==null}}" class="userinfo-avatar" src="../../assets/images/ic_default_customer.png" background-size="cover"></image>
-  </view>
+<view class="nav-p" wx:for="{{resultList}}" bindtap="navigateTo" data-item="{{item}}">
+    <view class="img-head">
+        <image wx:if="{{item.face!=null}}" class="userinfo-avatar" src="{{item.face}}" background-size="cover"></image>
+        <image wx:if="{{item.face==null}}" class="userinfo-avatar" src="../../assets/images/ic_default_customer.png" background-size="cover"></image>
+    </view>
+    <view class='num-p' wx:if="{{item.unReadChatNums!=null&&item.unReadChatNums>0}}">
+        <text class='unread-num'>{{item.unReadChatNums}}</text>
+    </view>
+    <view class="item-p">
+        <view class='item-time-p'>
+            <view class="item-name">{{item.realName }}</view>
+            <view class="item-time">{{item.lastChat.createTime}}</view>
+        </view>
 
-  <view class="item-p">
-    <view class="item-name">{{item.realName }}</view>
-    <text class="content-text" wx:if="{{item.lastChat.contentType==1}}">{{item.lastChat.content}}</text>
-    <text class="content-text" wx:if="{{item.lastChat.contentType==2}}">[图片]</text>
-    <text class="content-text" wx:if="{{item.lastChat.contentType==3}}">[语音]</text>
-  </view>
+        <text class="content-text" wx:if="{{item.lastChat.contentType==1}}">{{item.lastChat.content}}</text>
+        <text class="content-text" wx:if="{{item.lastChat.contentType==2}}">[图片]</text>
+        <text class="content-text" wx:if="{{item.lastChat.contentType==3}}">[语音]</text>
+    </view>
 </view>
 
 <template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg3}}" />

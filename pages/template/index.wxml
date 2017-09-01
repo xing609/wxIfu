@@ -23,8 +23,7 @@
             <text class="item-type-2" wx:if="{{item.type==7}}">院内共享</text>
           </view>
           <text class="child-has-add" wx:if="{{item.hasTemplate}}">已添加</text>
-          <!-- <text class="child-add-mytempalte" wx:if="{{!item.hasTemplate}}" data-id="{{item.id}}" bindtap="addMyTemplate">+为我的方案</text> -->
-
+      
         </view>
       </view>
       <view class="add-p">

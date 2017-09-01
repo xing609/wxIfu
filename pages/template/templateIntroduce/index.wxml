@@ -1,78 +1,132 @@
 <scroll-view class="container">
 
-  <view class="top">
-    <view class="template-title">
-      <view class="xian"> </view>
-      <text class="template-name"> {{template.templateName}}</text>
+    <view class="top">
+        <view class="template-title">
+            <view class="xian"> </view>
+            <text class="template-name"> {{template.templateName}}</text>
+        </view>
+
+        <view class="template-author-p">
+            <view class="author-left">
+                <image style="height: 15px;width: 15px;" src="../../../assets/images/introduce/ic_template_doctor.png"> </image>
+                <text class="text-author">方案制作</text>
+            </view>
+            <text class="text-author-value">{{template.author}}</text>
+        </view>
+
+        <view class="template-author-p">
+            <view class="author-left">
+                <image style="height: 15px;width: 15px;" src="../../../assets/images/introduce/ic_info_hospital.png"> </image>
+                <text class="text-author">所属医院</text>
+            </view>
+            <text class="text-author-value">{{template.hospitalName}}</text>
+        </view>
     </view>
 
-    <view class="template-author-p">
-      <view class="author-left">
-        <image style="height: 15px;width: 15px;" src="../../../assets/images/introduce/ic_template_doctor.png"> </image>
-        <text class="text-author">方案制作</text>
-      </view>
-      <text class="text-author-value">{{template.author}}</text>
+    <view class="top">
+        <view class="template-author-p margin-top-10">
+            <view class="author-left">
+                <image style="height: 15px;width: 15px;" src="../../../assets/images/introduce/ic_follow_point.png"> </image>
+                <text class="text-author">随访节点</text>
+            </view>
+            <text class="text-author-value">共{{template.pointQuantity}}个</text>
+        </view>
+
+        <view class="point-p">
+            <text class="author-left">起始节点</text>
+            <text class="text-author-value">{{template.startPoint}}</text>
+        </view>
+
+        <view class="point-end-p">
+            <text class="author-left">结束节点</text>
+            <text class="text-author-value">{{template.endPoint}}</text>
+        </view>
     </view>
 
-    <view class="template-author-p">
-      <view class="author-left">
-        <image style="height: 15px;width: 15px;" src="../../../assets/images/introduce/ic_info_hospital.png"> </image>
-        <text class="text-author">所属医院</text>
-      </view>
-      <text class="text-author-value">{{template.hospitalName}}</text>
+    <view class="from-p margin-top-10">
+        <image style="height: 15px;width: 15px;" src="../../../assets/images/introduce/template_going.png"> </image>
+        <text class="text-author">涉及量表</text>
     </view>
-  </view>
-
-  <view class="top">
-    <view class="template-author-p margin-top-10">
-      <view class="author-left">
-        <image style="height: 15px;width: 15px;" src="../../../assets/images/introduce/ic_follow_point.png"> </image>
-        <text class="text-author">随访节点</text>
-      </view>
-      <text class="text-author-value">共{{template.pointQuantity}}个</text>
+    <view class="margin-top-1">
+        <navigator class="from-p padding-left-30" wx:for="{{template.surveyList}}" wx:key="{{index}}">
+            <image style="height: 10px;width: 10px;margin-left: 5px;" src="../../../assets/images/introduce/ic_gray_dian.png"> </image>
+            <image wx:if="{{item.isDoctorOnly==true}}" style="height: 15px;width: 15px;margin-left: 5px;" src="../../../assets/images/introduce/ic_doctor_form.png"> </image>
+            <text class="text-author-value margin-left-10">{{item.name}}</text>
+        </navigator>
     </view>
 
-    <view class="point-p">
-      <text class="author-left">起始节点</text>
-      <text class="text-author-value">{{template.startPoint}}</text>
+    <view class="desc-p">
+        <view class="from-p">
+            <image style="height: 15px;width: 15px;" src="../../../assets/images/introduce/ic_beizhu.png"> </image>
+            <text class="text-author">补充信息</text>
+        </view>
+        <text wx:if="{{item.templateDesc!=null}}" class="text-template-desc">{{item.templateDesc}}</text>
     </view>
 
-    <view class="point-end-p">
-      <text class="author-left">结束节点</text>
-      <text class="text-author-value">{{template.endPoint}}</text>
+    <view class="bottom-text">
+        <text class="text-hint">*如果修改量表须知</text>
+        <text class="text-hint">请登录网址：http://doctor-cosole.ifuifu.com 进行操作</text>
     </view>
-  </view>
 
-  <view class="from-p margin-top-10">
-    <image style="height: 15px;width: 15px;" src="../../../assets/images/introduce/template_going.png"> </image>
-    <text class="text-author">涉及量表</text>
-  </view>
-  <view class="margin-top-1">
-    <navigator class="from-p padding-left-30" wx:for="{{template.surveyList}}" wx:key="{{index}}">
-      <image style="height: 10px;width: 10px;margin-left: 5px;" src="../../../assets/images/introduce/ic_gray_dian.png"> </image>
-      <image wx:if="{{item.isDoctorOnly==true}}" style="height: 15px;width: 15px;margin-left: 5px;" src="../../../assets/images/introduce/ic_doctor_form.png"> </image>
-      <text class="text-author-value margin-left-10">{{item.name}}</text>
-    </navigator>
-  </view>
+    <view class="bottom-btn">
+        <text class="btn-stop" wx:if="{{status==0&&template.hasTemplate}}" bindtap="stopTemplate">停用</text>
+        <text class="btn-start" wx:if="{{status==1&&template.hasTemplate}}" bindtap="stopTemplate">启用</text>
+        <!--二维码  -->
 
-  <view class="desc-p">
-    <view class="from-p">
-      <image style="height: 15px;width: 15px;" src="../../../assets/images/introduce/ic_beizhu.png"> </image>
-      <text class="text-author">补充信息</text>
+        <view  class='btnQr' wx:if="{{status==0&&template.hasTemplate}}" bindtap='showTemplateQr' data-bean='{{template}}'>
+            <view class='view-Qr'>
+                <image wx:if="{{template.status==0}}" bindtap="showTemplateQr" style="width:22px;height:22px; vertical-align: middle" src="../../../assets/images/template/ic_my_qrcode_lilte.png"></image>
+            </view>
+        </view>
+
+        <!--加为我的方案 -->
+        <text class="btn-add" wx:if="{{!template.hasTemplate}}" bindtap="addMyTemplate">+为我的方案</text>
+        <text class="btn-detail" bindtap="jumpToTemplateDetail">方案详情</text>
     </view>
-    <text wx:if="{{item.templateDesc!=null}}" class="text-template-desc">{{item.templateDesc}}</text>
-  </view>
 
-  <view class="bottom-text">
-    <text class="text-hint">*如果修改量表须知</text>
-    <text class="text-hint">请登录网址：http://doctor-cosole.ifuifu.com 进行操作</text>
-  </view>
 
-  <view class="bottom-btn">
-    <text class="btn-stop" wx:if="{{status==0&&template.hasTemplate}}" bindtap="stopTemplate">停用</text>
-    <text class="btn-start" wx:if="{{status==1&&template.hasTemplate}}" bindtap="stopTemplate">启用</text>
-    <!--加为我的方案  -->
-    <text class="btn-add" wx:if="{{!template.hasTemplate}}" bindtap="addMyTemplate">+为我的方案</text>
-    <text class="btn-detail" bindtap="jumpToTemplateDetail">方案详情</text>
-  </view>
+
+
+    
+<!--弹窗  -->
+<view class="modal-mask" bindtap="hideModal" wx:if="{{showModal}}" catchtouchmove="preventTouchMove"></view>
+<view class="modal-dialog" wx:if="{{showModal}}" catchtouchmove="preventTouchMove">
+
+    <view class="dialog-top">
+        <text class="dialog-title">{{template.templateName}}</text>
+        <text class="dialog-template-type">{{template.templateType}}</text>
+    </view>
+
+    <view class="dialog-center">
+        <text class="dialog-qr-hint-text">此二维码在30日({{template.wxUrlExpireDate}})有效</text>
+        <text class="dialog-qr-hint-text">重新进入更新</text>
+
+        <view class="qrcode" catchtouchmove="preventTouchMove">
+            <canvas canvas-id="qrcode" catchtouchmove="preventTouchMove" />
+        </view>
+
+
+        <view class="dialog-point">
+            <view class="dialog-first">
+                <text class="dialog-first-point-text">起始节点：</text>
+                <text class="dialog-first-point-value">{{template.startPoint}}</text>
+            </view>
+
+            <view class="dialog-first">
+                <text class="dialog-first-point-text">起始日期：</text>
+                <text class="dialog-first-point-value">今日</text>
+            </view>
+        </view>
+    </view>
+    <view class="btn-look" hidden="true" bindtap="lookCustomer">
+        <text class="btn-look-customer">查看患者</text>
+    </view>
+
+</view>
+<view class="close-dialog" bindtap="closeDialog" wx:if="{{showModal}}">
+    <image style="width:25px;height:25px; vertical-align: middle" src="../../../assets/images/template/ic_delete_dialog.png"></image>
+</view>
+
 </scroll-view>
+
+

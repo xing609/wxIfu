@@ -93,11 +93,15 @@ var RETSETTING_TEMPLATE ="api/doctor/customer/resetting";
 var GET_IFU_VALUE ="api/doctor/credit/logList";
 //量表答题
 var SUBMIT_ANSWER ="api/doctor/survey/answer";
+//修改患者信息
+var EDIT_CUSTOMER_MARK ="api/doctor/customer/editCustomerAlias";
 
 
 
 //===========================================请求接口==================================================
-
+function _editCustomerMark(o){
+  return reqUrl(EDIT_CUSTOMER_MARK,o);
+}
 
 function _submitAnswer(o){
   return reqUrl(SUBMIT_ANSWER,o);
@@ -284,6 +288,7 @@ function _obj2uri(obj) {
 }
 //===========================================导出===========================================
 module.exports = {
+  editCustomerMark: _editCustomerMark,
   submitAnswer: _submitAnswer,
   getIfuValue: _getIfuValue,
   resettingTemplate: _resettingTemplate,
