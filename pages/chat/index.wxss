@@ -76,7 +76,7 @@
     vertical-align: middle;
     background-color: red;
     border-radius: 100px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
     min-height: 16px;
     min-width: 16px;
     border: 1px white solid;
