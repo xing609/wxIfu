@@ -10,7 +10,7 @@
     height: 55px;
 }
 
-.item-p {
+.chat-item-p {
     display: flex;
     width: 100%;
     flex-direction: column;

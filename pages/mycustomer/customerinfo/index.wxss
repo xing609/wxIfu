@@ -8,7 +8,17 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
-
+.apply-time{
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  font-size: 12px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  justify-content: center;
+  color: #848484;
+  background-color: #E5E5E5;
+}
 .top-left {
   display: flex;
   flex-direction: row;
@@ -178,4 +188,15 @@
   background-color: #98b2e5;
   color: white;
   text-align: center;
+}
+.remind{
+  display: flex;
+  justify-content:flex-end;
+  vertical-align: middle;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.remind-customer{
+  font-size: 14px;
+  color: #FF9933;
 }

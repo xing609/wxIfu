@@ -4,13 +4,13 @@
  <view class="view-p" >
   <scroll-view style="display: flex;flex:0.8;height:{{scrollHeight}}px;flex-direction:row;"  bindscrolltolower="lower" scroll-y="true">
     <import src="../common/templateGroupItem.wxml" />
-    <template is="list" data="{{resultList}}" />
+    <template is="list" data="{{resultList,currentItem}}" />
   </scroll-view>
 
 
   <scroll-view style="display: block;flex:2;background-color:white; height:{{scrollHeight}}px;flex-direction:row;" bindscrolltolower="lower" scroll-y="true">
     <view url="" wx:for="{{childList}}">
-      <view class="item-p" bindtap="navigateChildTo" data-id="{{item.id}}">
+      <view class="child-item-p" bindtap="navigateChildTo" data-id="{{item.id}}">
         <text class="child-title">{{item.templateName}}</text>
         <view class="child-add-p">
           <view class="child-type">

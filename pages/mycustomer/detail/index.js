@@ -68,7 +68,13 @@ Page({
       token: Api.getToken(),
       customerId: customerId
     }), "加载中", function success(res) {
+      if(res.data.resultList.length>0){
+        for (var i in res.data.resultList){
+                
+          }
+      }
       that.setData({
+        
         resultList: res.data.resultList
       })
       wx.hideNavigationBarLoading()

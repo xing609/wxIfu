@@ -95,10 +95,16 @@ var GET_IFU_VALUE ="api/doctor/credit/logList";
 var SUBMIT_ANSWER ="api/doctor/survey/answer";
 //修改患者信息
 var EDIT_CUSTOMER_MARK ="api/doctor/customer/editCustomerAlias";
+//提醒患者登记
+var REMIND_CUSTOMER ="api/doctor/customer/finishCustomerExtHospital";
 
 
 
 //===========================================请求接口==================================================
+function _remind_customer(o){
+  return reqUrl(REMIND_CUSTOMER,o);
+}
+
 function _editCustomerMark(o){
   return reqUrl(EDIT_CUSTOMER_MARK,o);
 }
@@ -288,6 +294,7 @@ function _obj2uri(obj) {
 }
 //===========================================导出===========================================
 module.exports = {
+  remindCustomer: _remind_customer,
   editCustomerMark: _editCustomerMark,
   submitAnswer: _submitAnswer,
   getIfuValue: _getIfuValue,

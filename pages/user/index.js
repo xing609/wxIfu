@@ -4,13 +4,7 @@ const Req = require('../../utils/req.js');
 Page({
   data: {
     userInfo: {},
-    // items: [
-    //   {
-    //     icon: '../../assets/images/userinfo/ic_contact_us.png',
-    //     text: '联系我们',
-    //     path: '400-618-2535',
-    //   }
-    // ],
+ 
     settings: [
       {
         icon: '../../assets/images/userinfo/ic_contact_us.png',
@@ -67,7 +61,7 @@ Page({
     wx.getStorageInfo({
       success: function (res) {
         that.setData({
-          'settings[0.path': `${res.currentSize}KB`
+          'settings[1].path': `${res.currentSize}KB`
         })
       },
     })
@@ -90,7 +84,7 @@ Page({
           success: function (res) {
             if (res.confirm) {
               that.setData({
-                'settings[0].path': `0KB`
+                'settings[1].path': `0KB`
               })
             }
           }

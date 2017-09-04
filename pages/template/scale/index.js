@@ -11,7 +11,7 @@ var customerExtHosp;
 var customerId;
 var hasChange = false;
 var canEdit = false;//是否可以答题
-
+var change = false;//修改已经答过的
 var totalList
 Page({
   data: {
@@ -22,6 +22,7 @@ Page({
     customerExtHosp: '',
     hasChange: hasChange,
     canEdit: canEdit,
+    change: change,
     btnColor: "#F0F0F0"
   },
 
@@ -32,7 +33,7 @@ Page({
     customerExtHosp = option.customerExtHosp;
     customerId = option.customerId;
     canEdit = option.canEdit;
-
+    change = option.change;
     console.log("customerExtHosp---------------" + customerExtHosp);
     if (canEdit) {
       wx.setNavigationBarTitle({ title: "填写量表" })
@@ -46,7 +47,8 @@ Page({
         linkId: linkId,
         linkPointId: linkPointId,
         customerExtHosp: customerExtHosp,
-        canEdit: !canEdit
+        canEdit: !canEdit,
+        change: change
       })
       this.getScaleDetail(linkId, linkPointId);
     }
@@ -119,22 +121,49 @@ Page({
     if (canEdit && resultList.length > 0) {
       for (var i in resultList) {
         var bean = resultList[i];
-        if (bean.questionType == 5) {
-          var obj = new Object();
-          obj.optionText = bean.optionList[0].pic;
-          obj.questionId = bean.id;
-          obj.id = "-1";
+         if(change){//修改操作
+          //  if (bean.questionType == 5) {
+          //    var obj = new Object();
+          //    obj.optionText = bean.optionList[0].pic;
+          //    obj.questionId = bean.id;
+          //    obj.id = "-1";
 
-          console.log("手绘题--id---------------" + obj.questionId + "/" + obj.optionText);
-          this.addDataForList(obj);
-        } else if (bean.questionType == 3) {
-          var obj = new Object();
-          obj.optionText = "";
-          obj.questionId = bean.id;
-          obj.id = "-1";
-          console.log("edit--id---------------" + obj.questionId + "/" + obj.optionText);
-          this.addDataForList(obj);
-        }
+          //    console.log("手绘题--id---------------" + obj.questionId + "/" + obj.optionText);
+          //    this.addDataForList(obj);
+          //  } else if (bean.questionType == 3) {
+          //    var obj = new Object();
+          //    obj.optionText = "";
+          //    obj.questionId = bean.id;
+          //    obj.id = "-1";
+          //    console.log("edit--id---------------" + obj.questionId + "/" + obj.optionText);
+          //    this.addDataForList(obj);
+          //  }
+           
+          //  for (var j in bean.optionList){
+          //    var item = bean.optionList[j];
+          //    if (item.selected){
+          //      this.addDataForList(item);
+          //    }
+          //  }
+
+         }else{
+           if (bean.questionType == 5) {
+             var obj = new Object();
+             obj.optionText = bean.optionList[0].pic;
+             obj.questionId = bean.id;
+             obj.id = "-1";
+
+             console.log("手绘题--id---------------" + obj.questionId + "/" + obj.optionText);
+             this.addDataForList(obj);
+           } else if (bean.questionType == 3) {
+             var obj = new Object();
+             obj.optionText = "";
+             obj.questionId = bean.id;
+             obj.id = "-1";
+             console.log("edit--id---------------" + obj.questionId + "/" + obj.optionText);
+             this.addDataForList(obj);
+           }
+         }
       }
     }
   },
@@ -230,7 +259,6 @@ Page({
     var cbid = e.detail.value;
     var item = this.data.cbitem;
     if (cbid != null) {
-      //var array = cbid;
       item.id = cbid.join(",");//数组转逗号字符串
     }
 

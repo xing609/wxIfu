@@ -21,7 +21,7 @@
   flex: 2;
   background-color: white;
 }
-.item-p{
+.child-item-p{
   display: flex;
   flex-direction: column;
   margin-top: 1px;
@@ -36,7 +36,7 @@
 .item_type {
   color: #607fb9;
   font-size: 12px;
-  width: 110px;
+  width: 160px;
 }
 
 .item-type-2 {

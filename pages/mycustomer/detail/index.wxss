@@ -77,87 +77,7 @@ info-top {
   vertical-align: middle;
 }
 
-.item-p {
-  display: flex;
-  flex-direction: column;
-  background: white;
-  padding: 10px;
-  vertical-align: middle;
-  margin-bottom: 10px;
-}
 
-.content-title {
-  display: block;
-  font-size: 16px;
-  color: black;
-}
-
-.content-text {
-  display: block;
-  font-size: 14px;
-  color: #6e6d6b;
-}
-
-.list {
-  display: flex;
-  flex-direction: column;
-}
-
-.bottom-btn {
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  flex-direction: row;
-  display: flex;
-  background: #f0f0f0;
-}
-
-.btnAdd {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 60px;
-  height: 60px;
-  background-color: white;
-  vertical-align: middle;
-  align-items: center;
-}
-
-.margin-left-1 {
-  margin-left: 1px;
-}
-
-.btnText {
-  font-size: 14px;
-  color: black;
-}
-
-.template-title-gray {
-  font-size: 16px;
-  color: #6e6d6b;
-}
-.record-text {
-  display: flex;
-  font-size: 14px;
-  color: black;
-  vertical-align: middle;
-}
-/**字变灰不可点**/
-.record-text-gray {
-  display: flex;
-  font-size: 14px;
-  color: #6e6d6b;
-  vertical-align: middle;
-}
-.toright {
-  margin-right: 10px;
-  vertical-align: middle;
-  width: 5px;
-  height: 10px;
-}
-.margin-right-10{
-  margin-right:10px
-}
 /**分配方案*/
 
 .btnsend {
@@ -197,7 +117,7 @@ info-top {
   align-items: center;
 }
 
-
+/* 
 .text-ing {
   font-size: 16px;
   color: black;
@@ -225,4 +145,4 @@ info-top {
   flex-direction: row;
   vertical-align: middle;
   justify-content: center;
-}
+} */

@@ -1,5 +1,5 @@
 <template name="list">
-    <view url=""  wx:for="{{resultList}}" wx:key="{{index}}">
+    <view wx:if="{{resultList.length>0}}"  wx:for="{{resultList}}" wx:key="{{index}}">
     <view class="item-container">
      <!--患者-->
       <view class="item-left" data-customerid="{{item.customerId}}" data-exthospitalid="{{item.customerExtHospitalId}}" bindtap="jumpToUserInfo">

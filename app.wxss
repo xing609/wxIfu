@@ -11,7 +11,8 @@ page {
 @import 'components/wux.wxss';
 @import 'assets/styles/weui.wxss';
 @import 'assets/styles/skyvow.wxss';
-
+@import 'assets/styles/groupitem.wxss';
+@import 'assets/styles/doingtemplate.wxss';
 @import 'assets/styles/base.wxss';
 @import 'assets/styles/common.wxss';
 @import 'assets/styles/survey.wxss';

@@ -1,0 +1,132 @@
+
+/*进行中的方案  */
+.list-ing {
+  background: white;
+  display: flex;
+  padding-left: 10px;
+  height: 40px;
+  align-items: center;
+}
+.imgline {
+  height: 18px;
+  width: 3px;
+  display: flex;
+  background-color: #fb4;
+}
+
+.text-ing {
+  font-size: 16px;
+  color: black;
+  margin-left: 10px;
+}
+.item-p {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 10px;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+.template-content-title {
+  display: block;
+  font-size: 16px;
+  color: black;
+}
+
+.content-text {
+  display: block;
+  font-size: 14px;
+  color: #6e6d6b;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-btn {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  flex-direction: row;
+  display: flex;
+  background: #f0f0f0;
+}
+
+.btnAdd {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: white;
+  vertical-align: middle;
+  align-items: center;
+}
+
+.margin-left-1 {
+  margin-left: 1px;
+}
+
+.btnText {
+  font-size: 14px;
+  color: black;
+}
+
+.template-title-gray {
+  font-size: 16px;
+  color: #6e6d6b;
+}
+.record-text {
+  display: flex;
+  font-size: 14px;
+  color: black;
+  vertical-align: middle;
+}
+/**字变灰不可点**/
+.record-text-gray {
+  display: flex;
+  font-size: 14px;
+  color: #6e6d6b;
+  vertical-align: middle;
+}
+.toright {
+  margin-right: 10px;
+  vertical-align: middle;
+  width: 5px;
+  height: 10px;
+}
+.margin-right-10{
+  margin-right:10px
+}
+
+
+.text-ing {
+  font-size: 16px;
+  color: black;
+  margin-left: 10px;
+}
+
+.item-bottom {
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+  margin-top: 5px;
+}
+
+.text-record {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  vertical-align: middle;
+  padding-top: 10px;
+  align-items: center;
+}
+
+.text-count {
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+  justify-content: center;
+}

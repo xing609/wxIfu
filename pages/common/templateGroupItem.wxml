@@ -1,25 +1,9 @@
 <import src="../common/prompt.wxml" />
 <template name="list">
-  <view class="scroll-list">
-    <view class="weui-panel weui-panel_access">
-      <view class="weui-panel__bd">
-        <view url="" class="weui-media-box weui-media-box_appmsg" bindtap="navigateTo" data-id="{{item.id}}" 
-        data-title="{{item.title}}"
-        hover-class="weui-cell_active" wx:for="{{resultList}}" wx:key="">
-
-          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
-            <view class="weui-media-box__title">{{item.title}}</view>
-            <view class="weui-media-box__desc">
-              <text class="text-orangered" wx:if="{{item.subTitle!=''&&item.subTitle!=null}}">{{item.subTitle}}</text>
-            </view>
-
-            <view class="weui-media-box__desc ">
-              <text class="text-orangered" >方案数{{item.num}}</text>
-            </view>
-
-          </view>
+        <view  class="group-p  {{currentItem==item.id?'active-tag':''}}" bindtap="navigateTo" data-id="{{item.id}}" data-title="{{item.title}}"wx:for="{{resultList}}">
+            <text class="group-item-title  ">{{item.title}}</text>
+              <text class="group-item-subtitle" wx:if="{{item.subTitle!=''&&item.subTitle!=null}}">{{item.subTitle}}</text>
+              <text class="group-num">方案数：{{item.num}}</text>
+         <view class="line-x margin-5"></view>
         </view>
-      </view>
-    </view>
-  </view>
 </template>

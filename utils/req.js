@@ -2,7 +2,7 @@ const App = getApp()
 import { $wuxToast } from '../components/wux'
 
 // 请求头配置
-var header={
+var header = {
   'content-type': 'application/x-www-form-urlencoded',
   appVersionCode: 3001030,
   appVersionName: "3.1.3",
@@ -24,7 +24,7 @@ function req_get(url, message, success, fail) {
         title: '网络无连接，请重试',
       })
       return;
-    } 
+    }
     if (message != "") {
       wx.showLoading({
         title: message,
@@ -47,12 +47,12 @@ function req_get(url, message, success, fail) {
             url: '/pages/login/index',
           });
         } else {
-          if (res.data.resCode='A002'){
+          if (res.data.resCode = 'A002') {
             wx.removeStorageSync('token');
             wx.redirectTo({
               url: '/pages/login/index',
             });
-          }else{
+          } else {
             if (res.data.resCode) {
               showToastErr(res.data.resDesc);
             }
@@ -72,8 +72,8 @@ function req_get(url, message, success, fail) {
   })
 }
 
- //自定义错误提示
- function showToastErr(content) {
+//自定义错误提示
+function showToastErr(content) {
   $wuxToast.show({
     type: 'forbidden',
     timer: 1500,
@@ -130,7 +130,7 @@ function req_post(url, message, success, fail) {
       return;
     } else {
       //wx.showNavigationBarLoading()
-      
+
     }
   })
 
@@ -156,11 +156,9 @@ function req_post(url, message, success, fail) {
           url: '/pages/login/index',
         });
       } else {
-        console.log("--------reqfail---------" + res.data.resCode + "/" + res.data.resDesc);
-        if (res.data.resCode) {
-          showToastErr(res.data.resDesc);
-        }
-        
+        wx.showToast({
+          title: res.data.resDesc,
+        })
       }
     },
     fail: function (res) {

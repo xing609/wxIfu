@@ -1,150 +1,183 @@
 /* pages/template/detail/index.wxss */
 
 .trump {
-  position: relative;
-  width: 100%;
-  height: 100%;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 .PicBg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .PicBg image {
-  width: 100%;
-  height: 100%;
-  filter: blur(15px);
+    width: 100%;
+    height: 100%;
+    filter: blur(15px);
 }
 
 .title {
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  margin: 10px 0 40px 0;
-  position: relative;
-  z-index: 10;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    margin: 10px 0 40px 0;
+    position: relative;
+    z-index: 10;
 }
 
 .content {
-  z-index: 10;
-  position: relative;
-  width: 100%;
-  height: 500px;
+    z-index: 10;
+    position: relative;
+    width: 100%;
+    height: 500px;
 }
 
 .content swiper {
-  height: 100%;
+    height: 100%;
 }
 
 .content swiper .swiper-item {
-  text-align: center;
-  position: relative;
-  height: 80%;
-  width: 80%;
-  margin: 0 auto;
+    text-align: center;
+    position: relative;
+    height: 80%;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .content swiper .swiper-item .contMess {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  width: 100%;
-  color: #fff;
-  font-size: 13px;
-  text-align: left;
-  background-color: #f3be26;
-  border-radius: 6px 6px 6px 6px;
-  padding: 5px 0;
-  text-indent: 5px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    color: #fff;
+    font-size: 13px;
+    text-align: left;
+    background-color: #f3be26;
+    border-radius: 6px 6px 6px 6px;
+    padding: 5px 0;
+    text-indent: 5px;
 }
 
 .content swiper .swiper-item .contMess text {
-  display: block;
-  margin-top: 5px;
+    display: block;
+    margin-top: 5px;
 }
 
 .content swiper .swiper-item image {
-  width: 100%;
-  height: 80%;
-  border-radius: 5px;
+    width: 100%;
+    height: 80%;
+    border-radius: 5px;
 }
 
 .content swiper .swiper-item .contMess .Mess2 {
-  font-size: 12px;
-  color: #888;
+    font-size: 12px;
+    color: #888;
 }
 
 .discover-image-two {
-  height: 320px;
+    height: 320px;
 }
 
 .top-text {
-  display: flex;
-  justify-content: space-between;
-  padding-left: 5px;
-  padding-right: 5px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .pointDate {
-  font-size: 14px;
-  color: white;
-  margin-right: 10px;
+    font-size: 14px;
+    color: white;
+    margin-right: 10px;
 }
 
 .pointStatus {
-  margin-left: 5px;
-  font-size: 14px;
-  color: white;
+    margin-left: 5px;
+    font-size: 14px;
+    color: white;
 }
 
 .img-type {
-  height: 30px;
-  width: 30px;
+    height: 30px;
+    width: 30px;
 }
 
 .survey-bg {
-  background-color: #f3be26;
-  height: auto;
-  width: 100%;
-  margin-left: 10px;
-  margin-right: 10px;
-  border-radius: 6px 6px 6px 6px;
+    background-color: #f3be26;
+    height: auto;
+    width: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 6px 6px 6px 6px;
 }
 
 .item-bg {
-  display: flex;
-  justify-content: flex-start;
-  height: 40px;
-  color: #666;
-  align-items: center;
-  vertical-align: middle;
-  margin: 10px;
-  background-color: #fdf2d4;
-  border-radius: 6px 6px 6px 6px;
+    display: flex;
+    justify-content: flex-start;
+    height: 40px;
+    color: #666;
+    align-items: center;
+    vertical-align: middle;
+    margin: 10px;
+    background-color: #fdf2d4;
+    border-radius: 6px 6px 6px 6px;
 }
 
 .link-title {
-  font-size: 14px;
-  color: black;
-  width: 250px;
-  vertical-align: middle;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  word-break: break-all;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+    font-size: 14px;
+    color: black;
+    width: 240px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    word-break: break-all;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
 
 .know-img {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  height: 22px;
-  width: 22px;
-  margin-right: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 22px;
+    width: 22px;
+    margin-right: 5px;
+}
+
+.item-score {
+    min-width: 40px;
+    color: red;
+    font-size: 14px;
+}
+
+.item-link-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    vertical-align: middle;
+    flex-direction: row;
+    width: 80px;
+}
+
+.item-isdoctor-p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border-radius: 100px;
+    border: 2px #f93 solid;
+}
+
+.item-isdoctor-only {
+    display: flex;
+    font-size: 12px;
+    color: red;
 }

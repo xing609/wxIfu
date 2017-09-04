@@ -23,6 +23,12 @@ Page({
       })
       if (res.data.resultList.length > 0) {
         var childBean = res.data.resultList[0];
+        that.setData({//默认选中第一个
+          'currentItem': childBean.id
+        })
+        wx.showToast({
+          title: childBean.id + "---"
+        })
         groupId = childBean.id;
         that.getTemplateChildList(groupId);
 
@@ -113,8 +119,16 @@ Page({
     }
   },
   navigateTo(e) {
-    if (e.currentTarget.dataset.id) {
-      this.getTemplateChildList(e.currentTarget.dataset.id);
+    var id = e.currentTarget.dataset.id;
+    if(id!=null){
+      //设置当前样式
+      this.setData({
+        'currentItem': id
+      })
+      wx.showToast({
+        title: id+""
+      })
+      this.getTemplateChildList(id);
     }
     //console.log("--------------------templateGroupId=" + e.currentTarget.dataset.id);
     // wx.navigateTo({

@@ -19,10 +19,19 @@
         <!--单选题 或 判断题   bindchange="radioChange" -->
         <radio-group class="radio-group" wx:if="{{item.questionType==0||item.questionType==2}}">
             <label class="radio" wx:for="{{item.optionList}}">
+        
+        
         <view wx:if="{{model.isFinished&&item.selected}}">
+          
           <radio class="option-content" value="{{item.questionId}}"  disabled="{{canEdit}}" checked="{{item.selected}}" />
           <text class="item-question-value">{{item.optionText}}</text>
         </view>
+
+          <view wx:if="{{model.isFinished&&!item.selected&&change}}" bindtap="radioChange">
+          <radio class="option-content" value="{{item.questionId}}" checked="{{item.selected}}" />
+          <text class="item-question-value">{{item.optionText}}</text>
+        </view>
+
         <view wx:if="{{!model.isFinished}}" bindtap="radioChange" data-item="{{item}}">
           <radio class="option-content" value="{{item.questionId}}"  disabled="{{canEdit}}" checked="{{item.selected}}" />
           <text class="item-question-value">{{item.optionText}}</text>
@@ -34,8 +43,14 @@
         <!--多选题 bindchange="checkboxChange"-->
         <checkbox-group wx:if="{{item.questionType==1}}" bindchange="checkboxChange">
             <label wx:for="{{item.optionList}}" wx:key="">
+       
         <view wx:if="{{model.isFinished&&item.selected}}">
           <checkbox class="option-content" value="{{item.optionText}}" disabled="{{canEdit}}" checked="{{item.selected}}" />
+          <text class="item-question-value">{{item.optionText}}</text>
+        </view>
+
+         <view wx:if="{{model.isFinished&&!item.selected&&change}}">
+          <checkbox class="option-content" value="{{item.optionText}}" bindtouchstart="touchCheckBox" checked="{{item.selected}}" />
           <text class="item-question-value">{{item.optionText}}</text>
         </view>
 
@@ -48,10 +63,10 @@
 
         <!--填空题-->
         <view class='input-p'>
-            <textarea wx:if="{{item.questionType==3&&canEdit}}"  value="{{item.optionList[0].optionText}}" class="option-edit" disabled="{{canEdit}}" />
+            <textarea wx:if="{{item.questionType==3&&canEdit}}" value="{{item.optionList[0].optionText}}" class="option-edit" disabled="{{canEdit}}" />
 
             <textarea wx:if="{{item.questionType==3&&!canEdit}}" value="{{item.optionList[0].optionText}}" data-item="{{item}}" bindtouchstart="touchInput" placeholder="请输入内容" bindinput="inputEditContent" class="option-edit" disabled="{{canEdit}}" />
-</view>
+        </view>
         <!--打分题-->
         <view wx:if="{{item.questionType==4}}" bindtouchstart="touchSlider" data-optionlist="{{item.optionList}}">
             <view class="option-score-text" wx:key="" wx:for="{{item.optionList}}">

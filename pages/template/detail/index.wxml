@@ -1,46 +1,54 @@
 <import src="../../../components/button/button.wxml" />
 <template is="button" data="{{ ...$wux.button.br }}" />
 <view class="trump">
-  <view class="content">
-    <swiper indicator-dots="true" class="Bannerswiper">
-      <block wx:for="{{template.templatePointList}}" wx:key="{{index}}">
-        <swiper-item>
-          <view class="swiper-item ">
-            <navigator>
-              <view class="contMess">
+    <view class="content">
+        <swiper indicator-dots="true" class="Bannerswiper">
+            <block wx:for="{{template.templatePointList}}" wx:key="{{index}}">
+                <swiper-item>
+                    <view class="swiper-item ">
+                        <navigator>
+                            <view class="contMess">
 
-                <view class="top-text">
-                  <text class="pointDate">{{item.pointName}}</text>
-                  <text class="pointDate">{{item.pointDate}}</text>
-                </view>
+                                <view class="top-text">
+                                    <text class="pointDate">{{item.pointName}}</text>
+                                    <text class="pointDate">{{item.pointDate}}</text>
+                                </view>
 
-                <text class="pointStatus" wx:if="{{item.pointStatus==2||item.pointStatus==3}}">已完成</text>
-                <text class="pointStatus" wx:if="{{item.pointStatus==1}}">进行中</text>
-                <text class="pointStatus" wx:if="{{item.pointStatus==0}}">未开始</text>
+                                <text class="pointStatus" wx:if="{{item.pointStatus==2||item.pointStatus==3}}">已完成</text>
+                                <text class="pointStatus" wx:if="{{item.pointStatus==1}}">进行中</text>
+                                <text class="pointStatus" wx:if="{{item.pointStatus==0}}">未开始</text>
 
-                <scroll-view scroll-y="true" class="discover-image-two">
-                  <block wx:for="{{item.pointLinkList}}" wx:key="{{index}}" bindtap="navigateTo" data-id="{{item.id}}">
+                                <scroll-view scroll-y="true" class="discover-image-two">
+                                    <block wx:for="{{item.pointLinkList}}" wx:key="{{index}}" bindtap="navigateTo" data-id="{{item.id}}">
 
-                    <view class="item-bg" data-item="{{item}}" bindtap="jumpToScalDetail">
-                      <view class="know-img">
-                        <image src="../../../assets/images/ic_knows.png" style="vertical-align: middle;width:20px; height: 20px;" wx:if="{{item.linkType==1}}" />
-                        <image src="../../../assets/images/ic_form.png" style="vertical-align: middle;width:22px; height: 20px;" wx:if="{{item.linkType==0}}" />
-                      </view>
+                                        <view class="item-bg" data-item="{{item}}" bindtap="jumpToScalDetail">
+                                            <view class="know-img">
+                                                <image src="../../../assets/images/ic_knows.png" style="vertical-align: middle;width:20px; height: 20px;" wx:if="{{item.linkType==1}}" />
+                                                <image src="../../../assets/images/ic_form.png" style="vertical-align: middle;width:22px; height: 20px;" wx:if="{{item.linkType==0}}" />
+                                            </view>
 
-                      <text class="link-title">{{item.linkTitle}}</text>
+                                            <text class="link-title">{{item.linkTitle}}</text>
 
-                      <!-- <image wx:if="{{item.isDoctorOnly==0}}" src="../../../assets/images//scale/doctor_only.png" style="vertical-align: middle;width:40px; height: 50px;" /> -->
+                                            <view class='item-link-right'>
+                                                <text class='item-score' wx:if="{{item.score!=null}}">{{item.score}}分</text>
+                                                <!-- <view class='item-isdoctor-p'  wx:if="{{item.isDoctorOnly==0}}"> -->
+                                                  <text class='item-isdoctor-only'  wx:if="{{item.isDoctorOnly==0}}">医</text>
+                                              
+                                               
+                                                <!-- <image wx:if="{{item.isDoctorOnly==0}}" src="../../../assets/images//scale/doctor_only.png" style="position:relative;right:0px;top:-6px;vertical-align:middle;width:35px;height:34px;" /> -->
+                                            </view>
+
+                                        </view>
+                                    </block>
+                                </scroll-view>
+                            </view>
+
+                        </navigator>
                     </view>
-                  </block>
-                </scroll-view>
-              </view>
-
-            </navigator>
-          </view>
-        </swiper-item>
-      </block>
-    </swiper>
-  </view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
 </view>
 <!-- <view class="page">
     <view class="page__hd">

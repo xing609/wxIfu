@@ -15,45 +15,10 @@
   <image class="ic-next" style="margin-right:10px" src='../../../assets/images/userinfo/ic_next.png'></image>
 </div>
 
+<view style="height:80px;"></view>
+<import src="../../common/doingtemplate.wxml" />
+<template is="doingtemplate" data="{{resultList,doctorId}}" />
 
-<view class="list">
-  <view style="height:80px;"></view>
-  <view class="list-ing">
-    <view class="imgline"></view>
-    <text class="text-ing">进行中的方案</text>
-  </view>
-
-  <view class="line-s"></view>
-
-  <view class="item-p" wx:for="{{resultList}}" wx:key="{{index}}">
-    <view class="item-top" data-exthospitalid="{{item.customerExtHospitalId}}" data-bean="{{item}}" data-doctorid="{{item.doctorId}}" bindtouchstart="mytouchstart" bindtouchend="mytouchend" bindtap="navigateTo">
-      <text wx:if="{{item.doctorId==doctorId}}" class="content-title text-flow">{{item.templateName}}</text>
-      <text wx:if="{{item.doctorId!=doctorId}}" class="content-title template-title-gray">{{item.templateName}}</text>
-      <text wx:if="{{item.currentPointName!=null}}" class="content-text">当前节点：{{item.currentPointName}} {{item.currentPointIndex}}/{{item.allPointNum}}</text>
-      <text wx:if="{{item.currentPointName==null}}" class="content-text">当前节点：无  {{item.currentPointIndex}}/{{item.allPointNum}}</text>
-
-      <text class="content-text">提交量表：{{item.finishSurvyNum}}/{{item.allSurvyNum}}     阅读须知：{{item.finishNoteNum}}/{{item.allNoteNum}}</text>
-      <view class="line"></view>
-    </view>
-
-    <view class="item-bottom" data-exthospitalid="{{item.customerExtHospitalId}}" data-doctorid="{{item.doctorId}}" data-templateid="{{item.templateId}}" bindtap="jumpToRecord">
-      <view class="line-x"></view>
-      <view class="text-record">
-        <text wx:if="{{item.doctorId==doctorId}}" class="record-text"> 病程录</text>
-        <text wx:if="{{item.doctorId!=doctorId}}" class="record-text-gray"> 病程录</text>
-        <view class="text-count">
-          <text wx:if="{{item.doctorId==doctorId}}" class="record-text margin-right-10">{{item.recordCount}}</text>
-          <text wx:if="{{item.doctorId!=doctorId}}" class="record-text-gray margin-right-10">{{item.recordCount}}</text>
-
-          <image class="ic-next" src='../../../assets/images/userinfo/ic_next.png'></image>
-        </view>
-
-      </view>
-    </view>
-  </view>
-
-  <view style="height:60px;"></view>
-</view>
 <view class="bottom-btn">
 
   <view class="btnAdd" bindtap="btnShield">

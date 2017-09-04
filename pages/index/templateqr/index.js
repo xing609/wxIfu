@@ -21,8 +21,17 @@ Page({
     }
     var that = this;
     var value = wx.getStorageSync('templateList');
-
+    for(var i in value){
+      var bean = value[i];
+       if(index==i){
+         bean.click = true;
+       }else{
+         bean.click = false;
+       }
+    }
+  
     that.setData({
+      newTemplateList: value,
       template: value[index]
     })
   },
@@ -51,6 +60,9 @@ Page({
         }
         Array.prototype.push.apply(lastList, res.data.model.newList);
         wx.setStorageSync('templateList', lastList);
+      }
+      if (lastList.length>0){
+        lastList[0].click=true;
       }
       that.setData({
         newTemplateList: lastList,

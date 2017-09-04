@@ -1,4 +1,7 @@
 <scroll-view class="container">
+<!--申请日期  -->
+<text wx:if="{{!hiddenBottom}}"  class='apply-time'>{{customer.applyTime}}</text>
+
   <!--患者信息  -->
   <div class="div_top">
     <view class="top-left">
@@ -58,20 +61,45 @@
   <!--医生备注  -->
   <view class="weui-grids">
     <view class="weui-grid" wx:for="{{customer.markMedias}}" wx:key="{{index}}">
-      <navigator>
+     
         <view class="weui-grid__icon">
           <image data-index="{{index}}" bindtap="previewImage" data-index="{{index}}" data-imgurl="{{customer.markMedias}}" src=" {{item.url}}" mode="scaleToFill" />
         </view>
-      </navigator>
+    
     </view>
   </view>
 
   <!--患者登记  -->
-  <view class="item-3" wx:if="{{customer.descMedias!=null}}">
+  <view class="item-3" wx:if="{{customer.customerDesc!=null}}">
     <text class="text-remark">患者登记病情</text>
     <text class="text-value">{{customer.customerDesc}}</text>
   </view>
+<view  class='remind' bindtap='remindCustomer' wx:if="{{customer.customerDesc==null}}">
+<text  class="remind-customer">再次提醒患者登记信息>></text>
+</view>
 
+
+  <!--图文补充  -->
+  <view class="item-3" wx:if="{{customer.imgDesc!=null}}">
+    <text class="text-remark">图文补充</text>
+    <text class="text-value">{{customer.imgDesc}}</text>
+
+  <view class="weui-grids">
+    <view class="weui-grid" wx:for="{{customer.descMedias}}" wx:key="{{index}}">
+     
+        <view class="weui-grid__icon">
+          <image data-index="{{index}}" bindtap="previewImage" data-index="{{index}}" data-imgurl="{{customer.descMedias}}" src=" {{item.url}}" mode="scaleToFill" />
+        </view>
+    
+    </view>
+  </view>
+
+
+
+  </view>
+
+
+<view style='height:10px;'></view>
 </scroll-view>
 
 
@@ -93,7 +121,5 @@
   <text class="btnChat" bindtap="goChat">询问病情</text>
 </view>
 
-
-
 <import src="../../common/doingtemplate.wxml" />
-<template is="doingtemplate" data="{{resultList}}" />
+<template  is="doingtemplate"  data="{{resultList,doctorId}}" />

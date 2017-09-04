@@ -8,7 +8,7 @@
     <view class='num-p' wx:if="{{item.unReadChatNums!=null&&item.unReadChatNums>0}}">
         <text class='unread-num'>{{item.unReadChatNums}}</text>
     </view>
-    <view class="item-p">
+    <view class="chat-item-p">
         <view class='item-time-p'>
             <view class="item-name">{{item.realName }}</view>
             <view class="item-time">{{item.lastChat.createTime}}</view>

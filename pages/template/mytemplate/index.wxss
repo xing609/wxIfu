@@ -213,6 +213,8 @@
 .dialog-title {
   font-size: 16px;
   color: black;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .dialog-template-type {

@@ -1,11 +1,9 @@
 {
   "pages": [
-   
     "pages/index/index",
     "pages/about/index",
     "pages/template/knows/index",
     "pages/mycustomer/customerinfo/index",
-    "pages/start/index",
     "pages/mycustomer/index",
     "pages/newcustomer/index",
     "pages/index/myqr/index",
@@ -21,10 +19,6 @@
     "pages/ifuvalue/list/index",
     "pages/ifuvalue/confirm/index",
     "pages/ifuvalue/detail/index",
-    "pages/goods/list/index",
-    "pages/goods/detail/index",
-    "pages/help/list/index",
-    "pages/help/detail/index",
     "pages/search/index",
     "pages/template/confirmTemplate/index",
     "pages/login/index",
@@ -33,7 +27,6 @@
     "pages/mycustomer/detail/index",
     "pages/template/templateChild/index",
     "pages/template/detail/index",
-    "pages/mycustomer/record/index",
     "pages/auth/index",
     "pages/template/templateIntroduce/index",
     "pages/template/scale/index",

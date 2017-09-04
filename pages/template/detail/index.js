@@ -1,7 +1,9 @@
 var Api = require('../../../utils/api.js');
 var Req = require('../../../utils/req.js');
 import { $wuxButton } from '../../../components/wux'
-const App = getApp()
+const App = getApp();
+var customerId;
+var customerExtHosp;
 Page({
   data: {
     types: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'],
@@ -9,6 +11,12 @@ Page({
     opened: !1, 
     template: ''
   },
+  onShow:function(){
+    if (wx.getStorageSync('doctorHasAnswer')) {
+      this.getCustomerTemplateInfo(customerId, customerExtHosp);
+    }
+  },
+
   onLoad: function (option) {
     this.initButton();
     if(option.from=="introduce"){//从方案简介进入
@@ -19,6 +27,8 @@ Page({
       if (!option.customerId && !option.exthospitalId) {
         return
       }
+      customerId = option.customerId;
+      customerExtHosp = option.exthospitalId;
       this.getCustomerTemplateInfo(option.customerId, option.exthospitalId);
     }
   },
@@ -29,6 +39,7 @@ Page({
       customerId: customerId,
       customerExtHosp: customerExtHosp
     }), "加载中", function success(res) {
+      wx.setStorageSync('doctorHasAnswer', false);
       that.setData({
         template: res.data.model
       })
@@ -63,7 +74,8 @@ Page({
     var item = e.currentTarget.dataset.item;
     if (item.linkType ==0){//量表
       wx.navigateTo({
-        url: "/pages/template/scale/index?linkPointId=" + item.id + "&linkId=" + item.linkId
+        url: "/pages/template/scale/index?linkPointId=" + item.id + "&linkId=" + item.linkId + "&isAnswer=" + item.isFinished
+        + "&customerExtHosp=" + customerExtHosp + "&customerId=" + customerId + "&canEdit=true" + "&change=true"
       })
     }else{//须知
       wx.navigateTo({
@@ -71,8 +83,6 @@ Page({
       })
     }
   },
-
-
 initButton(position = 'bottomRight') {
     this.setData({
       opened: !1,

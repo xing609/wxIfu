@@ -1,35 +1,35 @@
 <view class="container page">
 
     <view class="top_title_p">
-      <text class="left_text_name">{{template.templateName}}</text>
-      <text class="left_text_type">{{template.templateType}}</text>
-      <text class="left_text_hospital"> 起始节点/时间 :       {{template.startPoint}}</text>
+        <text class="left_text_name">{{template.templateName}}</text>
+        <text class="left_text_type">{{template.templateType}}</text>
+        <text class="left_text_hospital"> 起始节点/时间 :       {{template.startPoint}}</text>
     </view>
- 
-  <view class="qrcode">
-    <canvas canvas-id="qrcode" />
-  </view>
- 
-    <text class="txt-hint">此二维码在{{template.wxUrlExpireDate}}之前有效</text>
 
+    <view class="qrcode">
+        <canvas canvas-id="qrcode" />
+    </view>
+    <text class="txt-hint">此二维码在{{template.wxUrlExpireDate}}之前有效</text>
 </view>
 <view class="list">
-<view  wx:for="{{newTemplateList}}" wx:key="" data-id="{{ item._id }}">
- 
-  <view class="item-p" data-index="{{ index }}" data-url="{{item.weixinUrl}}" catchtap="onTapTag">
-   
-    <view class="qr-left">
-    <view class="left-qr">
-      <image style="width:18px;height:18px;vertical-align:middle;" src='../../../assets/images/ic_team_template_qrcode.png'></image>
-    </view>
-      <view class="txt-templatename">{{item.templateName}}</view>
-    </view>
+    <view wx:for="{{newTemplateList}}" wx:key="" data-id="{{ item._id }}">
 
-     <view class="customer-num" wx:if="{{item.new==false||item.new==null}}" class="txt-num">{{item.customerNum}}人</view>
-     <image wx:if="{{item.new==true}}" style="width:18px;height:18px;margin-right:10px;" src='../../../assets/images/template/ic_newest.png'></image>
-   
-  </view>
-   <view class="line-x"></view>
-</view>
+        <view class="qr-item-p" data-index="{{ index }}" data-url="{{item.weixinUrl}}" catchtap="onTapTag">
+            <view class="qr-left">
+                <view class="left-qr">
+                    <image style="width:18px;height:18px;vertical-align:middle;" src='../../../assets/images/ic_team_template_qrcode.png'></image>
+                </view>
+                <text wx:if="{{!item.click}}" class="txt-templatename">{{item.templateName}}</text>
+                <text wx:if="{{item.click}}" class="txt-templatename-click">{{item.templateName}}</text>
+            </view>
+
+            <view class="customer-num" wx:if="{{item.new==false||item.new==null&&!item.click}}">{{item.customerNum}}人</view>
+            <view class="customer-num-click" wx:if="{{item.new==false||item.new==null&&item.click}}">{{item.customerNum}}人</view>
+
+            <image wx:if="{{item.new==true}}" style="width:18px;height:18px;margin-right:10px;" src='../../../assets/images/template/ic_newest.png'></image>
+
+        </view>
+        <view class="line-x"></view>
+    </view>
 </view>
 <button class="all-template" hidden="true" bindtap="jumpToAllTemplate">查看全部方案</button>

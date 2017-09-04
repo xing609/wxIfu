@@ -1,6 +1,7 @@
 // detail.js
 var Api = require('../../../utils/api.js');
 var Req = require('../../../utils/req.js');
+var util = require('../../../utils/util.js');
 const App = getApp()
 var customerId;
 var customerExtHosp;
@@ -12,26 +13,22 @@ Page({
   },
   onLoad: function (option) {
     var that = this;
-
-    console.log(option.customerId + "/" + option.customerExtHosp + "/" + option.from);
+    if (option.customerId) {
+      this.getCustomerInfo(option.customerId, option.customerExtHosp);
+      customerId = option.customerId;
+      customerExtHosp = option.customerExtHosp;
+    }
     if (option.from == "newCustomer") {//新病人
       that.setData({
         hiddenBottom: false
       })
-      wx.showToast({
-        title: 'new',
-      })
+      that.getTemplateIng(customerId);
     } else {
       that.setData({
         hiddenBottom: true
       })
     }
-    if (option.customerId) {
-      this.getCustomerInfo(option.customerId, option.customerExtHosp);
-      customerId = option.customerId;
-      customerExtHosp = option.customerExtHosp;
-      that.getTemplateIng(customerId);
-    }
+    
 
   }, //打电话
   callMobile() {
@@ -49,6 +46,7 @@ Page({
       customerId: customerId
     }), "加载中", function success(res) {
       that.setData({
+        doctorId: Api.getUser().id,
         resultList: res.data.resultList
       })
       wx.hideNavigationBarLoading()
@@ -95,8 +93,22 @@ Page({
       token: Api.getToken(),
       customerExtHosp: customerExtHosp
     }), "加载中", function success(res) {
+      var bean = res.data.model;
+      bean.applyTime = "申请日期："+util.formatTime(new Date(bean.createTime));
+
+      if (bean != null && bean.customerDesc!=null){
+        if (bean.customerDesc.indexOf(" ")>=0){
+          var imgdesc = bean.customerDesc.substring(0, bean.customerDesc.lastIndexOf(" "));
+          bean.imgDesc = bean.customerDesc.replace(imgdesc, "");//图文补充
+          bean.customerDesc = imgdesc;//患者登记病情
+          
+        }else{
+          bean.imgDesc="";//图文补充取最后空格数据
+        }
+      }
+
       that.setData({
-        customer: res.data.model
+        customer: bean
       })
     }, function fail(res) {
 
@@ -119,6 +131,19 @@ Page({
       bedNo: that.data.customer.bedNo
     }), "加载中", function success(res) {
        
+    }, function fail(res) {
+
+    })
+  },
+  //提醒患者登记
+  remindCustomer:function(){
+    Req.req_post(Api.remindCustomer({
+      token: Api.getToken(),
+      customerId: customerId
+    }), "加载中", function success(res) {
+      wx.showToast({
+        title: '已提醒',
+      })
     }, function fail(res) {
 
     })
