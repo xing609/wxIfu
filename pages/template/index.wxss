@@ -36,7 +36,7 @@
 .item_type {
   color: #607fb9;
   font-size: 12px;
-  width: 160px;
+  width: 252rpx;
 }
 
 .item-type-2 {
@@ -88,6 +88,8 @@
   flex-direction: row;
   justify-content: space-between;
   vertical-align: middle;
+  align-items: center;
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 5px;
 }

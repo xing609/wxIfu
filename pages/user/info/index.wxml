@@ -137,7 +137,7 @@
       <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image>
     </p>
   </div>
-  <view class="desc-p">
+  <view class="desc-p" wx:if="{{userInfo.doctorDesc!=null}}">
     <text class="user_desc_text">{{userInfo.doctorDesc}}</text>
   </view>
 </view>

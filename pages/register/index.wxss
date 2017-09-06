@@ -1,1 +1,57 @@
 /* pages/register/index.wxss */
+.item{
+  display: flex;
+  margin-top: 1px;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background: white
+}
+.register-p{
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+}
+.text-mobile{
+  min-width: 60px;
+  font-size: 14px;
+  margin-left: 10px;
+}
+.input{
+  
+  padding-left: 5px;
+}
+.btnRegister{
+  display: flex;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  justify-content: center;
+  font-size: 16px;
+  vertical-align: middle;
+}
+.vcode-btn{
+  font-size: 14px;
+  color: #2CB044
+}
+
+.right-code{
+  min-width: 110px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  vertical-align: middle;
+  margin-left: 10px;
+  margin-right: 5px;
+  align-items: center;
+}
+.xian-code{
+  display: flex;
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 1px;
+  background-color: #EFEFF4
+ 
+}
+

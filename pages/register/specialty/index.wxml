@@ -1,0 +1,41 @@
+<view class='v-next' bindtap='btnGoHome'>
+    <text class='next'>跳过</text>
+</view>
+<view class='view-top'>
+    <text class='hint-big'>请设定专业方向</text>
+    <text class='hint-small'>我们将为您定制个性化内容</text>
+</view>
+
+<view class="nav-p" wx:for="{{resultList}}" bindtap="navigateTo" data-item="{{item}}">
+    <view class='item-top'>
+        <view class='item-left'>
+            <view class='img-p'>
+                <image class="specialty-img" wx:if="{{item.pic!=null}}" src="{{item.pic}}"></image>
+                <image class="specialty-img" wx:if="{{item.pic==null}}" src="../../../assets/images/ic_set_icon.png"></image>
+            </view>
+
+            <text class="content-text" wx:if="{{item.title!=null}}">{{item.title}}</text>
+        </view>
+        <view class='img-next'>
+         <image class="up-img" wx:if="{{item.pic==null}}" src="../../../assets/images/ic_down.png"></image>
+        </view>
+       
+    </view>
+
+    <view class='item-bottom'>
+        <text class='txt-bottom-hint'>亚专业(多选)</text>
+        <view class="grids grids-small girds-bg">
+            <block wx:for="{{ item.templateGroupBasicList }}" wx:key="">
+                <view class="grid girds-bg" url="" wx:key="{{index}}" data-index="{{ index }}" bindtap="navigateTo">
+                    <text class='child-title'>"{{item.title}}"</text>
+                </view>
+            </block>
+        </view>
+    </view>
+</view>
+
+<view style='height:90px'></view>
+
+<view bindtap="btnGoHome" class='btn-bottom'>
+    <button class="btnGoHome" bindtap="btnGoHome"> 进入主页</button>
+</view>

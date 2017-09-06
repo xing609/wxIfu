@@ -97,10 +97,26 @@ var SUBMIT_ANSWER ="api/doctor/survey/answer";
 var EDIT_CUSTOMER_MARK ="api/doctor/customer/editCustomerAlias";
 //提醒患者登记
 var REMIND_CUSTOMER ="api/doctor/customer/finishCustomerExtHospital";
-
-
+//获取验证码
+var SEND_VERIFICATION ="api/phoneCode/sendVerification";
+//注册
+var USER_REGISTER ="api/doctor/op/register";
+//获取亚专业信息
+var GET_SPECIALTY_LIST="api/doctor/specialty/specialtyList"
 
 //===========================================请求接口==================================================
+function _getSpecialtyList(o){
+  return reqUrl(GET_SPECIALTY_LIST,o);
+}
+
+function _userRegister(o){
+  return reqUrl(USER_REGISTER,o);
+}
+
+function _sendVerfication(o){
+  return reqUrl(SEND_VERIFICATION,o);
+}
+
 function _remind_customer(o){
   return reqUrl(REMIND_CUSTOMER,o);
 }
@@ -294,6 +310,9 @@ function _obj2uri(obj) {
 }
 //===========================================导出===========================================
 module.exports = {
+  getSpecialtyList: _getSpecialtyList,
+  userRegister:_userRegister,
+  sendVerfication:_sendVerfication,
   remindCustomer: _remind_customer,
   editCustomerMark: _editCustomerMark,
   submitAnswer: _submitAnswer,

@@ -69,7 +69,7 @@ Page({
     var customerId = this.data.customerId;
     if (item.linkType == 0) {//量表
       wx.navigateTo({
-        url: "/pages/template/scale/index?linkPointId=" + item.linkPointId + "&linkId=" + item.linkId + "&isAnswer=true" + "&customerExtHosp=" + customerExtHospitalId + "&customerId=" + customerId
+        url: "/pages/template/scale/index?linkPointId=" + item.linkPointId + "&linkId=" + item.linkId + "&isAnswer=true" + "&customerExtHosp=" + customerExtHospitalId + "&customerId=" + customerId +"&change=false"
       })
     } else {//须知
       wx.navigateTo({

@@ -15,4 +15,8 @@
   </view>
 
   <button class="btnLogin" bindtap="btnLogin"> 登录</button>
+  <view class='register-view'>
+  <text bindtap='register' class='text-register'>注册新帐号</text>
+  <text bindtap='forGetPsw' class='text-register'>忘记密码?</text>
+  </view>
 </view> 

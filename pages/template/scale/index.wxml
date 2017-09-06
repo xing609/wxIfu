@@ -20,17 +20,17 @@
         <radio-group class="radio-group" wx:if="{{item.questionType==0||item.questionType==2}}">
             <label class="radio" wx:for="{{item.optionList}}">
         
-        
         <view wx:if="{{model.isFinished&&item.selected}}">
-          
-          <radio class="option-content" value="{{item.questionId}}"  disabled="{{canEdit}}" checked="{{item.selected}}" />
+          <radio class="option-content" value="{{item.questionId}}" data-item="{{item}}"bindtap="radioChange" disabled="{{canEdit}}" checked="{{item.selected}}" />
           <text class="item-question-value">{{item.optionText}}</text>
         </view>
 
-          <view wx:if="{{model.isFinished&&!item.selected&&change}}" bindtap="radioChange">
+          <view wx:if="{{model.isFinished&&!item.selected&&change}}" data-item="{{item}}" disabled="{{canEdit}}" bindtap="radioChange"
+          checked="{{item.selected}}" >
           <radio class="option-content" value="{{item.questionId}}" checked="{{item.selected}}" />
           <text class="item-question-value">{{item.optionText}}</text>
         </view>
+
 
         <view wx:if="{{!model.isFinished}}" bindtap="radioChange" data-item="{{item}}">
           <radio class="option-content" value="{{item.questionId}}"  disabled="{{canEdit}}" checked="{{item.selected}}" />
@@ -41,16 +41,16 @@
 
 
         <!--多选题 bindchange="checkboxChange"-->
-        <checkbox-group wx:if="{{item.questionType==1}}" bindchange="checkboxChange">
+        <checkbox-group wx:if="{{item.questionType==1}}" bindchange="checkboxChange" data-groupindex="{{index}}">
             <label wx:for="{{item.optionList}}" wx:key="">
        
-        <view wx:if="{{model.isFinished&&item.selected}}">
-          <checkbox class="option-content" value="{{item.optionText}}" disabled="{{canEdit}}" checked="{{item.selected}}" />
+        <view wx:if="{{model.isFinished&&item.selected}}" bindtouchstart="touchCheckBox" data-item="{{item}}" data-childindex="{{index}}">
+          <checkbox class="option-content"  value="{{item.id}}"  disabled="{{canEdit}}" checked="{{item.selected}}" />
           <text class="item-question-value">{{item.optionText}}</text>
         </view>
 
-         <view wx:if="{{model.isFinished&&!item.selected&&change}}">
-          <checkbox class="option-content" value="{{item.optionText}}" bindtouchstart="touchCheckBox" checked="{{item.selected}}" />
+         <view wx:if="{{model.isFinished&&!item.selected&&change}}" bindtouchstart="touchCheckBox" data-item="{{item}}" data-childindex="{{index}}">
+          <checkbox class="option-content" value="{{item.id}}"  value="{{item.id}}"  disabled="{{canEdit}}" checked="{{item.selected}}" />
           <text class="item-question-value">{{item.optionText}}</text>
         </view>
 
@@ -63,14 +63,18 @@
 
         <!--填空题-->
         <view class='input-p'>
-            <textarea wx:if="{{item.questionType==3&&canEdit}}" value="{{item.optionList[0].optionText}}" class="option-edit" disabled="{{canEdit}}" />
+            <textarea wx:if="{{item.questionType==3&&canEdit&&!change}}" value="{{item.optionList[0].optionText}}" class="option-edit" disabled="{{canEdit}}" />
+            <textarea wx:if="{{item.questionType==3&&!canEdit&&change}}" value="{{item.optionList[0].optionText}}" data-item="{{item}}" bindtouchstart="touchInput" placeholder="请输入内容" bindinput="inputEditContent" class="option-edit" disabled="{{canEdit}}" />
 
-            <textarea wx:if="{{item.questionType==3&&!canEdit}}" value="{{item.optionList[0].optionText}}" data-item="{{item}}" bindtouchstart="touchInput" placeholder="请输入内容" bindinput="inputEditContent" class="option-edit" disabled="{{canEdit}}" />
+            <textarea wx:if="{{item.questionType==3&&!canEdit&&!change}}" value="{{item.optionList[0].optionText}}" data-item="{{item}}" bindtouchstart="touchInput" placeholder="请输入内容" bindinput="inputEditContent" class="option-edit" disabled="{{canEdit}}" />
         </view>
         <!--打分题-->
         <view wx:if="{{item.questionType==4}}" bindtouchstart="touchSlider" data-optionlist="{{item.optionList}}">
             <view class="option-score-text" wx:key="" wx:for="{{item.optionList}}">
-                <slider wx:if="{{model.isFinished&&item.selected}}" value="{{index+1}}" disabled="{{canEdit}}" show-value min="0" max="{{item.max}}" />
+                <slider wx:if="{{model.isFinished&&item.selected&&!change}}" value="{{index+1}}" disabled="{{canEdit}}" show-value min="0" max="{{item.max}}" />
+
+                <slider wx:if="{{model.isFinished&&item.selected&&change}}" value="{{index+1}}" disabled="{{canEdit}}" show-value min="0" max="{{item.max}}" bindchange="sliderChange" />
+
                 <slider wx:if="{{!model.isFinished&&!item.selected&&index==0}}" value="{{0}}" disabled="{{canEdit}}" show-value min="0" max="{{item.max}}" bindchange="sliderChange" />
             </view>
 

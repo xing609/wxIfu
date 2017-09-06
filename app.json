@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/register/specialty/index",
+    "pages/register/index",
     "pages/about/index",
     "pages/template/knows/index",
     "pages/mycustomer/customerinfo/index",
@@ -30,7 +32,8 @@
     "pages/auth/index",
     "pages/template/templateIntroduce/index",
     "pages/template/scale/index",
-    "pages/register/index"
+    
+    "pages/findpsw/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FF9933",

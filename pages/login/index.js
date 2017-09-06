@@ -29,9 +29,22 @@ Page({
     this.setData({
       passWord: e.detail.value
     })
-   
-  },
 
+  },
+  
+  register() {
+    wx.navigateTo({
+      url: '/pages/register/index'
+    })
+  },
+  // 忘记密码
+  forGetPsw() {
+    wx.navigateTo({
+      url: path
+
+    })
+  },
+  //  登录
   btnLogin() {
     if (!this.data.userName) {
       wx.showToast({
@@ -54,12 +67,17 @@ Page({
       wx.setStorageSync('loginName', that.data.userName);
       wx.setStorageSync('psw', that.data.passWord);
       wx.setStorageSync('user', res.data.model);
-      //存用户TOKEN
       wx.setStorageSync('token', res.data.token);
-
-      wx.switchTab({
-        url: '/pages/index/index?from=login'
-      })
+      if (res.data.model.department == null || res.data.model.specialtyName == null) {//检测用户亚专业是否填写
+        console.log("------------------填写亚专业");
+        wx.navigateTo({
+          url: '/pages/register/specialty/index',
+        })
+      } else {
+        wx.switchTab({
+          url: '/pages/index/index?from=login'
+        })
+      }
     }, function fail(res) {
     })
   }

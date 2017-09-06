@@ -1,7 +1,7 @@
 <import src="../common/prompt.wxml" />
 <template name="list">
         <view  class="group-p  {{currentItem==item.id?'active-tag':''}}" bindtap="navigateTo" data-id="{{item.id}}" data-title="{{item.title}}"wx:for="{{resultList}}">
-            <text class="group-item-title  ">{{item.title}}</text>
+            <text class=" {{currentItem==item.id?'group-item-title-active':'group-item-title'}} ">{{item.title}}</text>
               <text class="group-item-subtitle" wx:if="{{item.subTitle!=''&&item.subTitle!=null}}">{{item.subTitle}}</text>
               <text class="group-num">方案数：{{item.num}}</text>
          <view class="line-x margin-5"></view>

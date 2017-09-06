@@ -6,7 +6,7 @@
             <block wx:for="{{template.templatePointList}}" wx:key="{{index}}">
                 <swiper-item>
                     <view class="swiper-item ">
-                        <navigator>
+                      
                             <view class="contMess">
 
                                 <view class="top-text">
@@ -42,8 +42,6 @@
                                     </block>
                                 </scroll-view>
                             </view>
-
-                        </navigator>
                     </view>
                 </swiper-item>
             </block>

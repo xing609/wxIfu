@@ -4,14 +4,15 @@ import { $wuxButton } from '../../../components/wux'
 const App = getApp();
 var customerId;
 var customerExtHosp;
+var pageFrom;
 Page({
   data: {
     types: ['topLeft', 'topRight', 'bottomLeft', 'bottomRight'],
     index: 3,
-    opened: !1, 
+    opened: !1,
     template: ''
   },
-  onShow:function(){
+  onShow: function () {
     if (wx.getStorageSync('doctorHasAnswer')) {
       this.getCustomerTemplateInfo(customerId, customerExtHosp);
     }
@@ -19,11 +20,12 @@ Page({
 
   onLoad: function (option) {
     this.initButton();
-    if(option.from=="introduce"){//从方案简介进入
-      if(option.templateId){
+     pageFrom = option.from;
+    if (pageFrom == "introduce") {//从方案简介进入
+      if (option.templateId) {
         this.getIntroduceTemplateInfo(option.templateId);
       }
-    } else if (option.from="customer"){//从患者进入
+    } else if (pageFrom = "customer") {//从患者进入
       if (!option.customerId && !option.exthospitalId) {
         return
       }
@@ -54,9 +56,9 @@ Page({
   },
   getIntroduceTemplateInfo: function (templateId) {
     var that = this;
-    Req.req_post(Api.getIntroduceTemplateDetail(templateId,{
+    Req.req_post(Api.getIntroduceTemplateDetail(templateId, {
       token: Api.getToken(),
-     
+
     }), "加载中", function success(res) {
       that.setData({
         template: res.data.model
@@ -70,20 +72,29 @@ Page({
     }, function fail(res) {
     })
   },
-  jumpToScalDetail(e){
+  jumpToScalDetail(e) {
     var item = e.currentTarget.dataset.item;
-    if (item.linkType ==0){//量表
+    var isAnswer=false;
+    var canEdit = false;
+    if (item.linkType == 0) {//量表
+      if (pageFrom == "introduce") {//从方案简介进入
+        isAnswer = false;
+        canEdit = false;
+      } else if (pageFrom = "customer") {//从患者进入
+        isAnswer=item.isFinished;
+        canEdit = true;
+      }
       wx.navigateTo({
-        url: "/pages/template/scale/index?linkPointId=" + item.id + "&linkId=" + item.linkId + "&isAnswer=" + item.isFinished
-        + "&customerExtHosp=" + customerExtHosp + "&customerId=" + customerId + "&canEdit=true" + "&change=true"
+        url: "/pages/template/scale/index?linkPointId=" + item.id + "&linkId=" + item.linkId + "&isAnswer=" + isAnswer
+        + "&customerExtHosp=" + customerExtHosp + "&customerId=" + customerId + "&canEdit=" + canEdit + "&change=" + isAnswer
       })
-    }else{//须知
+    } else {//须知
       wx.navigateTo({
-        url: "/pages/template/knows/index?nodeId=" + item.linkId 
+        url: "/pages/template/knows/index?nodeId=" + item.linkId
       })
     }
   },
-initButton(position = 'bottomRight') {
+  initButton(position = 'bottomRight') {
     this.setData({
       opened: !1,
     })

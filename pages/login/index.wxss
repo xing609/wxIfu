@@ -33,3 +33,15 @@
 .btnLogin{
   margin: 15px;
 }
+.register-view{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  vertical-align: middle;
+  align-items: center;
+  margin: 15px;
+}
+.text-register{
+  font-size: 14px;
+  color: black;
+}

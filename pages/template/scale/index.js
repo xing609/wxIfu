@@ -6,35 +6,58 @@ import { $wuxPrompt } from '../../../components/wux'
 var frompage;//哪个页面进入
 var linkId;
 var linkPointId;
-var isAnswer;
+var isAnswer = false;
 var customerExtHosp;
 var customerId;
+
+
+
+
+
+
+
+
+
+
+var change = false;
 var hasChange = false;
 var canEdit = false;//是否可以答题
-var change = false;//修改已经答过的
 var totalList
 Page({
   data: {
     model: "",
     questionList: [],
-    linkId: linkId,
-    linkPointId: linkPointId,
     customerExtHosp: '',
     hasChange: hasChange,
     canEdit: canEdit,
-    change: change,
+    change: false,
     btnColor: "#F0F0F0"
   },
 
   onLoad: function (option) {
     linkId = option.linkId;
     linkPointId = option.linkPointId;
-    isAnswer = option.isAnswer;
+    if (option.isAnswer == "true") {
+      isAnswer = true;
+    } else {
+      isAnswer = false;
+    }
+    if (option.canEdit == "true") {
+      canEdit = true;
+    } else {
+      canEdit = false;
+    }
+
+    if (option.change == "true") {
+      change = true;
+    } else {
+      change = false;
+    }
     customerExtHosp = option.customerExtHosp;
     customerId = option.customerId;
-    canEdit = option.canEdit;
-    change = option.change;
+    console.log("change---------------" + change);
     console.log("customerExtHosp---------------" + customerExtHosp);
+    console.log("answer---------------" + isAnswer);
     if (canEdit) {
       wx.setNavigationBarTitle({ title: "填写量表" })
       totalList = new Array();//提交答题
@@ -48,7 +71,8 @@ Page({
         linkPointId: linkPointId,
         customerExtHosp: customerExtHosp,
         canEdit: !canEdit,
-        change: change
+        isAnswer: isAnswer,
+        change: change //是否修改
       })
       this.getScaleDetail(linkId, linkPointId);
     }
@@ -121,49 +145,59 @@ Page({
     if (canEdit && resultList.length > 0) {
       for (var i in resultList) {
         var bean = resultList[i];
-         if(change){//修改操作
-          //  if (bean.questionType == 5) {
-          //    var obj = new Object();
-          //    obj.optionText = bean.optionList[0].pic;
-          //    obj.questionId = bean.id;
-          //    obj.id = "-1";
+        if (this.data.change) {//修改操作
+          if (bean.questionType == 5) {
+            var obj = new Object();
+            obj.optionText = bean.optionList[0].pic;
+            obj.questionId = bean.id;
+            obj.id = "-1";
 
-          //    console.log("手绘题--id---------------" + obj.questionId + "/" + obj.optionText);
-          //    this.addDataForList(obj);
-          //  } else if (bean.questionType == 3) {
-          //    var obj = new Object();
-          //    obj.optionText = "";
-          //    obj.questionId = bean.id;
-          //    obj.id = "-1";
-          //    console.log("edit--id---------------" + obj.questionId + "/" + obj.optionText);
-          //    this.addDataForList(obj);
-          //  }
-           
-          //  for (var j in bean.optionList){
-          //    var item = bean.optionList[j];
-          //    if (item.selected){
-          //      this.addDataForList(item);
-          //    }
-          //  }
+            console.log("手绘题--id---------------" + obj.questionId + "/" + obj.optionText);
+            this.addDataForList(obj, false);
+          } else if (bean.questionType == 3) {
+            var obj = new Object();
+            if (bean.optionList[0]) {
+              obj.optionText = bean.optionList[0].optionText;
+            } else {
+              obj.optionText = "";
+            }
+            obj.questionId = bean.id;
+            obj.id = "-1";
+            console.log("edit--id---------------" + obj.questionId + "/" + obj.optionText);
+            this.addDataForList(obj, false);
+          } else {
+            for (var j in bean.optionList) {
+              var item = bean.optionList[j];
+              if (item.selected) {
+                var obj = new Object();
+                obj.optionText = item.optionText;
+                obj.questionId = item.questionId;
+                obj.id = item.id;
+                this.addDataForList(obj, false);
+              }
+            }
+          }
 
-         }else{
-           if (bean.questionType == 5) {
-             var obj = new Object();
-             obj.optionText = bean.optionList[0].pic;
-             obj.questionId = bean.id;
-             obj.id = "-1";
+          console.log("修改操作：");
 
-             console.log("手绘题--id---------------" + obj.questionId + "/" + obj.optionText);
-             this.addDataForList(obj);
-           } else if (bean.questionType == 3) {
-             var obj = new Object();
-             obj.optionText = "";
-             obj.questionId = bean.id;
-             obj.id = "-1";
-             console.log("edit--id---------------" + obj.questionId + "/" + obj.optionText);
-             this.addDataForList(obj);
-           }
-         }
+        } else {
+          if (bean.questionType == 5) {
+            var obj = new Object();
+            obj.optionText = bean.optionList[0].pic;
+            obj.questionId = bean.id;
+            obj.id = "-1";
+
+            console.log("手绘题--id---------------" + obj.questionId + "/" + obj.optionText);
+            this.addDataForList(obj, false);
+          } else if (bean.questionType == 3) {
+            var obj = new Object();
+            obj.optionText = "";
+            obj.questionId = bean.id;
+            obj.id = "-1";
+            console.log("edit--id---------------" + obj.questionId + "/" + obj.optionText);
+            this.addDataForList(obj, false);
+          }
+        }
       }
     }
   },
@@ -215,8 +249,7 @@ Page({
     obj.id = "-1";
 
     console.log("edit--id---------------" + obj.questionId + "/" + obj.optionText);
-    this.addDataForList(obj);
-
+    this.addDataForList(obj, true);
   },
 
   //触摸打分题
@@ -235,7 +268,7 @@ Page({
       var item = this.data.optionlist[index - 1];
       console.log("sliderId---------------" + item.id);
       item.optionText = "";
-      this.addDataForList(item);
+      this.addDataForList(item, true);
     }
 
   },
@@ -244,35 +277,79 @@ Page({
   radioChange: function (e) {
     var item = e.currentTarget.dataset.item;
     item.optionText = "";
-    this.addDataForList(item);
+    console.log("单选：", item.id);
+    this.addDataForList(item, true);
   },
   //checkbox触摸多选事件
   touchCheckBox: function (e) {
     var item = e.currentTarget.dataset.item;
+    var childindex = e.currentTarget.dataset.childindex;
     console.log('checkbox发生touch事件：', item.questionId + "/id=" + item.id);
+
     this.setData({
-      cbitem: item
+      cbitem: item,
+      cbchildindex: childindex
     })
   },
   // 多选
   checkboxChange: function (e) {
     var cbid = e.detail.value;
+    var groupindex = e.currentTarget.dataset.groupindex;
     var item = this.data.cbitem;
-    if (cbid != null) {
+
+    var singleid = item.id;
+    if (cbid != null && item != null) {
       item.id = cbid.join(",");//数组转逗号字符串
     }
+    if (item.id != null && item.id.length > 0) {
+      item.optionText = "";
+      this.addDataForList(item, true);
+    } else {
+      if(totalList!=null&&totalList.length>0){
+        for (var j in totalList) {
+          if (totalList[j].o == singleid) {
+            console.log("相同id：" + singleid);
+            totalList.splice(j, 1);
+          }
+        }
+        console.log("totalList----长度：" + totalList.length);
+        this.checkStatus();
+      }
+    }
 
-    console.log("多选 id-----------" + item.id);
-    item.optionText = "";
-    this.addDataForList(item);
+    if (this.data.change) {
+      var childindex = this.data.cbchildindex;
+      console.log("多选 index-----------" + groupindex + "/" + childindex);
+      var changeList = this.data.questionList;
+      var bean = changeList[groupindex];
+
+      for (var i in bean.optionList) {
+        var item = bean.optionList[i];
+        if (i == childindex) {
+          if (item.selected) {
+            item.selected = false;
+          } else {
+            item.selected = true;
+          }
+          break
+        }
+      }
+      this.setData({
+        questionList: changeList
+      })
+    }
+
 
   },
   //添加数据到集合
-  addDataForList: function (item) {
+  addDataForList: function (item, onClick) {
+    if (!canEdit) {
+      return;
+    }
     if (item != null) {
       console.log('发生选中事件，携带value值为：', item.questionId + "/id=" + item.id);
       var hasAnswer = false;
-      if (totalList.length > 0) {
+      if (totalList != null && totalList.length > 0) {
         for (var i in totalList) {
           var model = totalList[i];
           if (model.q == item.questionId) {
@@ -304,6 +381,68 @@ Page({
         console.log("item-id=", totalList[j].o + "-----questionId=" + totalList[j].q + "v=" + totalList[j].v);
       }
     }
+
+    if (this.data.change && onClick) {//修改
+      console.log("----------------change------------");
+      var questionList = this.data.questionList;
+
+      for (var i in questionList) {
+        var bean = questionList[i];
+        for (var j in totalList) {
+          var totalItem = totalList[j];
+
+          if (totalItem.q == bean.id) {
+            var questionType = bean.questionType;
+            if (questionType == "0" || questionType == "2" || questionType == "4") {//单选.打分题
+              for (var k in bean.optionList) {
+                var child = bean.optionList[k];
+                if (totalItem.o == child.id) {
+                  child.selected = true;
+                  console.log("有相同的------", totalItem.o);
+                } else {
+                  child.selected = false;
+                }
+              }
+            } else if (questionType == "1") {//多选
+              // for (var d in bean.optionList) {
+              //   bean.optionList[d].selected=false;
+              // }
+              // if (totalItem != null) {
+              //   if (totalItem.o != null && (totalItem.o + "").indexOf(",") >= 0) {
+              //     var arrayId = new Array();
+              //     arrayId = totalItem.o.split(",");
+              //     for (var k in bean.optionList) {
+              //       var opt = bean.optionList[k];
+              //       for (var m in arrayId) {
+              //         if (opt.id == arrayId[m]) {
+              //           if (opt.selected){
+              //             opt.selected = false;
+              //           }else{
+              //             opt.selected = true;
+              //           }
+              //           console.log("有相同的多选------", totalItem.o);
+              //         } else {
+              //           opt.selected = false;
+              //         }
+              //       }
+              //     }
+
+              //   }
+              // }
+
+            } else if (questionType == "3") {//填空题
+              var opt = bean.optionList[0];
+              console.log("输入填空题：" + totalItem.v);
+              opt.optionText = totalItem.v;
+            }
+          }
+        }
+      }
+      this.setData({
+        questionList: questionList
+      })
+    }
+
     this.checkStatus();
   },
 

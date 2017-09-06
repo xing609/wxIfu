@@ -1,0 +1,161 @@
+/* pages/register/specialty/index.wxss */
+
+.view-top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.next {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 12px;
+    color: #bfc0c0;
+}
+
+.v-next {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    background-color: transparent;
+    text-align: center;
+    border-radius: 100px;
+    border: 2px #bfc0c0 solid;
+}
+
+.girds-bg {
+    background-color: transparent;
+}
+
+.hint-big {
+    margin-top: 40px;
+    font-size: 16px;
+    color: #f63;
+}
+
+.hint-small {
+    font-size: 14px;
+    color: #f63;
+}
+
+/*进入首页  */
+
+.btn-bottom {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    vertical-align: middle;
+    position: fixed;
+    bottom: 0px;
+    background-color: #f0f0f0;
+}
+
+.btnGoHome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 180px;
+    vertical-align: middle;
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/*item  */
+
+.nav-p {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1px;
+}
+
+.item-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+    padding: 10px;
+}
+
+.img-p {
+    display: flex;
+    flex-direction: row;
+}
+
+.item-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.img-next {
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.up-img {
+    width: 12px;
+    height: 8px;
+    vertical-align: middle;
+}
+
+.content-text {
+    display: flex;
+    font-size: 16px;
+    margin-left: 10px;
+    justify-content: center;
+    flex-direction: row;
+    color: black;
+}
+
+.specialty-img {
+    width: 30px;
+    height: 30px;
+}
+
+/*亚专业  */
+
+.child-p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item-bottom {
+    display: flex;
+    flex-direction: column;
+}
+
+.txt-bottom-hint {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #bfc0c0;
+}
+
+.child-title {
+    display: flex;
+    justify-content: center;
+    font-size: 13px;
+    margin-left: 2px;
+    margin-right: 2px;
+    color: #aaaaab;
+    padding: 3px;
+    background-color: transparent;
+    text-align: center;
+    border-radius: 6px;
+    border: 1px #bfc0c0 solid;
+}

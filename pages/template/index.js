@@ -26,9 +26,6 @@ Page({
         that.setData({//默认选中第一个
           'currentItem': childBean.id
         })
-        wx.showToast({
-          title: childBean.id + "---"
-        })
         groupId = childBean.id;
         that.getTemplateChildList(groupId);
 
