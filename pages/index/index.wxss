@@ -30,6 +30,21 @@ view.text:before {
     background-color: #09bb07;
 }
 
+/*立即认证  */
+
+.quick-auth {
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-top: 5px;
+    display: flex;
+    font-size: 8px;
+    color: white;
+    background-color: #ec9c49;
+    text-align: center;
+    border-radius: 24px;
+    border: 1px white solid;
+}
+
 /* 今日 */
 
 .today-add-num {
@@ -144,7 +159,7 @@ view.text text {
     flex: 1;
     justify-content: center;
     flex-direction: column;
-    margin-top:40rpx;
+    margin-top: 40rpx;
     width: 80px;
     align-items: center;
     vertical-align: middle;
@@ -183,8 +198,10 @@ view.text text {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 90px;
-    height: 90px;
+    align-items: center;
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
     background-color: transparent;
     text-align: center;
     border-radius: 100px;
@@ -194,13 +211,14 @@ view.text text {
 /*医数值  */
 
 .home_ifu_value {
-    font-size: 30px;
+    display: flex;
+    font-size: 28px;
     text-align: center;
     color: white;
 }
 
 .home_my_value {
-    font-size: 12px;
+    font-size: 11px;
     text-align: center;
     color: white;
 }

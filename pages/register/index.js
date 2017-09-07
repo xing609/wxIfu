@@ -4,11 +4,28 @@ var Req = require('../../utils/req.js');
 var Util = require('../../utils/util.js');
 import { $wuxCountDown } from '../../components/wux'
 const App = getApp()
+var pagefrom = 'register';
 Page({
   data: {
+    btnContent: '注册'
   },
-  onLoad() {
-
+  onLoad(option) {
+    pagefrom = option.from;
+    var content;
+    if (pagefrom == 'register') {
+      wx.setNavigationBarTitle({
+        title: "注册新帐号",
+      })
+      content = '注册';
+    } else if (pagefrom == 'forgetpsw') {
+      wx.setNavigationBarTitle({
+        title: "忘记密码",
+      })
+      content = '确认';
+    }
+    this.setData({
+      btnContent: content
+    })
   },
 
   mobileInput: function (e) {
@@ -55,19 +72,25 @@ Page({
   },
   //发送验证码 
   sendVerfication() {
+    var codeType = '';
+    if (pagefrom == 'register') {
+      codeType = '';
+    } else if (pagefrom == 'forgetpsw') {
+      codeType = '1';
+    }
     Req.req_post(Api.sendVerfication({
       loginName: this.data.mobile,
       userType: 2,
-      codeType: '',
+      codeType: codeType,
     }), "正在加载", function success(res) {
       wx.showToast({
         title: '验证码已发送',
       })
-     
+
     }, function fail(res) {
-     
+
     })
-  
+
   },
   // 注册
   btnRegister() {
@@ -117,28 +140,51 @@ Page({
       })
       return
     }
-    var that=this;
-    Req.req_post(Api.userRegister({
-      loginName: that.data.mobile,
-      password: Tools.hexMD5(that.data.passWord),
-      checkCode: that.data.code
-    }), "正在提交", function success(res) {
-      console.log("---------token-----------" + res.data.token);
+    var that = this
+    if (pagefrom == 'register') {
+      Req.req_post(Api.userRegister({
+        loginName: that.data.mobile,
+        password: Tools.hexMD5(that.data.passWord),
+        checkCode: that.data.code
+      }), "正在提交", function success(res) {
+        that.jumptoPage(res);
+      }, function fail(res) {
+      })
+    } else if (pagefrom == 'forgetpsw') {
+      Req.req_post(Api.findPassWord({
+        loginName: that.data.mobile,
+        password: Tools.hexMD5(that.data.passWord),
+        checkCode: that.data.code
+      }), "正在提交", function success(res) {
+        that.jumptoPage(res);
+      }, function fail(res) {
+      })
+    }
+  },
+  jumptoPage(res) {
+    var url;
+    var hint;
+    var path;
+    var that = this;
+    if (pagefrom == 'register') {
       wx.setStorageSync('loginName', that.data.mobile);
       wx.setStorageSync('psw', that.data.passWord);
       wx.setStorageSync('user', res.data.model);
       wx.setStorageSync('token', res.data.token);
-      wx.showToast({
-        title: '注册成功！',
-      })
-      wx.navigateTo({
-        url: '/pages/register/specialty/index'
-      })
-       
-
-    }, function fail(res) {
+      hint = '注册成功！';
+      path = '/pages/register/specialty/index';
+    } else if (pagefrom == 'forgetpsw') {
+      wx.setStorageSync('loginName', that.data.mobile);
+      wx.setStorageSync('psw', that.data.passWord);
+      hint = '设置成功，请重新登录！'
+      path = '/pages/login/index';
+    }
+    wx.showToast({
+      title: hint,
     })
-   
+    wx.navigateTo({
+      url: path
+    })
   }
 
 })

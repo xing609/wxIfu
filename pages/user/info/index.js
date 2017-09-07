@@ -3,22 +3,68 @@ const qiniuUploader = require("../../../utils/qiniuUploader");
 const App = getApp()
 const Api = require('../../../utils/api.js');
 const Req = require('../../../utils/req.js');
+var pagefrom;
 Page({
   data: {
     uptoken: '',
+    canEdit:false,
+    showBtn:false,
+    sexList: [
+      {
+        id: '1',
+        text: '男',
+        selected:false
+      },
+      {
+        id: '2',
+        text: '女',
+        selected: false
+      }],
     userInfo: {}
+  }, 
+  // 提交
+  btnSubmit() {
+    wx.navigateTo({
+      url: "/pages/auth/index"
+    })
   },
   //事件处理函数
-  onLoad: function () {
+  onLoad: function (option) {
     console.log('onLoad')
     var that = this;
+    var title="个人信息";
+    var canEdit;
+    var showBtn;
+    pagefrom=option.from;
+    if(pagefrom=='userinfo'){
+      title = "个人信息"
+      canEdit=false;
+      showBtn=false;
+    }else if(pagefrom=='edit'){
+      title = "个人信息"
+      canEdit = true;
+      showBtn = false;
+    }if (pagefrom=='auth'){
+      title = "认证"
+      canEdit = true;
+      showBtn = true;
+    }
+    wx.setNavigationBarTitle({
+      title: title,
+    })
+
+    that.setData({
+      canEdit: canEdit,
+      showBtn: showBtn
+    })
     getUserInfo(that);
   },
   didPressChooesImage: function () {
     var that = this;
     didPressChooesImage(that);
   }
-});
+}
+);
 // 初始化七牛相关参数
 function initQiniu(upToken) {
   var options = {
@@ -113,6 +159,8 @@ function getQiNiuToken(that, imgUrl) {
     }, function fail(res) {
     });
   }
+ 
+
 
 }
 

@@ -1,4 +1,4 @@
-<view class='v-next' bindtap='btnGoHome'>
+<view class='v-next' bindtap='btnNext'>
     <text class='next'>跳过</text>
 </view>
 <view class='view-top'>
@@ -6,7 +6,7 @@
     <text class='hint-small'>我们将为您定制个性化内容</text>
 </view>
 
-<view class="nav-p" wx:for="{{resultList}}" bindtap="navigateTo" data-item="{{item}}">
+<view class="nav-p" wx:for="{{resultList}}" bindtap="clickItem" data-item="{{item}}" data-index="{{index}}">
     <view class='item-top'>
         <view class='item-left'>
             <view class='img-p'>
@@ -17,17 +17,18 @@
             <text class="content-text" wx:if="{{item.title!=null}}">{{item.title}}</text>
         </view>
         <view class='img-next'>
-         <image class="up-img" wx:if="{{item.pic==null}}" src="../../../assets/images/ic_down.png"></image>
+         <image class="up-img" wx:if="{{currentItem==item.id}}" src="../../../assets/images/ic_down.png"></image>
+         <image class="next-img" wx:if="{{currentItem!=item.id}}" src="../../../assets/images/userinfo/ic_next.png"></image>
         </view>
-       
     </view>
 
-    <view class='item-bottom'>
+    <view class='item-bottom' wx:if="{{currentItem==item.id}}">
         <text class='txt-bottom-hint'>亚专业(多选)</text>
         <view class="grids grids-small girds-bg">
             <block wx:for="{{ item.templateGroupBasicList }}" wx:key="">
-                <view class="grid girds-bg" url="" wx:key="{{index}}" data-index="{{ index }}" bindtap="navigateTo">
-                    <text class='child-title'>"{{item.title}}"</text>
+                <view class="grid girds-bg" url="" wx:key="{{index}}" data-index="{{index}}" bindtap="clickChildItem"
+                 data-childitem="{{item}}">
+                    <text class="{{item.isSelected?'child-title-active':'child-title'}}">{{item.title}}</text>
                 </view>
             </block>
         </view>
@@ -35,7 +36,6 @@
 </view>
 
 <view style='height:90px'></view>
-
-<view bindtap="btnGoHome" class='btn-bottom'>
-    <button class="btnGoHome" bindtap="btnGoHome"> 进入主页</button>
+<view class='btn-bottom'>
+    <text class="{{hasSelected?'btn-gohome-active':'btn-gohome'}}" bindtap="btnGoHome"> 进入主页</text>
 </view>

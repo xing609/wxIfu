@@ -1,143 +1,165 @@
 <view class="container">
 
-  <text>注册号码：{{userInfo.mobile}}</text>
+    <text>注册号码：{{userInfo.mobile}}</text>
 </view>
 <div bindtap="didPressChooesImage" class="top">
 
-  <!--head-->
-  <p>
-    <image class="imgleft" src='../../../assets/images/userinfo/ic_info_head.png'></image>
-    <span class="left_text">头像</span>
-  </p>
-  <p>
-    <image wx:if="{{userInfo.face!=null}}" class="userinfo-avatar" src='{{userInfo.face }}'></image>
-    <image wx:if="{{userInfo.face==null}}" class="userinfo-avatar" src="../../../assets/images/userinfo/ic_default_doctor.png" background-size="cover"></image>
-    <image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image>
-  </p>
+    <!--head-->
+    <p>
+        <image class="imgleft" src='../../../assets/images/userinfo/ic_info_head.png'></image>
+        <span class="left_text">头像</span>
+    </p>
+    <p>
+        <image wx:if="{{userInfo.face!=null}}" class="userinfo-avatar" src='{{userInfo.face }}'></image>
+        <image wx:if="{{userInfo.face==null}}" class="userinfo-avatar" src="../../../assets/images/userinfo/ic_default_doctor.png" background-size="cover"></image>
+        <image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image>
+    </p>
 </div>
 
 <!--认证信息-->
 <div class="item">
-  <p>
-    <image class="imgleft" src='../../../assets/images/userinfo/ic_cerfity_status.png'></image>
-    <span class="left_text">认证信息</span>
-  </p>
-  <p>
-    <text class="user_text_value margin-right-10" wx:if="{{userInfo.status==0}}">已认证</text>
-    <text class="user_text_value margin-right-10" wx:if="{{userInfo.status==1}}">待审核</text>
-    <text class="user_text_value margin-right-10" wx:if="{{userInfo.status==4}}">审核中</text>
-    <text class="user_text_value margin-right-10" wx:if="{{userInfo.status==6}}">审核不通过</text>
-    <image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image>
-  </p>
+    <p>
+        <image class="imgleft" src='../../../assets/images/userinfo/ic_cerfity_status.png'></image>
+        <span class="left_text">认证信息</span>
+    </p>
+    <p>
+        <text class="user_text_value margin-right-10" wx:if="{{userInfo.status==0}}">已认证</text>
+        <text class="user_text_value margin-right-10" wx:if="{{userInfo.status==1}}">待审核</text>
+        <text class="user_text_value margin-right-10" wx:if="{{userInfo.status==4}}">审核中</text>
+        <text class="user_text_value margin-right-10" wx:if="{{userInfo.status==6}}">审核不通过</text>
+        <image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image>
+    </p>
 </div>
 
 
 <!--姓名-->
 <div class="item_margin_15">
-  <p>
-    <image class="imgleft" src='../../../assets/images/userinfo/ic_info_name.png'></image>
-    <span class="left_text">姓名</span>
-    <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image>
-  </p>
-  <p>
-    <text class="user_text_value">{{userInfo.doctorName}}</text>
-    <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image>
-  </p>
+    <p>
+        <image class="imgleft" src='../../../assets/images/userinfo/ic_info_name.png'></image>
+        <span class="left_text">姓名</span>
+        <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image>
+    </p>
+    <p>
+        <text class="user_text_value">{{userInfo.doctorName}}</text>
+        <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image>
+    </p>
 </div>
 
 <!--性别-->
 <div class="item">
-  <p>
-    <image class="imgleft" src='../../../assets/images/userinfo/ic_info_sex.png'></image>
-    <span class="left_text">性别</span>
-  </p>
-  <p>
-    <text class="user_text_value" wx:if="{{userInfo.sex==0}}">男</text>
-    <text class="user_text_value" wx:if="{{userInfo.sex==1}}">女</text>
-    <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image>
-  </p>
+    <p>
+        <image class="imgleft" src='../../../assets/images/userinfo/ic_info_sex.png'></image>
+        <span class="left_text">性别</span>
+    </p>
+    <p wx:if="{{!canEdit}}">
+        <text class="user_text_value" wx:if="{{userInfo.sex==0}}">男</text>
+        <text class="user_text_value" wx:if="{{userInfo.sex==1}}">女</text>
+        <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image>
+    </p>
+
+
+    <!--编辑性别  -->
+    <radio-group class="radio-group margin-right-10" wx:if="{{canEdit}}">
+        <label class="radio margin-left-5" wx:for="{{sexList}}">
+          <radio class="option-content" value="{{item.id}}" data-item="{{item}}"bindtap="radioChange" disabled="{{!canEdit}}" checked="{{item.selected}}" />
+          <text class="text-input ">{{item.text}}</text>
+      </label>
+    </radio-group>
+
+
 </div>
+
+
+
+
+
 
 <!--医院-->
 <div class="item_margin_15">
-  <p>
-    <image class="imgleft" src='../../../assets/images/userinfo/ic_info_hospital.png'></image>
-    <span class="left_text">医院</span>
-    <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image>
-  </p>
-  <p>
-    <text class="user_text_value">{{userInfo.hospital}}</text>
-    <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image>
-  </p>
+    <p>
+        <image class="imgleft" src='../../../assets/images/userinfo/ic_info_hospital.png'></image>
+        <span class="left_text">医院</span>
+        <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image>
+    </p>
+    <p>
+        <text class="user_text_value">{{userInfo.hospital}}</text>
+        <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image>
+    </p>
 </div>
 
 
 <!--科室-->
 <div class="item">
-  <p>
-    <image class="imgleft" src='../../../assets/images/userinfo/ic_info_department.png'></image>
-    <span class="left_text">科室</span>
-    <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image>
-  </p>
-  <p>
-    <text class="user_text_value">{{userInfo.department}}</text>
-    <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image>
-  </p>
+    <p>
+        <image class="imgleft" src='../../../assets/images/userinfo/ic_info_department.png'></image>
+        <span class="left_text">科室</span>
+        <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image>
+    </p>
+    <p>
+        <text class="user_text_value">{{userInfo.department}}</text>
+        <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image>
+    </p>
 </div>
 
 <!--职称-->
 <div class="item">
-  <p>
-    <image class="imgleft" src='../../../assets/images/userinfo/ic_info_position.png'></image>
-    <span class="left_text">职称</span>
-    <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image>
-  </p>
-  <p>
-    <text class="user_text_value">{{userInfo.position}}</text>
-    <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image>
-  </p>
+    <p>
+        <image class="imgleft" src='../../../assets/images/userinfo/ic_info_position.png'></image>
+        <span class="left_text">职称</span>
+        <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image>
+    </p>
+    <p>
+        <text class="user_text_value">{{userInfo.position}}</text>
+        <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image>
+    </p>
 </div>
 
 <!--专业-->
 <div class="item">
-  <p>
-    <image class="imgleft" src='../../../assets/images/userinfo/professional.png'></image>
-    <span class="left_text">专业</span>
-    <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image>
-  </p>
-  <p>
-    <text class="user_text_value">{{userInfo.specialtyName}}</text>
-    <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image>
-  </p>
+    <p>
+        <image class="imgleft" src='../../../assets/images/userinfo/professional.png'></image>
+        <span class="left_text">专业</span>
+        <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image>
+    </p>
+    <p>
+        <text class="user_text_value">{{userInfo.specialtyName}}</text>
+        <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image>
+    </p>
 </div>
 
 
 
 <!--门诊-->
 <div class="item">
-  <p>
-    <image class="imgleft" src='../../../assets/images/userinfo/ic_schedule.png'></image>
-    <span class="left_text">门诊/手术日</span>
-  </p>
-  <p>
-    <text class="user_text_value margin-right-10">周一 上午 普通</text>
-    <image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image>
-  </p>
+    <p>
+        <image class="imgleft" src='../../../assets/images/userinfo/ic_schedule.png'></image>
+        <span class="left_text">门诊/手术日</span>
+    </p>
+    <p>
+        <text class="user_text_value margin-right-10">周一 上午 普通</text>
+        <image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image>
+    </p>
 </div>
 
 <!--简介-->
 <view class="user_desc_p">
-  <div class="item">
-    <p>
-      <image class="imgleft" src='../../../assets/images/userinfo/ic_info_intro.png'></image>
-      <span class="left_text">简介</span>
-      <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image>
-    </p>
-    <p>
-      <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image>
-    </p>
-  </div>
-  <view class="desc-p" wx:if="{{userInfo.doctorDesc!=null}}">
-    <text class="user_desc_text">{{userInfo.doctorDesc}}</text>
-  </view>
+    <div class="item">
+        <p>
+            <image class="imgleft" src='../../../assets/images/userinfo/ic_info_intro.png'></image>
+            <span class="left_text">简介</span>
+            <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image>
+        </p>
+        <p>
+            <image class="img_auth" src='../../../assets/images/userinfo/ic_correct.png'></image>
+        </p>
+    </div>
+    <view class="desc-p" wx:if="{{userInfo.doctorDesc!=null}}">
+        <text class="user_desc_text">{{userInfo.doctorDesc}}</text>
+    </view>
+</view>
+
+<!--提交  -->
+<view style='height:90px'></view>
+<view class='btn-bottom' wx:if="{{showBtn}}">
+    <text class="btnSubmit" bindtap="btnSubmit">提交</text>
 </view>

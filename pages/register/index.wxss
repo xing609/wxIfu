@@ -7,18 +7,28 @@
   align-items: center;
   background: white
 }
+.item-code{
+  display: flex;
+  margin-top: 1px;
+  flex-direction: row;
+  justify-content:space-between;
+  vertical-align: middle;
+  align-items: center;
+  background: white
+}
 .register-p{
   display: flex;
   flex-direction: column;
   vertical-align: middle;
 }
 .text-mobile{
-  min-width: 60px;
+  min-width: 80px;
   font-size: 14px;
   margin-left: 10px;
 }
 .input{
-  
+  display: flex;
+  width: 100%;
   padding-left: 5px;
 }
 .btnRegister{
@@ -28,13 +38,21 @@
   margin-top: 20px;
   justify-content: center;
   font-size: 16px;
+  min-height: 40px;
   vertical-align: middle;
 }
 .vcode-btn{
+  display: flex;
   font-size: 14px;
-  color: #2CB044
+  color: #2CB044;
 }
-
+.left-item{
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+  align-items: center;
+  flex-direction: row;
+}
 .right-code{
   min-width: 110px;
   display: flex;

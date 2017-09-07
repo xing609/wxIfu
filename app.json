@@ -31,9 +31,8 @@
     "pages/template/detail/index",
     "pages/auth/index",
     "pages/template/templateIntroduce/index",
-    "pages/template/scale/index",
-    
-    "pages/findpsw/index"
+    "pages/template/scale/index"
+   
   ],
   "window": {
     "navigationBarBackgroundColor": "#FF9933",

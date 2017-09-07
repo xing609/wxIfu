@@ -103,8 +103,26 @@ var SEND_VERIFICATION ="api/phoneCode/sendVerification";
 var USER_REGISTER ="api/doctor/op/register";
 //获取亚专业信息
 var GET_SPECIALTY_LIST="api/doctor/specialty/specialtyList"
+//选择亚专业
+var EDIT_SPECIALTY ="api/doctor/op/edit";
+//找回密码
+var FIND_PASSWORD ="api/doctor/op/retrieveDoctorPassword";
+//认证状态
+var GET_AUDIT_STATUS ="api/doctor/op/auditStatus";
 
 //===========================================请求接口==================================================
+function _getAuditStatus(o){
+  return reqUrl(GET_AUDIT_STATUS,o);
+}
+
+function _findPassWord(o){
+  return reqUrl(FIND_PASSWORD,o);
+}
+
+function _editSpecialtyList(o){
+  return reqUrl(EDIT_SPECIALTY,o);
+}
+
 function _getSpecialtyList(o){
   return reqUrl(GET_SPECIALTY_LIST,o);
 }
@@ -310,6 +328,9 @@ function _obj2uri(obj) {
 }
 //===========================================导出===========================================
 module.exports = {
+  getAuditStatus: _getAuditStatus,
+  findPassWord: _findPassWord,
+  editSpecialtyList: _editSpecialtyList,
   getSpecialtyList: _getSpecialtyList,
   userRegister:_userRegister,
   sendVerfication:_sendVerfication,

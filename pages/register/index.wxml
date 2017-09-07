@@ -8,10 +8,11 @@
 
     </view>
 
-    <view class="item">
+    <view class="item-code">
+    <view class='left-item'>
         <text class="text-mobile">验证码:</text>
         <input class="input" type="text" value="{{userName}}" maxlength="6" bindinput="codeInput" auto-focus="true" placeholder="请输入验证码" />
-
+</view>
         <view class="right-code">
             <view class='xian-code'></view>
             <view class="vcode-btn" bindtap="vcode">{{ c2 || '获取验证码' }}</view>
@@ -31,6 +32,6 @@
     </view>
 
 
-    <button class="btnRegister" bindtap="btnRegister">注册</button>
+    <button class="btnRegister" bindtap="btnRegister">{{btnContent}}</button>
 
 </view>

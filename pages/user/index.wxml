@@ -4,6 +4,18 @@
         <image wx:if="{{userInfo.face==null}}" class="userinfo-avatar" src="../../assets/images/userinfo/ic_default_doctor.png" background-size="cover"></image>
         <text bindtap="goUserInfo" class="userinfo-nickname">{{ userInfo.doctorName}}</text>
     </view>
+
+    <view class='quick-auth' wx:if="{{auditStatus==3||auditStatus==2||auditStatus==5}}" bindtap='quickAuth'>
+        <view class='auth-left'>
+            <image class='auth-img' src="../../assets/images/userinfo/ic_fast_auth.png"></image>
+            <text class='text-auth'>快速认证</text>
+        </view>
+
+        <view class='next-p'>
+            <image class='ic-next' src="../../assets/images/userinfo/ic_next.png"></image>
+        </view>
+    </view>
+
     <view class="info_list">
         <view class="weui-cells">
             <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{ settings }}" wx:key="" data-path="{{ item.path }}" data-index="{{ index }}" bindtap="bindtap">

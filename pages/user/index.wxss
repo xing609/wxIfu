@@ -61,3 +61,44 @@ page {
 	border-bottom: 1rpx solid #D9D9D9;
 	color: #D9D9D9;
 }
+.quick-auth{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  vertical-align: middle;
+  background-color: #F3E8CA;
+  padding: 10px;
+
+}
+.text-auth{
+  font-size: 16px;
+  margin-left: 5px;
+}
+
+.auth-left{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+}
+
+.auth-img{
+  height: 25px;
+  width: 20px;
+}
+.ic-next{
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
+  height: 10px;
+  width: 8px;
+  margin-right: 5px;
+}
+.next-p{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}

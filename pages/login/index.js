@@ -34,14 +34,13 @@ Page({
   
   register() {
     wx.navigateTo({
-      url: '/pages/register/index'
+      url: '/pages/register/index?&from=register'
     })
   },
   // 忘记密码
   forGetPsw() {
     wx.navigateTo({
-      url: path
-
+      url: '/pages/register/index?&from=forgetpsw'
     })
   },
   //  登录
@@ -68,7 +67,10 @@ Page({
       wx.setStorageSync('psw', that.data.passWord);
       wx.setStorageSync('user', res.data.model);
       wx.setStorageSync('token', res.data.token);
-      if (res.data.model.department == null || res.data.model.specialtyName == null) {//检测用户亚专业是否填写
+      wx.setStorageSync('homeRefresh', true);
+      wx.setStorageSync('hasNewMess', true);
+      
+      if (res.data.model.specialtyName == null) {//检测用户亚专业是否填写
         console.log("------------------填写亚专业");
         wx.navigateTo({
           url: '/pages/register/specialty/index',

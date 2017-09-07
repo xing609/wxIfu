@@ -13,6 +13,7 @@ Page({
     autoplay: true,
     interval: 3000,
     duration: 1000,
+
     model: {},
     images: [
       {
@@ -79,7 +80,7 @@ Page({
     console.log("test onReady");
   },
   onShow: function () {
-    
+    this.getAuditStatus();
     if (wx.getStorageSync('homeRefresh')) {
       this.getHomeNum();
     }
@@ -111,6 +112,7 @@ Page({
   //下拉刷新
   onPullDownRefresh() {
     this.getHomeNum();
+    this.getAuditStatus();
   },
 
   //主菜单跳转
@@ -128,8 +130,8 @@ Page({
       complete: function (res) {
         // complete
       }
-    })   
-    
+    })
+
   },
   // 用户登录
   login() {
@@ -145,7 +147,19 @@ Page({
     }, function fail(res) {
     })
   },
-
+  // 获取认证状态
+  getAuditStatus() {
+    var that = this;
+    Req.req_post(Api.getAuditStatus({
+      token: Api.getToken()
+    }), "", function success(res) {
+      that.setData({
+        auditStatus: res.data.model.status
+      })
+      wx.setStorageSync('auditStatus', res.data.model.status);
+    }, function fail(res) {
+    })
+  },
   getHomeNum() {
     var that = this;
     Req.req_post(Api.getHomeNum({
@@ -160,7 +174,6 @@ Page({
     }, function fail(res) {
     })
   },
-
   onLoad: function (option) {
     var that = this;
     if (Api.getToken()) {
@@ -246,7 +259,6 @@ Page({
       userType: 2,
       openId: openId,
       type: 1,
-
       userInfo: userInfo
     }), "", function success(res) {
       console.log("第三方登录成功：" + res);
@@ -260,10 +272,24 @@ Page({
     })
   },
   jumpIfuValueIndex(option) {
+    var auditStatus = this.data.auditStatus;
     var allcredic = option.currentTarget.dataset.allcredic;
-    wx.navigateTo({
-      url: '/pages/index/ifuvalue/index?allcredic=' + allcredic,
-    })
+    switch (auditStatus) {
+      case 0://认证成功
+        wx.navigateTo({
+          url: '/pages/index/ifuvalue/index?allcredic=' + allcredic,
+        })
+        break;
+      case 1://认证失败
+      case 4:
+      case 6:
+        break;
+      default:
+        wx.navigateTo({
+          url: '/pages/user/info/index?from=auth'
+        })
+        break;
+    }
   },
   jumpTemplateQrIndex() {
     wx.navigateTo({

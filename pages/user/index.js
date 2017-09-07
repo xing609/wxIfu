@@ -29,6 +29,7 @@ Page({
   },
   //修改头像时即时更新
   onShow: function () {
+    this.getAuditStatus();
     this.getUserInfo();
   },
   // navigateTo(e) {
@@ -65,7 +66,25 @@ Page({
         })
       },
     })
-
+  },
+  // 获取认证状态
+  getAuditStatus() {
+    var that = this;
+    Req.req_post(Api.getAuditStatus({
+      token: Api.getToken()
+    }), "", function success(res) {
+      that.setData({
+        auditStatus: res.data.model.status
+      })
+      wx.setStorageSync('auditStatus', res.data.model.status);
+    }, function fail(res) {
+    })
+  },
+  //快速认证
+  quickAuth(){
+    wx.navigateTo({
+      url: '/pages/user/info/index?from=auth'
+    })
   },
   bindtap(e) {
     const index = e.currentTarget.dataset.index
@@ -109,12 +128,17 @@ Page({
     })
   },
   goUserInfo() {
+    var pagefrom='userinfo';//查看
+    if (this.data.auditStatus==0){
+      pagefrom = 'userinfo';
+    }else {//编辑
+      pagefrom = 'edit';
+    }
     wx.navigateTo({
-      url: '/pages/user/info/index'
+      url: '/pages/user/info/index?from='+pagefrom
     })
   },
   signOut() {
-
     // App.HttpService.signOut()
     //   .then(data => {
     //     console.log(data)

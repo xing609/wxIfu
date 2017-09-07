@@ -18,7 +18,7 @@ function formatNumber(n) {
 
 // 验证手机号
 function isMobile(mobile) {
-  if (mobile.length == 0) {
+  if (mobile==null||mobile.length == 0) {
     wx.showToast({
       title: '请输入手机号！',
       icon: 'success',

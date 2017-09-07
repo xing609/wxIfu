@@ -10,6 +10,6 @@
   </view>
 </view>
 
-<button class="btn-notice" bindtap="notice" wx:if="{{!hasNotice}}">批量提醒</button>
-<button class="btn-notice" bindtap="notice" wx:if="{{hasNotice}}">已提醒</button>
+<button class="btn-notice" bindtap="notice" wx:if="{{!hasNotice&&resultList.length>0}}">批量提醒</button>
+<button class="btn-notice" bindtap="notice" wx:if="{{hasNotice&&resultList.length>0}}">已提醒</button>
 <template is="prompt" hidden="true" data="{{...$wux.prompt.msg3}}" />
