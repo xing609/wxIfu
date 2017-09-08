@@ -36,6 +36,8 @@ Page({
     wx.switchTab({
       url: '/pages/index/index?from=login'
     })
+    wx.setStorageSync('homeRefresh', true);
+    wx.setStorageSync('hasNewMess', true);
   },
   //点击Group item
   clickItem(e) {
@@ -108,6 +110,8 @@ Page({
       wx.switchTab({
         url: '/pages/index/index?from=login'
       })
+      wx.setStorageSync('homeRefresh', true);
+      wx.setStorageSync('hasNewMess', true);
     }, function fail(res) {
 
     })
