@@ -273,22 +273,27 @@ Page({
   },
   jumpIfuValueIndex(option) {
     var auditStatus = this.data.auditStatus;
+    console.log("audistatus------------", auditStatus);
     var allcredic = option.currentTarget.dataset.allcredic;
     switch (auditStatus) {
-      case 0://认证成功
+      case '0'://认证成功
         wx.navigateTo({
           url: '/pages/index/ifuvalue/index?allcredic=' + allcredic,
         })
         break;
-      case 1://认证失败
-      case 4:
-      case 6:
+      case '1'://认证失败
+      case '4':
+      case '6':
+
         break;
-      default:
+      case '2':
+      case '3':
+      case '5':
         wx.navigateTo({
           url: '/pages/user/info/index?from=auth'
         })
-        break;
+        break
+
     }
   },
   jumpTemplateQrIndex() {

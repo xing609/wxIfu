@@ -10,15 +10,6 @@ var isAnswer = false;
 var customerExtHosp;
 var customerId;
 
-
-
-
-
-
-
-
-
-
 var change = false;
 var hasChange = false;
 var canEdit = false;//是否可以答题

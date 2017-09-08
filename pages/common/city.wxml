@@ -1,0 +1,6 @@
+<template name="citylist">
+  <view class="city-group-p  {{currentItem==item.id?'city-active-tag':''}}" bindtap="navigateTo" data-id="{{item.id}}" data-title="{{item.title}}" wx:for="{{resultList}}">
+    <text class=" {{currentItem==item.id?'city-group-item-title-active':'city-group-item-title'}} ">{{item.name}}</text>
+    <view class="line-x margin-5"></view>
+  </view>
+</template>

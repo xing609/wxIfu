@@ -1,18 +1,37 @@
-<scroll-view class="">
+<view class="container">
 
-<view class=''>
-<image></image>
+    <view class='top-p' bindtap='didPressChooesImage'>
+        <view class='top-camera'>
+            <image class="img-top" src="../../assets/images/userinfo/cerfity_make_camera.png" background-size="cover"></image>
+
+            <text class='text-camera'>拍工号牌</text>
+        </view>
+    </view>
+
+
+    <!--注意  -->
+    <view class='view-center'>
+
+        <text class='hint-notice'>注意*</text>
+        <view class="line-x xian-red"></view>
+
+        <text class='hint-text'>1、请拍摄工号牌原件。扫描件、复印件、电子版 等均不能通过认证</text>
+        <view class="line-x xian-red"></view>
+
+        <text class='hint-text'>2、请确保 姓名、医院名称、科室、工号信息都清晰可见。照片不能涂改</text>
+        <view class="line-x xian-red"></view>
+
+        <text class='hint-text'>3、证件照片和注册信息一致</text>
+        <view class="line-x xian-red"></view>
+
+        <text class='hint-text'>4、样例</text>
+        <image class="img-certify" src="../../assets/images/userinfo/certify_defalut.jpg" background-size="cover"></image>
+
+    </view>
+    <view class='call-p' bindtap='callMobile'>
+        <text class='hint-text'>详情可咨询：</text>
+        <text class='hint-text-phone'>400-618-2535</text>
+    </view>
+
+
 </view>
-
-
-
-<!--注意  -->
-<view class='view-center'>
-
-
-</view>
-
-
-</scroll-view>
-
-

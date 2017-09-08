@@ -1,0 +1,32 @@
+.item-group-p-depart{
+  display: flex;
+  flex-direction: column;
+  background-color: white
+}
+
+.item-p-depart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.item-name-depart {
+  font-size: 16px;
+  padding: 10px;
+  color: black;
+}
+
+.item-next-depart {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  vertical-align: middle;
+  align-items: center;
+  margin-right: 10px;
+}
+.ic-next-depart {
+  width: 5px;
+  height: 10px;
+}

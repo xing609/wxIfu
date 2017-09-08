@@ -1,0 +1,26 @@
+<!--pages/auth/result/index.wxml-->
+<view class='container'>
+
+
+<view class='view-top'>
+<image class='service-head' src='../../../assets/images/userinfo/service_head.png' background-size="cover"></image>
+<text class='text-doctor'>医生您好:</text>
+</view>
+
+<view class='view-center'>
+
+<text class='hint-center'> 您的个人信息正在审核认证中，如需修改请直接联系客服。</text>
+
+<image class='auth-img' background-size="cover"></image>
+</view>
+
+
+<view class='call-p'>
+<image class='cerfity-phone' src='../../../assets/images/userinfo/cerfity_phone.png' background-size="cover"></image>
+
+<text class='text-phone' bindtap='callMobile'>400-618-2535</text>
+</view>
+
+
+</view>
+

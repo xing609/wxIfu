@@ -1,0 +1,25 @@
+.city-group-p {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.city-group-item-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: black;
+}
+
+.city-group-item-title-active {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 17px;
+    color: #FF9933;
+}
+.city-active-tag {
+    background-color: white;
+    color: red;
+}

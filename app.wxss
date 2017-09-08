@@ -11,7 +11,9 @@ page {
 @import 'components/wux.wxss';
 @import 'assets/styles/weui.wxss';
 @import 'assets/styles/skyvow.wxss';
+@import 'assets/styles/city.wxss';
 @import 'assets/styles/groupitem.wxss';
+@import 'assets/styles/depart.wxss';
 @import 'assets/styles/doingtemplate.wxss';
 @import 'assets/styles/base.wxss';
 @import 'assets/styles/common.wxss';

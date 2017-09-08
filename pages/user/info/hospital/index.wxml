@@ -1,0 +1,4 @@
+<import src="../../../../components/prompt/prompt.wxml" />
+<template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg3}}" />
+<import src="../../../common/depart.wxml" />
+<template is="departlist" data="{{resultList}}" />

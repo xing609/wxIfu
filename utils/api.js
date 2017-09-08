@@ -109,8 +109,26 @@ var EDIT_SPECIALTY ="api/doctor/op/edit";
 var FIND_PASSWORD ="api/doctor/op/retrieveDoctorPassword";
 //认证状态
 var GET_AUDIT_STATUS ="api/doctor/op/auditStatus";
+//拍照认证
+var UPLOAD_AUDIT="api/media/uploadAudit";
+//选择区域
+var CHOOSE_CITY= "api/common/area/list";
+//医院列表
+var GET_HOSPTIAL_LIST ="api/doctor/dict/hospList";
 
 //===========================================请求接口==================================================
+function _getHosptialList(o){
+  return reqUrl(GET_HOSPTIAL_LIST,o);
+}
+
+function _chooseCity(o){
+  return reqUrl(CHOOSE_CITY,o);
+}
+
+function _uploadAudit(o){
+  return reqUrl(UPLOAD_AUDIT,o);
+}
+
 function _getAuditStatus(o){
   return reqUrl(GET_AUDIT_STATUS,o);
 }
@@ -328,6 +346,9 @@ function _obj2uri(obj) {
 }
 //===========================================导出===========================================
 module.exports = {
+  getHosptialList: _getHosptialList,
+  chooseCity: _chooseCity,
+  uploadAudit: _uploadAudit,
   getAuditStatus: _getAuditStatus,
   findPassWord: _findPassWord,
   editSpecialtyList: _editSpecialtyList,

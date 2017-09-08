@@ -1,6 +1,13 @@
 {
   "pages": [
+    
     "pages/index/index",
+    "pages/user/info/city/index",
+    "pages/user/info/hospital/index",
+    "pages/user/info/index",
+    "pages/auth/result/index",
+    "pages/auth/detail/index",
+    "pages/auth/index",
     "pages/register/specialty/index",
     "pages/register/index",
     "pages/about/index",
@@ -25,11 +32,11 @@
     "pages/template/confirmTemplate/index",
     "pages/login/index",
     "pages/user/index",
-    "pages/user/info/index",
+   
     "pages/mycustomer/detail/index",
     "pages/template/templateChild/index",
     "pages/template/detail/index",
-    "pages/auth/index",
+    
     "pages/template/templateIntroduce/index",
     "pages/template/scale/index"
    

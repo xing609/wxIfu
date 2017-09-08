@@ -1,0 +1,13 @@
+<template name="departlist">
+  <div class="item-group-p-depart margin-5" bindtap="navigateTo" data-id="{{item.id}}" data-title="{{item.title}}" wx:for="{{resultList}}">
+
+    <view class='item-p-depart'>
+      <text class="item-name-depart">{{item.hospitalName}}</text>
+      <view class='item-next-depart'>
+        <image class="ic-next-depart" src='../../../../assets/images/userinfo/ic_next.png'></image>
+      </view>
+    </view>
+
+    <view class="line-x"></view>
+  </div>
+</template>

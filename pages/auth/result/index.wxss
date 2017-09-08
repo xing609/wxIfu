@@ -1,0 +1,68 @@
+/* pages/auth/result/index.wxss */
+
+.container {
+  padding: 10px;
+}
+
+.service-head {
+  width: 50px;
+  height: 50px;
+}
+
+.view-top {
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.text-doctor {
+  font-size: 14px;
+  margin-left: 10px;
+  color: black;
+}
+
+.hint-center {
+  font-size: 14px;
+  margin-top: 10px;
+  color: black;
+}
+
+.view-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.auth-img {
+  width: 240px;
+  height: 120px;
+  background-color: transparent;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  border: 1px solid white;
+}
+
+.call-p {
+  display: flex;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  justify-content: center;
+  flex-direction: row;
+  background-color: #F3BE26;
+  border-radius: 20px;
+  border: 0.5px solid #F3BE26;
+}
+.cerfity-phone{
+  width: 26px;
+  height: 26px;
+}
+.text-phone{
+  font-size: 16px;
+  color: white;
+  margin-left: 10px;
+}

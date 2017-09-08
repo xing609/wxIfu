@@ -13,12 +13,12 @@ Page({
     doctorId: '',
   },
 
-  onShow:function(){
+  onShow: function () {
     if (wx.getStorageSync('sendStatus')) {
       this.getCustomerInfo(customerId, customerExtHosp);
     }
   },
-  
+
   onLoad: function (option) {
     console.log(option.customerId + "/" + option.customerExtHosp);
     if (option.customerId) {
@@ -68,13 +68,12 @@ Page({
       token: Api.getToken(),
       customerId: customerId
     }), "加载中", function success(res) {
-      if(res.data.resultList.length>0){
-        for (var i in res.data.resultList){
-                
-          }
+      if (res.data.resultList.length > 0) {
+        for (var i in res.data.resultList) {
+
+        }
       }
       that.setData({
-        
         resultList: res.data.resultList
       })
       wx.hideNavigationBarLoading()
@@ -110,19 +109,19 @@ Page({
         success: function (res) {
           switch (res.tapIndex) {
             case 0:
-              actionType ="resetting";
+              actionType = "resetting";
               wx.navigateTo({
                 url: "/pages/template/confirmTemplate/index?template=" + bean + "&actionType=" + actionType + "&templateId=" + e.currentTarget.dataset.templateid
               })
               break;
             case 1:
-              actionType="replace";
+              actionType = "replace";
               wx.navigateTo({
                 url: "/pages/template/mytemplate/index?from=replace" + "&template=" + bean + "&actionType=" + actionType + "&templateId=" + e.currentTarget.dataset.templateid
               })
               break;
             case 2:
-              actionType="stop";
+              actionType = "stop";
               wx.navigateTo({
                 url: "/pages/template/confirmTemplate/index?template=" + bean + "&actionType=" + actionType + "&templateId=" + e.currentTarget.dataset.templateid
               })
@@ -241,7 +240,7 @@ Page({
     that.setData({
       touch_start: e.timeStamp
     })
-    
+
   },
   //按下事件结束  
   mytouchend: function (e) {

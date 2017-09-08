@@ -1,0 +1,16 @@
+<import src="../../../../components/prompt/prompt.wxml" />
+<template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg3}}" />
+
+<view class="view-p">
+  <scroll-view style="display: block;flex:1;height:{{scrollHeight}}px;flex-direction:row;" bindscrolltolower="lower" scroll-y="true">
+    <import src="../../../common/city.wxml" />
+    <template is="citylist" data="{{resultList,currentItem}}" />
+  </scroll-view>
+
+  <scroll-view style="display: block;flex:1;background-color:white; height:{{scrollHeight}}px;flex-direction:row;" bindscrolltolower="lower" scroll-y="true">
+    <view class="city-group-p  {{currentChildItem==item.id?'city-active-tag':''}}" bindtap="navigateChildTo" data-item="{{item}}" data-id="{{item.id}}" data-title="{{item.title}}" wx:for="{{childList}}">
+      <text class=" {{currentChildItem==item.id?'city-group-item-title-active':'city-group-item-title'}} ">{{item.name}}</text>
+      <view class="line-x margin-5"></view>
+    </view>
+  </scroll-view>
+</view>

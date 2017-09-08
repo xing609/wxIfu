@@ -1,0 +1,5 @@
+<view class="container">
+  <text class='top-text'>请确保您的姓名、医院名称、科室、工号信息都清晰可见。</text>
+  <image class='center-img' bindtap="previewImage" background-size="cover"></image>
+  <text class="{{upload?'btnSubmit-disable': 'btnSubmit'}} btnSubmit" bindtap="btnSubmit">{{upload? '审核中':'确认'}}</text>
+</view>

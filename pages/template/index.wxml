@@ -2,7 +2,7 @@
 <template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg3}}" />
 
  <view class="view-p" >
-  <scroll-view style="display: flex;flex:0.8;height:{{scrollHeight}}px;flex-direction:row;"  bindscrolltolower="lower" scroll-y="true">
+  <scroll-view style="display: block;flex:0.8;height:{{scrollHeight}}px;flex-direction:row;"  bindscrolltolower="lower" scroll-y="true">
     <import src="../common/templateGroupItem.wxml" />
     <template is="list" data="{{resultList,currentItem}}" />
   </scroll-view>
