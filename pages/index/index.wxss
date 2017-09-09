@@ -1,12 +1,13 @@
 .swiper_box {
-    height: 282rpx;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
 }
 
+
 swiper-item image {
     width: 100%;
+    height: 100%;
     display: inline-block;
     overflow: hidden;
 }
@@ -46,19 +47,18 @@ view.text:before {
 }
 
 /* 今日 */
-
 .today-add-num {
-    font-size: 12px;
+    font-size: 11px;
     color: white;
     padding-left: 5px;
     padding-right: 5px;
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     background-color: #ff4723;
     border-radius: 20px;
-    position: absolute;
-    top: 84rpx;
-    right: 254rpx;
+    position: relative;
+    top: 24px;
+    left: 45px;
 }
 
 .line_flag {
@@ -129,12 +129,17 @@ view.text text {
 .center-text {
     font-size: 14px;
 }
-
+.cotainer-home{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
 /*首页顶部UI*/
 
 .home_top {
     display: flex;
     align-items: center;
+    flex: 1;
     flex-direction: row;
     vertical-align: middle;
     justify-content: space-between;
@@ -142,6 +147,17 @@ view.text text {
     height: 340rpx;
     margin: 10px;
     border-radius: 6px 6px 6px 6px;
+}
+.center-view{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex: 1;
+}
+.bottom-view{
+  display: flex;
+  flex: 1;
+  flex-direction: row;
 }
 
 .home_top_text_template {
@@ -206,6 +222,7 @@ view.text text {
     text-align: center;
     border-radius: 100px;
     border: 3px white solid;
+    margin-bottom: 20px;
 }
 
 /*医数值  */
@@ -229,7 +246,7 @@ view.text text {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 120rpx;
+    
 }
 
 .text {
@@ -243,5 +260,5 @@ view.text text {
 
 .text_will_open {
     font-size: 12px;
-    color: #999;
+    color: white;
 }

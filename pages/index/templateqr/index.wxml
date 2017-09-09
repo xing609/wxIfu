@@ -1,6 +1,6 @@
 <view class="container page">
 
-    <view class="top_title_p">
+    <view wx:if="{{template!=null}}" class="top_title_p">
         <text class="left_text_name">{{template.templateName}}</text>
         <text class="left_text_type">{{template.templateType}}</text>
         <text class="left_text_hospital"> 起始节点/时间 :       {{template.startPoint}}</text>

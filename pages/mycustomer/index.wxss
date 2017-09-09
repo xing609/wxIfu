@@ -36,6 +36,10 @@
   background: white;
   justify-content: space-between;
   align-items: center;
+  cursor: pointer;
+}
+.top:active {
+  background-color: #e4e4e4;
 }
 
 .v-left {
