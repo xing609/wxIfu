@@ -246,7 +246,6 @@ view.text text {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
 }
 
 .text {

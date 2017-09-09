@@ -46,7 +46,7 @@
           <view class="item_size">
             <text class="text">{{item.text}}</text>
 
-            <text class="text_will_open" wx:if="{{item.id ==1}}">  1</text>
+            <text class="text_will_open" wx:if="{{item.id ==1}}">0</text>
             <text class="text_num" wx:if="{{item.id ==2}}"> {{model.myCustomer}}</text>
             <text class="text_num" wx:if="{{item.id ==3}}"> {{model.myTemplate}}</text>
             <text class="text_num" wx:if="{{item.id ==4}}"> {{model.doctorSurvey}}张量表</text>
