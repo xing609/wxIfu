@@ -115,8 +115,26 @@ var UPLOAD_AUDIT="api/media/uploadAudit";
 var CHOOSE_CITY= "api/common/area/list";
 //医院列表
 var GET_HOSPTIAL_LIST ="api/doctor/dict/hospList";
+//科室列表
+var GET_DEPT_LIST ="api/doctor/dict/deptList";
+//职称列表
+var GET_POSITION_LIST ="api/doctor/op/getpositionlist";
+//专业方向列表
+var GET_DOCTOR_SPECIALTY_LIST ="api/doctor/specialty/list";
 
 //===========================================请求接口==================================================
+function _getDoctorSpecialtyList(o){
+  return reqUrl(GET_DOCTOR_SPECIALTY_LIST,o)
+}
+
+function _getPositionList(o){
+  return reqUrl(GET_POSITION_LIST,o);
+}
+
+function _getDeptList(o){
+  return reqUrl(GET_DEPT_LIST,o)
+}
+
 function _getHosptialList(o){
   return reqUrl(GET_HOSPTIAL_LIST,o);
 }
@@ -346,6 +364,9 @@ function _obj2uri(obj) {
 }
 //===========================================导出===========================================
 module.exports = {
+  getDoctorSpecialtyList: _getDoctorSpecialtyList,
+  getPositionList: _getPositionList,
+  getDeptList: _getDeptList,
   getHosptialList: _getHosptialList,
   chooseCity: _chooseCity,
   uploadAudit: _uploadAudit,

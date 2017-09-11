@@ -45,9 +45,16 @@ function isMobile(mobile) {
   }
   return true;
 }
-
-
+// 是否为数字
+function checkNumber(theObj) {
+  var reg = /^[0-9]+.?[0-9]*$/;
+  if (reg.test(theObj)) {
+    return true;
+  }
+  return false;
+}
 module.exports = {
   formatTime: formatTime,
-  isMobile: isMobile
+  isMobile: isMobile,
+  checkNumber:checkNumber
 }

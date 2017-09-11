@@ -8,7 +8,7 @@ Page({
     resultList: [],
     childList: []
   },
-  // 主专区方案
+  
   getGroupCityList: function () {
     var that = this;
     Req.req_post(Api.chooseCity({
@@ -40,7 +40,7 @@ Page({
     }, function fail(res) {
     })
   },
-  // 子专区方案
+ 
   getChildCityList: function (id) {
     var that = this;
     Req.req_post(Api.chooseCity({
@@ -58,9 +58,12 @@ Page({
   },
 
   onShow: function () {
-    // if (wx.getStorageSync('hasChange')) {
-    //   this.getTemplateChildList(groupId);
-    // }
+    if (wx.getStorageSync('chooseClose')) {
+      wx.setStorageSync('chooseClose', false);
+      wx.navigateBack({
+        
+      })
+    }
   },
   onLoad: function () {
     var that = this;
@@ -95,7 +98,7 @@ Page({
       'currentChildItem': item.id
     })
     wx.navigateTo({
-      url: "/pages/user/info/hospital/index?bean=" + bean
+      url: "/pages/user/info/hospital/index?bean=" + bean+'&from=chooseHospital'
     })
   },
   //下拉刷新

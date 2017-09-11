@@ -5,7 +5,7 @@ import $wuxButton from 'button/button'
 // import $wuxCalendar from 'calendar/calendar'
 import $wuxCountDown from 'countdown/countdown'
 // import $wuxCountUp from 'countup/countup'
-// import $wuxDialog from 'dialog/dialog'
+import $wuxDialog from 'dialog/dialog'
 // import $wuxGallery from 'gallery/gallery'
 // import $wuxLoading from 'loading/loading'
 // import $wuxNotification from 'notification/notification'
@@ -28,7 +28,7 @@ export {
 	// $wuxCalendar, 
 	$wuxCountDown, 
 	// $wuxCountUp, 
-	// $wuxDialog, 
+	$wuxDialog, 
 	// $wuxGallery, 
 	// $wuxLoading, 
 	// $wuxNotification, 

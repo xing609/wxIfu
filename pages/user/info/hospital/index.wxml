@@ -1,4 +1,8 @@
 <import src="../../../../components/prompt/prompt.wxml" />
 <template is="prompt" hidden="true" data="{{ ...$wux.prompt.msg3}}" />
+
+<import src="../../../../components/dialog/dialog.wxml"/>
+<template is="dialog" data="{{ ...$wux.dialog }}"/>
+
 <import src="../../../common/depart.wxml" />
-<template is="departlist" data="{{resultList}}" />
+<template is="departlist" data="{{resultList,showType}}" />

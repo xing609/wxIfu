@@ -1,8 +1,11 @@
 <template name="departlist">
-  <div class="item-group-p-depart margin-5" bindtap="navigateTo" data-id="{{item.id}}" data-title="{{item.title}}" wx:for="{{resultList}}">
+  <div class="item-group-p-depart margin-5" bindtap="navigateTo" data-item="{{item}}" data-index="{{index}}" wx:for="{{resultList}}">
 
     <view class='item-p-depart'>
-      <text class="item-name-depart">{{item.hospitalName}}</text>
+      <text wx:if="{{showType=='chooseHospital'}}" class="item-name-depart">{{item.hospitalName}}</text>
+      <text wx:if="{{showType=='chooseDept'}}" class="item-name-depart">{{item.departmentName}}</text>
+      <text wx:if="{{showType=='choosePosition'}}" class="item-name-depart">{{item.title}}</text>
+      <text wx:if="{{showType=='chooseSpecialty'}}" class="item-name-depart">{{item.title}}</text>
       <view class='item-next-depart'>
         <image class="ic-next-depart" src='../../../../assets/images/userinfo/ic_next.png'></image>
       </view>

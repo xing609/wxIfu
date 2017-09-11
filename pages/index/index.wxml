@@ -11,7 +11,7 @@
 
     <view class="home_circle_p" bindtap='jumpIfuValueIndex' data-allcredic='{{model.allCredit}}'>
       <view>
-        <text class="today-add-num" wx:if="{{model.newCredit>0}}">今日+{{model.newCredit}}0</text>
+        <text class="today-add-num" wx:if="{{model.newCredit>0}}">今日+{{model.newCredit}}</text>
         <view class='ifu-p'>
           <text class="quick-auth" wx:if="{{auditStatus==3||auditStatus==2||auditStatus==5}}">点击认证</text>
           <text class="home_ifu_value">{{model.allCredit}}</text>
@@ -38,7 +38,7 @@
 
 
 
-  <view class="bottom-view">
+  <view class="bottom-view" wx:if="{{items.length>0}}" >
     <view class="grids ">
     <!-- grids-small -->
       <block wx:for="{{ items }}" wx:key="">

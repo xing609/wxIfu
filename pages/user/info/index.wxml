@@ -152,10 +152,10 @@
   </div>
 
 
-  <view class="desc-p" wx:if="{{userInfo.doctorDesc!=null}}">
+  <view class="desc-p">
     <textarea wx:if="{{canEdit}}" class="input-desc" type="text" value="{{userInfo.doctorDesc}}" maxlength='200' disabled='{{!canEdit}}' bindinput="doctorDescInput" auto-focus="true" placeholder="请输入简介" />
 
-    <text wx:if="{{!canEdit}}" class="input-desc">{{userInfo.doctorDesc}}</text>
+    <text wx:if="{{userInfo.doctorDesc!=null}}" wx:if="{{!canEdit}}" class="input-desc">{{userInfo.doctorDesc}}</text>
   </view>
 </view>
 

@@ -3,6 +3,7 @@ const qiniuUploader = require("../../../utils/qiniuUploader");
 const App = getApp()
 const Api = require('../../../utils/api.js');
 const Req = require('../../../utils/req.js');
+const Utils = require('../../../utils/util.js');
 var pagefrom;
 Page({
   data: {
@@ -46,18 +47,79 @@ Page({
       })
     }
   },
+  onShow: function () {
+    var chooseType = wx.getStorageSync('chooseType');
+    if (chooseType == null) {
+      return
+    }
+    var user = this.data.userInfo;
+    var chooseItem = wx.getStorageSync('chooseItem');
+    var that = this;
+    if (chooseType == 'chooseHospital') {
+      if (chooseItem != null) {
+        user.hospitalId = chooseItem.id;
+        user.hospital = chooseItem.hospitalName;
+        user.department = '';//选择医院后科室相应改变
+        user.departmentId = '';
+
+      }
+      changeUserData(that, user);
+    } else if (chooseType == 'chooseDept') {
+      if (chooseItem != null) {
+        user.department = chooseItem.departmentName;
+        user.departmentId = chooseItem.departmentId;
+
+      }
+      changeUserData(that, user);
+    } else if (chooseType == 'choosePosition') {
+      if (chooseItem != null) {
+        user.position = chooseItem.title;
+        user.positionId = chooseItem.id;
+        user.positionType = chooseItem.positionType;
+      }
+      changeUserData(that, user);
+    } else if (chooseType == 'chooseSpecialty') {
+      if (chooseItem != null) {
+        user.specialtyName = chooseItem.title;
+        user.specialtyId = chooseItem.id;
+      }
+      changeUserData(that, user);
+    }
+    wx.setStorageSync('chooseType', '');
+  },
   // 姓名修改
   doctorNameInput: function (e) {
     var that = this;
-    if (e.detail.value) {
-      this.setData({
-        doctorName: e.detail.value
+    if (e.detail.value.length < 1) {
+      wx.showToast({
+        title: '姓名不能为空',
       })
-      var user = Api.getUser();
+      var user = this.data.userInfo;
       user.doctorName = e.detail.value;
-      changeUserData(that, user);
+      that.setData({
+        userInfo:user
+      })
+      return
     }
+    if (Utils.checkNumber(e.detail.value)) {
+      wx.showToast({
+        title: '姓名不能为纯数字',
+      })
+      return
+    }
+    var user = this.data.userInfo;
+    user.doctorName = e.detail.value;
+    changeUserData(that, user);
   },
+  // 简介
+  doctorDescInput: function (e) {
+    var that = this;
+    console.log("doctorDesc:----------", e.detail.value);
+    var user = this.data.userInfo;
+    user.doctorDesc = e.detail.value;
+    changeUserData(that, user);
+  },
+
   // 医院
   jumpToHosptial() {
     if (this.data.canEdit) {
@@ -65,7 +127,6 @@ Page({
         url: "/pages/user/info/city/index"
       })
     }
-
   },
   // 科室
   jumpToDepart() {
@@ -77,25 +138,72 @@ Page({
         title: '请先选择医院',
       })
       return
+    } else {
+      wx.navigateTo({
+        url: "/pages/user/info/hospital/index?from=chooseDept" + "&hospitalId=" + this.data.userInfo.hospitalId
+      })
     }
 
   },
   // 职称
   jumpToPosition() {
-
+    wx.navigateTo({
+      url: "/pages/user/info/hospital/index?from=choosePosition"
+    })
   },
   // 专业
   jumpToSpecialty() {
-
+    wx.navigateTo({
+      url: "/pages/user/info/hospital/index?from=chooseSpecialty"
+    })
   },
 
   // 提交
   btnSubmit() {
+    var user = this.data.userInfo;
+    if (user.doctorName == null||user.doctorName.length<1) {
+      wx.showToast({
+        title: '请输入姓名',
+      })
+      return;
+    }
+    if (user.sex == null || user.sex.length < 1) {
+      wx.showToast({
+        title: '请选择性别',
+      })
+      return;
+    }
+    if (user.hospital == null || user.hospital.length < 1) {
+      wx.showToast({
+        title: '请选择医院',
+      })
+      return;
+    }
+    if (user.department == null || user.department.length < 1) {
+      wx.showToast({
+        title: '请选择科室',
+      })
+      return;
+    }
+    if (user.position == null || user.position.length < 1) {
+      wx.showToast({
+        title: '请选择职称',
+      })
+      return;
+    }
+    if (user.specialtyName == null || user.specialtyName.length < 1) {
+      wx.showToast({
+        title: '请选择职称',
+      })
+      return;
+    }
+    
     wx.navigateTo({
       url: "/pages/auth/index"
     })
   },
   editUserInfo(that, user) {
+    console.log("user----------:", JSON.stringify(user));
     Req.req_post(Api.editUserInfo({
       token: Api.getToken(),
       docBasic: user
