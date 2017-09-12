@@ -1,10 +1,10 @@
 const App = getApp()
 const Api = require('../../utils/api.js');
 const Req = require('../../utils/req.js');
+const Ifu = require('../../utils/ifu.js');
 Page({
   data: {
     userInfo: {},
- 
     settings: [
       {
         icon: '../../assets/images/userinfo/ic_contact_us.png',
@@ -73,8 +73,11 @@ Page({
     Req.req_post(Api.getAuditStatus({
       token: Api.getToken()
     }), "", function success(res) {
+      var strStatus = Ifu.authStatus(res.data.model.status);
+      var authimage =res.data.model.status
       that.setData({
-        auditStatus: res.data.model.status
+        auditStatus: res.data.model.status,
+        strStatus: strStatus
       })
       wx.setStorageSync('auditStatus', res.data.model.status);
     }, function fail(res) {
@@ -83,7 +86,7 @@ Page({
   //快速认证
   quickAuth(){
     wx.navigateTo({
-      url: '/pages/user/info/index?from=auth'
+      url: '/pages/user/info/index?strStatus=' + this.data.strStatus +"&from=auth"
     })
   },
   bindtap(e) {
@@ -135,25 +138,16 @@ Page({
       pagefrom = 'edit';
     }
     wx.navigateTo({
-      url: '/pages/user/info/index?from='+pagefrom
+      url: '/pages/user/info/index?from=' + pagefrom + "&strStatus=" + this.data.strStatus
     })
   },
-  signOut() {
-    // App.HttpService.signOut()
-    //   .then(data => {
-    //     console.log(data)
-    //     if (data.meta.code == 0) {
-    //       wx.removeStorageSync('token')
-    //       wx.redirectTo('/pages/login/index')
-    //     }
-    //   })
-  },
+ 
   myLoginOut() {
     Req.req_post(Api.loginOut({
       token: Api.getToken()
     }), "正在退出", function success(res) {
       console.log("loginout success -------------");
-      wx.removeStorageSync('token')
+      wx.removeStorageSync('token');
       wx.redirectTo({
         url: '/pages/login/index'
       })

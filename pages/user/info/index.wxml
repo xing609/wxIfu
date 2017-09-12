@@ -1,9 +1,15 @@
 <view class="container">
-  <text class='text-mobile' wx:if="{{!canEdit}}">注册号码：{{userInfo.mobile}}</text>
 
-  <view class='text-edit-p' wx:if="{{canEdit}}">
-    <text class='text-edit-hint'>请填写真实资料，*为必填项</text>
+  <view class='info-top'>
+    <view class='text-edit-p' wx:if="{{canEdit}}">
+      <text class='text-edit-hint'>请填写真实资料，*为必填项</text>
+    </view>
+    <view class='text-mobile-p'>
+      <text class='text-mobile'>注册号码：{{userInfo.mobile}}</text>
+    </view>
+
   </view>
+
 </view>
 <div bindtap="didPressChooesImage" class="top">
 
@@ -17,36 +23,35 @@
 </div>
 
 <!--认证信息-->
-<div class="item margin-top-1" wx:if="{{!canEdit}}">
-  <view class='item-left'>
+<div class="item margin-top-1" wx:if="{{!canEdit}}" bindtap='clickAuthStatus'>
+  <view class='item-left' bindtap='hasAuth'>
     <text class="left_text">认证信息</text>
   </view>
 
   <view class='item-right'>
-    <text class="user_text_value margin-right-10" wx:if="{{userInfo.status==0}}">已认证</text>
-    <text class="user_text_value margin-right-10" wx:if="{{userInfo.status==1}}">待审核</text>
-    <text class="user_text_value margin-right-10" wx:if="{{userInfo.status==4}}">审核中</text>
-    <text class="user_text_value margin-right-10" wx:if="{{userInfo.status==6}}">审核不通过</text>
+    <text class="user_text_value margin-right-10" wx:if="{{strStatus!=null}}">{{strStatus}}</text>
     <image class="img_next" src='../../../assets/images/userinfo/ic_next.png'></image>
   </view>
 </div>
 
 
 <!--姓名-->
-<view class="item margin-top-15">
+<view class="item margin-top-15" bindtap='nameAndSexClick'>
   <view class='item-left'>
     <text class="left_text">姓名</text>
     <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image>
   </view>
   <view class='item-right'>
-    <input class="name-input" type="text" value="{{userInfo.doctorName}}" disabled='{{!canEdit}}' bindinput="doctorNameInput" auto-focus="true" placeholder="请输入姓名" />
+    <input wx:if="{{canEdit}}" class="name-input" type="text" value="{{userInfo.doctorName}}" disabled='{{!canEdit}}' bindinput="doctorNameInput" auto-focus="true" placeholder="请输入姓名" />
+
+    <text class="user_text_value" wx:if="{{!canEdit}}">{{userInfo.doctorName}}</text>
     <image class="img_auth" wx:if="{{!canEdit}}" src='../../../assets/images/userinfo/ic_correct.png'></image>
   </view>
 
 </view>
 
 <!--性别-->
-<div class="item margin-top-1">
+<div class="item margin-top-1" bindtap='nameAndSexClick'>
   <view class='item-left'>
     <text class="left_text">性别</text>
     <image class="img_need" src='../../../assets/images/userinfo/ic_need.png'></image>
@@ -111,6 +116,7 @@
 </div>
 
 <!--专业-->
+
 <div class="item margin-top-1">
   <view class='item-left '>
     <text class="left_text">专业</text>
@@ -122,8 +128,25 @@
     <image class="img_auth" wx:if="{{!canEdit}}" src='../../../assets/images/userinfo/ic_correct.png'></image>
     <image class="img_next" wx:if="{{canEdit}}" src='../../../assets/images/userinfo/ic_next.png'></image>
   </view>
+  <!-- wx:if="{{currentItem==item.id}} -->
 
 </div>
+
+
+<view class='item-specialty'>
+  <view class='line-x'></view>
+  <view class='item-bottom'>
+
+    <text class='txt-bottom-hint'>亚专业(多选)</text>
+    <view class="grids grids-small girds-bg"  wx:if="{{userInfo.templateGroupList!=null&&userInfo.templateGroupList.length>0}}">
+      <block wx:for="{{ userInfo.templateGroupList }}" wx:key="">
+        <view class="grid girds-bg" url="" wx:key="{{index}}" data-index="{{index}}" bindtap="clickChildItem" data-childitem="{{item}}">
+          <text class="{{item.isSelected?'child-title-active':'child-title'}}">{{item.title}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
 
 
 

@@ -40,7 +40,7 @@ Page({
         if (res.resCode == '0000') {
           if (res.model.url) {
             console.log("图片地址：-------------" + res.model.url);
-            that.uploadAudit();
+            that.uploadAudit(res.model.url);
           }
         } else {
           wx.showToast({
@@ -59,8 +59,8 @@ Page({
   },
 
   //提交认证
-  uploadAudit() {
-    if (!this.data.url) {
+  uploadAudit(imgUrl) {
+    if (imgUrl==null) {
       wx.showToast({
         title: '未获取图片地址',
       })
@@ -69,7 +69,7 @@ Page({
     var that = this;
     Req.req_post(Api.uploadAudit({
       token: Api.getToken(),
-      picUrl: this.data.url
+      picUrl: imgUrl
     }), "提交中", function success(res) {
       console.log('提交成功：', res.data.model);
       that.setData({
@@ -78,6 +78,9 @@ Page({
       wx.showToast({
         title: '提交成功',
       })
+      wx.setStorageSync('hasCommitAuth',true);
+      wx.setStorageSync('homeRefresh', true);
+      
     }, function fail(res) {
 
     })

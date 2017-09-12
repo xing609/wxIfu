@@ -9,12 +9,53 @@
   height: 50px;
 }
 
+/*认证成功  */
+
+.auth-success {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
+  
+}
+
 .view-top {
   display: flex;
   flex-direction: row;
   vertical-align: middle;
   align-items: center;
   justify-content: flex-start;
+}
+
+.text-doctor-success{
+  display: flex;
+  justify-content: center;
+  vertical-align: middle;
+  font-size: 16px;
+  color: black;
+}
+.auth-img-p{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  vertical-align: middle;
+   width: 100%;
+}
+.margin-top-10{
+  margin-top: 10px;
+}
+
+.center-img {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  height: 400rpx;
+  background-color: white;
+  border-radius: 6px;
+  border: 2px solid white;
 }
 
 .text-doctor {
@@ -53,15 +94,18 @@
   padding-bottom: 5px;
   justify-content: center;
   flex-direction: row;
-  background-color: #F3BE26;
+  background-color: #f3be26;
   border-radius: 20px;
-  border: 0.5px solid #F3BE26;
+  margin-top: 20px;
+  border: 0.5px solid #f3be26;
 }
-.cerfity-phone{
+
+.cerfity-phone {
   width: 26px;
   height: 26px;
 }
-.text-phone{
+
+.text-phone {
   font-size: 16px;
   color: white;
   margin-left: 10px;

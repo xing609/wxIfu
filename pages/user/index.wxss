@@ -1,7 +1,7 @@
 .userinfo {
 	display: flex;
 	flex-direction: column;
-	padding: 50rpx 0;
+	padding: 20rpx 0;
 	align-items: center;
 	background: #FF9933;
 }
@@ -17,6 +17,13 @@ page {
 
 .userinfo-nickname {
 	color: #fff;
+  font-size: 14px;
+}
+.top-username{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .badge {
@@ -70,6 +77,18 @@ page {
   padding: 10px;
 
 }
+/*未认证  */
+.no-auth{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  vertical-align: middle;
+  align-items: center;
+}
+.userinfo-hospital{
+  font-size: 14px;
+  color: #FFCF90
+}
 .text-auth{
   font-size: 16px;
   margin-left: 5px;
@@ -82,7 +101,12 @@ page {
   justify-content: center;
   margin-left: 5px;
 }
-
+.auth-img-success{
+  width: 18px;
+  height: 18px;
+  margin-left: 3px;
+  margin-right: 3px;
+}
 .auth-img{
   height: 25px;
   width: 20px;

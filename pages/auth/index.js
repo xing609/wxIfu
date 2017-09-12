@@ -9,10 +9,12 @@ Page({
   onLoad: function () {
   },
 
-  onShow: function () {//检测是否有发送新消息
-    var hasMess = wx.getStorageSync('hasNewMess');
-    if (hasMess) {
-      this.onLoad();
+  onShow: function () {
+    var hasCommitAuth = wx.getStorageSync('hasCommitAuth');
+    if (hasCommitAuth) {
+      wx.navigateBack({
+
+      })
     }
   },
   //拍照

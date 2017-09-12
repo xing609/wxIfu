@@ -1,6 +1,7 @@
 var Api = require('../../utils/api.js');
 var Tools = require('../../utils/md5.js');
 var Req = require('../../utils/req.js');
+var Ifu = require('../../utils/ifu.js');
 const App = getApp()
 //获取应用实例
 var arr_name = ["随访方案库", "我的病人", "我的方案", "待完成医用量表", "已收到量表", "未按时提交量表",]
@@ -275,25 +276,29 @@ Page({
     var auditStatus = this.data.auditStatus;
     console.log("audistatus------------", auditStatus);
     var allcredic = option.currentTarget.dataset.allcredic;
-    switch (auditStatus) {
-      case '0'://认证成功
+    var status = Ifu.authStatus(this.data.auditStatus);
+    console.log("status---------",status);
+    switch (status) {
+      case '已认证':
         wx.navigateTo({
           url: '/pages/index/ifuvalue/index?allcredic=' + allcredic,
         })
         break;
-      case '1'://认证失败
-      case '4':
-      case '6':
-
-        break;
-      case '2':
-      case '3':
-      case '5':
+      case '认证失败':
         wx.navigateTo({
-          url: '/pages/user/info/index?from=auth'
+          url: '/pages/auth/result/index'
+        })
+      break
+      case '未认证':
+        wx.navigateTo({
+          url: '/pages/user/info/index?from=auth' + '&strStatus=' + status
+        })
+        break;
+      case '认证中':
+        wx.navigateTo({
+          url: '/pages/auth/result/index'
         })
         break
-
     }
   },
   jumpTemplateQrIndex() {

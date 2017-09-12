@@ -1,22 +1,41 @@
 var App = getApp()
 var Api = require('../../../utils/api.js');
 var Req = require('../../../utils/req.js');
-var url;
+var Ifu = require('../../../utils/ifu.js');
+
 Page({
   data: {
     upload: false
   },
   onLoad: function (option) {
-    url = option.imgUrl;
-    this.setData({
-      url: url
-    })
+    this.getAuditStatus();
   },
   btnSubmit() {
     if (this.data.upload) {
       return;
     }
     this.uploadAudit();
+  },
+  // 获取认证状态
+  getAuditStatus() {
+    var that = this;
+    Req.req_post(Api.getAuditStatus({
+      token: Api.getToken()
+    }), "加载中", function success(res) {
+      var strStatus = Ifu.authStatus(res.data.model.status);
+      wx.setNavigationBarTitle({
+        title: strStatus,
+      })
+      var authimage = res.data.model.image;
+      console.log("authimg-----------", authimage);
+      that.setData({
+        authStatus: res.data.model.status,
+        strStatus: strStatus,
+        authimage: authimage
+      })
+      wx.setStorageSync('auditStatus', res.data.model.status);
+    }, function fail(res) {
+    })
   },
   //提交认证
   uploadAudit() {
@@ -51,6 +70,7 @@ Page({
   //图片预览
   previewImage: function (e) {
     var that = this;
+    var url = e.currentTarget.dataset.url;
     if (url) {
       var picArray = new Array();
       picArray.push(url);

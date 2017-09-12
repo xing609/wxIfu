@@ -4,6 +4,7 @@ const App = getApp()
 const Api = require('../../../utils/api.js');
 const Req = require('../../../utils/req.js');
 const Utils = require('../../../utils/util.js');
+const Ifu = require('../../../utils/ifu.js');
 var pagefrom;
 Page({
   data: {
@@ -26,12 +27,11 @@ Page({
   // 性别选择
   radioSexChange: function (e) {
     var id = e.currentTarget.dataset.id;
-
-    console.log("单选：", id);
     var that = this;
     if (id != null) {
       this.setSex(id);
       var user = Api.getUser();
+      
       user.sex = id;
       changeUserData(that, user);
     }
@@ -48,11 +48,18 @@ Page({
     }
   },
   onShow: function () {
+    var hasCommitAuth = wx.getStorageSync('hasCommitAuth');
+    if (hasCommitAuth){
+        wx.setStorageSync('hasCommitAuth',false);
+        wx.switchTab({
+          url: '/pages/user/index'
+        })
+    }
     var chooseType = wx.getStorageSync('chooseType');
     if (chooseType == null) {
       return
     }
-    var user = this.data.userInfo;
+    var user = Api.getUser();
     var chooseItem = wx.getStorageSync('chooseItem');
     var that = this;
     if (chooseType == 'chooseHospital') {
@@ -61,14 +68,12 @@ Page({
         user.hospital = chooseItem.hospitalName;
         user.department = '';//选择医院后科室相应改变
         user.departmentId = '';
-
       }
       changeUserData(that, user);
     } else if (chooseType == 'chooseDept') {
       if (chooseItem != null) {
         user.department = chooseItem.departmentName;
         user.departmentId = chooseItem.departmentId;
-
       }
       changeUserData(that, user);
     } else if (chooseType == 'choosePosition') {
@@ -87,6 +92,12 @@ Page({
     }
     wx.setStorageSync('chooseType', '');
   },
+  // 认证信息
+  clickAuthStatus() {
+    wx.navigateTo({
+      url: "/pages/auth/result/index?authStatus=" + this.data.strStatus + "&authimage=" + this.data.authimage
+    })
+  },
   // 姓名修改
   doctorNameInput: function (e) {
     var that = this;
@@ -94,10 +105,10 @@ Page({
       wx.showToast({
         title: '姓名不能为空',
       })
-      var user = this.data.userInfo;
+      var user = Api.getUser();
       user.doctorName = e.detail.value;
       that.setData({
-        userInfo:user
+        userInfo: user
       })
       return
     }
@@ -107,31 +118,61 @@ Page({
       })
       return
     }
-    var user = this.data.userInfo;
+    var user = Api.getUser();
     user.doctorName = e.detail.value;
     changeUserData(that, user);
   },
+  // 亚专业
+  clickChildItem(e) {
+    var index = e.currentTarget.dataset.index;
+    var user = Api.getUser();
+    var chooseList =user.templateGroupList;
+    for (var i in chooseList){
+      var bean = chooseList[i];
+        if(i==index){
+          if (bean.isSelected){
+            bean.isSelected = false;
+          }else{
+            bean.isSelected = true;
+          }
+          break;
+        }
+    }
+    var that=this;
+    changeUserData(that, user);
+  },
+
   // 简介
   doctorDescInput: function (e) {
     var that = this;
     console.log("doctorDesc:----------", e.detail.value);
-    var user = this.data.userInfo;
+    var user = Api.getUser();
     user.doctorDesc = e.detail.value;
     changeUserData(that, user);
+  },
+  nameAndSexClick() {
+    if (!this.data.canEdit) {
+      Ifu.callIfuService();
+      return;
+    }
   },
 
   // 医院
   jumpToHosptial() {
-    if (this.data.canEdit) {
-      wx.navigateTo({
-        url: "/pages/user/info/city/index"
-      })
+    if (!this.data.canEdit) {
+      Ifu.callIfuService();
+      return;
     }
+    wx.navigateTo({
+      url: "/pages/user/info/city/index"
+    })
+
   },
   // 科室
   jumpToDepart() {
     if (!this.data.canEdit) {
-      return
+      Ifu.callIfuService();
+      return;
     }
     if (this.data.userInfo.hospital == null) {
       wx.showToast({
@@ -147,12 +188,20 @@ Page({
   },
   // 职称
   jumpToPosition() {
+    if (!this.data.canEdit) {
+      Ifu.callIfuService();
+      return;
+    }
     wx.navigateTo({
       url: "/pages/user/info/hospital/index?from=choosePosition"
     })
   },
   // 专业
   jumpToSpecialty() {
+    if (!this.data.canEdit) {
+      Ifu.callIfuService();
+      return;
+    }
     wx.navigateTo({
       url: "/pages/user/info/hospital/index?from=chooseSpecialty"
     })
@@ -161,7 +210,7 @@ Page({
   // 提交
   btnSubmit() {
     var user = this.data.userInfo;
-    if (user.doctorName == null||user.doctorName.length<1) {
+    if (user.doctorName == null || user.doctorName.length < 1) {
       wx.showToast({
         title: '请输入姓名',
       })
@@ -197,16 +246,19 @@ Page({
       })
       return;
     }
-    
     wx.navigateTo({
       url: "/pages/auth/index"
     })
   },
   editUserInfo(that, user) {
-    console.log("user----------:", JSON.stringify(user));
+    if (user.templateGroupList!=null&&user.templateGroupList.length>0){
+      var subTemplateGroupIds = Ifu.getSubTemplateGroupIdsId(user.templateGroupList);
+      console.log("subTemplateGroupIds---------", subTemplateGroupIds);
+      user.subTemplateGroupIds = subTemplateGroupIds;
+    }
     Req.req_post(Api.editUserInfo({
       token: Api.getToken(),
-      docBasic: user
+      docBasic: JSON.stringify(user)
     }), "提交中", function success(res) {
       wx.setStorageSync('user', res.data.model);
       that.setData({
@@ -215,7 +267,7 @@ Page({
       wx.showToast({
         title: '修改成功',
         icon: 'success',
-        duration: 1000
+        duration: 300
       });
     }, function fail(res) {
     });
@@ -244,25 +296,38 @@ Page({
     var title = "个人信息";
     var canEdit;
     var showBtn;
+    var strStatus;
     pagefrom = option.from;
+    strStatus = option.strStatus;
     if (pagefrom == 'userinfo') {
       title = "个人信息"
-      canEdit = false;
       showBtn = false;
     } else if (pagefrom == 'edit') {
       title = "个人信息"
-      canEdit = true;
       showBtn = false;
     } if (pagefrom == 'auth') {
       title = "认证"
-      canEdit = true;
       showBtn = true;
     }
     wx.setNavigationBarTitle({
       title: title,
     })
-
+    switch (strStatus) {
+      case '已认证':
+        canEdit = false;
+        break;
+      case '认证失败':
+        canEdit = true;
+        break
+      case '未认证':
+        canEdit = true;
+        break;
+      case '认证中':
+        canEdit = false;
+        break
+    }
     that.setData({
+      strStatus: strStatus,
       canEdit: canEdit,
       showBtn: showBtn
     })
@@ -274,6 +339,29 @@ Page({
   }
 },
 );
+function hasAuth() {
+  var flag = false;
+  if (!this.data.canEdit) {
+    wx.showModal({
+      title: '修改认证信息，请联系客服',
+      content: '400-618-2535',
+      success: function (res) {
+        if (res.confirm) {
+          wx.makePhoneCall({
+            phoneNumber: '400-618-2535'
+          })
+        }
+      }
+    })
+    return
+  } else {
+    flag = true;
+  }
+  return flag;
+}
+
+
+
 // 初始化七牛相关参数
 function initQiniu(upToken) {
   var options = {
@@ -287,12 +375,11 @@ function initQiniu(upToken) {
 }
 
 function changeUserData(that, user) {
-
   that.setData({
     userInfo: user
   });
   wx.setStorageSync('user', user);
-  that.editUserInfo(that, JSON.stringify(user));
+  that.editUserInfo(that, user);
 }
 
 function didPressChooesImage(that, uptoken) {
@@ -320,7 +407,7 @@ function getQiNiuToken(that, imgUrl) {
         if (res.model.url) {
           var user = Api.getUser();
           user.face = res.model.url;
-          that.changeUserData(user);
+          changeUserData(that, user);
         }
       } else {
         wx.showToast({

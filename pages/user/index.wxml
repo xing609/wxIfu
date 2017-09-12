@@ -1,35 +1,52 @@
 <view class="container">
-    <view bindtap="goUserInfo" class="userinfo">
-        <image wx:if="{{userInfo.face!=null}}" class="userinfo-avatar" src="{{ userInfo.face }}" background-size="cover"></image>
-        <image wx:if="{{userInfo.face==null}}" class="userinfo-avatar" src="../../assets/images/userinfo/ic_default_doctor.png" background-size="cover"></image>
-        <text bindtap="goUserInfo" class="userinfo-nickname">{{ userInfo.doctorName}}</text>
+  <view bindtap="goUserInfo" class="userinfo">
+    <image wx:if="{{userInfo.face!=null}}" class="userinfo-avatar" src="{{ userInfo.face }}" background-size="cover"></image>
+    <image wx:if="{{userInfo.face==null}}" class="userinfo-avatar" src="../../assets/images/userinfo/ic_default_doctor.png" background-size="cover"></image>
+
+    <view class='top-username'>
+      <text class="userinfo-nickname">{{ userInfo.doctorName}}</text>
+      <image class='auth-img-success' wx:if="{{strStatus=='已认证'}}" src="../../assets/images/userinfo/ic_cerfity_status.png"></image>
+      <image class='auth-img-success' wx:if="{{strStatus=='认证中'}}" src="../../assets/images/userinfo/ic_certifitying.png"></image>
+      <image class='auth-img-success' wx:if="{{strStatus=='认证失败'}}" src="../../assets/images/userinfo/ic_cerfity_failed.png"></image>
+
+      <text class="userinfo-nickname" wx:if="{{strStatus=='已认证'||strStatus=='认证中'||strStatus=='认证失败'}}">{{strStatus}}</text>
+
+      <view class='no-auth' wx:if="{{strStatus=='未认证'&&userInfo.doctorName==null}}">
+        <image class='auth-img-success' src="../../assets/images/userinfo/ic_api.png"></image>
+        <text class="userinfo-nickname">补充个人信息</text>
+      </view>
+
     </view>
 
-    <view class='quick-auth' wx:if="{{auditStatus==3||auditStatus==2||auditStatus==5}}" bindtap='quickAuth'>
-        <view class='auth-left'>
-            <image class='auth-img' src="../../assets/images/userinfo/ic_fast_auth.png"></image>
-            <text class='text-auth'>快速认证</text>
-        </view>
+    <text wx:if="{{userInfo.hospital!=null}}" class="userinfo-hospital">{{ userInfo.hospital}}</text>
 
-        <view class='next-p'>
-            <image class='ic-next' src="../../assets/images/userinfo/ic_next.png"></image>
-        </view>
+  </view>
+
+  <view class='quick-auth' wx:if="{{strStatus=='未认证'}}" bindtap='quickAuth'>
+    <view class='auth-left'>
+      <image class='auth-img' src="../../assets/images/userinfo/ic_fast_auth.png"></image>
+      <text class='text-auth'>快速认证</text>
     </view>
 
-    <view class="info_list">
-        <view class="weui-cells">
-            <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{ settings }}" wx:key="" data-path="{{ item.path }}" data-index="{{ index }}" bindtap="bindtap">
-                <view class="weui-cell__hd">
-                    <image src="{{ item.icon }}" style="margin-bottom: 2px;margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
-                </view>
-                <view class="weui-cell__bd">{{ item.text }}</view>
-                <view class="weui-cell__ft weui-cell__ft_in-access">
-                    <text wx:if="{{ index === 0 }}">{{ item.path }}</text>
-                </view>
-            </view>
-        </view>
+    <view class='next-p'>
+      <image class='ic-next' src="../../assets/images/userinfo/ic_next.png"></image>
     </view>
+  </view>
 
-    <view class="logout" bindtap="logout">登出账号</view>
+  <view class="info_list">
+    <view class="weui-cells">
+      <view class="weui-cell weui-cell_access" hover-class="weui-cell_active" wx:for="{{ settings }}" wx:key="" data-path="{{ item.path }}" data-index="{{ index }}" bindtap="bindtap">
+        <view class="weui-cell__hd">
+          <image src="{{ item.icon }}" style="margin-bottom: 2px;margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+        </view>
+        <view class="weui-cell__bd">{{ item.text }}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">
+          <text wx:if="{{ index === 0 }}">{{ item.path }}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="logout" bindtap="logout">登出账号</view>
 
 </view>
